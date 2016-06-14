@@ -26,7 +26,6 @@ g = open("list_of_names_sorted.txt", "w")
 for name in listofnames:
 	g.write(name)
 g.close()
-'''
 
 # read the whole file at once
 f = open("alice_in_wonderland.txt")
@@ -35,3 +34,17 @@ f.close()
 
 words = content.split()
 print("There are {0} words in the file.".format(len(words)))
+'''
+
+# copy one binary file to another
+f = open("test.zip", "rb")
+g = open("test_copy.zip", "wb")
+
+while True:
+	buf = f.read(1024)
+	if len(buf) == 0:
+		break
+	g.write(buf)
+
+f.close()
+g.close()
