@@ -34,7 +34,6 @@ f.close()
 
 words = content.split()
 print("There are {0} words in the file.".format(len(words)))
-'''
 
 # copy one binary file to another
 f = open("test.zip", "rb")
@@ -48,3 +47,5 @@ while True:
 
 f.close()
 g.close()
+'''
+
