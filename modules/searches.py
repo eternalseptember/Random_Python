@@ -1,18 +1,20 @@
 def search_linear(xs, target):
-	""" Find and return the index of target in sequence xs """
+	""" Find and return the index of target in sequence xs. """
 	for (i, v) in enumerate(xs):
 		if v == target:
 			return i
 	return -1
 
+
 def find_unknown_words(vocab, wds):
-	""" Return a list of words in wds that do not occur in vocab """
+	""" Return a list of words in wds that do not occur in vocab. """
 	result = []
 	for w in wds:
 		if (search_binary(vocab, w) < 0):
 		#if (search_linear(vocab, w) < 0):
 			result.append(w)
 	return result
+
 
 def load_words_from_file(filename):
 	""" Read words from filename, return list of words. """
@@ -22,9 +24,12 @@ def load_words_from_file(filename):
 	wds = file_content.split()
 	return wds
 
+
 def text_to_words(the_text):
-	""" return a list of words with all punctuation removed,
-	and all in lowercase. """
+	""" 
+	Return a list of words with all punctuation removed,
+	and all in lowercase. 
+	"""
 	my_substitutions = the_text.maketrans(
 	    # if you find any of these
 	    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&()*+,-./:;<=>?@[]^_`{|}~'\\",
@@ -36,6 +41,7 @@ def text_to_words(the_text):
 	wds = cleaned_text.split()
 	return wds
 
+
 def get_words_in_book(filename):
 	""" Read a book from filename, and return a list of its words. """
 	f = open(filename, "r")
@@ -43,6 +49,7 @@ def get_words_in_book(filename):
 	f.close()
 	wds = text_to_words(content)
 	return wds
+
 
 def search_binary(xs, target):
 	""" Find and return the index of key in sequence xs. """
@@ -70,3 +77,16 @@ def search_binary(xs, target):
 			ub = mid_index 			# use lower half of ROI next time
 
 
+def remove_adjacent_dups(xs):
+	"""
+	Return a new list in which all adjacent duplicates
+	from xs have been removed.
+	"""
+	result = []
+	most_recent_elem = None
+	for e in xs:
+		if e != most_recent_elem:
+			result.append(e)
+			most_recent_elem = e
+
+	return result
