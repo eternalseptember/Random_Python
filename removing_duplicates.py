@@ -1,6 +1,5 @@
 from modules.test import *
 from modules.searches import *
-import time
 
 
 test(remove_adjacent_dups([1,2,3,3,3,3,5,6,9,9]) == [1,2,3,5,6,9])
