@@ -114,3 +114,31 @@ def merge(xs, ys):
 		else:
 			result.append(ys[yi])
 			yi += 1
+
+
+def find_unknown_merge_pattern(vocab, wds):
+	"""
+	Both the vocab and wds must be sorted. Return a new
+	list of words from wds that do not occur in vocab.
+	"""
+	result = []
+	xi = 0
+	yi = 0
+
+	while True:
+		if xi >= len(vocab):
+			result.extend(wds[yi:])
+			return result
+
+		if yi >= len(wds):
+			return result
+
+		if vocab[xi] == wds[yi]:	# Good, word exists in vocab
+			yi += 1
+
+		elif vocab[xi] < wds[yi]:	# Move past this vocab word,
+			xi += 1
+
+		else:
+			result.append(wds[yi])
+			yi += 1
