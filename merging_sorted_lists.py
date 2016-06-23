@@ -27,3 +27,4 @@ missing_words = find_unknown_merge_pattern(bigger_vocab, book_words)
 t1 = time.clock()
 print("There are {0} unknown words.".format(len(missing_words)))
 print("That took {0:.4f} seconds.".format(t1-t0))
+
