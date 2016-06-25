@@ -31,7 +31,23 @@ def has_clashes(the_board):
 	return False
 
 
+def main():
+	import random
+	rng = random.Random()
+	# Generate the initial permutation
+	bd = list(range(8))
+	num_found = 0
+	tries = 0
+	while num_found < 10:
+		rng.shuffle(bd)
+		tries += 1
+		if not has_clashes(bd):
+			print("Found solution {0} in {1} tries.".format(bd, tries))
+			tries = 0
+			num_found += 1
 
+
+'''
 test(not share_diagonal(5, 2, 2, 0))
 test(share_diagonal(5, 2, 3, 0))
 test(share_diagonal(5, 2, 4, 3))
@@ -54,3 +70,6 @@ test(not has_clashes([6, 4, 2, 0, 5, 7, 1, 3])) # Solution from above
 test(has_clashes([4, 6, 2, 0, 5, 7, 1, 3]))     # Swap rows of first two
 test(has_clashes([0, 1, 2, 3]))             # Try small 4x4 board
 test(not has_clashes([2, 0, 3, 1]))         # Solution to 4x4 case
+'''
+
+main()
