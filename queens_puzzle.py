@@ -1,4 +1,5 @@
 from modules.test import *
+from modules.draw_queens import *
 
 
 def share_diagonal(x0, y0, x1, y1):
@@ -43,6 +44,7 @@ def main():
 		tries += 1
 		if not has_clashes(bd):
 			print("Found solution {0} in {1} tries.".format(bd, tries))
+			draw_board(bd)
 			tries = 0
 			num_found += 1
 

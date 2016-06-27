@@ -13,7 +13,10 @@ def draw_board(the_board):
 	# Create the surface of (width, height), and its window.
 	surface = pygame.display.set_mode((surface_sz, surface_sz))
 
-	ball = pygame.image.load("../ball.gif")
+	if __name__ == "__main__":
+		ball = pygame.image.load("../ball.gif")
+	else:
+		ball = pygame.image.load("ball.gif")
 
 	# Use an extra offset to center the ball in its square.
 	# If the square is too small, offset becomes negative,
