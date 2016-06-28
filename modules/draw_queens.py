@@ -31,6 +31,7 @@ def draw_board(the_board):
 	# Create the surface of (width, height), and its window.
 	surface = pygame.display.set_mode((surface_sz, surface_sz))
 
+	# Finds the ball image.
 	if __name__ == "__main__":
 		ball = pygame.image.load("../ball.gif")
 	else:
@@ -41,11 +42,24 @@ def draw_board(the_board):
 	#   but it will still be centered.
 	ball_offset = (sq_sz - ball.get_width()) // 2
 
+	# Adding in QueenSprite
+	all_sprites = []	# Keep a list of all sprites in the game
+
+	# Create a sprite object for each queen, and populate the list.
+	for (col, row) in enumerate(the_board):
+		a_queen = QueenSprite(ball,
+			(col * sq_sz + ball_offset, row * sq_sz + ball_offset))
+		all_sprites.append(a_queen)
+
 	while True:
 		# Look for an event from keyboard, mouse, etc.
 		ev = pygame.event.poll()
 		if ev.type == pygame.QUIT:
 			break;
+
+		# Ask every sprite to update itself.
+		for sprite in all_sprites:
+			sprite.update()
 
 		# Draw a fresh background (a blank chess board)
 		for row in range(n):		# Draw each row of the board.
@@ -56,10 +70,15 @@ def draw_board(the_board):
 				# Now flip the color index for the next square
 				c_indx = (c_indx + 1) % 2
 
+		'''
 		# Now that square are drawn, draw the queens.
 		for (col, row) in enumerate(the_board):
 			surface.blit(ball, 
 				(col * sq_sz + ball_offset, row * sq_sz + ball_offset))
+		'''
+		# Ask every sprite to draw itself.
+		for sprite in all_sprites:
+			sprite.draw(surface)	
 
 		pygame.display.flip()
 
