@@ -1,5 +1,23 @@
 import pygame
 
+
+class QueenSprite:
+	def __init__(self, img, target_posn):
+		"""
+		Create and initialize a queen for this target
+		position on the board.
+		"""
+		self.image = img
+		self.target_posn = target_posn
+		self.posn = target_posn
+
+	def update(self):
+		return		# Do nothing for the moment
+
+	def draw(self, target_surface):
+		target_surface.blit(self.image, self.posn)
+
+
 def draw_board(the_board):
 	""" Draw a chess board with queens, from the_board. """
 	pygame.init()
@@ -46,6 +64,11 @@ def draw_board(the_board):
 		pygame.display.flip()
 
 	pygame.quit()
+
+
+
+
+
 
 
 
