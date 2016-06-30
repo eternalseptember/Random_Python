@@ -19,7 +19,14 @@ class QueenSprite:
 		self.y_velocity += gravity		# Gravity changes velocity
 		(x, y) = self.posn
 		new_y_pos = y + self.y_velocity	# Velocity moves the ball
-		self.posn = (x, new_y_pos)		#   to this new position.
+		(target_x, target_y) = self.target_posn	# Unpack the position
+		dist_to_go = target_y - new_y_pos		# How far to the floor?
+
+		if dist_to_go < 0: # Is it under floor?
+			self.y_velocity = -0.65 * self.y_velocity # Bounce
+			new_y_pos = target_y + dist_to_go	# Move back above floor
+
+		self.posn = (x, new_y_pos)		# Set the new position.
 
 	def draw(self, target_surface):
 		target_surface.blit(self.image, self.posn)
