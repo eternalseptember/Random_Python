@@ -1,6 +1,8 @@
 import pygame
 
 
+gravity = 0.0001
+
 class QueenSprite:
 	def __init__(self, img, target_posn):
 		"""
@@ -9,10 +11,15 @@ class QueenSprite:
 		"""
 		self.image = img
 		self.target_posn = target_posn
-		self.posn = target_posn
+		(x, y) = target_posn
+		self.posn = (x, 0)	# Start ball at top of its column
+		self.y_velocity = 0	#   with zero initial velocity
 
 	def update(self):
-		return		# Do nothing for the moment
+		self.y_velocity += gravity		# Gravity changes velocity
+		(x, y) = self.posn
+		new_y_pos = y + self.y_velocity	# Velocity moves the ball
+		self.posn = (x, new_y_pos)		#   to this new position.
 
 	def draw(self, target_surface):
 		target_surface.blit(self.image, self.posn)
