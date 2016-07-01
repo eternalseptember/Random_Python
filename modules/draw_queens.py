@@ -31,6 +31,18 @@ class QueenSprite:
 	def draw(self, target_surface):
 		target_surface.blit(self.image, self.posn)
 
+	def contains_point(self, pt):
+		""" Return True if my sprite rectangle contains point pt. """
+		(my_x, my_y) = self.posn
+		my_width = self.image.get_width()
+		my_height = self.image.get_height()
+		(x, y) = pt
+		return (x >= my_x and x < my_y + my_width and
+				y >= my_y and y < my_y + my_height)
+
+	def handle_click(self):
+		self.y_velocity += -0.3	# kick it up
+
 
 def draw_board(the_board):
 	""" Draw a chess board with queens, from the_board. """
@@ -80,6 +92,10 @@ def draw_board(the_board):
 				colors[0] = (0, 255, 0)
 			elif key == ord("b"):	# Change to blue + black
 				colors[0] = (0, 0, 255)
+
+		if ev.type == pygame.MOUSEBUTTONDOWN:	# Mouse gone down?
+			posn_of_click = ev.dict["pos"]		# Get the coordinates.
+			print(posn_of_click)				# Just print them.
 
 		# Ask every sprite to update itself.
 		for sprite in all_sprites:
