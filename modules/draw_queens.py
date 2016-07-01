@@ -81,7 +81,7 @@ def draw_board(the_board):
 		# Look for an event from keyboard, mouse, etc.
 		ev = pygame.event.poll()
 		if ev.type == pygame.QUIT:
-			break;
+			break
 		if ev.type == pygame.KEYDOWN:
 			key = ev.dict["key"]
 			if key == 27:			# On escape key...
@@ -94,8 +94,11 @@ def draw_board(the_board):
 				colors[0] = (0, 0, 255)
 
 		if ev.type == pygame.MOUSEBUTTONDOWN:	# Mouse gone down?
-			posn_of_click = ev.dict["pos"]		# Get the coordinates.
-			print(posn_of_click)				# Just print them.
+			posn_of_click = ev.dict["pos"]
+			for sprite in all_sprites:
+				if sprite.contains_point(posn_of_click):
+					sprite.handle_click()
+					break
 
 		# Ask every sprite to update itself.
 		for sprite in all_sprites:
