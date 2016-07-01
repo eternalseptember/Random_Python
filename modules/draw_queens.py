@@ -70,6 +70,16 @@ def draw_board(the_board):
 		ev = pygame.event.poll()
 		if ev.type == pygame.QUIT:
 			break;
+		if ev.type == pygame.KEYDOWN:
+			key = ev.dict["key"]
+			if key == 27:			# On escape key...
+				break				# leave the game loop.
+			if key == ord("r"):		# Change to red + black
+				colors[0] = (255, 0, 0)
+			elif key == ord("g"):	# Change to green + black
+				colors[0] = (0, 255, 0)
+			elif key == ord("b"):	# Change to blue + black
+				colors[0] = (0, 0, 255)
 
 		# Ask every sprite to update itself.
 		for sprite in all_sprites:
