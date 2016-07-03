@@ -1,7 +1,8 @@
 import pygame
 
 
-gravity = 0.0001
+gravity = 0.05 # should probably adjust this number
+bounce = -0.75
 
 class QueenSprite:
 	def __init__(self, img, target_posn):
@@ -23,7 +24,7 @@ class QueenSprite:
 		dist_to_go = target_y - new_y_pos		# How far to the floor?
 
 		if dist_to_go < 0: # Is it under floor?
-			self.y_velocity = -0.65 * self.y_velocity # Bounce
+			self.y_velocity = bounce * self.y_velocity # Bounce...
 			new_y_pos = target_y + dist_to_go	# Move back above floor
 
 		self.posn = (x, new_y_pos)		# Set the new position.
@@ -42,6 +43,39 @@ class QueenSprite:
 
 	def handle_click(self):
 		self.y_velocity += -0.3	# kick it up
+
+
+
+class DukeSprite:
+	def __init__(self, img, target_posn):
+		self.image = img
+		self.posn = target_posn
+		self.anim_frame_count = 0
+		self.curr_patch_num = 0
+
+	def update(self):
+		if self.anim_frame_count > 0:
+			self.anim_frame_count = (self.anim_frame_count + 1) % 60
+			self.curr_patch_num = self.anim_frame_count // 6
+
+	def draw(self, target_surface):
+		patch_rect = (self.curr_patch_num * 50, 0,
+						50, self.image.get_height())
+		target_surface.blit(self.image, self.posn, patch_rect)
+
+	def handle_click(self):
+		if self.anim_frame_count == 0:
+			self.anim_frame_count = 5
+
+	def contains_point(self, pt):
+		# Use code from QueenSprite here
+		(my_x, my_y) = self.posn
+		my_width = self.image.get_width()
+		my_height = self.image.get_height()
+		(x, y) = pt
+		return (x >= my_x and x < my_y + my_width and
+				y >= my_y and y < my_y + my_height)
+
 
 
 def draw_board(the_board):
@@ -76,6 +110,24 @@ def draw_board(the_board):
 		a_queen = QueenSprite(ball,
 			(col * sq_sz + ball_offset, row * sq_sz + ball_offset))
 		all_sprites.append(a_queen)
+
+	# Load the Duke sprite sheet
+	if __name__ == "__main__":
+		duke_sprite_sheet = pygame.image.load("../duke_spritesheet.png")
+	else:
+		duke_sprite_sheet = pygame.image.load("duke_spritesheet.png")
+
+	# Instantiate two duke instances, put them on the chessboard
+	duke1 = DukeSprite(duke_sprite_sheet, (sq_sz * 2, 0))
+	duke2 = DukeSprite(duke_sprite_sheet, (sq_sz * 5, sq_sz))
+
+	# Add them to the list of sprites which our game loop manages
+	all_sprites.append(duke1)
+	all_sprites.append(duke2)
+
+
+	# Set up frame rate
+	my_clock = pygame.time.Clock()
 
 	while True:
 		# Look for an event from keyboard, mouse, etc.
@@ -125,6 +177,8 @@ def draw_board(the_board):
 
 		pygame.display.flip()
 
+		my_clock.tick(60) # Waste time so that frame rate becomes 60 fps
+
 	pygame.quit()
 
 
@@ -136,6 +190,6 @@ def draw_board(the_board):
 
 if __name__ == "__main__":
 	draw_board([0, 5, 3, 1, 6, 4, 2])    # 7 x 7 to test window size
-	draw_board([6, 4, 2, 0, 5, 7, 1, 3])
-	draw_board([9, 6, 0, 3, 10, 7, 2, 4, 12, 8, 11, 5, 1])  # 13 x 13
-	draw_board([11, 4, 8, 12, 2, 7, 3, 15, 0, 14, 10, 6, 13, 1, 5, 9])
+	#draw_board([6, 4, 2, 0, 5, 7, 1, 3])
+	#draw_board([9, 6, 0, 3, 10, 7, 2, 4, 12, 8, 11, 5, 1])  # 13 x 13
+	#draw_board([11, 4, 8, 12, 2, 7, 3, 15, 0, 14, 10, 6, 13, 1, 5, 9])
