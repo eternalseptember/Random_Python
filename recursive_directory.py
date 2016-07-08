@@ -7,13 +7,13 @@ def get_dirlist(path):
 	"""
 	dirlist = os.listdir(path)
 	dirlist.sort()
-	return dirlist()
+	return dirlist
 
 
 def print_files(path, prefix = ""):
 	""" Print recursive listing of contents of path. """
 	if prefix == "":	# Detect outermost call, print a heading
-		print("Folder listing for ", path)
+		print("Folder listing for", path)
 		prefix = "| "
 
 	dirlist = get_dirlist(path)
@@ -25,4 +25,4 @@ def print_files(path, prefix = ""):
 
 
 
-get_dirlist("modules")
+print_files("modules_test")
