@@ -17,15 +17,15 @@ def draw_tree(order, theta, sz, posn, heading, color=(0,0,0), depth=0):
 	pygame.draw.line(main_surface, color, posn, newpos)
 
 	if order > 0:	# Draw another layer of subtrees
-		# These next six lines are a simle hack to make the two major halves
+		# These next six lines are a simple hack to make the two major halves
 		# of the recursion different colors. Fiddle here to change colors
 		# at other depths, or when depth is even, or odd, etc.
-		if depth == 0:
+		if (depth % 2) == 0:
 			color1 = (255, 0, 0)
 			color2 = (0, 0, 255)
 		else:
-			color1 = color
-			color2 = color
+			color1 = (255, 0, 255)
+			color2 = (0, 255, 255)
 
 		# Make the recursive calls to draw the two subtrees.
 		newsz = sz * (1 - trunk_ratio)
