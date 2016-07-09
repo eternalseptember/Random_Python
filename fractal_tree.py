@@ -15,6 +15,7 @@ def draw_tree(order, theta, sz, posn, heading, color=(0,0,0), depth=0):
 	(u,v) = posn
 	newpos = (u + delta_x, v + delta_y)
 	pygame.draw.line(main_surface, color, posn, newpos)
+	pygame.draw.circle(main_surface, color, (int(posn[0]), int(posn[1])), 3)
 
 	if order > 0:	# Draw another layer of subtrees
 		# These next six lines are a simple hack to make the two major halves
