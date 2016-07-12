@@ -28,39 +28,43 @@ class MyTime:
 			self.minutes -= 60
 			self.hours += 1
 
+
 	def to_seconds(self):
 		""" Return the number of seconds represented by this instance. """
 		return self.hours * 3600 + self.minutes * 60 + self.seconds
 
 
-'''
+	def after(self, time2):
+		""" Return True if I am strictly greater than time2. """
+		if self.hours > time2.hours:
+			return True
+		if self.hours < time2.hours:
+			return False
+
+		if self.minutes > time2.minutes:
+			return True
+		if self.minutes < time2.minutes:
+			return False
+		if self.seconds > time2.seconds:
+			return True
+
+		return False
+
+
+
 # Pure function, outside of the MyTime object
 def add_time(t1, t2):
-	h = t1.hours + t2.hours
-	m = t1.minutes + t2.minutes
-	s = t1.seconds + t2.seconds
-
-	if s >= 60:
-		s -= 60
-		m += 1
-
-	if m >= 60:
-		m -= 60
-		h += 1
-
-	sum_t = MyTime(h, m, s)
-	return sum_t
-'''
+	secs = t1.to_seconds() + t2.to_seconds()
+	return MyTime(0, 0, secs)
 
 
-'''
-time1 = MyTime(11, 59, 30)
-print(time1)
-'''
 
 current_time = MyTime(9, 14, 30)
 bread_time = MyTime(3, 35, 0)
 done_time = add_time(current_time, bread_time)
-print(done_time)
+# print(done_time)
+print("Done time: {0}".format(done_time))
 current_time.increment(500)
-print(current_time)
+print("Current time: {0}".format(current_time))
+if current_time.after(done_time):
+	print("The bread will be done before it starts!")
