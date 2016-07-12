@@ -14,7 +14,7 @@ class MyTime:
 
 
 	def __str__(self):
-		return "{0}:{1}:{2}".format(self.hours, self.minutes, self.seconds)
+		return "{0:02}:{1:02}:{2:02}".format(self.hours, self.minutes, self.seconds)
 
 
 	def increment(self, seconds):
@@ -36,19 +36,14 @@ class MyTime:
 
 	def after(self, time2):
 		""" Return True if I am strictly greater than time2. """
-		if self.hours > time2.hours:
-			return True
-		if self.hours < time2.hours:
-			return False
+		return self.to_seconds() > time2.to_seconds()
 
-		if self.minutes > time2.minutes:
-			return True
-		if self.minutes < time2.minutes:
-			return False
-		if self.seconds > time2.seconds:
-			return True
 
-		return False
+	def __add__(self, other):
+		return MyTime(0, 0, self.to_seconds() + other.to_seconds())
+
+	def __sub__(self, other):
+		return MyTime(0, 0, self.to_seconds() - other.to_seconds())
 
 
 
@@ -58,13 +53,20 @@ def add_time(t1, t2):
 	return MyTime(0, 0, secs)
 
 
-
+'''
 current_time = MyTime(9, 14, 30)
 bread_time = MyTime(3, 35, 0)
 done_time = add_time(current_time, bread_time)
 # print(done_time)
 print("Done time: {0}".format(done_time))
-current_time.increment(500)
+# current_time.increment(500)
+current_time.increment(13000) # To trigger the message
 print("Current time: {0}".format(current_time))
 if current_time.after(done_time):
 	print("The bread will be done before it starts!")
+'''
+
+t1 = MyTime(1, 15, 42)
+t2 = MyTime(3, 50, 30)
+print(t1 + t2)
+print(t2 - t1)
