@@ -123,6 +123,12 @@ class Hand(Deck):
 
 
 
+class CardGame:
+	def __init__(self):
+		self.deck = Deck()
+		self.deck.shuffle()
+
+
 '''
 card1 = Card(1,11)
 # print(card1)
@@ -136,12 +142,13 @@ red_deck = Deck()
 blue_deck = Deck()
 red_deck.shuffle()
 print(red_deck)
-'''
+
 deck = Deck()
 deck.shuffle()
 hand = Hand("frank")
 deck.deal([hand], 5)
 print(hand)
+'''
 
 
 
