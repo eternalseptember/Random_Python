@@ -22,6 +22,24 @@ def print_backward(list):
 	print(head, end=" ")
 
 
+def remove_second(list):
+	if list is None: return
+	first = list
+	second = list.next
+	# Make the first node refer to the third
+	first.next = second.next
+	# Separate the second node from the rest of the list
+	second.next = None
+	return second
+
+
+def print_backward_nicely(list):
+	print("[", end=" ")
+	print_backward(list)
+	print("]")
+
+
+
 
 '''
 node = Node("test")
@@ -34,4 +52,8 @@ node3 = Node(3)
 node1.next = node2
 node2.next = node3
 print_list(node1)
-print_backward(node1)
+print_backward_nicely(node1)
+removed = remove_second(node1)
+print_list(removed)
+print_list(node1)
+
