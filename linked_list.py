@@ -24,19 +24,27 @@ def print_backward(list):
 
 def remove_second(list):
 	if list is None: return
-	first = list
-	second = list.next
-	# Make the first node refer to the third
-	first.next = second.next
-	# Separate the second node from the rest of the list
-	second.next = None
-	return second
+	try:
+		first = list
+		second = list.next
+		# Make the first node refer to the third
+		first.next = second.next
+		# Separate the second node from the rest of the list
+		second.next = None
+		return second
+	except AttributeError:
+		return
 
 
 def print_backward_nicely(list):
 	print("[", end=" ")
-	print_backward(list)
-	print("]")
+	try: 
+		print_backward(list)
+		print("]")
+	except AttributeError:
+		print("]")
+		return
+
 
 
 
@@ -44,7 +52,6 @@ def print_backward_nicely(list):
 '''
 node = Node("test")
 print(node)
-'''
 
 node1 = Node(1)
 node2 = Node(2)
@@ -56,4 +63,8 @@ print_backward_nicely(node1)
 removed = remove_second(node1)
 print_list(removed)
 print_list(node1)
+'''
 
+remove_second([]) # attribute error: 'list' object has no attribute 'next
+node4 = Node(4)
+remove_second(node4) # attribute error: 'nonetype' object has no attribute 'next'
