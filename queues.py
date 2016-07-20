@@ -89,10 +89,11 @@ class PriorityQueue:
 		return item
 
 
-
+'''
 q = PriorityQueue()
 for num in [11, 12, 14, 13]:
 	q.insert(num)
 
 while not q.is_empty():
 	print(q.remove())
+'''
