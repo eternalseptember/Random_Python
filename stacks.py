@@ -27,7 +27,7 @@ def eval_postfix(expr):
 			stack.push(product)
 		else:
 			stack.push(int(token))
-	return stack.pop
+	return stack.pop()
 
 
 
@@ -40,5 +40,4 @@ while not s.is_empty():
 	print(s.pop(), end=" ")
 
 val = eval_postfix("56 47 + 2 *")
-print("{0}".format(val))
-# bound method stack.pop... 
+print("\n{0}".format(val))
