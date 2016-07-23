@@ -78,7 +78,8 @@ def get_sum(token_list):
 
 
 
-
+'''
 token_list = [9, "*", "(", 11, "+", 5, ")", "*", 7, "end"]
 tree = get_sum(token_list)
 print_tree_postorder(tree)
+'''
