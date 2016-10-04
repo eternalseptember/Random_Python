@@ -2,7 +2,7 @@ class Node(object):
 	def __init__(self, data=None, next_node=None, prev_node=None):
 		self.data = data
 		self.next = next_node
-		self.priv = prev_node
+		self.prev = prev_node
 
 	def __str__(self):
 		return str(self.data)
@@ -10,7 +10,7 @@ class Node(object):
 
 def print_list(head):
 	if head is not None:
-		print(head.data)
+		print(head.data, end=' ')
 		print_list(head.next)
 
 
