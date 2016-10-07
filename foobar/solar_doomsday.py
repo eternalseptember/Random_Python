@@ -9,9 +9,10 @@ def answer(area):
 
 	panels = []
 	remaining = area
+	listOfSquares = generateListOfSquares(area)
 
 	while (remaining > 0):
-		square = findLargestSquare(remaining)
+		square = findLargestSquare(listOfSquares, remaining)
 		print(square)
 		panels.append(square)
 		remaining -= square
@@ -19,21 +20,36 @@ def answer(area):
 	return panels
 
 
-def findLargestSquare(num):
+def findLargestSquare(listOfSquares, num):
+	if (len(listOfSquares) <= 1):
+		return 1
+
+	largestSquare = listOfSquares.pop()
+	while largestSquare > num:
+		largestSquare = listOfSquares.pop()
+
+	return largestSquare
+
+
+
+def generateListOfSquares(num):
 	"""
-	Find the largest square number that is less than num.
+	Generate the list of squares that is less than num.
 	"""
 	factor = 1
 	largestSquare = 1
+	listOfSquares = []
+
 	while (largestSquare < num):
 		square = factor * factor
 		if (square < num):
+			listOfSquares.append(square)
 			largestSquare = square
 		else:
 			break
 		factor += 1
 
-	return largestSquare
+	return listOfSquares
 
 
 print(answer(12))
