@@ -6,14 +6,13 @@ def answer(area):
 	could make out of those panels, starting with the largest
 	squares first
 	"""
-
 	panels = []
 	remaining = area
 	listOfSquares = generateListOfSquares(area)
 
 	while (remaining > 0):
 		square = findLargestSquare(listOfSquares, remaining)
-		print(square)
+		# print(square)
 		panels.append(square)
 		remaining -= square
 
@@ -31,20 +30,20 @@ def findLargestSquare(listOfSquares, num):
 	return largestSquare
 
 
-
 def generateListOfSquares(num):
 	"""
-	Generate the list of squares that is less than num.
+	Generate the list of squares that is less than or equal to num.
 	"""
 	factor = 1
 	largestSquare = 1
 	listOfSquares = []
 
-	while (largestSquare < num):
+	while (largestSquare <= num):
 		square = factor * factor
-		if (square < num):
+		if (square <= num):
 			listOfSquares.append(square)
 			largestSquare = square
+			# print(square)
 		else:
 			break
 		factor += 1
@@ -52,5 +51,10 @@ def generateListOfSquares(num):
 	return listOfSquares
 
 
-print(answer(12))
-print(answer(15324))
+# test = [12, 15324, 4]
+test = [4]
+
+for area in test:
+	list = answer(area)
+	print('Area: {0}'.format(area))
+	print(list)
