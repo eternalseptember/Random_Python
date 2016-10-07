@@ -8,9 +8,32 @@ def answer(area):
 	"""
 
 	panels = []
+	remaining = area
+
+	while (remaining > 0):
+		square = findLargestSquare(remaining)
+		print(square)
+		panels.append(square)
+		remaining -= square
 
 	return panels
 
+
+def findLargestSquare(num):
+	"""
+	Find the largest square number that is less than num.
+	"""
+	factor = 1
+	largestSquare = 1
+	while (largestSquare < num):
+		square = factor * factor
+		if (square < num):
+			largestSquare = square
+		else:
+			break
+		factor += 1
+
+	return largestSquare
 
 
 print(answer(12))
