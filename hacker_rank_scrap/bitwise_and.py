@@ -20,16 +20,7 @@ for a0 in range(t):
 	n, k = lines[a0].strip().split(' ')
 	n, k = int(n), int(k)
 
-	s = list(range(1, n + 1))
-	maxValue = 0
-
-	for i in range(n - 1):
-		a = s[i]
-		for j in range(i + 1, n):
-			b = s[j]
-			result = a & b
-			if (result > maxValue) and (result < k):
-				maxValue = result
-
-	print(maxValue)
-
+	if ((k - 1) | k) <= n:
+		print(k - 1)
+	else:
+		print(k - 2)
