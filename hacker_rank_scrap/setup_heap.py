@@ -15,20 +15,21 @@ class Node(object):
 		return str(self.data)
 
 	def __eq__(self, other):
-		return self.__dict__ == other.__dict__
+		try:
+			return (self.data == other.data) and (self.left == other.left) and (self.right == other.right)
+		except AttributeError:
+			return False
 
 
 class Heap:
 	def __init__(self, type=min):
 		self.type = type
-		self.num_nodes = 0
 		self.heap_array = []
 		self.level_order_queue = []
 
 
 	def insert(self, root, data):
 		new_node = Node(data)
-		self.num_nodes += 1
 
 		if root is None:
 			return new_node
@@ -37,8 +38,22 @@ class Heap:
 				root.left = new_node
 			elif root.right is None:
 				root.right = new_node
-			# probably need a queue to specify the next position
-			# check if the heap is sorted
+			else:
+				self.heap_array.clear()
+				self.level_order(root)
+				self.heap_array.append(new_node)
+				parent_index = self.get_parent(new_node)
+				parent_node = self.heap_array[parent_index]
+				if parent_node.left is None:
+					parent_node.left = new_node
+				else:
+					parent_node.right = new_node
+
+				# save the changed node
+				self.heap_array[parent_index] = parent_node
+
+				# probably check and heapify next
+
 
 		return root
 
@@ -52,7 +67,6 @@ class Heap:
 
 		# the following node and the root should be the same thing
 		node = self.heap_array.pop(0)
-		self.num_nodes -= 1
 
 		last_node = self.heap_array[-1]
 		last_node_parent_index = self.get_parent(last_node)
@@ -80,22 +94,25 @@ class Heap:
 	def check_min_and_heapify(self, root):
 		if (root.left is None) and (root.right is None):
 			return
-		elif (root.left is None):
-			if root.right.data < root.data:
-				root, lower_node = self.heapify(root, root, root.right)
+		# the left node should be filled
 		elif (root.right is None):
 			if root.left.data < root.data:
 				root, lower_node = self.heapify(root, root, root.left)
-		elif (root.left.data < root.data) and (root.right.data < root.data):
+				return self.check_min_and_heapify(lower_node)
+			else:
+				return
+		else:
 			smaller_child = None
 			if root.left.data < root.right.data:
 				smaller_child = root.left
 			else:
 				smaller_child = root.right
 
-			root, lower_node = self.heapify(root, root, smaller_child)
-
-		return self.check_min_and_heapify(lower_node)
+			if smaller_child.data < root.data:
+				root, lower_node = self.heapify(root, root, smaller_child)
+				return self.check_min_and_heapify(lower_node)
+			else:
+				return
 
 
 	def heapify(self, root, node, child_node=None):
@@ -153,15 +170,24 @@ class Heap:
 
 
 	def print(self, root):
+		""" This was a function for testing purposes. """
 		self.heap_array.clear()
 		self.level_order(root)
-		print(self.heap_array)
-		# or maybe 'for' loop and print element individually
+		for i in self.heap_array:
+			print(i.data, end=' ')
+		print()
+
+
+	def print_heap_array_details(self):
+		""" Assumes the heap_array is already filled and sorted. """
+		for i in self.heap_array:
+			print('Node: {0}  Left: {1}  Right: {2}'.format(i.data, i.left, i.right))
 
 
 
 
 # test case
+# original list: [5, 9, 3, 4, 6, 2, 7, 1, 8, 5]
 elements_in = [5, 9, 3, 4, 6, 2, 7, 1, 8, 5]
 
 heap = Heap(min)
@@ -169,5 +195,6 @@ root = None
 
 for i in elements_in:
 	root = heap.insert(root, i)
-	heap.print(root)
 
+#heap.print(root)
+heap.print_heap_array_details()
