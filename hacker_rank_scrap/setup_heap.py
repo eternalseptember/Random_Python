@@ -52,7 +52,7 @@ class Heap:
 			print('current heap:', end=' ')
 			self.print(root)
 			# make this function heapify upward
-			self.check_min_and_heapify(root)
+			self.check_min_and_heapify(new_node)
 
 		return self.heap_array[0]
 
@@ -90,47 +90,23 @@ class Heap:
 		return node, root
 
 
-	def check_min_and_heapify(self, root):
+	def check_min_and_heapify(self, node):
 		# make this function heapify upward
-		if (root.left is None) and (root.right is None):
-			print('exit condition 0 return root: {0}'.format(root))
-			return root
-		# the left node should be filled
-		elif (root.right is None):
-			if root.left.data < root.data:
-				new_root, lower_node = self.heapify(root, root, root.left)
-				print('exit condition 1')
-				self.check_min_and_heapify(lower_node)
-				print('exit condition 1 return root: {0}'.format(new_root))
-				return new_root
-			else:
-				print('exit condition 2 return root: {0}'.format(root))
-				return root
+		parent_index = self.get_parent(node)
+
+		if parent_index == -1:
+			return
+
+		parent_node = self.heap_array[parent_index]
+
+		if parent_node.data > node.data:
+			new_root, new_node = self.heapify(parent_node, node)
+			self.check_min_and_heapify(new_node)
 		else:
-			print('trying to determine smaller node: {0}  left: {1}  right: {2}'
-				.format(root, root.left, root.right))
-			smaller_child = None
-			if root.left.data < root.right.data:
-				smaller_child = root.left
-			else:
-				smaller_child = root.right
-			print('smaller node: {0}  left: {1}  right: {2}'
-				.format(smaller_child, smaller_child.left, smaller_child.right))
-
-			if smaller_child.data < root.data:
-				new_root, lower_node = self.heapify(root, root, smaller_child)
-				print('exit condition 3, lower-node: {0}'.format(lower_node))
-				self.check_min_and_heapify(lower_node)
-				print('exit condition 3 return root: {0}'.format(new_root))
-				return new_root
-			else:
-				print('exit condition 4 return root: {0}'.format(root))
-				print('smaller_child.data {0} >=? root.data {1}'
-					.format(smaller_child.data, root.data))
-				return root
+			return
 
 
-	def heapify(self, root, node, child_node):
+	def heapify(self, node, child_node):
 		node_index = self.heap_array.index(node)
 		left_child = node.left
 		right_child = node.right
@@ -163,8 +139,6 @@ class Heap:
 				parent.left = child_node
 			else:
 				parent.right = child_node
-			# save the updated parent node, not sure if needed
-			# self.heap_array[parent_index] = parent
 
 		# node is now the new child node
 		node.left = child_left_child
@@ -173,10 +147,10 @@ class Heap:
 
 		print('updated level-order:', end=' ')
 		root = self.heap_array[0]
-		self.print(root)
+		#self.print(root)
 		print('updated root: {0}  root-left: {1}  root-right: {2}'.format(root, root.left, root.right))
-		print('updated node: {0}  node-left: {1}  node-right: {2}'.format(node, node.left, node.right))
-		return root, node
+		print('updated child node: {0}  child-left: {1}  child-right: {2}'.format(child_node, child_node.left, child_node.right))
+		return root, child_node
 
 
 	def get_parent(self, node):
