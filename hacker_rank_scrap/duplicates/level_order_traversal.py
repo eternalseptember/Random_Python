@@ -45,9 +45,7 @@ class Solution:
 		print(root.data, end=' ')
 
 		if len(self.queue) > 0:
-			self.queue.reverse()
-			nextNode = self.queue.pop()
-			self.queue.reverse()
+			nextNode = self.queue.pop(0)
 			self.levelOrder(nextNode)
 
 
