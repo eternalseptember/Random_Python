@@ -1,1 +1,0 @@
-Emphasis on "random" part of this "Random Python" repo.
