@@ -1,6 +1,5 @@
 """
 Heap implemented with a binary tree.
-
 For experimental/educational purposes only. Possibly incomplete
 """
 
@@ -27,12 +26,20 @@ class Heap:
 	def __init__(self, type=min):
 		self.type = type
 		self.heap_array = []
+
+		# Print functions use these queues, and not heap_array.
+		self.print_queue = []
 		self.level_order_queue = []
 
 
 	def insert(self, root, data):
 		new_node = Node(data)
 		self.heap_array.append(new_node)
+
+		print('\n')
+		print('Heap details BEFORE inserting: {0}'.format(new_node))
+		self.print_heap_array_details()
+
 
 		if root is None:
 			return new_node
@@ -47,11 +54,11 @@ class Heap:
 			else:
 				parent_node.right = new_node
 
-			print()
-			print('calling check function at: {0}'.format(new_node))
-			print('current heap:', end=' ')
-			self.print(root)
 			self.check_min_and_heapify(new_node)
+
+			print()
+			print('Heap details AFTER inserting: {0}'.format(new_node))
+			self.print_heap_array_details()
 
 		return self.heap_array[0]
 
@@ -119,31 +126,34 @@ class Heap:
 		return parent_index
 
 
+	# Functions below here are "helper" functions to inspect what is in the heap.
+	# Only print_heap_array_details should use heap_array.
+	# Everything else uses print_queue or level_order_queue.
+	def print(self, root):
+		# This was a function for testing purposes.
+		self.print_queue.clear()
+		self.level_order(root)
+		for i in self.print_queue:
+			print(i.data, end=' ')
+		print()
+
+
 	def level_order(self, root):
 		# This is used to convert binary tree heap to array representation.
-		# Clear the heap_array before calling level_order.
-		if len(self.heap_array) == 0:
-			self.heap_array.append(root)
+		# Clear the print_queue before calling level_order.
+		if len(self.print_queue) == 0:
+			self.print_queue.append(root)
 
 		if root.left is not None:
-			self.heap_array.append(root.left)
+			self.print_queue.append(root.left)
 			self.level_order_queue.append(root.left)
 		if root.right is not None:
-			self.heap_array.append(root.right)
+			self.print_queue.append(root.right)
 			self.level_order_queue.append(root.right)
 
 		if len(self.level_order_queue) > 0:
 			next_node = self.level_order_queue.pop(0)
 			self.level_order(next_node)
-
-
-	def print(self, root):
-		""" This was a function for testing purposes. """
-		self.heap_array.clear()
-		self.level_order(root)
-		for i in self.heap_array:
-			print(i.data, end=' ')
-		print()
 
 
 	def print_heap_array_details(self):
@@ -165,5 +175,5 @@ for i in elements_in:
 	root = heap.insert(root, i)
 
 print()
-#heap.print(root)
-heap.print_heap_array_details()
+print('After all of the inserts are done...')
+heap.print(root)
