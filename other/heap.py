@@ -36,17 +36,20 @@ class Heap:
 		new_node = Node(data)
 		self.heap_array.append(new_node)
 
+		"""
 		print('\n')
 		print('Heap details BEFORE inserting: {0}'.format(new_node))
 		self.print_heap_array_details()
-
+		"""
 
 		if root is None:
 			return new_node
 		else:
-			# if parent_index is -1... then there's only one item...
-			# the -1 index is the last item on the list
-			parent_index = self.get_parent_index(new_node)
+			# In case new_node is a duplicate node, get its index here.
+			# If parent_index is -1, then there's only one item.
+			# The -1 index is the last item on the list.
+			new_node_index = len(self.heap_array) - 1
+			parent_index = self.get_parent_index(new_node_index)
 			parent_node = self.heap_array[parent_index]
 
 			if parent_node.left is None:
@@ -54,30 +57,52 @@ class Heap:
 			else:
 				parent_node.right = new_node
 
-			self.check_min_and_heapify(new_node)
+			self.check_min_and_heapify(new_node, new_node_index)
 
+			"""
 			print()
 			print('Heap details AFTER inserting: {0}'.format(new_node))
 			self.print_heap_array_details()
+			"""
 
 		return self.heap_array[0]
 
 
-	def heapify_up(self, child):
+	def get_parent_index(self, node_index):
+		# Only use this function if heap_array has been populated or sorted.
+		# Due to duplicate nodes, changed this function to receive node_index.
+		parent_index = (node_index - 1) // 2
+		return parent_index
+
+
+	def check_min_and_heapify(self, new_node, new_node_index):
+		# used after inserting a new node
+		parent_index = self.get_parent_index(new_node_index)
+
+		if parent_index == -1:
+			return
+
+		parent_node = self.heap_array[parent_index]
+
+		if parent_node.data > new_node.data:
+			new_parent, new_par_index = self.heapify_up(new_node, new_node_index)
+			self.check_min_and_heapify(new_parent, new_par_index)
+
+
+	def heapify_up(self, child, child_index):
 		# For a min-heap, when the parent is greater than the child.
 		# Used after inserting a new node.
 
 		# get the child's parent node, called 'node'
-		node_index = self.get_parent_index(child)
+		node_index = self.get_parent_index(child_index)
 		node = self.heap_array[node_index]
 		node_left = node.left
 		node_right = node.right
-		child_index = self.heap_array.index(child)
 		child_left = child.left
 		child_right = child.right
 
 		# if node has a parent, update the node's parent to point to the child
-		parent_index = self.get_parent_index(node)
+		parent_index = self.get_parent_index(node_index)
 		if parent_index > -1:
 			parent = self.heap_array[parent_index]
 			if parent.left == node:
@@ -100,30 +125,7 @@ class Heap:
 		self.heap_array[child_index] = node
 
 		# 'child' has been switched with its parent
-		return child
-
-
-	def check_min_and_heapify(self, new_node):
-		# used after inserting a new node
-		parent_index = self.get_parent_index(new_node)
-
-		if parent_index == -1:
-			return
-
-		parent_node = self.heap_array[parent_index]
-
-		if parent_node.data > new_node.data:
-			new_parent = self.heapify_up(new_node)
-			self.check_min_and_heapify(new_parent)
-		else:
-			return
-
-
-	def get_parent_index(self, node):
-		""" Only use this function if heap_array has been populated or sorted. """
-		child_index = self.heap_array.index(node)
-		parent_index = (child_index - 1) // 2
-		return parent_index
+		return child, node_index
 
 
 	# Functions below here are "helper" functions to inspect what is in the heap.
@@ -174,6 +176,8 @@ root = None
 for i in elements_in:
 	root = heap.insert(root, i)
 
-print()
+
 print('After all of the inserts are done...')
 heap.print(root)
+
+
