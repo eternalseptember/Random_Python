@@ -39,7 +39,7 @@ class Heap:
 		else:
 			# if parent_index is -1... then there's only one item...
 			# the -1 index is the last item on the list
-			parent_index = self.get_parent(new_node)
+			parent_index = self.get_parent_index(new_node)
 			parent_node = self.heap_array[parent_index]
 
 			if parent_node.left is None:
@@ -51,120 +51,68 @@ class Heap:
 			print('calling check function at: {0}'.format(new_node))
 			print('current heap:', end=' ')
 			self.print(root)
-			# make this function heapify upward
 			self.check_min_and_heapify(new_node)
 
 		return self.heap_array[0]
 
 
+	def heapify_up(self, child):
+		# For a min-heap, when the parent is greater than the child.
+		# Used after inserting a new node.
 
-	def remove_min(self, root):
-		if root is None:
-			return None
+		# get the child's parent node, called 'node'
+		node_index = self.get_parent_index(child)
+		node = self.heap_array[node_index]
+		node_left = node.left
+		node_right = node.right
+		child_index = self.heap_array.index(child)
+		child_left = child.left
+		child_right = child.right
 
-		left_child = root.left
-		right_child = root.right
+		# if node has a parent, update the node's parent to point to the child
+		parent_index = self.get_parent_index(node)
+		if parent_index > -1:
+			parent = self.heap_array[parent_index]
+			if parent.left == node:
+				parent.left = child
+			else:
+				parent.right = child
+			self.heap_array[parent_index] = parent
 
-		# the following node and the root should be the same thing
-		node = self.heap_array.pop(0)
-
-		last_node = self.heap_array[-1]
-		last_node_parent_index = self.get_parent(last_node)
-		last_node_parent = self.heap_array[last_node_parent_index]
-
-		if last_node_parent.left == last_node:
-			last_node_parent.left = None
+		# swap node and child
+		if node.left == child:
+			child.left = node
+			child.right = node_right
 		else:
-			last_node_parent.right = None
+			child.right = node
+			child.left = node_left
+		self.heap_array[node_index] = child
 
-		# root is last_node
-		root = self.heap_array.pop()
-		root.left = left_child
-		root.right = right_child
+		node.left = child_left
+		node.right = child_right
+		self.heap_array[child_index] = node
 
-		self.heap_array.clear()
-		self.level_order(root)
-
-		# check and heapify
-		self.check_min_and_heapify(root)
-
-		return node, root
+		# 'child' has been switched with its parent
+		return child
 
 
-	def check_min_and_heapify(self, node):
-		# make this function heapify upward
-		parent_index = self.get_parent(node)
-		print('node: {0}  parent_index: {1}'.format(node, parent_index))
+	def check_min_and_heapify(self, new_node):
+		# used after inserting a new node
+		parent_index = self.get_parent_index(new_node)
 
 		if parent_index == -1:
 			return
 
 		parent_node = self.heap_array[parent_index]
 
-		if parent_node.data > node.data:
-			print('parent node is larger. Parent: {0}  Child: {1}'.format(parent_node, node))
-			#new_root, new_child = self.heapify(node, parent_node)
-			self.heapify(node, parent_node)
-			#self.check_min_and_heapify(new_child)
+		if parent_node.data > new_node.data:
+			new_parent = self.heapify_up(new_node)
+			self.check_min_and_heapify(new_parent)
 		else:
 			return
 
 
-	def heapify(self, child_node, node):
-		node_index = self.heap_array.index(node)
-		left_child = node.left
-		right_child = node.right
-		child_index = self.heap_array.index(child_node)
-		child_left_child = child_node.left
-		child_right_child = child_node.right
-
-		print('parent-index: {0}  left-child: {1}  right-child: {2}'.format(node_index, left_child, right_child))
-		print('child-index: {0}  child-left: {1}  child-right: {2}'.format(child_index, child_left_child, child_right_child))
-		print('now swap...')
-
-		# update the child node to become the new parent node
-		if node.left == child_node:
-			# print('heapify condition 1')
-			child_node.left = node
-			child_node.right = right_child
-		else:
-			# print('heapify condition 2')
-			child_node.right = node
-			child_node.left = left_child
-		self.heap_array[node_index] = child_node
-
-		print('new parent: {0}  child-left: {1}  child-right: {2}'.format(child_node, child_node.left, child_node.right))
-
-
-		# if applicable, change node's parent to point to the child node
-		parent_index = self.get_parent(child_node)
-		# print('parent index: {0}'.format(parent_index))
-		if parent_index > -1:
-			parent = self.heap_array[parent_index]
-			print('parent_index: {0}  parent: {1}'.format(parent_index, parent))
-			if parent.left == node:
-				print('node: {0}  node-left: {1}  node-right: {2}'.format(node, ))
-				parent.left = child_node
-			else:
-				parent.right = child_node
-			self.heap_array[parent_index] = parent
-
-		# node is now the new child node
-		node.left = child_left_child
-		node.right = child_right_child
-		self.heap_array[child_index] = node
-
-
-		child = self.heap_array[child_index]
-		print('new child: {0}  root-left: {1}  root-right: {2}'.format(child, child.left, child.right))
-		print('updated level-order:', end=' ')
-		root = self.heap_array[0]
-		self.print(root)
-		
-		return root, child
-
-
-	def get_parent(self, node):
+	def get_parent_index(self, node):
 		""" Only use this function if heap_array has been populated or sorted. """
 		child_index = self.heap_array.index(node)
 		parent_index = (child_index - 1) // 2
@@ -172,7 +120,8 @@ class Heap:
 
 
 	def level_order(self, root):
-		""" This is used to convert binary tree heap to array representation. """
+		# This is used to convert binary tree heap to array representation.
+		# Clear the heap_array before calling level_order.
 		if len(self.heap_array) == 0:
 			self.heap_array.append(root)
 
@@ -217,4 +166,4 @@ for i in elements_in:
 
 print()
 #heap.print(root)
-#heap.print_heap_array_details()
+heap.print_heap_array_details()
