@@ -57,7 +57,7 @@ class Heap:
 			else:
 				parent_node.right = new_node
 
-			self.check_min_and_heapify(new_node, new_node_index)
+			self.check_min_and_heapify_up(new_node, new_node_index)
 
 			"""
 			print()
@@ -75,7 +75,7 @@ class Heap:
 		return parent_index
 
 
-	def check_min_and_heapify(self, new_node, new_node_index):
+	def check_min_and_heapify_up(self, new_node, new_node_index):
 		# used after inserting a new node
 		parent_index = self.get_parent_index(new_node_index)
 
@@ -86,7 +86,7 @@ class Heap:
 
 		if parent_node.data > new_node.data:
 			new_parent, new_par_index = self.heapify_up(new_node, new_node_index)
-			self.check_min_and_heapify(new_parent, new_par_index)
+			self.check_min_and_heapify_up(new_parent, new_par_index)
 
 
 	def heapify_up(self, child, child_index):
@@ -126,6 +126,56 @@ class Heap:
 
 		# 'child' has been switched with its parent
 		return child, node_index
+
+
+	def remove(self, root):
+		if len(self.heap_array) == 0:
+			return None
+
+		last_element = self.heap_array.pop()
+
+		if len(self.heap_array) == 0:
+			return last_element
+		else:
+			# Get the last element and update its parent's pointer.
+			last_elem_index = len(self.heap_array)
+			last_elem_par_index = self.get_parent_index(last_elem_index)
+			last_elem_par_node = self.heap_array[last_elem_par_index]
+
+			if last_elem_par_node.left == last_element:
+				last_elem_par_node.left = None
+			else:
+				last_elem_par_node.right = None
+			# Save back to heap_array?
+
+			# Pop the first element, exchange left and right pointers,
+			# insert last_element into top of heap array, then heapify downward.
+			first_element = self.heap_array.pop(0)
+			last_element.left, first_element.left = first_element.left, last_element.left
+			last_element.right, first_element.right = first_element.right, last_element.right
+			self.heap_array.insert(0, last_element)
+			self.check_min_and_heapify_down(last_element, 0)
+
+			return first_element
+
+
+	def check_min_and_heapify_down(self, node, node_index):
+		# if bigger than both children, switch with smaller of the two
+		if node.left is None:
+			return
+		elif node.right is None:
+			if node.left.data > node.data:
+				# specify which direction?
+				new_child, new_child_index = self.heapify_down(node, node_index)
+		else:
+			# if bigger than both children, switch with smaller of the two
+
+
+	def heapify_down(self, node, node_index):
+		# For a min-heap, when the parent is greater than the child.
+		# Used after removing the root node.
+
+		# Return the new child and child_index
 
 
 	# Functions below here are "helper" functions to inspect what is in the heap.
