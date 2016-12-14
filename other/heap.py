@@ -25,6 +25,7 @@ class Node(object):
 class Heap:
 	def __init__(self, type=min):
 		self.type = type
+		self.size = 0
 		self.heap_array = []
 
 		# Print functions use these queues, and not heap_array.
@@ -35,6 +36,7 @@ class Heap:
 	def insert(self, root, data):
 		new_node = Node(data)
 		self.heap_array.append(new_node)
+		self.size += 1
 
 		"""
 		print('\n')
@@ -133,6 +135,7 @@ class Heap:
 			return None
 
 		last_element = self.heap_array.pop()
+		self.size -= 1
 
 		if len(self.heap_array) == 0:
 			return last_element
@@ -147,6 +150,7 @@ class Heap:
 			else:
 				last_elem_par_node.right = None
 			# Save back to heap_array?
+			self.heap_array[last_elem_par_index] = last_elem_par_node
 
 			# Pop the first element, exchange left and right pointers,
 			# insert last_element into top of heap array, then heapify downward.
@@ -160,20 +164,26 @@ class Heap:
 
 
 	def check_min_and_heapify_down(self, node, node_index):
-		# if bigger than both children, switch with smaller of the two
 		if node.left is None:
 			return
 		elif node.right is None:
 			if node.left.data > node.data:
-				# specify which direction?
-				new_child, new_child_index = self.heapify_down(node, node_index)
+				new_child, new_child_index = self.heapify_down(node, node_index, node.left)
+				self.check_min_and_heapify_down(new_child, new_child_index)
 		else:
-			# if bigger than both children, switch with smaller of the two
+			# If bigger than both children, then switch with smaller of the two.
+			if (node.left.data > node.data) and (node.left.data < node.right.data):
+				new_child, new_child_index = self.heapify_down(node, node_index, node.left)
+				self.check_min_and_heapify_down(new_child, new_child_index)
+			elif (node.right.data > node.data) and (node.right.data < node.left.data):
+				new_child, new_child_index = self.heapify_down(node, node_index, node.right)
+				self.check_min_and_heapify_down(new_child, new_child_index)
 
 
-	def heapify_down(self, node, node_index):
+	def heapify_down(self, node, node_index, child_node):
 		# For a min-heap, when the parent is greater than the child.
 		# Used after removing the root node.
+		# Child_node is used to specify direction.
 
 		# Return the new child and child_index
 
