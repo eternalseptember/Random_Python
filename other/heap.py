@@ -77,6 +77,13 @@ class Heap:
 		return parent_index
 
 
+	def get_child_index(self, parent_index, node_dir):
+		# node_dir = 0: left child
+		# node_dir = 1: right child
+		child_index = 2 * parent_index + 1 + node_dir
+		return child_index
+
+
 	def check_min_and_heapify_up(self, new_node, new_node_index):
 		# used after inserting a new node
 		parent_index = self.get_parent_index(new_node_index)
