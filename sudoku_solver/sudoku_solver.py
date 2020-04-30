@@ -7,4 +7,12 @@ class Sudoku_Solver():
 		self.input = None
 
 
+	def import_board(self, file):
+		return None
+
+
+	def print_board(self):
+		return None
+
+
 
