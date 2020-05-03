@@ -15,4 +15,9 @@ class Sudoku_Solver():
 		return None
 
 
+	def solve(self):
+		# import the board first
+		return None
+
+
 
