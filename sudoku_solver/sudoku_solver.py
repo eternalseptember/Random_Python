@@ -5,6 +5,12 @@
 class Sudoku_Solver():
 	def __init__(self):
 		self.input = None
+		self.board = self.create_board()
+
+
+	def create_board(self):
+		board = []
+		return board
 
 
 	def import_board(self, file):
