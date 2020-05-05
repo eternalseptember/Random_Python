@@ -9,7 +9,9 @@ class Sudoku_Solver():
 
 
 	def create_board(self):
-		board = []
+		board = [
+			[0 for col in range(9)] for row in range(9)
+			]
 		return board
 
 
@@ -18,7 +20,8 @@ class Sudoku_Solver():
 
 
 	def print_board(self):
-		return None
+		for row in self.board:
+			print(row)
 
 
 	def solve(self):
