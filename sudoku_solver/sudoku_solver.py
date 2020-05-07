@@ -40,4 +40,23 @@ class Sudoku_Solver():
 		return None
 
 
+	def check_row(self, row, col):
+		return None
+
+
+	def check_col(self, row, col):
+		return None
+
+
+	def check_box(self, row, col):
+		return None
+
+
+
+
+
+
+
+
+
 
