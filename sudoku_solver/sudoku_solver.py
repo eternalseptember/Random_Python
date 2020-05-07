@@ -20,8 +20,19 @@ class Sudoku_Solver():
 
 
 	def print_board(self):
-		for row in self.board:
-			print(row)
+		for row in range(9):
+			if (row > 0) and (row % 3 == 0):
+				print('-----------------')
+
+			for col in range(9):
+				if (col == 0):
+					print(' ', end='')
+				elif (col % 3 == 0):
+					print(' | ', end='')
+
+				print(self.board[row][col], end='')
+
+			print()
 
 
 	def solve(self):
