@@ -15,8 +15,10 @@ class Sudoku_Solver():
 		return board
 
 
-	def import_board(self, file):
-		return None
+	def import_board(self, file_name):
+		board_file = open(file_name, 'r')
+		board = board_file.readlines()
+		board_file.close()
 
 
 	def print_board(self):
