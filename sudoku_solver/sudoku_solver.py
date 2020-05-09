@@ -19,6 +19,7 @@ class Sudoku_Solver():
 		board_file = open(file_name, 'r')
 		board = board_file.readlines()
 		board_file.close()
+		print(board)
 
 
 	def print_board(self):
