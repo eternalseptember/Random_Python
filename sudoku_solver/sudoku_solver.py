@@ -17,9 +17,12 @@ class Sudoku_Solver():
 
 	def import_board(self, file_name):
 		board_file = open(file_name, 'r')
-		board = board_file.readlines()
+		board_import = board_file.readlines()
 		board_file.close()
-		print(board)
+
+		for row in range(9):
+			print(board_import[row].rstrip())
+
 
 
 	def print_board(self):
