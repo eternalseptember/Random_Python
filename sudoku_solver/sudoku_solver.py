@@ -21,7 +21,10 @@ class Sudoku_Solver():
 		board_file.close()
 
 		for row in range(9):
-			print(board_import[row].rstrip())
+			board_line = board_import[row].rstrip()
+			for board_value in board_line:
+				print(board_value, end='')
+			print()
 
 
 
