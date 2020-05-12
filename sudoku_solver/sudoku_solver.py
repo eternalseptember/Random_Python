@@ -10,7 +10,7 @@ class Sudoku_Solver():
 
 	def create_board(self):
 		board = [
-			[0 for col in range(9)] for row in range(9)
+			['-' for col in range(9)] for row in range(9)
 			]
 		return board
 
@@ -22,8 +22,9 @@ class Sudoku_Solver():
 
 		for row in range(9):
 			board_line = board_import[row].rstrip()
-			for board_value in board_line:
-				print(board_value, end='')
+			for col in range(9):
+				loc_value = board_line[col]
+				print(loc_value, end='')
 			print()
 
 
