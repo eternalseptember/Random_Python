@@ -25,6 +25,12 @@ class Sudoku_Solver():
 			for col in range(9):
 				loc_value = board_line[col]
 				print(loc_value, end='')
+
+				if loc_value == '-':
+					continue
+				else:
+					loc_value = int(loc_value)
+					self.board[row][col] = loc_value
 			print()
 
 
