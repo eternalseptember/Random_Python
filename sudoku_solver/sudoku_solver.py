@@ -24,14 +24,12 @@ class Sudoku_Solver():
 			board_line = board_import[row].rstrip()
 			for col in range(9):
 				loc_value = board_line[col]
-				print(loc_value, end='')
 
 				if loc_value == '-':
 					continue
 				else:
 					loc_value = int(loc_value)
 					self.board[row][col] = loc_value
-			print()
 
 
 
@@ -52,7 +50,7 @@ class Sudoku_Solver():
 
 
 	def solve(self):
-		# import the board first
+		# look for obvious results first
 		return None
 
 
