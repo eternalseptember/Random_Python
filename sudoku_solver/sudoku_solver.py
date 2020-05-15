@@ -54,6 +54,16 @@ class Sudoku_Solver():
 		return None
 
 
+	def check_box(self, row, col):
+		possible_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+		# remove them from the list if they're present in the box
+
+		# possible values: 0, 1, 2
+		box_row = row % 3
+		bow_col = col % 3
+
+
+
 	def check_row(self, row, col):
 		return None
 
@@ -62,8 +72,6 @@ class Sudoku_Solver():
 		return None
 
 
-	def check_box(self, row, col):
-		return None
 
 
 
