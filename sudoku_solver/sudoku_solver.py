@@ -6,6 +6,7 @@ class Sudoku_Solver():
 	def __init__(self):
 		self.input = None
 		self.board = self.create_board()
+		self.possible_values = {}  # {{row, col}: [possible values]}
 
 
 	def create_board(self):
