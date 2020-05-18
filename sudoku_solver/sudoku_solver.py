@@ -63,6 +63,12 @@ class Sudoku_Solver():
 		box_row = row % 3
 		bow_col = col % 3
 
+		# iterate through an entire 3x3 box
+		for row in range(3):
+			for col in range(3):
+				print()
+			print()
+
 
 
 	def check_row(self, row, col):
