@@ -56,16 +56,23 @@ class Sudoku_Solver():
 
 
 	def check_box(self, row, col):
-		possible_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 		# remove them from the list if they're present in the box
+		possible_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 		# possible values: 0, 1, 2
-		box_row = row % 3
-		bow_col = col % 3
+		box_row = row // 3
+		box_col = col // 3
 
 		# iterate through an entire 3x3 box
-		for row in range(3):
-			for col in range(3):
+		for i in range(3):
+			row_index = box_row * 3 + i
+
+			for j in range(3):
+				col_index = box_col * 3 + j
+
+				grid_item = self.board[row_index][col_index]
+
+
 				print()
 			print()
 
