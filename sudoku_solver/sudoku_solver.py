@@ -16,6 +16,28 @@ class Sudoku_Solver():
 		return board
 
 
+	def print_board(self):
+		for row in range(9):
+			if (row > 0) and (row % 3 == 0):
+				print('-----------------')
+
+			for col in range(9):
+				if (col == 0):
+					print(' ', end='')
+				elif (col % 3 == 0):
+					print(' | ', end='')
+
+				print(self.board[row][col], end='')
+
+			print()
+
+
+	def print_possible_values(self):
+		for coord in self.possible_values.keys():
+			possibilities = self.possible_values[coord]
+			print('{0}: {1}'.format(coord, possibilities))
+
+
 	def import_board(self, file_name):
 		board_file = open(file_name, 'r')
 		board_import = board_file.readlines()
@@ -31,23 +53,6 @@ class Sudoku_Solver():
 				else:
 					loc_value = int(loc_value)
 					self.board[row][col] = loc_value
-
-
-
-	def print_board(self):
-		for row in range(9):
-			if (row > 0) and (row % 3 == 0):
-				print('-----------------')
-
-			for col in range(9):
-				if (col == 0):
-					print(' ', end='')
-				elif (col % 3 == 0):
-					print(' | ', end='')
-
-				print(self.board[row][col], end='')
-
-			print()
 
 
 	def solve(self):
