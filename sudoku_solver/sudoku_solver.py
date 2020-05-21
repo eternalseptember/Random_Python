@@ -77,6 +77,9 @@ class Sudoku_Solver():
 
 				grid_item = self.board[row_index][col_index]
 
+				if type(grid_item) == int:
+					possible_values.remove(grid_item)
+
 
 				print()
 			print()
