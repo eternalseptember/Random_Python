@@ -63,6 +63,7 @@ class Sudoku_Solver():
 	def check_box(self, row, col):
 		# remove them from the list if they're present in the box
 		possible_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+		empty_cells = []  # (row, col)
 
 		# possible values: 0, 1, 2
 		box_row = row // 3
@@ -77,12 +78,13 @@ class Sudoku_Solver():
 
 				grid_item = self.board[row_index][col_index]
 
-				if type(grid_item) == int:
+				if grid_item == '-':
+					empty_cells.append((row_index, col_index))
+				else:
 					possible_values.remove(grid_item)
 
+		# just testing to see if it works
 
-				print()
-			print()
 
 
 
