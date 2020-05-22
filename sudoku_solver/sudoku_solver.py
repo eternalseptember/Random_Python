@@ -84,6 +84,8 @@ class Sudoku_Solver():
 					possible_values.remove(grid_item)
 
 		# just testing to see if it works
+		for cell in empty_cells:
+			self.possible_values[cell] = possible_values
 
 
 
