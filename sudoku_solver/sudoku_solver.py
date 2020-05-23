@@ -85,16 +85,23 @@ class Sudoku_Solver():
 
 		# just testing to see if it works
 		for cell in empty_cells:
-			self.possible_values[cell] = possible_values
+			cell_poss_vals = possible_values.copy()
+
+			# eliminate values from checking row and col
+
+
+			# write to dictionary
+			self.possible_values[cell] = cell_poss_vals
 
 
 
 
-	def check_row(self, row, col):
+
+	def check_row(self, row, col, list_of_poss_vals):
 		return None
 
 
-	def check_col(self, row, col):
+	def check_col(self, row, col, list_of_poss_vals):
 		return None
 
 
