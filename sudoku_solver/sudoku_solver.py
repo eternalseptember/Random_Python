@@ -88,7 +88,7 @@ class Sudoku_Solver():
 			cell_poss_vals = possible_values.copy()
 
 			# eliminate values from checking row and col
-
+			reduced_list = self.check_row(cell, cell_poss_vals)
 
 			# write to dictionary
 			self.possible_values[cell] = cell_poss_vals
@@ -97,11 +97,13 @@ class Sudoku_Solver():
 
 
 
-	def check_row(self, row, col, list_of_poss_vals):
-		return None
+	def check_row(self, coord, list_of_poss_vals):
+		row, col = coord
+		return list_of_poss_vals
 
 
-	def check_col(self, row, col, list_of_poss_vals):
+	def check_col(self, coord, list_of_poss_vals):
+		row, col = coord
 		return None
 
 
