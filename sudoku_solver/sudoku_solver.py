@@ -84,16 +84,18 @@ class Sudoku_Solver():
 					possible_values.remove(grid_item)
 
 		# just testing to see if it works
+		print('\nMissing numbers in this box:')
+		print(possible_values)
+		print()
+
 		for cell in empty_cells:
 			cell_poss_vals = possible_values.copy()
 
 			# eliminate values from checking row and col
-			reduced_list = self.check_row(cell, cell_poss_vals)
+			self.check_row(cell, cell_poss_vals)
 
 			# write to dictionary
 			self.possible_values[cell] = cell_poss_vals
-
-
 
 
 
@@ -102,17 +104,22 @@ class Sudoku_Solver():
 
 		for i in range(9):
 			if i != row:
-				grid_item = self.board[i][col]
-				# remove stuff
+				grid_item = self.board[row][i]
 
+				if grid_item != '-':
+					if grid_item in list_of_poss_vals:
+						list_of_poss_vals.remove(grid_item)
 
-		return list_of_poss_vals
 
 
 	def check_col(self, coord, list_of_poss_vals):
 		row, col = coord
 		return None
 
+
+	# check when a value is set.
+	# when a value is set, remove that as a possibility in affected
+	# bow, row, or col.
 
 
 
