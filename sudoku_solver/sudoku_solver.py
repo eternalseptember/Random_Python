@@ -99,6 +99,13 @@ class Sudoku_Solver():
 
 	def check_row(self, coord, list_of_poss_vals):
 		row, col = coord
+
+		for i in range(9):
+			if i != row:
+				grid_item = self.board[i][col]
+				# remove stuff
+
+
 		return list_of_poss_vals
 
 
