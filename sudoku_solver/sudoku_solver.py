@@ -114,7 +114,14 @@ class Sudoku_Solver():
 
 	def check_col(self, coord, list_of_poss_vals):
 		row, col = coord
-		return None
+
+		for i in range(9):
+			if i != col:
+				grid_item = self.board[i][col]
+
+				if grid_item != '-':
+					if grid_item in list_of_poss_vals:
+						list_of_poss_vals.remove(grid_item)
 
 
 	# check when a value is set.
