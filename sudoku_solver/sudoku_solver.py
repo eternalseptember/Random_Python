@@ -93,6 +93,7 @@ class Sudoku_Solver():
 
 			# eliminate values from checking row and col
 			self.check_row(cell, cell_poss_vals)
+			self.check_col(cell, cell_poss_vals)
 
 			# write to dictionary
 			self.possible_values[cell] = cell_poss_vals
