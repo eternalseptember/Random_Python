@@ -126,6 +126,15 @@ class Sudoku_Solver():
 
 
 	# check when a value is set.
+	def is_value(self, coord):
+		poss_values = self.possible_values[coord]
+
+		if len(poss_values) == 1:
+			return True
+		else:
+			return False
+
+
 	# when a value is set, remove that as a possibility in affected
 	# bow, row, or col.
 
