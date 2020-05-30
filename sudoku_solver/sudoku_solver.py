@@ -135,8 +135,11 @@ class Sudoku_Solver():
 			return False
 
 
-	# when a value is set, remove that as a possibility in affected
-	# bow, row, or col.
+
+	def remove_value(self, coord):
+		# when a value is set, remove that as a possibility in affected
+		# bow, row, or col.
+		return None
 
 
 
