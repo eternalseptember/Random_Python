@@ -125,8 +125,9 @@ class Sudoku_Solver():
 						list_of_poss_vals.remove(grid_item)
 
 
-	# check when a value is set.
+
 	def is_value(self, coord):
+		# check when a value is set.
 		poss_values = self.possible_values[coord]
 
 		if len(poss_values) == 1:
@@ -139,7 +140,18 @@ class Sudoku_Solver():
 	def remove_value(self, coord):
 		# when a value is set, remove that as a possibility in affected
 		# bow, row, or col.
+		row, col = coord
+		
 		return None
+
+
+	def remove_num_in_row(self, coord, value):
+		return None
+
+
+	def remove_num_in_col(self, coord, value):
+		return None
+
 
 
 
