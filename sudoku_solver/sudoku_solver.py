@@ -7,6 +7,7 @@ class Sudoku_Solver():
 		self.input = None
 		self.board = self.create_board()
 		self.possible_values = {}  # {{row, col}: [possible values]}
+		self.solved_queue = []  # to trigger removing values
 
 
 	def create_board(self):
@@ -56,20 +57,22 @@ class Sudoku_Solver():
 
 
 	def solve(self):
-		# look for obvious results first
+		# Look for obvious results first.
 		return None
 
 
-	def check_box(self, row, col):
-		# remove them from the list if they're present in the box
+	def check_box(self, coord):
+		row, col = coord
+
+		# Remove them from the list if they're present in the box
 		possible_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 		empty_cells = []  # (row, col)
 
-		# possible values: 0, 1, 2
+		# Possible values: 0, 1, 2
 		box_row = row // 3
 		box_col = col // 3
 
-		# iterate through an entire 3x3 box
+		# Iterate through an entire 3x3 box.
 		for i in range(3):
 			row_index = box_row * 3 + i
 
@@ -83,6 +86,8 @@ class Sudoku_Solver():
 				else:
 					possible_values.remove(grid_item)
 
+		# split function here.
+		# previous section is for populating possible vals.
 		# just testing to see if it works
 		print('\nMissing numbers in this box:')
 		print(possible_values)
@@ -91,16 +96,17 @@ class Sudoku_Solver():
 		for cell in empty_cells:
 			cell_poss_vals = possible_values.copy()
 
-			# eliminate values from checking row and col
+			# Eliminate values from checking row and col.
 			self.check_row(cell, cell_poss_vals)
 			self.check_col(cell, cell_poss_vals)
 
-			# write to dictionary
+			# Write to dictionary of possible values.
 			self.possible_values[cell] = cell_poss_vals
 
 
 
 	def check_row(self, coord, list_of_poss_vals):
+		# Reduce list of possible vals by other nums in row.
 		row, col = coord
 
 		for i in range(9):
@@ -111,9 +117,12 @@ class Sudoku_Solver():
 					if grid_item in list_of_poss_vals:
 						list_of_poss_vals.remove(grid_item)
 
+		# check if only one possible value left?
+
 
 
 	def check_col(self, coord, list_of_poss_vals):
+		# Reduce list of possible vals by other nums in col.
 		row, col = coord
 
 		for i in range(9):
@@ -124,10 +133,13 @@ class Sudoku_Solver():
 					if grid_item in list_of_poss_vals:
 						list_of_poss_vals.remove(grid_item)
 
+		# check if only one possible value left?
+
+
 
 
 	def is_value(self, coord):
-		# check when a value is set.
+		# Check when a cell is solved.
 		poss_values = self.possible_values[coord]
 
 		if len(poss_values) == 1:
@@ -138,7 +150,7 @@ class Sudoku_Solver():
 
 
 	def remove_value(self, coord):
-		# when a value is set, remove that as a possibility in affected
+		# When a value is set, remove that as a possibility in affected
 		# bow, row, or col.
 		row, col = coord
 		
@@ -146,6 +158,7 @@ class Sudoku_Solver():
 
 
 	def remove_num_in_row(self, coord, value):
+		# opposite of the check_row function.
 		return None
 
 
