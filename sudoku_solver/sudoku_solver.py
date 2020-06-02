@@ -159,10 +159,17 @@ class Sudoku_Solver():
 
 	def remove_num_in_row(self, coord, value):
 		# opposite of the check_row function.
-		return None
+		row, col = coord
+
+		for i in range(9):
+			if i != row:
+				grid_item = self.board[row][i]
+
+				# check if it's an entry in possible_values
 
 
 	def remove_num_in_col(self, coord, value):
+		row, col = coord
 		return None
 
 
