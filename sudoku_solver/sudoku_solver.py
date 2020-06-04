@@ -166,6 +166,8 @@ class Sudoku_Solver():
 				grid_item = self.board[row][i]
 
 				# check if it's an entry in possible_values
+				if (row, i) in self.possible_values:
+					possible_values = self.possible_values[(row, i)]
 
 
 	def remove_num_in_col(self, coord, value):
