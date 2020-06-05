@@ -178,6 +178,12 @@ class Sudoku_Solver():
 		return None
 
 
+	def test(self, coord, value):
+		# for testing only
+		# testing remove_num functions
+		return None
+
+
 
 
 
