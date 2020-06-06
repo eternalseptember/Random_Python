@@ -7,5 +7,6 @@ sudoku.import_board("puzzle_1.txt")
 sudoku.print_board()
 sudoku.check_box((0, 0))
 sudoku.print_possible_values()
+sudoku.test((5, 6), 8)
 
 

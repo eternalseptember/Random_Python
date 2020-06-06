@@ -180,7 +180,7 @@ class Sudoku_Solver():
 
 	def test(self, coord, value):
 		# for testing only
-		# testing remove_num functions
+		# manually setting a value and testing the remove_num functions
 		return None
 
 
