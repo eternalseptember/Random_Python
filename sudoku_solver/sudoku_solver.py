@@ -181,7 +181,7 @@ class Sudoku_Solver():
 	def test(self, coord, value):
 		# for testing only
 		# manually setting a value and testing the remove_num functions
-		row, col == coord
+		row, col = coord
 		self.board[row][col] = value
 
 

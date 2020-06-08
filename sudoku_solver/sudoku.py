@@ -10,3 +10,7 @@ sudoku.print_possible_values()
 sudoku.test((5, 6), 8)
 
 
+print('\nafter inputting test value')
+sudoku.print_board()
+
+
