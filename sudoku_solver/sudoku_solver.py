@@ -89,7 +89,7 @@ class Sudoku_Solver():
 		# split function here.
 		# previous section is for populating possible vals.
 		# just testing to see if it works
-		print('\nMissing numbers in this box:')
+		print('\nMissing numbers in box with ({0}, {1}):'.format(row, col))
 		print(possible_values)
 		print()
 
@@ -136,19 +136,6 @@ class Sudoku_Solver():
 		# check if only one possible value left?
 
 
-
-
-	def is_value(self, coord):
-		# Check when a cell is solved.
-		poss_values = self.possible_values[coord]
-
-		if len(poss_values) == 1:
-			return True
-		else:
-			return False
-
-
-
 	def remove_value(self, coord):
 		# When a value is set, remove that as a possibility in affected
 		# bow, row, or col.
@@ -176,6 +163,16 @@ class Sudoku_Solver():
 	def remove_num_in_col(self, coord, value):
 		row, col = coord
 		return None
+
+
+	def is_value(self, coord):
+		# Check when a cell is solved.
+		poss_values = self.possible_values[coord]
+
+		if len(poss_values) == 1:
+			return True
+		else:
+			return False
 
 
 	def test(self, coord, value):
