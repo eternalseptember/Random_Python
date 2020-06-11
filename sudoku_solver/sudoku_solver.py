@@ -58,10 +58,21 @@ class Sudoku_Solver():
 
 	def solve(self):
 		# Look for obvious results first.
-		return None
+		# Initial list of possible values.
+		row = 0
+		col = 0
+
+		for y in range(3):
+			for x in range(3):
+				self.init_check_box((row, col))
+				row += 3
+
+			row = 0
+			col += 3
 
 
-	def check_box(self, coord):
+
+	def init_check_box(self, coord):
 		row, col = coord
 
 		# Remove them from the list if they're present in the box
@@ -86,12 +97,14 @@ class Sudoku_Solver():
 				else:
 					possible_values.remove(grid_item)
 
-		# split function here.
+
+		# Split function here.
 		# previous section is for populating possible vals.
-		# just testing to see if it works
+		"""
 		print('\nMissing numbers in box with ({0}, {1}):'.format(row, col))
 		print(possible_values)
 		print()
+		"""
 
 		for cell in empty_cells:
 			cell_poss_vals = possible_values.copy()
@@ -102,6 +115,9 @@ class Sudoku_Solver():
 
 			# Write to dictionary of possible values.
 			self.possible_values[cell] = cell_poss_vals
+
+			# Check if only one value remaining?
+			# Add to queue.
 
 
 
