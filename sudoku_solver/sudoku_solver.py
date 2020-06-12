@@ -118,6 +118,8 @@ class Sudoku_Solver():
 
 			# Check if only one value remaining?
 			# Add to queue.
+			if len(cell_poss_vals) == 1:
+				self.solved_queue.append(cell)
 
 
 
