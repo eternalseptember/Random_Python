@@ -28,7 +28,7 @@ class Sudoku_Solver():
 				elif (col % 3 == 0):
 					print(' | ', end='')
 
-				print(self.board[row][col], end='')
+				print(self.board[row][col], end=' ')
 
 			print()
 
@@ -37,6 +37,11 @@ class Sudoku_Solver():
 		for coord in self.possible_values.keys():
 			possibilities = self.possible_values[coord]
 			print('{0}: {1}'.format(coord, possibilities))
+
+
+	def print_solved_queue(self):
+		for coord in self.solved_queue:
+			print(coord, end=' ')
 
 
 	def import_board(self, file_name):
