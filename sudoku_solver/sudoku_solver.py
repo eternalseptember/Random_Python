@@ -188,16 +188,6 @@ class Sudoku_Solver():
 		return None
 
 
-	def is_value(self, coord):
-		# Check when a cell is solved.
-		poss_values = self.possible_values[coord]
-
-		if len(poss_values) == 1:
-			return True
-		else:
-			return False
-
-
 	def test(self, coord, value):
 		# for testing only
 		# manually setting a value and testing the remove_num functions

@@ -19,8 +19,8 @@ sudoku.print_board()
 
 
 sudoku.solve()
-sudoku.print_possible_values()
-
+# sudoku.print_possible_values()
+sudoku.print_solved_queue()
 
 
 
