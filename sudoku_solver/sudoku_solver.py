@@ -75,6 +75,8 @@ class Sudoku_Solver():
 			row = 0
 			col += 3
 
+		# Check solved queue.
+
 
 
 	def init_check_box(self, coord):
@@ -115,8 +117,8 @@ class Sudoku_Solver():
 			cell_poss_vals = possible_values.copy()
 
 			# Eliminate values from checking row and col.
-			self.check_row(cell, cell_poss_vals)
-			self.check_col(cell, cell_poss_vals)
+			self.init_check_row(cell, cell_poss_vals)
+			self.init_check_col(cell, cell_poss_vals)
 
 			# Write to dictionary of possible values.
 			self.possible_values[cell] = cell_poss_vals
@@ -128,7 +130,7 @@ class Sudoku_Solver():
 
 
 
-	def check_row(self, coord, list_of_poss_vals):
+	def init_check_row(self, coord, list_of_poss_vals):
 		# Reduce list of possible vals by other nums in row.
 		row, col = coord
 
@@ -144,7 +146,7 @@ class Sudoku_Solver():
 
 
 
-	def check_col(self, coord, list_of_poss_vals):
+	def init_check_col(self, coord, list_of_poss_vals):
 		# Reduce list of possible vals by other nums in col.
 		row, col = coord
 
@@ -159,12 +161,19 @@ class Sudoku_Solver():
 		# check if only one possible value left?
 
 
-	def remove_value(self, coord):
+	def solved(self, coord):
+		# Set the value.
 		# When a value is set, remove that as a possibility in affected
 		# bow, row, or col.
 		row, col = coord
-		
-		return None
+
+		solved_value = self.possible_values[row][col]
+
+		self.board[row][col] = solved_value[0]
+
+		# Remove from possible_values?
+		# Clean up solved_queue?
+
 
 
 	def remove_num_in_row(self, coord, value):
