@@ -145,7 +145,6 @@ class Sudoku_Solver():
 		# check if only one possible value left?
 
 
-
 	def init_check_col(self, coord, list_of_poss_vals):
 		# Reduce list of possible vals by other nums in col.
 		row, col = coord
@@ -172,7 +171,11 @@ class Sudoku_Solver():
 		self.board[row][col] = solved_value[0]
 
 		# Remove from possible_values?
+		self.remove_num_in_row(coord, solved_value[0])
+		self.remove_num_in_col(coord, solved_value[0])
+
 		# Clean up solved_queue?
+		# Maybe not because it'll disrupt the while look running this?
 
 
 
