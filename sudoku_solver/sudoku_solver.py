@@ -126,7 +126,8 @@ class Sudoku_Solver():
 			# Check if only one value remaining?
 			# Add to queue.
 			if len(cell_poss_vals) == 1:
-				self.solved_queue.append(cell)
+				if cell not in self.solved_queue:
+					self.solved_queue.append(cell)
 
 
 
@@ -179,23 +180,30 @@ class Sudoku_Solver():
 
 
 
-	def remove_num_in_row(self, coord, value):
-		# opposite of the check_row function.
+	def remove_num_in_row(self, coord, solved_value):
+		# Opposite of the init_check_row function.
+		# Remove solved_value from the possible list of values of
+		# other entries in this row.
 		row, col = coord
 
 		for i in range(9):
-			if i != row:
-				grid_item = self.board[row][i]
-
-				# check if it's an entry in possible_values
+			if i != col:
+				# Check if it's an entry in possible_values.
 				if (row, i) in self.possible_values:
 					possible_values = self.possible_values[(row, i)]
 
-					if grid_item in possible_values:
-						possible_values.remove(grid_item)
+					if solved_value in possible_values:
+						possible_values.remove(solved_value)
+
+					# Check if only one value remaining.
+					# Add to queue.
+					if len(possible_values) == 1:
+						# Check if cell was already solved?s
+						if cell not in self.solved_queue:
+							self.solved_queue.append(cell)
 
 
-	def remove_num_in_col(self, coord, value):
+	def remove_num_in_col(self, coord, solved_value):
 		row, col = coord
 		return None
 
