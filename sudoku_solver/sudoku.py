@@ -17,11 +17,15 @@ print('\nafter inputting test value')
 sudoku.print_board()
 """
 
-
+# Testing steps
 sudoku.solve()
-# sudoku.print_possible_values()
+sudoku.print_possible_values()
+print()
+print('solved queue:', end=' ')
 sudoku.print_solved_queue()
-
+print()
+sudoku.solve((3, 5))
+sudoku.print_board()
 
 
 

@@ -172,8 +172,8 @@ class Sudoku_Solver():
 		self.board[row][col] = solved_value[0]
 
 		# Remove from possible_values?
-		self.remove_num_in_row(coord, solved_value[0])
-		self.remove_num_in_col(coord, solved_value[0])
+		# self.remove_num_in_row(coord, solved_value[0])
+		# self.remove_num_in_col(coord, solved_value[0])
 
 		# Clean up solved_queue?
 		# Maybe not because it'll disrupt the while look running this?
@@ -207,12 +207,6 @@ class Sudoku_Solver():
 		row, col = coord
 		return None
 
-
-	def test(self, coord, value):
-		# for testing only
-		# manually setting a value and testing the remove_num functions
-		row, col = coord
-		self.board[row][col] = value
 
 
 
