@@ -20,13 +20,13 @@ class Sudoku_Solver():
 	def print_board(self):
 		for row in range(9):
 			if (row > 0) and (row % 3 == 0):
-				print('-----------------')
+				print('-----------------------')
 
 			for col in range(9):
 				if (col == 0):
 					print(' ', end='')
 				elif (col % 3 == 0):
-					print(' | ', end='')
+					print('| ', end='')
 
 				print(self.board[row][col], end=' ')
 
@@ -167,7 +167,7 @@ class Sudoku_Solver():
 		# bow, row, or col.
 		row, col = coord
 
-		solved_value = self.possible_values[row][col]
+		solved_value = self.possible_values[coord]
 
 		self.board[row][col] = solved_value[0]
 

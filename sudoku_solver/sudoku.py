@@ -24,7 +24,7 @@ print()
 print('solved queue:', end=' ')
 sudoku.print_solved_queue()
 print()
-sudoku.solve((3, 5))
+sudoku.solved((3, 5))
 sudoku.print_board()
 
 
