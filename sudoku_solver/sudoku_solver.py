@@ -172,7 +172,7 @@ class Sudoku_Solver():
 		self.board[row][col] = solved_value[0]
 
 		# Remove from possible_values?
-		# self.remove_num_in_row(coord, solved_value[0])
+		self.remove_num_in_row(coord, solved_value[0])
 		# self.remove_num_in_col(coord, solved_value[0])
 
 		# Clean up solved_queue?

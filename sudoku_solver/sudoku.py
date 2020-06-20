@@ -19,13 +19,23 @@ sudoku.print_board()
 
 # Testing steps
 sudoku.solve()
+print()
 sudoku.print_possible_values()
 print()
 print('solved queue:', end=' ')
 sudoku.print_solved_queue()
 print()
 sudoku.solved((3, 5))
+print()
 sudoku.print_board()
+print()
+sudoku.print_possible_values()
+print()
+
+
+
+
+
 
 
 
