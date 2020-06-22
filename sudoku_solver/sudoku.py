@@ -17,20 +17,18 @@ print('\nafter inputting test value')
 sudoku.print_board()
 """
 
+solved = [(3, 5)]
+
 # Testing steps
 sudoku.solve()
-print()
 sudoku.print_possible_values()
-print()
-print('solved queue:', end=' ')
 sudoku.print_solved_queue()
-print()
-sudoku.solved((3, 5))
-print()
-sudoku.print_board()
-print()
-sudoku.print_possible_values()
-print()
+
+for coord in solved:
+	sudoku.solved(coord)
+	sudoku.print_board()
+	sudoku.print_possible_values()
+
 
 
 
