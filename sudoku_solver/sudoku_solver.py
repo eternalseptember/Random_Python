@@ -208,7 +208,7 @@ class Sudoku_Solver():
 		row, col = coord
 
 		for i in range(9):
-			if i != col:
+			if i != row:
 				# Check if it's an entry in possible_values.
 				if (i, col) in self.possible_values:
 					possible_values = self.possible_values[(i, col)]
