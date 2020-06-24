@@ -3,6 +3,10 @@
 
 
 class Sudoku_Solver():
+	from sudoku_print import print_board, print_possible_values, \
+		print_solved_queue
+
+
 	def __init__(self):
 		self.input = None
 		self.board = self.create_board()
@@ -15,39 +19,6 @@ class Sudoku_Solver():
 			['-' for col in range(9)] for row in range(9)
 			]
 		return board
-
-
-	def print_board(self):
-		print()
-		for row in range(9):
-			if (row > 0) and (row % 3 == 0):
-				print('-----------------------')
-
-			for col in range(9):
-				if (col == 0):
-					print(' ', end='')
-				elif (col % 3 == 0):
-					print('| ', end='')
-
-				print(self.board[row][col], end=' ')
-
-			print()
-		print()
-
-
-	def print_possible_values(self):
-		print('Possible values:')
-		for coord in self.possible_values.keys():
-			possibilities = self.possible_values[coord]
-			print('{0}: {1}'.format(coord, possibilities))
-		print()
-
-
-	def print_solved_queue(self):
-		print('Solved queue:', end=' ')
-		for coord in self.solved_queue:
-			print(coord, end=' ')
-		print()
 
 
 	def import_board(self, file_name):
