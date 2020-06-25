@@ -17,7 +17,7 @@ print('\nafter inputting test value')
 sudoku.print_board()
 """
 
-solved = [(3, 5)]
+solved = [(3, 5), (4, 4)]
 
 # Testing steps
 sudoku.solve()

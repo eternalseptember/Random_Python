@@ -146,6 +146,7 @@ class Sudoku_Solver():
 		# Remove from possible_values?
 		self.remove_num_in_row(coord, solved_value[0])
 		self.remove_num_in_col(coord, solved_value[0])
+		# remove from the box?
 
 		# Clean up solved_queue?
 		# Maybe not because it'll disrupt the while look running this?
