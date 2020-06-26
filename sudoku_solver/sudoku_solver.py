@@ -137,6 +137,7 @@ class Sudoku_Solver():
 		# Set the value.
 		# When a value is set, remove that as a possibility in affected
 		# bow, row, or col.
+		print('Solving {0}'.format(coord))
 		row, col = coord
 
 		solved_value = self.possible_values[coord]
@@ -172,8 +173,8 @@ class Sudoku_Solver():
 					# Add to queue.
 					if len(possible_values) == 1:
 						# Check if cell was already solved?s
-						if cell not in self.solved_queue:
-							self.solved_queue.append(cell)
+						if (row, i) not in self.solved_queue:
+							self.solved_queue.append((row, i))
 
 
 	def remove_num_in_col(self, coord, solved_value):
@@ -192,8 +193,12 @@ class Sudoku_Solver():
 					# Add to queue.
 					if len(possible_values) == 1:
 						# Check if cell was already solved?s
-						if cell not in self.solved_queue:
-							self.solved_queue.append(cell)
+						if (i, col) not in self.solved_queue:
+							self.solved_queue.append((i, col))
+
+
+	def remove_num_in_box(self, coord, solved_value):
+		return None
 
 
 
