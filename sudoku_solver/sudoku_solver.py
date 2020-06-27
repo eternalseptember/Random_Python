@@ -198,7 +198,13 @@ class Sudoku_Solver():
 
 
 	def remove_num_in_box(self, coord, solved_value):
-		return None
+		row, col = coord
+
+		# Possible values: 0, 1, 2
+		box_row = row // 3
+		box_col = col // 3
+
+		# just need to iterate through one box
 
 
 
