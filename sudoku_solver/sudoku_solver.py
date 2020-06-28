@@ -204,7 +204,16 @@ class Sudoku_Solver():
 		box_row = row // 3
 		box_col = col // 3
 
-		# just need to iterate through one box
+		# Iterate through one box.
+		for i in range(3):
+			row_index = box_row * 3 + i
+
+			for j in range(3):
+				col_index = box_col * 3 + j
+
+				# Check if there is a stored list of possible values.
+				if (row_index, col_index) in self.possible_values:
+					print()
 
 
 
