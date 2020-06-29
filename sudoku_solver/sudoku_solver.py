@@ -212,8 +212,15 @@ class Sudoku_Solver():
 				col_index = box_col * 3 + j
 
 				# Check if there is a stored list of possible values.
-				if (row_index, col_index) in self.possible_values:
-					print()
+				current_cell = (row_index, col_index)
+				if current_cell in self.possible_values:
+					possible_values = self.possible_values[current_cell]
+					
+					if solved_value in possible_values:
+						possible_values.remove(solved_value)
+
+					# Check if only one value remaining.
+					# Bring that function back.
 
 
 
