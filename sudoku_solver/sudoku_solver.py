@@ -223,6 +223,10 @@ class Sudoku_Solver():
 					# Bring that function back.
 
 
+	def is_last_possibility(self, coord):
+		row, col = coord
+
+
 
 
 
