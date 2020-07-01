@@ -67,19 +67,20 @@ class Sudoku_Solver():
 		box_row = row // 3
 		box_col = col // 3
 
-		# Iterate through an entire 3x3 box.
+		# Iterate through an entire 3x3 box,
+		# make a list of empty cells, and
+		# remove existing board nums in this box from list of possible values.
 		for i in range(3):
-			row_index = box_row * 3 + i
-
 			for j in range(3):
+				row_index = box_row * 3 + i
 				col_index = box_col * 3 + j
 
-				grid_item = self.board[row_index][col_index]
+				board_val = self.board[row_index][col_index]
 
-				if grid_item == '-':
+				if board_val == '-':
 					empty_cells.append((row_index, col_index))
 				else:
-					possible_values.remove(grid_item)
+					possible_values.remove(board_val)
 
 
 		# Split function here.
@@ -104,31 +105,31 @@ class Sudoku_Solver():
 
 
 	def init_check_row(self, coord, list_of_poss_vals):
-		# Reduce list of possible vals by other nums in row.
-		row, col = coord
+		# Reduce list of possible vals by other existing board nums in row.
+		ref_row, ref_col = coord  # Reference cell
 
 		for i in range(9):
-			if i != row:
-				grid_item = self.board[row][i]
+			if i != ref_row:
+				board_val = self.board[ref_row][i]
 
-				if grid_item != '-':
-					if grid_item in list_of_poss_vals:
-						list_of_poss_vals.remove(grid_item)
+				if board_val != '-':
+					if board_val in list_of_poss_vals:
+						list_of_poss_vals.remove(board_val)
 
 		# check if only one possible value left?
 
 
 	def init_check_col(self, coord, list_of_poss_vals):
-		# Reduce list of possible vals by other nums in col.
-		row, col = coord
+		# Reduce list of possible vals by other existing board nums in col.
+		ref_row, ref_col = coord  # Reference cell
 
-		for i in range(9):
-			if i != col:
-				grid_item = self.board[i][col]
+		for j in range(9):
+			if j != ref_col:
+				board_val = self.board[j][ref_col]
 
-				if grid_item != '-':
-					if grid_item in list_of_poss_vals:
-						list_of_poss_vals.remove(grid_item)
+				if board_val != '-':
+					if board_val in list_of_poss_vals:
+						list_of_poss_vals.remove(board_val)
 
 		# check if only one possible value left?
 
@@ -147,84 +148,70 @@ class Sudoku_Solver():
 		# Remove from possible_values?
 		self.remove_num_in_row(coord, solved_value[0])
 		self.remove_num_in_col(coord, solved_value[0])
-		# remove from the box?
+		# self.remove_num_in_box(coord, solved_value[0])
 
 		# Clean up solved_queue?
-		# Maybe not because it'll disrupt the while look running this?
+		# Maybe not because it'll disrupt the while loop running this?
 
 
 
 	def remove_num_in_row(self, coord, solved_value):
 		# Opposite of the init_check_row function.
 		# Remove solved_value from the possible list of values of
-		# other entries in this row.
-		row, col = coord
+		# other unsolved cells in this row.
+		ref_row, ref_col = coord  # Reference cell
 
 		for i in range(9):
-			if i != col:
-				# Check if it's an entry in possible_values.
-				if (row, i) in self.possible_values:
-					possible_values = self.possible_values[(row, i)]
-
-					if solved_value in possible_values:
-						possible_values.remove(solved_value)
-
-					# Check if only one value remaining.
-					# Add to queue.
-					if len(possible_values) == 1:
-						# Check if cell was already solved?s
-						if (row, i) not in self.solved_queue:
-							self.solved_queue.append((row, i))
+			if i != ref_col:
+				this_cell = (ref_row, i)
+				self.possible_vals_check(this_cell, solved_value)
 
 
 	def remove_num_in_col(self, coord, solved_value):
-		row, col = coord
+		# Opposite of the init_check_col function.
+		# Remove solved_value from the possible list of values of
+		# other unsolved cells in this col.
+		ref_row, ref_col = coord  # Reference cell
 
-		for i in range(9):
-			if i != row:
-				# Check if it's an entry in possible_values.
-				if (i, col) in self.possible_values:
-					possible_values = self.possible_values[(i, col)]
-
-					if solved_value in possible_values:
-						possible_values.remove(solved_value)
-
-					# Check if only one value remaining.
-					# Add to queue.
-					if len(possible_values) == 1:
-						# Check if cell was already solved?s
-						if (i, col) not in self.solved_queue:
-							self.solved_queue.append((i, col))
+		for j in range(9):
+			if j != ref_row:
+				this_cell = (j, ref_col)
+				self.possible_vals_check(this_cell, solved_value)
 
 
 	def remove_num_in_box(self, coord, solved_value):
-		row, col = coord
+		# Remove solved_value from the possible list of values of
+		# other unsolved cells in this box.
+		ref_row, ref_col = coord  # Reference cell
 
 		# Possible values: 0, 1, 2
-		box_row = row // 3
-		box_col = col // 3
+		box_row = ref_row // 3
+		box_col = ref_col // 3
 
 		# Iterate through one box.
 		for i in range(3):
-			row_index = box_row * 3 + i
-
 			for j in range(3):
-				col_index = box_col * 3 + j
-
-				# Check if there is a stored list of possible values.
-				current_cell = (row_index, col_index)
-				if current_cell in self.possible_values:
-					possible_values = self.possible_values[current_cell]
-					
-					if solved_value in possible_values:
-						possible_values.remove(solved_value)
-
-					# Check if only one value remaining.
-					# Bring that function back.
+				row = box_row * 3 + i
+				col = box_col * 3 + j
+				this_cell = (row, col)
+				self.possible_vals_check(this_cell, solved_value)
 
 
-	def is_last_possibility(self, coord):
-		row, col = coord
+	def possible_vals_check(self, coord, solved_value):
+		# Check if there is a stored list of possible values in this coord.
+		if coord in self.possible_values:
+
+			# Remove solved_value as a possible choice in this coord.
+			possible_values = self.possible_values[coord]
+
+			if solved_value in possible_values:
+				possible_values.remove(solved_value)
+
+			# Add to queue if only one possible value is remaining.
+			if len(possible_values) == 1:
+				# Check if cell is already solved?
+				if coord not in self.solved_queue:
+					self.solved_queue.append(coord)
 
 
 
