@@ -35,3 +35,11 @@ def print_solved_queue(self):
 	print()
 
 
+def print_test_queue(self):
+	print('Test queue:', end=' ')
+	for coord in self.test_queue:
+		print(coord, end=' ')
+	print()
+
+
+
