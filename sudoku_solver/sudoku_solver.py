@@ -4,16 +4,16 @@
 
 class Sudoku_Solver():
 	from sudoku_print import print_board, print_possible_values, \
-		print_solved_queue, print_test_queue
+		print_init_queue, print_solved_queue
 
 
 	def __init__(self):
 		self.input = None
 		self.board = self.create_board()
 		self.possible_values = {}  # {(row, col): [possible values]}
-		self.solved_queue = []  # to trigger removing values
+		self.init_queue = []  # from init pass
 		self.solved_list = []
-		self.test_queue = []  # this is solved_queue
+		self.solved_queue = []
 
 
 	def create_board(self):
@@ -38,13 +38,13 @@ class Sudoku_Solver():
 				else:
 					cell_value = int(cell_value)
 					self.board[row][col] = cell_value
-					self.solved_queue.append((row, col))
+					self.init_queue.append((row, col))
 
 
 	def init_reduce(self):
 		# Reduce list of possible values.
-		while len(self.solved_queue) > 0:
-			solved_cell = self.solved_queue.pop(0)
+		while len(self.init_queue) > 0:
+			solved_cell = self.init_queue.pop(0)
 			self.solved_list.append(solved_cell)
 
 			# solved_value is the number on the board on first pass.
@@ -55,25 +55,24 @@ class Sudoku_Solver():
 			self.remove_num_in_box(solved_cell, solved_value)
 
 
-	def solve(self, coord):
-		# Set the value.
-		# When a value is set, remove that as a possibility in affected
-		# bow, row, or col.
-		print('Solving {0}'.format(coord))
-		row, col = coord
+	def solve(self):
+		while len(self.solved_queue) > 0:
+			# Set the value.
+			solved_cell = self.solved_queue.pop()
+			self.solved_list.append(solved_cell)
+			row, col = solved_cell
 
-		# solved_value is a reduced list on subsequent passes.
-		solved_value = self.possible_values[coord]
+			# print('Solving {0}'.format(solved_cell))
 
-		self.board[row][col] = solved_value[0]
+			# solved_value is a reduced list on subsequent passes.
+			solved_value = self.possible_values.pop(solved_cell)
 
-		# Remove from possible_values?
-		self.remove_num_in_row(coord, solved_value[0])
-		self.remove_num_in_col(coord, solved_value[0])
-		self.remove_num_in_box(coord, solved_value[0])
+			self.board[row][col] = solved_value[0]
 
-		# Clean up solved_queue?
-		# Maybe not because it'll disrupt the while loop running this?
+			# Remove from possible_values?
+			self.remove_num_in_row(solved_cell, solved_value[0])
+			self.remove_num_in_col(solved_cell, solved_value[0])
+			self.remove_num_in_box(solved_cell, solved_value[0])
 
 
 
@@ -129,10 +128,10 @@ class Sudoku_Solver():
 
 			# Add to queue if only one possible value is remaining.
 			if len(possible_values) == 1:
-				if (coord not in self.solved_queue) and \
+				if (coord not in self.init_queue) and \
 					(coord not in self.solved_list) and \
-					(coord not in self.test_queue):
-					self.test_queue.append(coord)
+					(coord not in self.solved_queue):
+					self.solved_queue.append(coord)
 
 
 

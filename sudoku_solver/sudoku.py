@@ -12,6 +12,8 @@ sudoku.print_board()
 # Testing steps
 print('Reduce list of possibilities:')
 sudoku.init_reduce()
+sudoku.print_init_queue()
+sudoku.print_solved_queue()
 
 print('Solve:')
 sudoku.solve()
