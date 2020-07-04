@@ -50,9 +50,7 @@ class Sudoku_Solver():
 			# solved_value is the number on the board on first pass.
 			row, col = solved_cell
 			solved_value = self.board[row][col]
-			self.remove_num_in_row(solved_cell, solved_value)
-			self.remove_num_in_col(solved_cell, solved_value)
-			self.remove_num_in_box(solved_cell, solved_value)
+			self.remove_num(solved_cell, solved_value)
 
 
 	def solve(self):
@@ -66,14 +64,14 @@ class Sudoku_Solver():
 
 			# solved_value is a reduced list on subsequent passes.
 			solved_value = self.possible_values.pop(solved_cell)
-
 			self.board[row][col] = solved_value[0]
+			self.remove_num(solved_cell, solved_value[0])
 
-			# Remove from possible_values?
-			self.remove_num_in_row(solved_cell, solved_value[0])
-			self.remove_num_in_col(solved_cell, solved_value[0])
-			self.remove_num_in_box(solved_cell, solved_value[0])
 
+	def remove_num(self, coord, solved_value):
+		self.remove_num_in_row(coord, solved_value)
+		self.remove_num_in_col(coord, solved_value)
+		self.remove_num_in_box(coord, solved_value)
 
 
 	def remove_num_in_row(self, coord, solved_value):
