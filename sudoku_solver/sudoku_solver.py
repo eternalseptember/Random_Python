@@ -43,29 +43,35 @@ class Sudoku_Solver():
 
 	def init_reduce(self):
 		# Reduce list of possible values.
+		# solved_value is the number on the board on first pass.
 		while len(self.init_queue) > 0:
 			solved_cell = self.init_queue.pop(0)
 			self.solved_list.append(solved_cell)
 
-			# solved_value is the number on the board on first pass.
 			row, col = solved_cell
 			solved_value = self.board[row][col]
 			self.remove_num(solved_cell, solved_value)
 
-
-	def solve(self):
+		# solved_value is a reduced list on subsequent passes.
 		while len(self.solved_queue) > 0:
 			# Set the value.
 			solved_cell = self.solved_queue.pop()
 			self.solved_list.append(solved_cell)
+
 			row, col = solved_cell
-
-			# print('Solving {0}'.format(solved_cell))
-
-			# solved_value is a reduced list on subsequent passes.
 			solved_value = self.possible_values.pop(solved_cell)
 			self.board[row][col] = solved_value[0]
 			self.remove_num(solved_cell, solved_value[0])
+
+
+	def solve(self, coord):
+		# To resolve one individual cell.
+		self.solved_list.append(coord)
+
+		row, col = coord
+		solved_value = self.possible_values.pop(coord)
+		self.board[row][col] = solved_value[0]
+		self.remove_num(coord, solved_value[0])
 
 
 	def remove_num(self, coord, solved_value):
@@ -130,6 +136,44 @@ class Sudoku_Solver():
 					(coord not in self.solved_list) and \
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
+
+
+	def check_unique_box(self, coord):
+		# Look within a 3x3 box and check for unique listing.
+		ref_row, ref_col = coord  # Reference cell
+		val_lookup = {}  # {value: [(possible cells)]}
+
+
+		# Possible values: 0, 1, 2
+		box_row = ref_row // 3
+		box_col = ref_col // 3
+
+		# Iterate through one box.
+		for i in range(3):
+			for j in range(3):
+				row = box_row * 3 + i
+				col = box_col * 3 + j
+				this_cell = (row, col)
+
+				if this_cell in self.possible_values:
+					poss_values = self.possible_values[this_cell]
+
+					for poss_value in poss_values:
+						if poss_value not in val_lookup:
+							val_lookup[poss_value] = [this_cell]
+						else:
+							val_lookup[poss_value].append(this_cell)
+
+
+		for poss_value in val_lookup.keys():
+			poss_locs = len(val_lookup[poss_value])
+			if poss_locs == 1:
+				new_coord = val_lookup[poss_value][0]
+				print('{0} is in {1}'.format(poss_value, new_coord))
+
+				self.possible_values[new_coord] = [poss_value]
+				self.solve(new_coord)
+
 
 
 
