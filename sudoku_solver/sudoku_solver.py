@@ -52,6 +52,10 @@ class Sudoku_Solver():
 			solved_value = self.board[row][col]
 			self.remove_num(solved_cell, solved_value)
 
+		self.solve_queue()
+
+
+	def solve_queue(self):
 		# solved_value is a reduced list on subsequent passes.
 		while len(self.solved_queue) > 0:
 			# Set the value.
@@ -72,6 +76,8 @@ class Sudoku_Solver():
 		solved_value = self.possible_values.pop(coord)
 		self.board[row][col] = solved_value[0]
 		self.remove_num(coord, solved_value[0])
+
+		self.solve_queue()
 
 
 	def remove_num(self, coord, solved_value):
