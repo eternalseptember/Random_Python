@@ -10,15 +10,15 @@ print('===============================')
 
 
 # Testing steps
+print('Init reduce:')
 sudoku.init_reduce()
-# sudoku.solve()
 sudoku.print_board()
 sudoku.print_possible_values()
 
 print('Unique lookup test:')
 sudoku.check_unique_box((0, 0))
 sudoku.print_board()
-sudoku.print_possible_values()
+
 
 
 

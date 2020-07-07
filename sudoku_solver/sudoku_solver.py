@@ -56,28 +56,20 @@ class Sudoku_Solver():
 
 
 	def solve_queue(self):
-		# solved_value is a reduced list on subsequent passes.
+		# solved_value is a reduced list after the first pass.
 		while len(self.solved_queue) > 0:
-			# Set the value.
 			solved_cell = self.solved_queue.pop()
-			self.solved_list.append(solved_cell)
-
-			row, col = solved_cell
-			solved_value = self.possible_values.pop(solved_cell)
-			self.board[row][col] = solved_value[0]
-			self.remove_num(solved_cell, solved_value[0])
+			self.resolve(solved_cell)
 
 
-	def solve(self, coord):
-		# To resolve one individual cell.
+	def resolve(self, coord):
+		# Assign solved value to board and clean up lists.
 		self.solved_list.append(coord)
 
 		row, col = coord
 		solved_value = self.possible_values.pop(coord)
-		self.board[row][col] = solved_value[0]
+		self.board[row][col] = solved_value[0]  # Set the value.
 		self.remove_num(coord, solved_value[0])
-
-		self.solve_queue()
 
 
 	def remove_num(self, coord, solved_value):
@@ -131,17 +123,23 @@ class Sudoku_Solver():
 		if coord in self.possible_values:
 
 			# Remove solved_value as a possible choice in this coord.
-			possible_values = self.possible_values[coord]
+			poss_values = self.possible_values[coord]
 
-			if solved_value in possible_values:
-				possible_values.remove(solved_value)
+			if solved_value in poss_values:
+				poss_values.remove(solved_value)
 
 			# Add to queue if only one possible value is remaining.
-			if len(possible_values) == 1:
+			if len(poss_values) == 1:
 				if (coord not in self.init_queue) and \
 					(coord not in self.solved_list) and \
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
+
+
+	def solve(self, coord):
+		# To manually resolve one individual cell.
+		self.resolve(coord)
+		self.solve_queue()
 
 
 	def check_unique_box(self, coord):
@@ -149,12 +147,11 @@ class Sudoku_Solver():
 		ref_row, ref_col = coord  # Reference cell
 		val_lookup = {}  # {value: [(possible cells)]}
 
-
 		# Possible values: 0, 1, 2
 		box_row = ref_row // 3
 		box_col = ref_col // 3
 
-		# Iterate through one box.
+		# List all possible locations of all missing values.
 		for i in range(3):
 			for j in range(3):
 				row = box_row * 3 + i
@@ -170,7 +167,7 @@ class Sudoku_Solver():
 						else:
 							val_lookup[poss_value].append(this_cell)
 
-
+		# Does any missing value have only one possible location?
 		for poss_value in val_lookup.keys():
 			poss_locs = len(val_lookup[poss_value])
 			if poss_locs == 1:
