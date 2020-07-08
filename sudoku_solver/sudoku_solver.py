@@ -142,6 +142,14 @@ class Sudoku_Solver():
 		self.solve_queue()
 
 
+	def check_unique_row(self, coord):
+		return None
+
+
+	def check_unique_col(self, coord):
+		return None
+
+
 	def check_unique_box(self, coord):
 		# Look within a 3x3 box and check for unique listing.
 		ref_row, ref_col = coord  # Reference cell
