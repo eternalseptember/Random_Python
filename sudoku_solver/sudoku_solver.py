@@ -143,11 +143,21 @@ class Sudoku_Solver():
 
 
 	def check_unique_row(self, coord):
-		return None
+		ref_row, ref_col = coord  # Reference cell
+		val_lookup = {}  # {value: [(possible cells)]}
+
+		for i in range(9):
+			# check row
+			print()
 
 
 	def check_unique_col(self, coord):
-		return None
+		ref_row, ref_col = coord  # Reference cell
+		val_lookup = {}  # {value: [(possible cells)]}
+
+		for i in range(9):
+			# check col
+			print()
 
 
 	def check_unique_box(self, coord):
