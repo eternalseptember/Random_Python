@@ -148,6 +148,7 @@ class Sudoku_Solver():
 
 		for i in range(9):
 			# check row
+			this_cell = (ref_row, i)
 			print()
 
 
@@ -155,8 +156,9 @@ class Sudoku_Solver():
 		ref_row, ref_col = coord  # Reference cell
 		val_lookup = {}  # {value: [(possible cells)]}
 
-		for i in range(9):
+		for j in range(9):
 			# check col
+			this_cell = (j, ref_col)
 			print()
 
 
