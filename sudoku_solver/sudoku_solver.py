@@ -149,7 +149,11 @@ class Sudoku_Solver():
 		for i in range(9):
 			# check row
 			this_cell = (ref_row, i)
-			print()
+			
+			if this_cell in self.possible_values:
+				poss_values = self.possible_values[this_cell]
+
+				# more stuff
 
 
 	def check_unique_col(self, coord):
