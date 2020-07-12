@@ -202,6 +202,12 @@ class Sudoku_Solver():
 				self.solve(new_coord)
 
 
+	def set_lookup_table(self, coord, lookup_dict):
+		# List possible coordinates for each value.
+		ref_row, ref_col = coord  # Reference cell
+		return None
+
+
 
 
 
