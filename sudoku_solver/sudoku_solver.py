@@ -203,9 +203,9 @@ class Sudoku_Solver():
 
 
 	def set_lookup_table(self, coord, lookup_dict):
-		# List possible coordinates for each value.
-		ref_row, ref_col = coord  # Reference cell
-		return None
+		# List possible coordinates for each value.		
+		if coord in self.possible_values:
+			poss_values = self.possible_values[coord]
 
 
 
