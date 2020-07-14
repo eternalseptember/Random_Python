@@ -203,9 +203,17 @@ class Sudoku_Solver():
 
 
 	def set_lookup_table(self, coord, lookup_dict):
-		# List possible coordinates for each value.		
+		# List possible coordinates for each value.
 		if coord in self.possible_values:
 			poss_values = self.possible_values[coord]
+
+			for poss_value in poss_values:
+				if poss_value not in lookup_dict:
+					lookup_dict[poss_value] = [coord]
+				else:
+					lookup_dict[poss_value].append(coord)
+
+		# Does lookup dict persist?
 
 
 
