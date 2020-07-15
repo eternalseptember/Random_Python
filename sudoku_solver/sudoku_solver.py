@@ -146,10 +146,10 @@ class Sudoku_Solver():
 		ref_row, ref_col = coord  # Reference cell
 		val_lookup = {}  # {value: [(possible cells)]}
 
+		# List all possible locations of all missing values.
 		for i in range(9):
-			# check row
 			this_cell = (ref_row, i)
-			
+
 			if this_cell in self.possible_values:
 				poss_values = self.possible_values[this_cell]
 
@@ -160,10 +160,9 @@ class Sudoku_Solver():
 		ref_row, ref_col = coord  # Reference cell
 		val_lookup = {}  # {value: [(possible cells)]}
 
+		# List all possible locations of all missing values.
 		for j in range(9):
-			# check col
 			this_cell = (j, ref_col)
-			print()
 
 
 	def check_unique_box(self, coord):
@@ -182,6 +181,8 @@ class Sudoku_Solver():
 				col = box_col * 3 + j
 				this_cell = (row, col)
 
+				self.set_lookup_table(this_cell, val_lookup)
+				"""
 				if this_cell in self.possible_values:
 					poss_values = self.possible_values[this_cell]
 
@@ -190,6 +191,7 @@ class Sudoku_Solver():
 							val_lookup[poss_value] = [this_cell]
 						else:
 							val_lookup[poss_value].append(this_cell)
+				"""
 
 		# Does any missing value have only one possible location?
 		for poss_value in val_lookup.keys():
