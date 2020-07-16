@@ -150,10 +150,7 @@ class Sudoku_Solver():
 		for i in range(9):
 			this_cell = (ref_row, i)
 
-			if this_cell in self.possible_values:
-				poss_values = self.possible_values[this_cell]
-
-				# more stuff
+			self.set_lookup_table(this_cell, val_lookup)
 
 
 	def check_unique_col(self, coord):
