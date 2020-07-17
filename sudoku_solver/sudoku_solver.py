@@ -149,7 +149,6 @@ class Sudoku_Solver():
 		# List all possible locations of all missing values.
 		for i in range(9):
 			this_cell = (ref_row, i)
-
 			self.set_lookup_table(this_cell, val_lookup)
 
 
@@ -160,6 +159,7 @@ class Sudoku_Solver():
 		# List all possible locations of all missing values.
 		for j in range(9):
 			this_cell = (j, ref_col)
+			self.set_lookup_table(this_cell, val_lookup)
 
 
 	def check_unique_box(self, coord):
