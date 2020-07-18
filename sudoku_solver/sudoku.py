@@ -16,8 +16,8 @@ sudoku.print_board()
 sudoku.print_possible_values()
 
 print('Unique lookup test:')
-# sudoku.check_unique_box((0, 0))
-sudoku.check_unique_row((3, 0))
+sudoku.check_unique_box((0, 0))
+# sudoku.check_unique_row((3, 0))
 sudoku.print_board()
 
 

@@ -190,6 +190,8 @@ class Sudoku_Solver():
 							val_lookup[poss_value].append(this_cell)
 				"""
 
+		self.solve_lookup_table(val_lookup)
+		"""
 		# Does any missing value have only one possible location?
 		for poss_value in val_lookup.keys():
 			poss_locs = len(val_lookup[poss_value])
@@ -199,6 +201,7 @@ class Sudoku_Solver():
 
 				self.possible_values[new_coord] = [poss_value]
 				self.solve(new_coord)
+		"""
 
 
 	def set_lookup_table(self, coord, lookup_dict):
@@ -213,6 +216,18 @@ class Sudoku_Solver():
 					lookup_dict[poss_value].append(coord)
 
 		# Does lookup dict persist?
+
+
+	def solve_lookup_table(self, lookup_dict):
+		# Does any missing value have only one possible location?
+		for poss_value in lookup_dict.keys():
+			poss_locs = len(lookup_dict[poss_value])
+			if poss_locs == 1:
+				new_coord = lookup_dict[poss_value][0]
+				print('{0} is in {1}'.format(poss_value, new_coord))
+
+				self.possible_values[new_coord] = [poss_value]
+				self.solve(new_coord)
 
 
 
