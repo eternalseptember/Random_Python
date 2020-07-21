@@ -17,9 +17,10 @@ sudoku.print_possible_values()
 
 print('Unique lookup test:')
 # sudoku.check_unique_box((0, 0))
-sudoku.check_unique_row((3, 0))
-sudoku.print_board()
-sudoku.check_unique_row((6, 0))
+# sudoku.check_unique_row((3, 0))  # doesn't solve everything
+# sudoku.check_unique_row((6, 0))
+# sudoku.check_unique_col((0, 8))  # doesn't solve everything
+sudoku.check_unique_col((0, 3))  # doesn't solve everything
 sudoku.print_board()
 
 
