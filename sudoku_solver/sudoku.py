@@ -19,8 +19,11 @@ print('Unique lookup test:')
 # sudoku.check_unique_box((0, 0))
 # sudoku.check_unique_row((3, 0))  # doesn't solve everything
 # sudoku.check_unique_row((6, 0))
-# sudoku.check_unique_col((0, 8))  # doesn't solve everything
-sudoku.check_unique_col((0, 3))  # doesn't solve everything
+
+# doesn't solve everything
+for col in range(9):
+	sudoku.check_unique_col((0, col))
+
 sudoku.print_board()
 
 
