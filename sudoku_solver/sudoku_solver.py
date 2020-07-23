@@ -142,6 +142,18 @@ class Sudoku_Solver():
 		self.solve_queue()
 
 
+	def check_all_unique(self):
+		# check all row
+		for row in range(9):
+			self.check_unique_row((row, 0))
+
+		# check all col
+		for col in range(9):
+			self.check_unique_col((0, col))
+
+		# check all box
+
+
 	def check_unique_row(self, coord):
 		ref_row, ref_col = coord  # Reference cell
 		val_lookup = {}  # {value: [(possible cells)]}
