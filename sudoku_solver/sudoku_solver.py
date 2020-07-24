@@ -152,6 +152,10 @@ class Sudoku_Solver():
 			self.check_unique_col((0, col))
 
 		# check all box
+		for i in [0, 3, 6]:
+			for j in [0, 3, 6]:
+				coord = (i, j)
+				self.check_unique_box(coord)
 
 
 	def check_unique_row(self, coord):
