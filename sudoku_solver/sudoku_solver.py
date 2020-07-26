@@ -14,6 +14,7 @@ class Sudoku_Solver():
 		self.init_queue = []  # from init pass
 		self.solved_list = []
 		self.solved_queue = []
+		self.solved_count = 0
 
 
 	def create_board(self):
@@ -46,6 +47,7 @@ class Sudoku_Solver():
 		# solved_value is the number on the board on first pass.
 		while len(self.init_queue) > 0:
 			solved_cell = self.init_queue.pop(0)
+			self.solved_count += 1
 			self.solved_list.append(solved_cell)
 
 			row, col = solved_cell
@@ -59,6 +61,7 @@ class Sudoku_Solver():
 		# solved_value is a reduced list after the first pass.
 		while len(self.solved_queue) > 0:
 			solved_cell = self.solved_queue.pop()
+			self.solved_count += 1
 			self.resolve(solved_cell)
 
 
@@ -144,18 +147,21 @@ class Sudoku_Solver():
 
 	def check_all_unique(self):
 		# check all row
-		for row in range(9):
-			self.check_unique_row((row, 0))
+		if self.solved_count < 81:
+			for row in range(9):
+				self.check_unique_row((row, 0))
 
 		# check all col
-		for col in range(9):
-			self.check_unique_col((0, col))
+		if self.solved_count < 81:
+			for col in range(9):
+				self.check_unique_col((0, col))
 
 		# check all box
-		for i in [0, 3, 6]:
-			for j in [0, 3, 6]:
-				coord = (i, j)
-				self.check_unique_box(coord)
+		if self.solved_count < 81:
+			for i in [0, 3, 6]:
+				for j in [0, 3, 6]:
+					coord = (i, j)
+					self.check_unique_box(coord)
 
 
 	def check_unique_row(self, coord):
