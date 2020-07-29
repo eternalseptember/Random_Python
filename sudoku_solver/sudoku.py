@@ -19,6 +19,9 @@ print('Unique lookup test:')
 sudoku.check_all_unique()
 sudoku.print_board()
 
+print('Test again?')
+sudoku.check_all_unique()
+sudoku.print_board()
 
 
 
