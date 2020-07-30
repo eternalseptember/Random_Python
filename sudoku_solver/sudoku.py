@@ -3,7 +3,7 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("puzzle_3.txt")
+sudoku.import_board("puzzle_4.txt")
 sudoku.print_board()
 print('===============================')
 
