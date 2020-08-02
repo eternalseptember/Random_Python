@@ -124,10 +124,13 @@ class Sudoku_Solver():
 
 	def possible_vals_check(self, coord, solved_value):
 		# Check if there is a stored list of possible values in this coord.
+		# If there isn't, then this location has been solved.
 		if coord in self.possible_values:
 
 			# Remove solved_value as a possible choice in this coord.
 			poss_values = self.possible_values[coord]
+
+			# Restructure this to remove a set of values?
 
 			if solved_value in poss_values:
 				poss_values.remove(solved_value)
@@ -149,27 +152,41 @@ class Sudoku_Solver():
 
 
 
-	def check_missing_values(self):
-		"""
-		tally each row/col's missing values.
-		are missing values all in the same box?
-
-		In puzzle_5:
-		column 6 is missing 4 and 6, which are in the same box.
-		Remove possibilities outside this col within this box (0-2, 7)
-		"""
-		print()
-
-
-	def remove_possibilities(self, coord):
+	def check_matching_pairs(self):
 		# Run this if checking unique doesn't solve everything.
 		"""
+		elimination due to matching pairs will get both examples.
+		are missing values all in the same box?
+
+		tally each row/col's missing values.
+		In puzzle_5:
+		column 6 is missing 4 and 6, which are in the same box.
+		Remove possibilities outside this col within this box (0-2, 7),
+		because col is mostly solved, but box is not.
+
+
+		tally each box's missing values.
 		In puzzle_5:
 		the missing values of the central box are in the same col, so remove
 		6 and 9 as possiblities outside the box in the same column (row, 4).
-		Remove possibilities from same col outside of this box.
+		Remove possibilities from same col outside of this box,
+		because box is mostly solved, but col is not.
+
+
+		1. remove from row or col first.
+		2. then if values share the same box, remove from the rest of the box.
 		"""
-		print()
+
+		for i in range(9):
+			row_missing_values = {}  # (col, i)
+			# look for missing pairs or triplets?
+
+
+
+		for j in range(9):
+			col_missing_values = {}  # (j, row)
+			# look for missing pairs or triplets?
+
 
 
 
