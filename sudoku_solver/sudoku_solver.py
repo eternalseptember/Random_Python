@@ -177,15 +177,21 @@ class Sudoku_Solver():
 		2. then if values share the same box, remove from the rest of the box.
 		"""
 
-		for i in range(9):
-			row_missing_values = {}  # (col, i)
-			# look for missing pairs or triplets?
+		# search each row for pairs/triplets
+		for row in range(9):
+			row_missing_values = {}
+
+			for i in range(9):  # i goes across
+				this_cell = (row, i)
 
 
 
-		for j in range(9):
-			col_missing_values = {}  # (j, row)
-			# look for missing pairs or triplets?
+		# search each col for pairs/triplets
+		for col in range(9):
+			col_missing_values = {}
+
+			for j in range(9):  # j goes down
+				this_cell = (j, col)
 
 
 
