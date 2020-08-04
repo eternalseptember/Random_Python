@@ -184,15 +184,21 @@ class Sudoku_Solver():
 			for i in range(9):  # i goes across
 				this_cell = (row, i)
 
+				if this_cell in self.possible_values:
+					poss_values = self.possible_values[this_cell]
+
+					# add it in the missing_values dict?
 
 
+
+		"""
 		# search each col for pairs/triplets
 		for col in range(9):
 			col_missing_values = {}
 
 			for j in range(9):  # j goes down
 				this_cell = (j, col)
-
+		"""
 
 
 
