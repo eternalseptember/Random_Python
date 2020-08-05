@@ -188,6 +188,10 @@ class Sudoku_Solver():
 					poss_values = self.possible_values[this_cell]
 
 					# add it in the missing_values dict?
+					if poss_values in row_missing_values:
+						row_missing_values[poss_values] += 1
+					else:
+						row_missing_values[poss_values] = 1
 
 
 
