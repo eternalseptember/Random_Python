@@ -194,6 +194,12 @@ class Sudoku_Solver():
 						row_missing_values[poss_values] = 1
 
 
+			# print the missing values
+			print('\trow {0} missing: '.format(row))
+			for missing_val in row_missing_values.keys():
+				print('{0}: {1}'.format(missing_val, row_missing_values[missing_val]))
+
+
 
 		"""
 		# search each col for pairs/triplets
