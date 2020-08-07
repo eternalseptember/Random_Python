@@ -152,7 +152,7 @@ class Sudoku_Solver():
 
 
 
-	def check_matching_pairs(self):
+	def check_matching_sets(self):
 		# Run this if checking unique doesn't solve everything.
 		"""
 		elimination due to matching pairs will get both examples.
@@ -187,11 +187,14 @@ class Sudoku_Solver():
 				if this_cell in self.possible_values:
 					poss_values = self.possible_values[this_cell]
 
+					# convert to hashable key
+					poss_str = ''.join(map(str, poss_values))
+
 					# add it in the missing_values dict?
-					if poss_values in row_missing_values:
-						row_missing_values[poss_values] += 1
+					if poss_str in row_missing_values:
+						row_missing_values[poss_str] += 1
 					else:
-						row_missing_values[poss_values] = 1
+						row_missing_values[poss_str] = 1
 
 
 			# print the missing values

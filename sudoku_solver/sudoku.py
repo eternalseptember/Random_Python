@@ -17,16 +17,22 @@ sudoku.print_board()
 print('Unique lookup test:')
 sudoku.check_all_unique()
 sudoku.print_board()
+sudoku.print_possible_values()
 
+"""
 print('Test again?')
 sudoku.check_all_unique()
 sudoku.print_board()
 sudoku.print_possible_values()
+"""
 
 
-
-
-
+print('Check matching pairs')
+sudoku.check_matching_sets()
+"""
+sudoku.print_board()
+sudoku.print_possible_values()
+"""
 
 
 
