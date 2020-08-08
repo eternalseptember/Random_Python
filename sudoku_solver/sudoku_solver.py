@@ -203,6 +203,12 @@ class Sudoku_Solver():
 				print('{0}: {1}'.format(missing_val, row_missing_values[missing_val]))
 
 
+			for missing_val in row_missing_values.keys():
+				if len(missing_val) == row_missing_values[missing_val]:
+					# remove these values from the rest of the row
+					print()
+
+
 
 		"""
 		# search each col for pairs/triplets
