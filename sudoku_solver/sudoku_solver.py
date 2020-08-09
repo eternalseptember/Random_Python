@@ -220,6 +220,12 @@ class Sudoku_Solver():
 		"""
 
 
+	def remove_matching_sets(self, matching_sets, poss_vals):
+		# matching_sets is a list of coordinates.
+		# poss_vals is a list of integers.
+		# length of both lists should match.
+		print()
+
 
 
 
