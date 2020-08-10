@@ -176,7 +176,12 @@ class Sudoku_Solver():
 		1. remove from row or col first.
 		2. then if values share the same box, remove from the rest of the box.
 		"""
+		self.check_matching_rows()
+		# self.check_matching_cols()
 
+
+
+	def check_matching_rows(self):
 		# search each row for pairs/triplets
 		for row in range(9):
 			row_missing_values = {}
@@ -210,14 +215,16 @@ class Sudoku_Solver():
 
 
 
-		"""
+
+
+	def check_matching_cols(self):
 		# search each col for pairs/triplets
 		for col in range(9):
 			col_missing_values = {}
 
 			for j in range(9):  # j goes down
 				this_cell = (j, col)
-		"""
+
 
 
 	def remove_matching_sets(self, matching_sets, poss_vals):
