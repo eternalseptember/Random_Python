@@ -211,7 +211,10 @@ class Sudoku_Solver():
 			for missing_val in row_missing_values.keys():
 				if len(missing_val) == row_missing_values[missing_val]:
 					# remove these values from the rest of the row
-					print()
+
+					# turn missing_val back into a list
+					missing_val_list = [int(val) for val in missing_list]
+
 
 
 
