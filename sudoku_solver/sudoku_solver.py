@@ -176,8 +176,8 @@ class Sudoku_Solver():
 		1. remove from row or col first.
 		2. then if values share the same box, remove from the rest of the box.
 		"""
-		self.check_matching_rows()
-		# self.check_matching_cols()
+		# self.check_matching_rows()
+		self.check_matching_cols()
 
 
 
@@ -188,32 +188,6 @@ class Sudoku_Solver():
 
 			for i in range(9):  # i goes across
 				this_cell = (row, i)
-
-				if this_cell in self.possible_values:
-					poss_values = self.possible_values[this_cell]
-
-					# convert to hashable key
-					poss_str = ''.join(map(str, poss_values))
-
-					# add it in the missing_values dict?
-					if poss_str in row_missing_values:
-						row_missing_values[poss_str] += 1
-					else:
-						row_missing_values[poss_str] = 1
-
-
-			# print the missing values
-			print('\trow {0} missing: '.format(row))
-			for missing_val in row_missing_values.keys():
-				print('{0}: {1}'.format(missing_val, row_missing_values[missing_val]))
-
-
-			for missing_val in row_missing_values.keys():
-				if len(missing_val) == row_missing_values[missing_val]:
-					# remove these values from the rest of the row
-
-					# turn missing_val back into a list
-					missing_val_list = [int(val) for val in missing_list]
 
 
 
@@ -227,6 +201,36 @@ class Sudoku_Solver():
 
 			for j in range(9):  # j goes down
 				this_cell = (j, col)
+
+				if this_cell in self.possible_values:
+					poss_values = self.possible_values[this_cell]
+
+					# convert to hashable key
+					poss_str = ''.join(map(str, poss_values))
+
+					# add it in the missing_values dict?
+					if poss_str in col_missing_values:
+						col_missing_values[poss_str] += 1
+					else:
+						col_missing_values[poss_str] = 1
+
+
+			# print the missing values
+			print('\trow {0} missing: '.format(col))
+			for missing_val in col_missing_values.keys():
+				print('{0}: {1}'.format(missing_val, col_missing_values[missing_val]))
+
+
+			print('turn missing_val back into lists')
+			for missing_val in col_missing_values.keys():
+				if len(missing_val) == col_missing_values[missing_val]:
+					# remove these values from the rest of the col
+
+					# turn missing_val back into a list
+					missing_val_list = [int(val) for val in missing_val]
+					print(missing_val_list)
+
+
 
 
 
