@@ -152,6 +152,7 @@ class Sudoku_Solver():
 
 
 
+
 	def check_matching_sets(self):
 		# Run this if checking unique doesn't solve everything.
 		"""
@@ -176,8 +177,59 @@ class Sudoku_Solver():
 		1. remove from row or col first.
 		2. then if values share the same box, remove from the rest of the box.
 		"""
-		# self.check_matching_rows()
 		self.check_matching_cols()
+		# self.check_matching_rows()
+
+
+
+	def check_matching_cols(self):
+		# search each col for pairs/triplets
+		for col in range(9):
+			col_missing_values = {}
+
+			# collect all the missing values in this col
+			for j in range(9):  # j goes down
+				this_cell = (j, col)
+
+				if this_cell in self.possible_values:
+					poss_values = self.possible_values[this_cell]
+
+					# convert to hashable key
+					poss_str = ''.join(map(str, poss_values))
+
+					# add it in the missing_values dict
+					if poss_str in col_missing_values:
+						col_missing_values[poss_str] += 1
+					else:
+						col_missing_values[poss_str] = 1
+
+			"""
+			# print the missing values
+			print('\trow {0} missing: '.format(col))
+			for missing_val in col_missing_values.keys():
+				print('{0}: {1}'.format(missing_val, col_missing_values[missing_val]))
+			"""
+
+			# search collected list of keys for pair/triplet matches
+			for missing_val in col_missing_values.keys():
+				if len(missing_val) == col_missing_values[missing_val]:
+					# turn missing_val back into a list
+					missing_val_list = [int(val) for val in missing_val]
+
+					print('turn missing_val back into lists')
+					print(missing_val_list)
+
+
+			# remove matches from the rest of the col
+			for j in range(9):  # j goes down
+				this_cell = (j, col)
+
+				if this_cell in self.possible_values:
+					poss_values = self.possible_values[this_cell]
+
+					# do the removing
+
+
 
 
 
@@ -188,48 +240,6 @@ class Sudoku_Solver():
 
 			for i in range(9):  # i goes across
 				this_cell = (row, i)
-
-
-
-
-
-
-	def check_matching_cols(self):
-		# search each col for pairs/triplets
-		for col in range(9):
-			col_missing_values = {}
-
-			for j in range(9):  # j goes down
-				this_cell = (j, col)
-
-				if this_cell in self.possible_values:
-					poss_values = self.possible_values[this_cell]
-
-					# convert to hashable key
-					poss_str = ''.join(map(str, poss_values))
-
-					# add it in the missing_values dict?
-					if poss_str in col_missing_values:
-						col_missing_values[poss_str] += 1
-					else:
-						col_missing_values[poss_str] = 1
-
-
-			# print the missing values
-			print('\trow {0} missing: '.format(col))
-			for missing_val in col_missing_values.keys():
-				print('{0}: {1}'.format(missing_val, col_missing_values[missing_val]))
-
-
-			print('turn missing_val back into lists')
-			for missing_val in col_missing_values.keys():
-				if len(missing_val) == col_missing_values[missing_val]:
-					# remove these values from the rest of the col
-
-					# turn missing_val back into a list
-					missing_val_list = [int(val) for val in missing_val]
-					print(missing_val_list)
-
 
 
 
