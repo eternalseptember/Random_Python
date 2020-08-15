@@ -2,7 +2,6 @@
 # Import into the main sudoku_solver class.
 
 
-
 def check_all_unique(self):
 	# check all row
 	if len(self.solved_list) < 81:
