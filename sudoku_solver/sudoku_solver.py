@@ -211,6 +211,7 @@ class Sudoku_Solver():
 			"""
 
 			# search collected list of keys for pair/triplet matches
+			matches = []
 			for missing_val in col_missing_values.keys():
 				if len(missing_val) == col_missing_values[missing_val]:
 					# turn missing_val back into a list
@@ -218,6 +219,8 @@ class Sudoku_Solver():
 
 					print('turn missing_val back into lists')
 					print(missing_val_list)
+
+					matches.append(missing_val_list)
 
 
 			# remove matches from the rest of the col
