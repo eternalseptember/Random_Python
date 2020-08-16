@@ -66,17 +66,20 @@ def check_matching_cols(self):
 		if len(matches) > 0:
 			print(matches)
 
-			# remove matches from the rest of the col
-			for j in range(9):  # j goes down
-				this_cell = (j, col)
+			for match in matches:
+				set_length = len(match)  # pair? triplet? quad?
 
-				if this_cell in self.possible_values:
-					poss_values = self.possible_values[this_cell]
+				# remove matches from the rest of the col
+				for j in range(9):  # j goes down
+					this_cell = (j, col)
 
-					# if there are more possibilities in this location than len(match)
-					# remove possibilities
+					if this_cell in self.possible_values:
+						poss_values = self.possible_values[this_cell]
 
-					# modified possible_vals_check
+						# if there are more possibilities in this location than len(match)
+						# remove possibilities
+
+						# modified possible_vals_check
 
 
 
