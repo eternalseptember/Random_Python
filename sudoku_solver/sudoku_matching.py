@@ -61,20 +61,23 @@ def check_matching_cols(self):
 				missing_val_list = [int(val) for val in missing_val]
 				matches.append(missing_val_list)
 
-		# if there are matching sets, remove values as possibilities in other
+
+		# If there are matching sets, remove values as possibilities in other
 		# boxes outside the set/pair/triplet.
 		if len(matches) > 0:
 			print(matches)
 
 			for match in matches:
-				set_length = len(match)  # pair? triplet? quad?
-
-				# remove matches from the rest of the col
+				# Scan all cells in column for each match.	
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
 
 					if this_cell in self.possible_values:
 						poss_values = self.possible_values[this_cell]
+
+						# Don't want to erase the match.
+						if poss_values == match:
+							continue
 
 						# if there are more possibilities in this location than len(match)
 						# remove possibilities
