@@ -68,21 +68,22 @@ def check_matching_cols(self):
 			print(matches)
 
 			for match in matches:
-				# Scan all cells in column for each match.	
+				# Scan all cells in col for each match.	
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
 
 					if this_cell in self.possible_values:
 						poss_values = self.possible_values[this_cell]
 
-						# Don't want to erase the match.
 						if poss_values == match:
+							# Don't want to erase the match.
 							continue
-
-						# if there are more possibilities in this location than len(match)
-						# remove possibilities
-
-						# modified possible_vals_check
+						else:
+							# Remove any values in the matched set.
+							for val in match:
+								if val in poss_values:
+									poss_values.remove(val)
+							# modified possible_vals_check
 
 
 
