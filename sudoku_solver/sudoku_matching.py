@@ -72,6 +72,7 @@ def check_matching_cols(self):
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
 
+					# turn this into its own function?
 					if this_cell in self.possible_values:
 						poss_values = self.possible_values[this_cell]
 
@@ -83,8 +84,12 @@ def check_matching_cols(self):
 							for val in match:
 								if val in poss_values:
 									poss_values.remove(val)
-							# modified possible_vals_check
 
+							# Check if solved.
+							if len(poss_values) == 1:
+								if (this_cell not in self.solved_list) and \
+									(this_cell not in self.solved_queue):
+									self.solved_queue.append(this_cell)
 
 
 

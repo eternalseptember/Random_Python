@@ -133,8 +133,6 @@ class Sudoku_Solver():
 			# Remove solved_value as a possible choice in this coord.
 			poss_values = self.possible_values[coord]
 
-			# Restructure this to remove a set of values?
-
 			if solved_value in poss_values:
 				poss_values.remove(solved_value)
 
