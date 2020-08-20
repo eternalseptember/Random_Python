@@ -75,7 +75,7 @@ class Sudoku_Solver():
 
 		row, col = coord
 		solved_value = self.possible_values.pop(coord)
-		self.board[row][col] = solved_value[0]  # Set the value.
+		self.board[row][col] = solved_value[0]  # Set the value on the board.
 		self.remove_num(coord, solved_value[0])
 
 
@@ -145,7 +145,7 @@ class Sudoku_Solver():
 
 
 	def solve(self, coord):
-		# To manually resolve one individual cell.
+		# To MANUALLY resolve one individual cell.
 		self.resolve(coord)
 		self.solve_queue()
 

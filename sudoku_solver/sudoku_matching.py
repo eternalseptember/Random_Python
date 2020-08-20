@@ -91,6 +91,9 @@ def check_matching_cols(self):
 									(this_cell not in self.solved_queue):
 									self.solved_queue.append(this_cell)
 
+			# If anything's been reduced to one possibility:
+			self.solve_queue()
+
 
 
 
@@ -105,10 +108,9 @@ def check_matching_rows(self):
 
 
 
-def remove_matching_sets(self, matching_sets, poss_vals):
-	# matching_sets is a list of coordinates.
-	# poss_vals is a list of integers.
-	# length of both lists should match.
+def remove_matching_sets(self, coord, matched_set):
+	# matched_set is the list of values in the pair/triplet/set. 
+
 	print()
 
 

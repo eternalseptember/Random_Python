@@ -87,7 +87,10 @@ def solve_lookup_table(self, lookup_dict):
 			print('{0} is in {1}'.format(poss_value, new_coord))
 
 			self.possible_values[new_coord] = [poss_value]
-			self.solve(new_coord)
+
+			# clean up confusing redundant functions
+			self.solved_queue.append(new_coord)
+			self.solve_queue()
 
 
 
