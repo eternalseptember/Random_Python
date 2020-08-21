@@ -3,22 +3,30 @@
 
 
 def check_all_unique(self):
-	# check all row
-	if len(self.solved_list) < 81:
-		for row in range(9):
-			self.check_unique_row((row, 0))
+	beg_count = 0
+	end_count = len(self.solved_list)
 
-	# check all col
-	if len(self.solved_list) < 81:
-		for col in range(9):
-			self.check_unique_col((0, col))
+	while (end_count - beg_count) > 0:
+		beg_count = len(self.solved_list)
 
-	# check all box
-	if len(self.solved_list) < 81:
-		for i in [0, 3, 6]:
-			for j in [0, 3, 6]:
-				coord = (i, j)
-				self.check_unique_box(coord)
+		# check all row
+		if len(self.solved_list) < 81:
+			for row in range(9):
+				self.check_unique_row((row, 0))
+
+		# check all col
+		if len(self.solved_list) < 81:
+			for col in range(9):
+				self.check_unique_col((0, col))
+
+		# check all box
+		if len(self.solved_list) < 81:
+			for i in [0, 3, 6]:
+				for j in [0, 3, 6]:
+					coord = (i, j)
+					self.check_unique_box(coord)
+
+		end_count = len(self.solved_list)
 
 
 def check_unique_row(self, coord):
