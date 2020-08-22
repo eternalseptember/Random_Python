@@ -68,31 +68,16 @@ def check_matching_cols(self):
 			print(matches)
 
 			for match in matches:
-				# Scan all cells in col for each match.	
+				# Scan all cells in col for each match.
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
 
-					# turn this into its own function?
-					if this_cell in self.possible_values:
-						poss_values = self.possible_values[this_cell]
-
-						if poss_values == match:
-							# Don't want to erase the match.
-							continue
-						else:
-							# Remove any values in the matched set.
-							for val in match:
-								if val in poss_values:
-									poss_values.remove(val)
-
-							# Check if solved.
-							if len(poss_values) == 1:
-								if (this_cell not in self.solved_list) and \
-									(this_cell not in self.solved_queue):
-									self.solved_queue.append(this_cell)
+					self.remove_matching_sets(this_cell, match)
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
+
+
 
 
 
@@ -109,9 +94,24 @@ def check_matching_rows(self):
 
 
 def remove_matching_sets(self, coord, matched_set):
-	# matched_set is the list of values in the pair/triplet/set. 
+	# matched_set is a list of values in the pair/triplet/set.
+	if coord in self.possible_values:
+		poss_values = self.possible_values[coord]
 
-	print()
+		if poss_values == matched_set:
+			# Don't want to erase the match.
+			return
+		else:
+			# Remove any values in the matched set.
+			for val in matched_set:
+				if val in poss_values:
+					poss_values.remove(val)
+
+			# Check if solved.
+			if len(poss_values) == 1:
+				if (coord not in self.solved_list) and \
+					(coord not in self.solved_queue):
+					self.solved_queue.append(coord)
 
 
 

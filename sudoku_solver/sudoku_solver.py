@@ -136,7 +136,7 @@ class Sudoku_Solver():
 			if solved_value in poss_values:
 				poss_values.remove(solved_value)
 
-			# Add to queue if only one possible value is remaining.
+			# Add to solved queue if only one possible value is remaining.
 			if len(poss_values) == 1:
 				if (coord not in self.init_queue) and \
 					(coord not in self.solved_list) and \

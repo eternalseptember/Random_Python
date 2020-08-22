@@ -9,17 +9,17 @@ def check_all_unique(self):
 	while (end_count - beg_count) > 0:
 		beg_count = len(self.solved_list)
 
-		# check all row
+		# Check all rows.
 		if len(self.solved_list) < 81:
 			for row in range(9):
 				self.check_unique_row((row, 0))
 
-		# check all col
+		# Check all cols.
 		if len(self.solved_list) < 81:
 			for col in range(9):
 				self.check_unique_col((0, col))
 
-		# check all box
+		# Check all boxes.
 		if len(self.solved_list) < 81:
 			for i in [0, 3, 6]:
 				for j in [0, 3, 6]:
@@ -68,7 +68,6 @@ def check_unique_box(self, coord):
 			row = box_row * 3 + i
 			col = box_col * 3 + j
 			this_cell = (row, col)
-
 			self.set_lookup_table(this_cell, val_lookup)
 
 	self.solve_lookup_table(val_lookup)
@@ -90,14 +89,15 @@ def solve_lookup_table(self, lookup_dict):
 	# Does any missing value have only one possible location?
 	for poss_value in lookup_dict.keys():
 		poss_locs = len(lookup_dict[poss_value])
+
 		if poss_locs == 1:
 			new_coord = lookup_dict[poss_value][0]
-			print('{0} is in {1}'.format(poss_value, new_coord))
-
 			self.possible_values[new_coord] = [poss_value]
 
-			# clean up confusing redundant functions
+			print('{0} is in {1}'.format(poss_value, new_coord))
 			self.solved_queue.append(new_coord)
+
+			# Could run this somewhere else.
 			self.solve_queue()
 
 
