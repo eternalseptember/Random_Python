@@ -54,12 +54,7 @@ def check_matching_cols(self):
 
 
 		# Search this col's tally for pair/triplet matches.
-		matches = []
-		for missing_val in col_missing_values.keys():
-			if len(missing_val) == col_missing_values[missing_val]:
-				# Turn missing_val hash back into a list.
-				missing_val_list = [int(val) for val in missing_val]
-				matches.append(missing_val_list)
+		matches = self.find_matches(col_missing_values)
 
 
 		# If there are matching sets, remove values as possibilities in other
@@ -91,6 +86,19 @@ def check_matching_rows(self):
 			this_cell = (row, i)
 
 
+def find_matches(self, missing_val_dict):
+	# Search the dictionary of missing values for matches between
+	# possible values in a cell and
+	# the number of cells with that exact list of possibilities.
+	matches = []
+
+	for missing_val in missing_val_dict.keys():
+		if len(missing_val) == missing_val_dict[missing_val]:
+			# Turn missing_val hash back into a list.
+			missing_val_list = [int(val) for val in missing_val]
+			matches.append(missing_val_list)
+
+	return matches
 
 
 def remove_matching_sets(self, coord, matched_set):

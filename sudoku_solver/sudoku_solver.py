@@ -11,7 +11,7 @@ class Sudoku_Solver():
 		solve_lookup_table
 
 	from sudoku_matching import check_matching_sets, check_matching_cols, \
-		check_matching_rows, remove_matching_sets
+		check_matching_rows, find_matches, remove_matching_sets
 
 
 	def __init__(self):
@@ -80,6 +80,8 @@ class Sudoku_Solver():
 
 
 	def remove_num(self, coord, solved_value):
+		# After a number on the board has been filled in, remove it as a
+		# possibility in all affected areas.
 		self.remove_num_in_row(coord, solved_value)
 		self.remove_num_in_col(coord, solved_value)
 		self.remove_num_in_box(coord, solved_value)
