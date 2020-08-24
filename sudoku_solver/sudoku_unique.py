@@ -74,7 +74,7 @@ def check_unique_box(self, coord):
 
 
 def set_lookup_table(self, coord, lookup_dict):
-	# List possible coordinates for each value.
+	# List all possible locations for each missing values.
 	if coord in self.possible_values:
 		poss_values = self.possible_values[coord]
 

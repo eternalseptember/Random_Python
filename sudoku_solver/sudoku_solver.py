@@ -11,7 +11,8 @@ class Sudoku_Solver():
 		solve_lookup_table
 
 	from sudoku_matching import check_matching_sets, check_matching_cols, \
-		check_matching_rows, find_matches, remove_matching_sets
+		check_matching_rows, set_missing_val_table, find_matches, \
+		remove_matching_sets
 
 
 	def __init__(self):

@@ -34,47 +34,27 @@ def check_matching_sets(self):
 def check_matching_cols(self):
 	# Search each col for matching pairs/triplets.
 	for col in range(9):
-		col_missing_values = {}
+		col_missing_vals = {}
 
 		# Collect all the missing value combinations in this col.
 		for j in range(9):  # j goes down
 			this_cell = (j, col)
-
-			if this_cell in self.possible_values:
-				poss_values = self.possible_values[this_cell]
-
-				# Convert to hashable key.
-				poss_str = ''.join(map(str, poss_values))
-
-				# Tally combinations of missing values.
-				if poss_str in col_missing_values:
-					col_missing_values[poss_str] += 1
-				else:
-					col_missing_values[poss_str] = 1
-
+			self.set_missing_val_table(this_cell, col_missing_vals)
 
 		# Search this col's tally for pair/triplet matches.
-		matches = self.find_matches(col_missing_values)
-
+		matches = self.find_matches(col_missing_vals)
 
 		# If there are matching sets, remove values as possibilities in other
 		# boxes outside the set/pair/triplet.
 		if len(matches) > 0:
-			print(matches)
-
 			for match in matches:
 				# Scan all cells in col for each match.
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
-
 					self.remove_matching_sets(this_cell, match)
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
-
-
-
-
 
 
 def check_matching_rows(self):
@@ -84,6 +64,21 @@ def check_matching_rows(self):
 
 		for i in range(9):  # i goes across
 			this_cell = (row, i)
+
+
+def set_missing_val_table(self, coord, missing_val_dict):
+	# Tallies the combinations of missing values in each area.
+	if coord in self.possible_values:
+		poss_values = self.possible_values[coord]
+
+		# Convert to hashable key.
+		poss_str = ''.join(map(str, poss_values))
+
+		# Tally combinations of missing values.
+		if poss_str in missing_val_dict:
+			missing_val_dict[poss_str] += 1
+		else:
+			missing_val_dict[poss_str] = 1
 
 
 def find_matches(self, missing_val_dict):
@@ -108,6 +103,7 @@ def remove_matching_sets(self, coord, matched_set):
 
 		if poss_values == matched_set:
 			# Don't want to erase the match.
+			print('Matches found: {0} at {1}'.format(matched_set, coord))
 			return
 		else:
 			# Remove any values in the matched set.
