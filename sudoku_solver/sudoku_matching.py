@@ -48,10 +48,16 @@ def check_matching_cols(self):
 		# boxes outside the set/pair/triplet.
 		if len(matches) > 0:
 			for match in matches:
-				# Scan all cells in col for each match.
+				# Col
+				print('Reduce in col.')
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
 					self.remove_matching_sets(this_cell, match)
+
+				# Box
+				print('Reduce in box.')
+				# check whether all values in match are in the same box
+				self.in_same_box(match)
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
@@ -94,6 +100,11 @@ def find_matches(self, missing_val_dict):
 			matches.append(missing_val_list)
 
 	return matches
+
+
+def in_same_box(self, matched_set):
+	# matched_set is a list of values in the pair/triplet/set.
+	return
 
 
 def remove_matching_sets(self, coord, matched_set):
