@@ -42,7 +42,7 @@ def check_matching_cols(self):
 			self.set_missing_val_table(this_cell, col_missing_vals)
 
 		# Search this col's tally for pair/triplet matches.
-		matches = self.find_matches(col_missing_vals)
+		matches, matches_locs = self.find_matches(col_missing_vals)
 
 		# If there are matching sets, remove values as possibilities in other
 		# boxes outside the set/pair/triplet.
@@ -81,10 +81,10 @@ def set_missing_val_table(self, coord, missing_val_dict):
 		poss_str = ''.join(map(str, poss_values))
 
 		# Tally combinations of missing values.
-		if poss_str in missing_val_dict:
-			missing_val_dict[poss_str] += 1
+		if poss_str not in missing_val_dict:
+			missing_val_dict[poss_str] = [coord]
 		else:
-			missing_val_dict[poss_str] = 1
+			missing_val_dict[poss_str].append(coord)
 
 
 def find_matches(self, missing_val_dict):
@@ -92,18 +92,20 @@ def find_matches(self, missing_val_dict):
 	# possible values in a cell and
 	# the number of cells with that exact list of possibilities.
 	matches = []
+	matches_locs = {}
 
 	for missing_val in missing_val_dict.keys():
-		if len(missing_val) == missing_val_dict[missing_val]:
+		if len(missing_val) == len(missing_val_dict[missing_val]):
 			# Turn missing_val hash back into a list.
 			missing_val_list = [int(val) for val in missing_val]
 			matches.append(missing_val_list)
 
-	return matches
+	return matches, matches_locs
 
 
-def in_same_box(self, matched_set):
-	# matched_set is a list of values in the pair/triplet/set.
+def in_same_box(self, coords_list):
+	# coords_list is all of the cells in the match, sharing the same
+	# list of possible values.
 	return
 
 
