@@ -49,13 +49,13 @@ def check_matching_cols(self):
 		if len(matches) > 0:
 			for match in matches:
 				# Col
-				print('Reduce in col.')
+				print('\tReduce in col.')
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
 					self.remove_matching_sets(this_cell, match)
 
 				# Box
-				print('Reduce in box.')
+				print('\tReduce in box.')
 				# check whether all values in match are in the same box
 				self.in_same_box(match)
 
@@ -91,6 +91,7 @@ def find_matches(self, missing_val_dict):
 	# Search the dictionary of missing values for matches between
 	# possible values in a cell and
 	# the number of cells with that exact list of possibilities.
+	# Also keep track of matches' locations.
 	matches = []
 	matches_locs = {}
 
@@ -99,6 +100,14 @@ def find_matches(self, missing_val_dict):
 			# Turn missing_val hash back into a list.
 			missing_val_list = [int(val) for val in missing_val]
 			matches.append(missing_val_list)
+			matches_locs[missing_val] = missing_val_dict[missing_val]
+
+	if len(matches) > 0:
+		print('Cells in the match:')
+		for match in matches_locs.keys():
+			print('{0} are in'.format(match), end=' ')
+			locs = matches_locs[match]
+			print(locs)
 
 	return matches, matches_locs
 
