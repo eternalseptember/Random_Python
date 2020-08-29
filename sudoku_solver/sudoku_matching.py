@@ -48,16 +48,15 @@ def check_matching_cols(self):
 		# boxes outside the set/pair/triplet.
 		if len(matches) > 0:
 			for match in matches:
-				# Col
-				print('\tReduce in col.')
+				# Reduce within col.
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
-					self.remove_matching_sets(this_cell, match)
+					self.remove_matching_sets(this_cell, match, 'col')
 
-				# Box
-				print('\tReduce in box.')
-				# check whether all values in match are in the same box
-				self.in_same_box(match)
+				# Reduce within box.
+				match_str = ''.join(map(str, match))
+				match_loc = matches_locs[match_str]
+				self.in_same_box(match_loc)
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
@@ -102,30 +101,35 @@ def find_matches(self, missing_val_dict):
 			matches.append(missing_val_list)
 			matches_locs[missing_val] = missing_val_dict[missing_val]
 
+	"""
 	if len(matches) > 0:
 		print('Cells in the match:')
 		for match in matches_locs.keys():
 			print('{0} are in'.format(match), end=' ')
 			locs = matches_locs[match]
 			print(locs)
+	"""
 
 	return matches, matches_locs
 
 
 def in_same_box(self, coords_list):
+	# Checks whether all values in match are in the same box.
 	# coords_list is all of the cells in the match, sharing the same
 	# list of possible values.
+	print(coords_list)
 	return
 
 
-def remove_matching_sets(self, coord, matched_set):
+def remove_matching_sets(self, coord, matched_set, label=''):
 	# matched_set is a list of values in the pair/triplet/set.
 	if coord in self.possible_values:
 		poss_values = self.possible_values[coord]
 
 		if poss_values == matched_set:
 			# Don't want to erase the match.
-			print('Matches found: {0} at {1}'.format(matched_set, coord))
+			print('{0} match found: {1} at {2}'
+				.format(label, matched_set, coord))
 			return
 		else:
 			# Remove any values in the matched set.
