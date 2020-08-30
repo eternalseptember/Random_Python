@@ -117,8 +117,13 @@ def in_same_box(self, coords_list):
 	# Checks whether all values in match are in the same box.
 	# coords_list is all of the cells in the match, sharing the same
 	# list of possible values.
+	boxes = []
 	print(coords_list)
-	return
+
+	if len(set(boxes)) == 1:
+		return True
+	else:
+		return False
 
 
 def remove_matching_sets(self, coord, matched_set, label=''):
