@@ -56,7 +56,8 @@ def check_matching_cols(self):
 				# Reduce within box.
 				match_str = ''.join(map(str, match))
 				match_loc = matches_locs[match_str]
-				self.in_same_box(match_loc)
+				is_same_box = self.in_same_box(match_loc)
+				print('In same box? {0}'.format(is_same_box))
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
@@ -101,15 +102,6 @@ def find_matches(self, missing_val_dict):
 			matches.append(missing_val_list)
 			matches_locs[missing_val] = missing_val_dict[missing_val]
 
-	"""
-	if len(matches) > 0:
-		print('Cells in the match:')
-		for match in matches_locs.keys():
-			print('{0} are in'.format(match), end=' ')
-			locs = matches_locs[match]
-			print(locs)
-	"""
-
 	return matches, matches_locs
 
 
@@ -118,8 +110,15 @@ def in_same_box(self, coords_list):
 	# coords_list is all of the cells in the match, sharing the same
 	# list of possible values.
 	boxes = []
-	print(coords_list)
 
+	for coord in coords_list:
+		ref_row, ref_col = coord
+		box_row = ref_row // 3
+		box_col = ref_col // 3
+		box = (box_row, box_col)
+		boxes.append(box)
+
+	# Are they all in the same box?
 	if len(set(boxes)) == 1:
 		return True
 	else:
