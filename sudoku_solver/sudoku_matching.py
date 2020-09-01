@@ -56,8 +56,10 @@ def check_matching_cols(self):
 				# Reduce within box.
 				match_str = ''.join(map(str, match))
 				match_loc = matches_locs[match_str]
-				is_same_box = self.in_same_box(match_loc)
-				print('In same box? {0}'.format(is_same_box))
+				is_same_box, box_loc = self.in_same_box(match_loc)
+
+				if is_same_box:
+					print('box is in {0}'.format(box_loc))
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
@@ -120,9 +122,9 @@ def in_same_box(self, coords_list):
 
 	# Are they all in the same box?
 	if len(set(boxes)) == 1:
-		return True
+		return True, boxes[0]
 	else:
-		return False
+		return False, None
 
 
 def remove_matching_sets(self, coord, matched_set, label=''):
