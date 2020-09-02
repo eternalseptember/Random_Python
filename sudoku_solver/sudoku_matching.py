@@ -42,12 +42,12 @@ def check_matching_cols(self):
 			self.set_missing_val_table(this_cell, col_missing_vals)
 
 		# Search this col's tally for pair/triplet matches.
-		matches, matches_locs = self.find_matches(col_missing_vals)
+		matches_vals, matches_locs = self.find_matches(col_missing_vals)
 
 		# If there are matching sets, remove values as possibilities in other
 		# boxes outside the set/pair/triplet.
-		if len(matches) > 0:
-			for match in matches:
+		if len(matches_vals) > 0:
+			for match in matches_vals:
 				# Reduce within col.
 				for j in range(9):  # j goes down
 					this_cell = (j, col)
@@ -59,7 +59,18 @@ def check_matching_cols(self):
 				is_same_box, box_loc = self.in_same_box(match_loc)
 
 				if is_same_box:
-					print('box is in {0}'.format(box_loc))
+					box_row, box_col = box_loc
+					# print('box is in {0}'.format(box_loc))
+
+					# turn into its own function?
+					for i in range(3):
+						for j in range(3):
+							row = box_row * 3 + i
+							col = box_col * 3 + j
+							this_cell = (row, col)
+							self.remove_matching_sets(this_cell, match, 'row')
+
+
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
@@ -94,23 +105,24 @@ def find_matches(self, missing_val_dict):
 	# possible values in a cell and
 	# the number of cells with that exact list of possibilities.
 	# Also keep track of matches' locations.
-	matches = []
+	matches_vals = []
 	matches_locs = {}
 
 	for missing_val in missing_val_dict.keys():
 		if len(missing_val) == len(missing_val_dict[missing_val]):
 			# Turn missing_val hash back into a list.
 			missing_val_list = [int(val) for val in missing_val]
-			matches.append(missing_val_list)
+			matches_vals.append(missing_val_list)
 			matches_locs[missing_val] = missing_val_dict[missing_val]
 
-	return matches, matches_locs
+	return matches_vals, matches_locs
 
 
 def in_same_box(self, coords_list):
 	# Checks whether all values in match are in the same box.
 	# coords_list is all of the cells in the match, sharing the same
 	# list of possible values.
+	# box_loc = (box_row, box_col)
 	boxes = []
 
 	for coord in coords_list:
@@ -121,6 +133,7 @@ def in_same_box(self, coords_list):
 		boxes.append(box)
 
 	# Are they all in the same box?
+	# And if they are, which box?
 	if len(set(boxes)) == 1:
 		return True, boxes[0]
 	else:
