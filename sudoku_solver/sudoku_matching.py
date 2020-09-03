@@ -8,12 +8,6 @@ def check_matching_sets(self):
 	elimination due to matching pairs will get both examples.
 	are missing values all in the same box?
 
-	tally each row/col's missing values.
-	In puzzle_5:
-	column 6 is missing 4 and 6, which are in the same box.
-	Remove possibilities outside this col within this box (0-2, 7),
-	because col is mostly solved, but box is not.
-
 
 	tally each box's missing values.
 	In puzzle_5:
@@ -54,21 +48,7 @@ def check_matching_cols(self):
 					self.remove_matching_sets(this_cell, match, 'col')
 
 				# Reduce within box.
-				match_str = ''.join(map(str, match))
-				match_loc = matches_locs[match_str]
-				is_same_box, box_loc = self.in_same_box(match_loc)
-
-				if is_same_box:
-					box_row, box_col = box_loc
-					# print('box is in {0}'.format(box_loc))
-
-					# turn into its own function?
-					for i in range(3):
-						for j in range(3):
-							row = box_row * 3 + i
-							col = box_col * 3 + j
-							this_cell = (row, col)
-							self.remove_matching_sets(this_cell, match, 'row')
+				self.remove_in_box(match, matches_locs)
 
 
 
@@ -140,6 +120,26 @@ def in_same_box(self, coords_list):
 		return False, None
 
 
+def remove_in_box(self, match, match_dict):
+	# match is the list of values in the pair/triplet/set.
+	# match_dict keeps track of where the match is with a hashable key.
+	# If cells of the match are in the same box, then remove those values
+	# as possibilities from the rest of the box.
+	match_str = ''.join(map(str, match))
+	match_loc = match_dict[match_str]
+	is_same_box, box_loc = self.in_same_box(match_loc)
+
+	if is_same_box:
+		box_row, box_col = box_loc
+
+		for i in range(3):
+			for j in range(3):
+				row = box_row * 3 + i
+				col = box_col * 3 + j
+				this_cell = (row, col)
+				self.remove_matching_sets(this_cell, match, 'box')
+
+
 def remove_matching_sets(self, coord, matched_set, label=''):
 	# matched_set is a list of values in the pair/triplet/set.
 	if coord in self.possible_values:
@@ -161,6 +161,8 @@ def remove_matching_sets(self, coord, matched_set, label=''):
 				if (coord not in self.solved_list) and \
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
+
+
 
 
 
