@@ -16,6 +16,7 @@ sudoku.init_reduce()
 sudoku.print_board()
 sudoku.print_possible_values()
 
+
 """
 print('Unique lookup test:')
 sudoku.check_all_unique()

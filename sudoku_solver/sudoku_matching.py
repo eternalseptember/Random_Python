@@ -98,6 +98,18 @@ def find_matches(self, missing_val_dict):
 	return matches_vals, matches_locs
 
 
+
+def in_same_row(self, coords_list):
+	# Are all the cells in coords_list in the same row?
+	return None
+
+
+def in_same_col(self, coords_list):
+	# Are all the cells in coords_list in the same row?
+	return None
+
+
+
 def in_same_box(self, coords_list):
 	# Checks whether all values in match are in the same box.
 	# coords_list is all of the cells in the match, sharing the same
