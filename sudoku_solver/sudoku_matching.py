@@ -5,9 +5,8 @@
 def check_matching_sets(self):
 	# Run this if checking unique doesn't solve everything.
 	"""
-	elimination due to matching pairs will get both examples.
+	elimination due to matching pairs
 	are missing values all in the same box?
-
 
 	tally each box's missing values.
 	In puzzle_5:
@@ -15,10 +14,6 @@ def check_matching_sets(self):
 	6 and 9 as possiblities outside the box in the same column (row, 4).
 	Remove possibilities from same col outside of this box,
 	because box is mostly solved, but col is not.
-
-
-	1. remove from row or col first.
-	2. then if values share the same box, remove from the rest of the box.
 	"""
 	self.check_matching_cols()
 	# self.check_matching_rows()
@@ -98,18 +93,6 @@ def find_matches(self, missing_val_dict):
 	return matches_vals, matches_locs
 
 
-
-def in_same_row(self, coords_list):
-	# Are all the cells in coords_list in the same row?
-	return None
-
-
-def in_same_col(self, coords_list):
-	# Are all the cells in coords_list in the same row?
-	return None
-
-
-
 def in_same_box(self, coords_list):
 	# Checks whether all values in match are in the same box.
 	# coords_list is all of the cells in the match, sharing the same
@@ -128,6 +111,34 @@ def in_same_box(self, coords_list):
 	# And if they are, which box?
 	if len(set(boxes)) == 1:
 		return True, boxes[0]
+	else:
+		return False, None
+
+
+def in_same_row(self, coords_list):
+	# Are all the cells in coords_list in the same row?
+	rows = []
+
+	# check here
+
+	# Are they all in the same row?
+	# And if they are, which row?
+	if len(set(rows)) == 1:
+		return True, rows[0]
+	else:
+		return False, None
+
+
+def in_same_col(self, coords_list):
+	# Are all the cells in coords_list in the same row?
+	cols = []
+
+	# check here
+
+	# Are they all in the same col?
+	# And if they are, which col?
+	if len(set(cols)) == 1:
+		return True, cols[0]
 	else:
 		return False, None
 

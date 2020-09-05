@@ -12,7 +12,7 @@ class Sudoku_Solver():
 
 	from sudoku_matching import check_matching_sets, check_matching_cols, \
 		check_matching_rows, set_missing_val_table, find_matches, \
-		in_same_row, in_same_col, in_same_box, remove_in_box, \
+		in_same_box, in_same_row, in_same_col, remove_in_box, \
 		remove_matching_sets
 
 
