@@ -15,8 +15,8 @@ def check_matching_sets(self):
 	Remove possibilities from same col outside of this box,
 	because box is mostly solved, but col is not.
 	"""
-	self.check_matching_cols()
-	# self.check_matching_rows()
+	# self.check_matching_cols()
+	self.check_matching_rows()
 
 
 
