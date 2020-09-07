@@ -52,12 +52,20 @@ def check_matching_cols(self):
 
 
 def check_matching_rows(self):
-	# search each row for pairs/triplets
+	# Search each row for matching pairs/triplets.
 	for row in range(9):
-		row_missing_values = {}
+		row_missing_vals = {}
 
+		# Collect all the missing value combinations in this row.
 		for i in range(9):  # i goes across
 			this_cell = (row, i)
+			self.set_missing_val_table(this_cell, row_missing_vals)
+
+		# Search this row's tally for pair/triplet matches.
+		matches_vals, matches_locs = self.find_matches(row_missing_vals)
+
+
+
 
 
 def set_missing_val_table(self, coord, missing_val_dict):
