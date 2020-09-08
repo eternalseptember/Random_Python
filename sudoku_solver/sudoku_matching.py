@@ -45,8 +45,6 @@ def check_matching_cols(self):
 				# Reduce within box.
 				self.remove_in_box(match, matches_locs)
 
-
-
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
 
@@ -64,8 +62,20 @@ def check_matching_rows(self):
 		# Search this row's tally for pair/triplet matches.
 		matches_vals, matches_locs = self.find_matches(row_missing_vals)
 
+		# If there are matching sets, remove values as possibilities in other
+		# boxes outside the set/pair/triplet.
+		if len(matches_vals) > 0:
+			for match in matches_vals:
+				# Reduce within row.
+				for i in range(9):  # i goes across
+					this_cell = (row, i)
+					self.remove_matching_sets(this_cell, match, 'row')
 
+				# Reduce within box.
+				self.remove_in_box(match, matches_locs)
 
+			# If anything's been reduced to one possibility:
+			self.solve_queue()
 
 
 def set_missing_val_table(self, coord, missing_val_dict):
