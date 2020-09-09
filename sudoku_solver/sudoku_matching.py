@@ -137,7 +137,10 @@ def in_same_row(self, coords_list):
 	# Are all the cells in coords_list in the same row?
 	rows = []
 
-	# check here
+	# Unpack and tally rows here.
+	for coord in coords_list:
+		row, col = coord
+		rows.append(row)
 
 	# Are they all in the same row?
 	# And if they are, which row?
@@ -151,7 +154,7 @@ def in_same_col(self, coords_list):
 	# Are all the cells in coords_list in the same row?
 	cols = []
 
-	# check here
+	# Unpack and tally cols here.
 
 	# Are they all in the same col?
 	# And if they are, which col?
