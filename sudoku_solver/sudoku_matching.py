@@ -155,6 +155,9 @@ def in_same_col(self, coords_list):
 	cols = []
 
 	# Unpack and tally cols here.
+	for coord in coords_list:
+		row, col = coord
+		cols.append(col)
 
 	# Are they all in the same col?
 	# And if they are, which col?
