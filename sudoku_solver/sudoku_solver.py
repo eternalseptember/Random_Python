@@ -10,10 +10,11 @@ class Sudoku_Solver():
 		check_unique_col, check_unique_box, set_lookup_table, \
 		solve_lookup_table
 
+	# re-arrange this later
 	from sudoku_matching import check_matching_sets, check_matching_cols, \
 		check_matching_rows, set_missing_val_table, find_matches, \
 		in_same_box, in_same_row, in_same_col, remove_in_box, \
-		remove_matching_sets
+		remove_matching_sets, check_within_box
 
 
 	def __init__(self):

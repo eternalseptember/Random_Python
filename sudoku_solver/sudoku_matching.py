@@ -15,7 +15,7 @@ def check_matching_sets(self):
 	Remove possibilities from same col outside of this box,
 	because box is mostly solved, but col is not.
 	"""
-	# self.check_matching_cols()
+	self.check_matching_cols()
 	self.check_matching_rows()
 
 
@@ -76,6 +76,17 @@ def check_matching_rows(self):
 
 			# If anything's been reduced to one possibility:
 			self.solve_queue()
+
+
+
+def check_within_box(self):
+	"""
+	Example: If a box is missing the value 7, and the only possible locations
+	for 7 are in the same row, then remove 7 as possibilities in the rest of
+	the row outside the box.
+	"""
+	return None
+
 
 
 def set_missing_val_table(self, coord, missing_val_dict):
