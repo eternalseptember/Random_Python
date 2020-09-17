@@ -78,15 +78,20 @@ def check_matching_rows(self):
 			self.solve_queue()
 
 
+def check_within_boxes(self):
+	# Check all nine boxes for patterns to eliminate possibilities.
 
-def check_within_box(self):
+	return None
+
+
+def check_within_a_box(self, coord):
+	# Check within a single box to eliminate possibilities.
 	"""
 	Example: If a box is missing the value 7, and the only possible locations
 	for 7 are in the same row, then remove 7 as possibilities in the rest of
 	the row outside the box.
 	"""
 	return None
-
 
 
 def set_missing_val_table(self, coord, missing_val_dict):
