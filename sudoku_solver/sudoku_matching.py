@@ -91,12 +91,12 @@ def check_within_a_box(self, coord):
 	for 7 are in the same row, then remove 7 as possibilities in the rest of
 	the row outside the box.
 	"""
-	pos_vals_in_box = self.get_box_pos_vals(coord)
+	poss_vals_in_box = self.get_box_poss_vals(coord)
 
-	for missing_val in pos_vals_in_box.keys():
+	for missing_val in poss_vals_in_box.keys():
+		poss_locs_list = poss_vals_in_box[missing_val]
 		print('missing {0} at'.format(missing_val), end=' ')
-		print(pos_vals_in_box[missing_val])
-	return None
+		print(poss_locs_list)
 
 
 def set_missing_val_table(self, coord, missing_val_dict):

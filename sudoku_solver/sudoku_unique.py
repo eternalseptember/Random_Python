@@ -55,11 +55,11 @@ def check_unique_col(self, coord):
 
 def check_unique_box(self, coord):
 	# Look within a 3x3 box and check for unique listing.
-	val_lookup = self.get_box_pos_vals(coord)
+	val_lookup = self.get_box_poss_vals(coord)
 	self.solve_lookup_table(val_lookup)
 
 
-def get_box_pos_vals(self, coord):
+def get_box_poss_vals(self, coord):
 	# Generate a lookup table of possible values within a 3x3 box.
 	ref_row, ref_col = coord  # Reference cell
 	val_lookup = {}  # {value: [(possible cells)]}

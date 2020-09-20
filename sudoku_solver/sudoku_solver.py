@@ -7,7 +7,7 @@ class Sudoku_Solver():
 		print_init_queue, print_solved_queue
 
 	from sudoku_unique import check_all_unique, check_unique_row, \
-		check_unique_col, check_unique_box, get_box_pos_vals, \
+		check_unique_col, check_unique_box, get_box_poss_vals, \
 		set_lookup_table, solve_lookup_table
 
 	# re-arrange this later
