@@ -238,6 +238,18 @@ def remove_matching_sets(self, coord, matched_set, label=''):
 					self.solved_queue.append(coord)
 
 
+def remove_in_row_outside_box(self, eliminated_val, coord):
+	# eliminated_val is the value to be removed
+	# the coord defines the box
+	ref_row, ref_col = coord
+
+
+def remove_in_col_outside_box(self, eliminated_val, coord):
+	# eliminated_val is the value to be removed
+	# the coord defines the box
+	ref_row, ref_col = coord
+
+
 
 
 
