@@ -16,7 +16,8 @@ def check_within_boxes(self):
 
 
 def check_within_a_box(self, coord):
-	# Check within a single box to eliminate possibilities.\
+	# Check within a single box to eliminate possibilities.
+	# coord defines the 3x3 box.
 	"""
 	Example: If a box is missing the value 7, and the only possible locations
 	for 7 are in the same row, then remove 7 as possibilities in the rest of
@@ -34,6 +35,10 @@ def check_within_a_box(self, coord):
 
 		is_same_row, row_num = self.in_same_row(poss_locs_list)
 		is_same_col, col_num = self.in_same_col(poss_locs_list)
+
+		print('Missing val: {0}'.format(missing_val))
+		print('\tSame row? {0}, {1}'.format(is_same_row, row_num))
+		print('\tSame col? {0}, {1}'.format(is_same_col, col_num))
 
 		# remove missing_val
 
@@ -74,13 +79,13 @@ def in_same_col(self, coords_list):
 
 def remove_in_row_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
-	# the coord defines the box
+	# coord defines the 3x3 box.
 	ref_row, ref_col = coord
 
 
 def remove_in_col_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
-	# the coord defines the box
+	# coord defines the 3x3 box.
 	ref_row, ref_col = coord
 
 
