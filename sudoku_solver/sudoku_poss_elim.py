@@ -40,7 +40,11 @@ def check_within_a_box(self, coord):
 		print('\tSame row? {0}, {1}'.format(is_same_row, row_num))
 		print('\tSame col? {0}, {1}'.format(is_same_col, col_num))
 
-		# remove missing_val
+		# Remove missing_val.
+		if is_same_row:
+			self.remove_in_row_outside_box(missing_val, coord)
+		if is_same_col:
+			self.remove_in_col_outside_box(missing_val, coord)
 
 
 def in_same_row(self, coords_list):
