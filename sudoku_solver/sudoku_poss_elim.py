@@ -85,6 +85,15 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
 	# coord defines the 3x3 box.
 	ref_row, ref_col = coord
+	box_col = ref_col // 3  # Box coord is in.
+
+	for i in range(9):  # i goes across
+		# Skip the box with coord.
+		if i // 3 == box_col:
+			continue
+
+		this_cell = (ref_row, i)
+
 
 
 def remove_in_col_outside_box(self, eliminated_val, coord):
