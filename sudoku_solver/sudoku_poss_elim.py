@@ -92,7 +92,12 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 		if i // 3 == box_col:
 			continue
 
+		# Remove eliminated_val as a possible val in this cell.
 		this_cell = (ref_row, i)
+		poss_values = self.possible_values[this_cell]
+
+		if eliminated_val in poss_values:
+			poss_values.remove(eliminated_val)
 
 
 
