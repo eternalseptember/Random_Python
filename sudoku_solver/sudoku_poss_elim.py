@@ -30,15 +30,10 @@ def check_within_a_box(self, coord):
 	# For each missing value, analyze the list of their possible locations.
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
-		# print('missing {0} at'.format(missing_val), end=' ')
-		# print(poss_locs_list)
 
+		# Are they in the same row or col?
 		is_same_row, row_num = self.in_same_row(poss_locs_list)
 		is_same_col, col_num = self.in_same_col(poss_locs_list)
-
-		print('Missing val: {0}'.format(missing_val))
-		print('\tSame row? {0}, {1}'.format(is_same_row, row_num))
-		print('\tSame col? {0}, {1}'.format(is_same_col, col_num))
 
 		# Remove missing_val.
 		if is_same_row:
@@ -105,7 +100,19 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
 	# coord defines the 3x3 box.
 	ref_row, ref_col = coord
+	box_row = ref_row // 3  # Box coord is in.
 
+	for j in range(9):  # j goes across
+		# Skip the box with coord.
+		if j // 3 == box_row:
+			continue
+
+		# Remove eliminated_val as a possible val in this cell.
+		this_cell = (j, ref_col)
+		poss_values = self.possible_values[this_cell]
+
+		if eliminated_val in poss_values:
+			poss_values.remove(eliminated_val)
 
 
 
