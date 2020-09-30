@@ -9,10 +9,13 @@ Remove possibilities from same col outside of this box,
 because box is mostly solved, but col is not.
 """
 
+
 def check_within_boxes(self):
 	# Check all nine boxes for patterns to eliminate possibilities.
-
-	return None
+	for i in [0, 3, 6]:
+		for j in [0, 3, 6]:
+			coord = (i, j)
+			self.check_within_box(coord)
 
 
 def check_within_a_box(self, coord):
