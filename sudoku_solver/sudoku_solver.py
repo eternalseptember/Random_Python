@@ -1,5 +1,5 @@
+# The main function for solving a puzzle.
 # Input a formatted file with a sudoku puzzle.
-# Print solved puzzle.
 
 
 class Sudoku_Solver():
@@ -10,7 +10,6 @@ class Sudoku_Solver():
 		check_unique_col, check_unique_box, get_box_poss_vals, \
 		set_lookup_table, solve_lookup_table
 
-	# re-arrange this later
 	from sudoku_matching import check_matching_sets, check_matching_cols, \
 		check_matching_rows, set_missing_val_table, find_matches, \
 		in_same_box, remove_in_box, remove_matching_sets

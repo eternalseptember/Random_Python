@@ -25,6 +25,8 @@ sudoku.print_board()
 sudoku.print_possible_values()
 
 
+
+
 """
 print('Check unique locations:')
 sudoku.check_all_unique()
