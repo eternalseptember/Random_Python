@@ -3,7 +3,10 @@ Test file for puzzle_5.
 Not yet solved.
 """
 
+import sys
+sys.path.append('../')
 from sudoku_solver import *
+
 
 
 sudoku = Sudoku_Solver()
