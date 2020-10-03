@@ -3,6 +3,8 @@ Test file for puzzle_3.
 Can be solved by checking all unique twice.
 """
 
+import sys
+sys.path.append('../')
 from sudoku_solver import *
 
 

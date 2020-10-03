@@ -1,3 +1,9 @@
+"""
+Testing component functions.
+"""
+
+import sys
+sys.path.append('../')
 from sudoku_solver import *
 
 

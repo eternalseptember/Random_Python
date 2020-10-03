@@ -3,6 +3,8 @@ Test file for puzzle_4.
 Not yet solved.
 """
 
+import sys
+sys.path.append('../')
 from sudoku_solver import *
 
 
