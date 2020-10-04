@@ -1,7 +1,3 @@
-"""
-Testing component functions.
-"""
-
 import sys
 sys.path.append('../')
 from sudoku_solver import *
@@ -9,8 +5,7 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-# sudoku.import_board("check_within_box_row.txt")
-sudoku.import_board("check_within_box_col.txt")
+sudoku.import_board("block_elim.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -23,13 +18,8 @@ sudoku.print_board()
 # sudoku.print_possible_values()
 
 
-print('Check within box:')
-sudoku.check_within_a_box((4, 4))
-sudoku.print_board()
-sudoku.print_possible_values()
-
-
-
+print('Test block interaction')
+sudoku.block_elim()
 
 
 

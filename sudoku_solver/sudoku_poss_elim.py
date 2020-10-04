@@ -118,6 +118,11 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 			poss_values.remove(eliminated_val)
 
 
+def block_interaction(self):
+	# block_elim
+	print()
+
+
 
 
 
