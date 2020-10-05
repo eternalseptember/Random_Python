@@ -118,9 +118,29 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 			poss_values.remove(eliminated_val)
 
 
-def block_interaction(self):
-	# block_elim
+# =============================================================================
+
+# Add these functions to the main sudoku_solver page.
+
+def check_block_level_elim(self):
+	# known info from two sets of 3x3 box, what does it mean for the third 3x3 box
+	# in the same board-level row or col?
 	print()
+
+
+def check_block_row(self):
+	"""
+	within each 3x3 box, tally up whether unfilled values fit within the same rows.
+	then check with neighboring boxes.
+	by the process of elimination, deduce where that number is in the third row
+	"""
+	print()
+
+
+def check_block_col(self):
+	print()
+
+
 
 
 

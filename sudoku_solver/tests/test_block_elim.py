@@ -18,8 +18,14 @@ sudoku.print_board()
 # sudoku.print_possible_values()
 
 
-print('Test block interaction')
-sudoku.block_elim()
+print('Check matching sets:')
+sudoku.check_matching_sets()
+sudoku.print_board()
+sudoku.print_possible_values()
+
+
+# print('Test block interaction')
+# sudoku.check_block_level_elim()
 
 
 
