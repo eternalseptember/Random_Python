@@ -141,6 +141,44 @@ def check_block_col(self):
 	print()
 
 
+def check_box_row_elim(self, coord):
+	# coord defines the 3x3 box.
+	# Check within a single box to see whether missing values can be narrowed
+	# down to specific rows.
+	# could merge with check_within_a_box function
+
+	# Get the list of missing values and their possible locations in this box.
+	poss_vals_in_box = self.get_box_poss_vals(coord)
+
+	# For each missing value, analyze the list of their possible locations.
+	for missing_val in poss_vals_in_box.keys():
+		poss_locs_list = poss_vals_in_box[missing_val]
+	print()
+
+
+def check_box_col_elim(self, coord):
+	print()
+
+
+
+def in_which_rows(self, coords_list):
+	rows = []
+
+	# Unpack and tally rows here.
+	for coord in coords_list:
+		row, col = coord
+		rows.append(row)
+
+	# if possible value is in all three rows,
+	# then not useful.
+
+
+
+
+def in_which_cols(self, coords_list):
+	print()
+
+
 
 
 
