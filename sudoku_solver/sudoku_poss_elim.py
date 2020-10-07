@@ -153,7 +153,10 @@ def check_box_row_elim(self, coord):
 	# For each missing value, analyze the list of their possible locations.
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
-	print()
+
+
+		# check which rows they are in
+
 
 
 def check_box_col_elim(self, coord):
@@ -171,6 +174,12 @@ def in_which_rows(self, coords_list):
 
 	# if possible value is in all three rows,
 	# then not useful.
+	if len(set(rows)) >= 3:
+		return None
+	else:
+		# assume that if they're in the same row,
+		# would be caught by in_same_col function?
+		return rows
 
 
 
