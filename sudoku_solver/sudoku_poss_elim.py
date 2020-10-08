@@ -156,6 +156,7 @@ def check_box_row_elim(self, coord):
 
 
 		# check which rows they are in
+		self.in_which_rows(self, poss_locs_list)
 
 
 
