@@ -26,7 +26,7 @@ sudoku.print_possible_values()
 
 
 print('Test block interaction')
-sudoku.check_box_row_elim()
-
+sudoku.check_box_row_elim((3, 0))
+sudoku.print_possible_values()
 
 

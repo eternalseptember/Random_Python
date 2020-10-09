@@ -156,7 +156,10 @@ def check_box_row_elim(self, coord):
 
 
 		# check which rows they are in
-		self.in_which_rows(self, poss_locs_list)
+		rows_list = self.in_which_rows(poss_locs_list)
+
+		print('missing value: {0}'.format(missing_val))
+		print(rows_list)
 
 
 
