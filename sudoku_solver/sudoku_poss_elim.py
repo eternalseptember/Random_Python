@@ -146,6 +146,7 @@ def check_box_row_elim(self, coord):
 	# Check within a single box to see whether missing values can be narrowed
 	# down to specific rows.
 	# could merge with check_within_a_box function
+	rows_list = {}
 
 	# Get the list of missing values and their possible locations in this box.
 	poss_vals_in_box = self.get_box_poss_vals(coord)
@@ -154,12 +155,12 @@ def check_box_row_elim(self, coord):
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
 
-
 		# check which rows they are in
-		rows_list = self.in_which_rows(poss_locs_list)
+		in_rows_list = self.in_which_rows(poss_locs_list)
+
 
 		print('missing value: {0}'.format(missing_val))
-		print(rows_list)
+		print(in_rows_list)
 
 
 
@@ -183,7 +184,7 @@ def in_which_rows(self, coords_list):
 	else:
 		# assume that if they're in the same row,
 		# would be caught by in_same_col function?
-		return rows
+		return set(rows)
 
 
 
