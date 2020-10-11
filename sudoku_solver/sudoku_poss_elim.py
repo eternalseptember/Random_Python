@@ -130,11 +130,17 @@ def check_block_level_elim(self):
 
 def check_block_row(self):
 	"""
-	within each 3x3 box, tally up whether unfilled values fit within the same rows.
+	within each 3x3 box,
+	tally up whether unfilled values fit within the same rows.
 	then check with neighboring boxes.
 	by the process of elimination, deduce where that number is in the third row
 	"""
-	print()
+
+	# these are not final values. testing function.
+	# perhaps collect all of these in the function that would run this.
+	for box_row in [0, 3, 6]:
+		coord = (box_row, 0)
+		self.check_box_row_elim((coord))
 
 
 def check_block_col(self):
@@ -157,6 +163,7 @@ def check_box_row_elim(self, coord):
 
 		# check which rows they are in
 		in_rows_list = self.in_which_rows(poss_locs_list)
+		rows_list[missing_val] = in_rows_list
 
 
 		print('missing value: {0}'.format(missing_val))
