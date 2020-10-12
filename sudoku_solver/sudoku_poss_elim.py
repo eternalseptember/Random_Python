@@ -15,7 +15,7 @@ def check_within_boxes(self):
 	for i in [0, 3, 6]:
 		for j in [0, 3, 6]:
 			coord = (i, j)
-			self.check_within_box(coord)
+			self.check_within_a_box(coord)
 
 
 def check_within_a_box(self, coord):
@@ -47,6 +47,18 @@ def check_within_a_box(self, coord):
 
 def in_same_row(self, coords_list):
 	# Are all the cells in coords_list in the same row?
+	rows_list = self.in_which_rows(coords_list)
+
+	# Are they all in the same row?
+	# And if they are, which row?
+	if len(rows_list) == 1:
+		return True, rows_list[0]
+	else:
+		return False, None
+
+
+def in_which_rows(self, coords_list):
+	# Which rows could the cells be in?
 	rows = []
 
 	# Unpack and tally rows here.
@@ -54,12 +66,8 @@ def in_same_row(self, coords_list):
 		row, col = coord
 		rows.append(row)
 
-	# Are they all in the same row?
-	# And if they are, which row?
-	if len(set(rows)) == 1:
-		return True, rows[0]
-	else:
-		return False, None
+	# Not useful if it returns 3.
+	return set(rows)
 
 
 def in_same_col(self, coords_list):
@@ -162,6 +170,8 @@ def check_box_row_elim(self, coord):
 		poss_locs_list = poss_vals_in_box[missing_val]
 
 		# check which rows they are in
+
+		# REDO THIS PART
 		in_rows_list = self.in_which_rows(poss_locs_list)
 		rows_list[missing_val] = in_rows_list
 
@@ -176,22 +186,10 @@ def check_box_col_elim(self, coord):
 
 
 
-def in_which_rows(self, coords_list):
-	rows = []
 
-	# Unpack and tally rows here.
-	for coord in coords_list:
-		row, col = coord
-		rows.append(row)
 
-	# if possible value is in all three rows,
-	# then not useful.
-	if len(set(rows)) >= 3:
-		return None
-	else:
-		# assume that if they're in the same row,
-		# would be caught by in_same_col function?
-		return set(rows)
+
+
 
 
 
