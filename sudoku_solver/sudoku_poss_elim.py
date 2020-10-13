@@ -52,6 +52,10 @@ def in_same_row(self, coords_list):
 	# Are they all in the same row?
 	# And if they are, which row?
 	if len(rows_list) == 1:
+
+		print('rows_list:', end=' ')
+		print(rows_list)
+
 		return True, rows_list[0]
 	else:
 		return False, None
@@ -67,7 +71,7 @@ def in_which_rows(self, coords_list):
 		rows.append(row)
 
 	# Not useful if it returns 3.
-	return set(rows)
+	return list(set(rows))
 
 
 def in_same_col(self, coords_list):
@@ -100,10 +104,15 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 
 		# Remove eliminated_val as a possible val in this cell.
 		this_cell = (ref_row, i)
-		poss_values = self.possible_values[this_cell]
 
-		if eliminated_val in poss_values:
-			poss_values.remove(eliminated_val)
+		if this_cell in self.possible_values:
+			poss_values = self.possible_values[this_cell]
+
+			if eliminated_val in poss_values:
+				poss_values.remove(eliminated_val)
+
+			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
+			# AND ADD TO SOLVED_QUEUE
 
 
 
@@ -120,10 +129,15 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 
 		# Remove eliminated_val as a possible val in this cell.
 		this_cell = (j, ref_col)
-		poss_values = self.possible_values[this_cell]
 
-		if eliminated_val in poss_values:
-			poss_values.remove(eliminated_val)
+		if this_cell in self.possible_values:
+			poss_values = self.possible_values[this_cell]
+
+			if eliminated_val in poss_values:
+				poss_values.remove(eliminated_val)
+
+			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
+			# AND ADD TO SOLVED_QUEUE
 
 
 # =============================================================================
