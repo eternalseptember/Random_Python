@@ -190,7 +190,7 @@ def check_box_row_elim(self, coord):
 		rows_list[missing_val] = in_rows_list
 
 
-		print('missing value: {0}'.format(missing_val))
+		print('missing value: {0} in'.format(missing_val), end=' ')
 		print(in_rows_list)
 
 

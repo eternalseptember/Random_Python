@@ -1,5 +1,13 @@
 """
-Testing component functions.
+Col test:
+7 can't be in any other (4, col) locations.
+In the central box, 7 can only be in (3, 4) and (5, 4),
+so eliminate 7 as a possibility in the rest of (row, 4).
+
+Row test:
+7 can't be in any other (row, 4) locations.
+In the central box, 7 can only be in (4, 3) and (4, 5),
+so eliminate 7 as a possibility in the rest of (4, col).
 """
 
 import sys
@@ -9,8 +17,8 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-# sudoku.import_board("check_within_box_row.txt")
-sudoku.import_board("check_within_box_col.txt")
+sudoku.import_board("check_within_box_row.txt")
+# sudoku.import_board("check_within_box_col.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -28,12 +36,7 @@ sudoku.print_board()
 sudoku.print_possible_values()
 
 
-"""
-Col test:
-7 can't be in any other (4, col) locations.
-In the central box, 7 can only be in (3, 4) and (5, 4),
-so eliminate 7 as a possibility in the rest of (row, 4).
-"""
+
 
 
 

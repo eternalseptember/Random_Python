@@ -1,5 +1,5 @@
 """
-Testing smaller functions.
+Testing smaller functions for eliminating based on matched pairs.
 """
 
 import sys
