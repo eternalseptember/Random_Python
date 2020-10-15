@@ -91,6 +91,16 @@ def in_same_col(self, coords_list):
 		return False, None
 
 
+
+
+
+def in_which_cols(self, coords_list):
+	print()
+
+
+
+
+
 def remove_in_row_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
 	# coord defines the 3x3 box.
@@ -111,8 +121,10 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 			if eliminated_val in poss_values:
 				poss_values.remove(eliminated_val)
 
+			# #################################################################
 			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
 			# AND ADD TO SOLVED_QUEUE
+			# #################################################################
 
 
 
@@ -136,8 +148,10 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 			if eliminated_val in poss_values:
 				poss_values.remove(eliminated_val)
 
+			# #################################################################
 			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
 			# AND ADD TO SOLVED_QUEUE
+			# #################################################################
 
 
 # =============================================================================
@@ -160,9 +174,11 @@ def check_block_row(self):
 
 	# these are not final values. testing function.
 	# perhaps collect all of these in the function that would run this.
-	for box_row in [0, 3, 6]:
-		coord = (box_row, 0)
+
+	for box_col in [0, 3, 6]:  # checking a row means row is constant.
+		coord = (3, box_col)
 		self.check_box_row_elim((coord))
+
 
 
 def check_block_col(self):
@@ -187,11 +203,12 @@ def check_box_row_elim(self, coord):
 
 		# REDO THIS PART
 		in_rows_list = self.in_which_rows(poss_locs_list)
-		rows_list[missing_val] = in_rows_list
 
+		if len(in_rows_list) < 3:
+			rows_list[missing_val] = in_rows_list
 
-		print('missing value: {0} in'.format(missing_val), end=' ')
-		print(in_rows_list)
+			print('missing value: {0} in'.format(missing_val), end=' ')
+			print(in_rows_list)
 
 
 
@@ -208,8 +225,6 @@ def check_box_col_elim(self, coord):
 
 
 
-def in_which_cols(self, coords_list):
-	print()
 
 
 
