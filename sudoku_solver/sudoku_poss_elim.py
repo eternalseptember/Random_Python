@@ -178,6 +178,7 @@ def check_block_row(self):
 	for box_col in [0, 3, 6]:  # checking a row means row is constant.
 		coord = (3, box_col)
 		self.check_box_row_elim((coord))
+		print()  # for testing visibility
 
 
 
@@ -209,6 +210,11 @@ def check_box_row_elim(self, coord):
 
 			print('missing value: {0} in'.format(missing_val), end=' ')
 			print(in_rows_list)
+
+
+	# return is for each box
+	# use it to establish what needs to be eliminated in the remaining box.
+	return rows_list
 
 
 
