@@ -125,6 +125,9 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
 			# AND ADD TO SOLVED_QUEUE
 			# #################################################################
+			if len(poss_values) == 1:
+				self.solved_queue.append(new_coord)
+				self.solve_queue()
 
 
 
