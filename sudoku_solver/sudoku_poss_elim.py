@@ -175,8 +175,9 @@ def check_block_row(self):
 	by the process of elimination, deduce where that number is in the third row
 	"""
 
-	# these are not final values. testing function.
-	# perhaps collect all of these in the function that would run this.
+	# key: missing val and possible row locations
+	# value: the boxes (col)
+	block_info = {}
 
 	for box_col in [0, 3, 6]:  # checking a row means row is constant.
 		coord = (3, box_col)
@@ -184,6 +185,8 @@ def check_block_row(self):
 
 		print('box col: {0}'.format(box_col))
 		print(rows_list)
+
+		# create a hashable key out of the info given
 
 
 
@@ -212,11 +215,6 @@ def check_box_row_elim(self, coord):
 
 		if len(in_rows_list) < 3:
 			rows_list[missing_val] = in_rows_list
-
-			"""
-			print('missing value: {0} in'.format(missing_val), end=' ')
-			print(in_rows_list)
-			"""
 
 
 	# return is for each box
