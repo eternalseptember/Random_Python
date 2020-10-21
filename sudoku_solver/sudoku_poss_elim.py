@@ -184,14 +184,15 @@ def check_block_row(self):
 		rows_list = self.check_box_row_elim((coord))
 
 		print('box col: {0}'.format(box_col))
-		# print(rows_list)
 
 		# create a hashable key out of the info given
-		rows_str = ''
 		for missing_val in rows_list.keys():
-			print('missing value: {0}'.format(missing_val), end='  ')
-			print('in rows: {0}'.format(rows_list[missing_val]))
-		print(rows_str)
+			rows_str = ''
+			rows_str += '{0}-'.format(missing_val)
+			rows_str += ''.join(map(str, rows_list[missing_val]))
+			print(rows_str)
+
+			# list of box col as values in block_info
 
 
 
