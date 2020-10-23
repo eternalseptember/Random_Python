@@ -196,6 +196,8 @@ def check_block_row(self):
 				block_info[rows_str].append(box_col)
 
 
+	for line_item in block_info.keys():
+		print('{0} missing in {1}'.format(line_item, block_info[line_item]))
 
 
 
