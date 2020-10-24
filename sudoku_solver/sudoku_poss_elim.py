@@ -155,6 +155,9 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
 			# AND ADD TO SOLVED_QUEUE
 			# #################################################################
+			if len(poss_values) == 1:
+				self.solved_queue.append(new_coord)
+				self.solve_queue()
 
 
 # =============================================================================
@@ -181,8 +184,10 @@ def check_block_row(self):
 
 	for box_col in [0, 3, 6]:  # checking a row means row is constant.
 		coord = (3, box_col)
+		print('coord testing: {0}'.format(coord))
 		rows_list = self.check_box_row_elim((coord))
 
+	"""
 		# create a hashable key out of the info given
 		for missing_val in rows_list.keys():
 			rows_str = ''
@@ -198,6 +203,7 @@ def check_block_row(self):
 
 	for line_item in block_info.keys():
 		print('{0} missing in {1}'.format(line_item, block_info[line_item]))
+	"""
 
 
 
@@ -220,6 +226,9 @@ def check_box_row_elim(self, coord):
 		poss_locs_list = poss_vals_in_box[missing_val]
 
 		# check which rows they are in
+		print('missing val {0}'.format(missing_val), end=' ')
+		print('possible locations:', end=' ')
+		print(poss_locs_list)
 
 		# REDO THIS PART
 		in_rows_list = self.in_which_rows(poss_locs_list)
