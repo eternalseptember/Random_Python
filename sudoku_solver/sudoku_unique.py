@@ -30,6 +30,8 @@ def check_all_unique(self):
 
 
 def check_unique_row(self, coord):
+	# Check for unsolved values with only one possible location
+	# within the row referenced by coord.
 	ref_row, ref_col = coord  # Reference cell
 	val_lookup = {}  # {value: [(possible cells)]}
 
@@ -42,6 +44,8 @@ def check_unique_row(self, coord):
 
 
 def check_unique_col(self, coord):
+	# Check for unsolved values with only one possible location
+	# within the col referenced by coord.
 	ref_row, ref_col = coord  # Reference cell
 	val_lookup = {}  # {value: [(possible cells)]}
 
@@ -54,13 +58,15 @@ def check_unique_col(self, coord):
 
 
 def check_unique_box(self, coord):
-	# Look within a 3x3 box and check for unique listing.
+	# Check for unsolved values with only one possible location
+	# within the 3x3 box referenced by coord.
 	val_lookup = self.get_box_poss_vals(coord)
 	self.solve_lookup_table(val_lookup)
 
 
 def get_box_poss_vals(self, coord):
-	# Generate a lookup table of possible values within a 3x3 box.
+	# Generate a lookup table of remaining unsolved values and all of their
+	# possible locations within a 3x3 box.
 	ref_row, ref_col = coord  # Reference cell
 	val_lookup = {}  # {value: [(possible cells)]}
 

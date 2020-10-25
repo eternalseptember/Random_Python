@@ -21,11 +21,6 @@ def check_within_boxes(self):
 def check_within_a_box(self, coord):
 	# Check within a single box to eliminate possibilities.
 	# coord defines the 3x3 box.
-	"""
-	Example: If a box is missing the value 7, and the only possible locations
-	for 7 are in the same row, then remove 7 as possibilities in the rest of
-	the row outside the box.
-	"""
 
 	# Get the list of missing values and their possible locations in this box.
 	poss_vals_in_box = self.get_box_poss_vals(coord)
@@ -126,7 +121,7 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 			# AND ADD TO SOLVED_QUEUE
 			# #################################################################
 			if len(poss_values) == 1:
-				self.solved_queue.append(new_coord)
+				self.solved_queue.append(this_cell)
 				self.solve_queue()
 
 
@@ -156,17 +151,16 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 			# AND ADD TO SOLVED_QUEUE
 			# #################################################################
 			if len(poss_values) == 1:
-				self.solved_queue.append(new_coord)
+				self.solved_queue.append(this_cell)
 				self.solve_queue()
 
 
 # =============================================================================
 
-# Add these functions to the main sudoku_solver page.
 
 def check_block_level_elim(self):
-	# known info from two sets of 3x3 box, what does it mean for the third 3x3 box
-	# in the same board-level row or col?
+	# known info from two sets of 3x3 box, what does it mean for the third 3x3
+	# box in the same board-level row or col?
 	print()
 
 
@@ -207,9 +201,6 @@ def check_block_row(self):
 
 
 
-def check_block_col(self):
-	print()
-
 
 def check_box_row_elim(self, coord):
 	# coord defines the 3x3 box.
@@ -226,9 +217,11 @@ def check_box_row_elim(self, coord):
 		poss_locs_list = poss_vals_in_box[missing_val]
 
 		# check which rows they are in
+		"""
 		print('missing val {0}'.format(missing_val), end=' ')
 		print('possible locations:', end=' ')
 		print(poss_locs_list)
+		"""
 
 		# REDO THIS PART
 		in_rows_list = self.in_which_rows(poss_locs_list)
@@ -239,8 +232,19 @@ def check_box_row_elim(self, coord):
 
 	# return is for each box
 	# use it to establish what needs to be eliminated in the remaining box.
+	for missing_val in rows_list.keys():
+		print('missing val {0} in rows'.format(missing_val), end=' ')
+		print(rows_list[missing_val])
+
+
 	return rows_list
 
+
+
+
+
+def check_block_col(self):
+	print()
 
 
 def check_box_col_elim(self, coord):

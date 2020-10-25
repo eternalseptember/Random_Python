@@ -95,7 +95,7 @@ class Sudoku_Solver():
 
 
 	def remove_num_in_row(self, coord, solved_value):
-		# Remove solved_value from the possible list of values of
+		# Remove solved_value from the list of possible values of
 		# other unsolved cells in this row.
 		ref_row, ref_col = coord  # Reference cell
 
@@ -106,7 +106,7 @@ class Sudoku_Solver():
 
 
 	def remove_num_in_col(self, coord, solved_value):
-		# Remove solved_value from the possible list of values of
+		# Remove solved_value from the list of possible values of
 		# other unsolved cells in this col.
 		ref_row, ref_col = coord  # Reference cell
 
@@ -117,7 +117,7 @@ class Sudoku_Solver():
 
 
 	def remove_num_in_box(self, coord, solved_value):
-		# Remove solved_value from the possible list of values of
+		# Remove solved_value from the list of possible values of
 		# other unsolved cells in this box.
 		ref_row, ref_col = coord  # Reference cell
 
