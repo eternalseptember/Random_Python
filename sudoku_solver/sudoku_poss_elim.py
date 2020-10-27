@@ -178,10 +178,9 @@ def check_block_row(self):
 
 	for box_col in [0, 3, 6]:  # checking a row means row is constant.
 		coord = (3, box_col)
-		print('coord testing: {0}'.format(coord))
+		# print('coord testing: {0}'.format(coord))
 		rows_list = self.check_box_row_elim((coord))
 
-	"""
 		# create a hashable key out of the info given
 		for missing_val in rows_list.keys():
 			rows_str = ''
@@ -196,8 +195,8 @@ def check_block_row(self):
 
 
 	for line_item in block_info.keys():
-		print('{0} missing in {1}'.format(line_item, block_info[line_item]))
-	"""
+		print('{0} missing in boxes at cols {1}'
+			.format(line_item, block_info[line_item]))
 
 
 
@@ -216,28 +215,29 @@ def check_box_row_elim(self, coord):
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
 
-		# check which rows they are in
-		"""
-		print('missing val {0}'.format(missing_val), end=' ')
-		print('possible locations:', end=' ')
-		print(poss_locs_list)
-		"""
-
-		# REDO THIS PART
+		# Check which rows the missing values are in.
 		in_rows_list = self.in_which_rows(poss_locs_list)
 
 		if len(in_rows_list) < 3:
 			rows_list[missing_val] = in_rows_list
 
 
-	# return is for each box
-	# use it to establish what needs to be eliminated in the remaining box.
+	# Returns info for each individual 3x3 box.
+	# Use it to establish what needs to be eliminated in the remaining box.
+	"""
 	for missing_val in rows_list.keys():
 		print('missing val {0} in rows'.format(missing_val), end=' ')
 		print(rows_list[missing_val])
-
+	"""
 
 	return rows_list
+
+
+
+def remove_row_in_box(self, info):
+	# Given info about a missing value and which two rows of which two boxes
+	# they're in, remove those possibilities in the third box.
+	return
 
 
 
