@@ -193,10 +193,8 @@ def check_block_row(self):
 			else:
 				block_info[rows_str].append(box_col)
 
+	self.remove_row_in_box(block_info)
 
-	for line_item in block_info.keys():
-		print('{0} missing in boxes at cols {1}'
-			.format(line_item, block_info[line_item]))
 
 
 
@@ -234,10 +232,16 @@ def check_box_row_elim(self, coord):
 
 
 
-def remove_row_in_box(self, info):
+def remove_row_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
-	return
+
+	# unpack block_info
+	print('unpack block info')
+
+	for line_item in block_info.keys():
+		print('{0} missing in boxes at cols {1}'
+			.format(line_item, block_info[line_item]))
 
 
 
