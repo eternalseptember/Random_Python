@@ -204,6 +204,8 @@ def check_block_row(self):
 	# keys: "num_missing", "in_rows", "in_boxes"
 	row_of_blocks = []
 	# assemble the info into one dictionary
+	for info_pt_1 in missing_info.keys():
+		new_dict = {}
 
 
 
