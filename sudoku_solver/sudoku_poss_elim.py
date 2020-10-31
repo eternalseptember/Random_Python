@@ -172,8 +172,8 @@ def check_block_row(self):
 	by the process of elimination, deduce where that number is in the third row
 	"""
 
-	# Put these two together from the shared key.
-	missing_info = {}
+	# keys: hashable string; value: dict containing info about missing vals
+	# subdict keys: "num_missing", "in_rows", "in_boxes"
 	block_info = {}
 
 	for box_col in [0, 3, 6]:  # checking a row means row is constant.
@@ -181,35 +181,25 @@ def check_block_row(self):
 		rows_list = self.check_box_row_elim((coord))
 
 
-		# create a hashable key out of the info given
+		# Create a hashable key out of the info given.
 		for missing_val in rows_list.keys():
 			rows_str = ''
 			rows_str += '{0}-'.format(missing_val)
 			rows_str += ''.join(map(str, rows_list[missing_val]))
 
-			# maintain info about missing values
-			if rows_str not in missing_info:
-				missing_info[rows_str] = {
-					'num_missing': missing_val,
-					'in_rows': rows_list[missing_val]
-					}
-
-			# which box the missing info are in
+			# Info about missing values.
 			if rows_str not in block_info:
-				block_info[rows_str] = [box_col]
+				block_info[rows_str] = {
+					'num_missing': missing_val,
+					'in_rows': rows_list[missing_val],
+					'in_boxes': [box_col]
+					}
 			else:
-				block_info[rows_str].append(box_col)
-
-
-	# keys: "num_missing", "in_rows", "in_boxes"
-	row_of_blocks = []
-	# assemble the info into one dictionary
-	for info_pt_1 in missing_info.keys():
-		new_dict = {}
+				row_info = block_info[rows_str]
+				row_info['in_boxes'].append(box_col)
 
 
 
-	# self.remove_row_in_box(row_of_blocks)
 	self.remove_row_in_box(block_info)
 
 
@@ -256,8 +246,9 @@ def remove_row_in_box(self, block_info):
 
 	# unpack block_info
 	print('unpack block info')
-	for info in block_info.keys():
-		print('{0} in boxes {1}'.format(info, block_info[info]))
+	for info_key in block_info.keys():
+		box_info = block_info[info_key]
+		# should be a dictionary
 
 
 
