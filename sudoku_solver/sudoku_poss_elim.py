@@ -180,7 +180,6 @@ def check_block_row(self):
 		coord = (3, box_col)
 		rows_list = self.check_box_row_elim((coord))
 
-
 		# Create a hashable key out of the info given.
 		for missing_val in rows_list.keys():
 			rows_str = ''
@@ -198,13 +197,8 @@ def check_block_row(self):
 				row_info = block_info[rows_str]
 				row_info['in_boxes'].append(box_col)
 
-
-
+	# Eliminate possibilities in third box.
 	self.remove_row_in_box(block_info)
-
-
-
-
 
 
 def check_box_row_elim(self, coord):
@@ -246,9 +240,17 @@ def remove_row_in_box(self, block_info):
 
 	# unpack block_info
 	print('unpack block info')
-	for info_key in block_info.keys():
-		box_info = block_info[info_key]
-		# should be a dictionary
+
+	# key for dict on missing vals in two boxes, leading to eliminating
+	# those missing vals as possibilities in third box
+	for block_key in block_info.keys():
+		box_info = block_info[block_key]  # should be a dict
+
+		for info_key in box_info.keys():
+			print('{0}: {1}'.format(info_key, box_info[info_key]), end='\t')
+
+		print()
+
 
 
 
