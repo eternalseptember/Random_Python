@@ -238,6 +238,12 @@ def remove_row_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
 
+	box_lookup = {
+		1: [0, 1, 2], 2: [0, 1, 2], 3: [0, 1, 2],
+		4: [3, 4, 5], 5: [3, 4, 5], 6: [3, 4, 5],
+		7: [6, 7, 8], 8: [6, 7, 8], 9: [6, 7, 8]
+		}
+
 	# unpack block_info
 	print('unpack block info')
 
