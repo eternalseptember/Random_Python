@@ -252,10 +252,14 @@ def remove_row_in_box(self, block_info):
 	for block_key in block_info.keys():
 		box_info = block_info[block_key]  # should be a dict
 
-		for info_key in box_info.keys():
-			print('{0}: {1}'.format(info_key, box_info[info_key]), end='\t')
+		num_missing = box_info['num_missing']
+		in_rows = box_info['in_rows']
+		in_boxes = box_info['in_boxes']
 
-		print()
+		print('num_missing: {0}'.format(num_missing), end='\t')
+		print('in_rows: {0}'.format(in_rows), end='\t')
+		print('in_boxes: {0}'.format(in_boxes))
+
 
 
 
