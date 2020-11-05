@@ -244,6 +244,8 @@ def remove_row_in_box(self, block_info):
 		7: [6, 7, 8], 8: [6, 7, 8], 9: [6, 7, 8]
 		}
 
+	boxes = []  # pull from box_lookup
+
 	# unpack block_info
 	print('unpack block info')
 
@@ -259,6 +261,11 @@ def remove_row_in_box(self, block_info):
 		print('num_missing: {0}'.format(num_missing), end='\t')
 		print('in_rows: {0}'.format(in_rows), end='\t')
 		print('in_boxes: {0}'.format(in_boxes))
+
+		for box in in_boxes:
+			# box lookup
+			print()
+
 
 
 
