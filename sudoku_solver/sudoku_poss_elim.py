@@ -90,7 +90,16 @@ def in_same_col(self, coords_list):
 
 
 def in_which_cols(self, coords_list):
-	print()
+	# Which cols could the cells be in?
+	cols = []
+
+	# Unpack and tally cols here.
+	for coord in coords_list:
+		row, col = coord
+		cols.append(col)
+
+	# Not useful if it returns 3.
+	return list(set(cols))
 
 
 
