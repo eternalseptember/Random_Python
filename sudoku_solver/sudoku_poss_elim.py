@@ -86,9 +86,6 @@ def in_same_col(self, coords_list):
 		return False, None
 
 
-
-
-
 def in_which_cols(self, coords_list):
 	# Which cols could the cells be in?
 	cols = []
@@ -100,9 +97,6 @@ def in_which_cols(self, coords_list):
 
 	# Not useful if it returns 3.
 	return list(set(cols))
-
-
-
 
 
 def remove_in_row_outside_box(self, eliminated_val, coord):
@@ -247,13 +241,11 @@ def remove_row_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
 
-	box_lookup = {
+	lookup = {
 		1: [0, 1, 2], 2: [0, 1, 2], 3: [0, 1, 2],
 		4: [3, 4, 5], 5: [3, 4, 5], 6: [3, 4, 5],
 		7: [6, 7, 8], 8: [6, 7, 8], 9: [6, 7, 8]
 		}
-
-	boxes = []  # pull from box_lookup
 
 	# unpack block_info
 	print('unpack block info')
@@ -261,7 +253,7 @@ def remove_row_in_box(self, block_info):
 	# key for dict on missing vals in two boxes, leading to eliminating
 	# those missing vals as possibilities in third box
 	for block_key in block_info.keys():
-		box_info = block_info[block_key]  # should be a dict
+		box_info = block_info[block_key]  # value is a dict
 
 		num_missing = box_info['num_missing']
 		in_rows = box_info['in_rows']
@@ -271,9 +263,13 @@ def remove_row_in_box(self, block_info):
 		print('in_rows: {0}'.format(in_rows), end='\t')
 		print('in_boxes: {0}'.format(in_boxes))
 
+		# figure out the box to remove info
+		box_remaining = [0, 3, 6]
 		for box in in_boxes:
-			# box lookup
-			print()
+			box_remaining.remove(box)
+
+		# figure out the row
+
 
 
 
