@@ -268,7 +268,11 @@ def remove_row_in_box(self, block_info):
 		for box in in_boxes:
 			box_remaining.remove(box)
 
+		print(box_remaining)
+
 		# figure out the row
+		row_remaining = lookup[in_rows[0]]
+		print(row_remaining)
 
 
 
