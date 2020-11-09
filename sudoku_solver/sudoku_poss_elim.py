@@ -248,8 +248,6 @@ def remove_row_in_box(self, block_info):
 		}
 
 	# unpack block_info
-	print('unpack block info')
-
 	# key for dict on missing vals in two boxes, leading to eliminating
 	# those missing vals as possibilities in third box
 	for block_key in block_info.keys():
@@ -259,20 +257,27 @@ def remove_row_in_box(self, block_info):
 		in_rows = box_info['in_rows']
 		in_boxes = box_info['in_boxes']
 
+		"""
 		print('num_missing: {0}'.format(num_missing), end='\t')
 		print('in_rows: {0}'.format(in_rows), end='\t')
 		print('in_boxes: {0}'.format(in_boxes))
+		"""
 
-		# figure out the box to remove info
+		# figure out the box to remove info from
 		box_remaining = [0, 3, 6]
 		for box in in_boxes:
 			box_remaining.remove(box)
+		box_remaining = box_remaining[0]
 
-		print(box_remaining)
-
-		# figure out the row
+		# figure out the row to remove info from
 		row_remaining = lookup[in_rows[0]]
-		print(row_remaining)
+
+		print('box remaining: {0}'.format(box_remaining))
+		print('row remaining: {0}'.format(row_remaining))
+
+		for i in range(3):
+			this_col = i + box_remaining
+
 
 
 
