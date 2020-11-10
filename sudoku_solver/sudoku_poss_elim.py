@@ -257,11 +257,11 @@ def remove_row_in_box(self, block_info):
 		in_rows = box_info['in_rows']
 		in_boxes = box_info['in_boxes']
 
-		
+
 		print('num_missing: {0}'.format(num_missing), end='\t')
 		print('in_rows: {0}'.format(in_rows), end='\t')
 		print('in_boxes: {0}'.format(in_boxes))
-		
+
 
 		# figure out the box to remove info from
 		box_remaining = [0, 3, 6]
@@ -269,16 +269,21 @@ def remove_row_in_box(self, block_info):
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
+
 		# figure out the row to remove info from
-		row_remaining = lookup[in_rows[0]]
+		row_remaining = lookup[in_rows[0]].copy()
+		# remove nums in in_row from row_remaining
+
 
 		print('row remaining: {0}'.format(row_remaining))
 		print('box remaining: {0}'.format(box_remaining))
-		
 
+		# get the coordinates to remove num_missing
 		for i in range(3):
 			this_col = i + box_remaining
-			# this_coord = (row_remaining, this_col)
+			this_coord = (row_remaining, this_col)
+
+			print('this coord: {0}'.format(this_coord))
 
 
 
