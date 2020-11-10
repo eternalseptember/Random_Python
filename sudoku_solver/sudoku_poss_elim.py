@@ -242,9 +242,9 @@ def remove_row_in_box(self, block_info):
 	# they're in, remove those possibilities in the third box.
 
 	lookup = {
-		1: [0, 1, 2], 2: [0, 1, 2], 3: [0, 1, 2],
-		4: [3, 4, 5], 5: [3, 4, 5], 6: [3, 4, 5],
-		7: [6, 7, 8], 8: [6, 7, 8], 9: [6, 7, 8]
+		0: [0, 1, 2], 1: [0, 1, 2], 2: [0, 1, 2],
+		3: [3, 4, 5], 4: [3, 4, 5], 5: [3, 4, 5],
+		6: [6, 7, 8], 7: [6, 7, 8], 8: [6, 7, 8]
 		}
 
 	# unpack block_info
@@ -257,11 +257,11 @@ def remove_row_in_box(self, block_info):
 		in_rows = box_info['in_rows']
 		in_boxes = box_info['in_boxes']
 
-		"""
+		
 		print('num_missing: {0}'.format(num_missing), end='\t')
 		print('in_rows: {0}'.format(in_rows), end='\t')
 		print('in_boxes: {0}'.format(in_boxes))
-		"""
+		
 
 		# figure out the box to remove info from
 		box_remaining = [0, 3, 6]
@@ -272,11 +272,13 @@ def remove_row_in_box(self, block_info):
 		# figure out the row to remove info from
 		row_remaining = lookup[in_rows[0]]
 
-		print('box remaining: {0}'.format(box_remaining))
 		print('row remaining: {0}'.format(row_remaining))
+		print('box remaining: {0}'.format(box_remaining))
+		
 
 		for i in range(3):
 			this_col = i + box_remaining
+			# this_coord = (row_remaining, this_col)
 
 
 
