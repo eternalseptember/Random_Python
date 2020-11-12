@@ -272,7 +272,9 @@ def remove_row_in_box(self, block_info):
 
 		# figure out the row to remove info from
 		row_remaining = lookup[in_rows[0]].copy()
-		# remove nums in in_row from row_remaining
+		for num in in_rows:
+			row_remaining.remove(num)
+		row_remaining = row_remaining[0]
 
 
 		print('row remaining: {0}'.format(row_remaining))
