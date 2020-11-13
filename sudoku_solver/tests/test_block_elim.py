@@ -16,7 +16,7 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("block_elim.txt")
+sudoku.import_board("block_elim_row.txt")
 sudoku.print_board()
 print('===============================')
 

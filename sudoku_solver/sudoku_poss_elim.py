@@ -112,21 +112,9 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 
 		# Remove eliminated_val as a possible val in this cell.
 		this_cell = (ref_row, i)
+		self.possible_vals_check(this_cell, eliminated_val)
 
-		if this_cell in self.possible_values:
-			poss_values = self.possible_values[this_cell]
-
-			if eliminated_val in poss_values:
-				poss_values.remove(eliminated_val)
-
-			# #################################################################
-			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
-			# AND ADD TO SOLVED_QUEUE
-			# #################################################################
-			if len(poss_values) == 1:
-				self.solved_queue.append(this_cell)
-				self.solve_queue()
-
+	self.solve_queue()  # Not sure if this goes here.
 
 
 def remove_in_col_outside_box(self, eliminated_val, coord):
@@ -142,20 +130,9 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 
 		# Remove eliminated_val as a possible val in this cell.
 		this_cell = (j, ref_col)
+		self.possible_vals_check(this_cell, eliminated_val)
 
-		if this_cell in self.possible_values:
-			poss_values = self.possible_values[this_cell]
-
-			if eliminated_val in poss_values:
-				poss_values.remove(eliminated_val)
-
-			# #################################################################
-			# REMEMBER TO CHECK IF THERE'S ONLY ONE VALUE LEFT
-			# AND ADD TO SOLVED_QUEUE
-			# #################################################################
-			if len(poss_values) == 1:
-				self.solved_queue.append(this_cell)
-				self.solve_queue()
+	self.solve_queue()  # Not sure if this goes here.
 
 
 # =============================================================================
@@ -227,12 +204,6 @@ def check_box_row_elim(self, coord):
 
 	# Returns info for each individual 3x3 box.
 	# Use it to establish what needs to be eliminated in the remaining box.
-	"""
-	for missing_val in rows_list.keys():
-		print('missing val {0} in rows'.format(missing_val), end=' ')
-		print(rows_list[missing_val])
-	"""
-
 	return rows_list
 
 
@@ -240,16 +211,15 @@ def check_box_row_elim(self, coord):
 def remove_row_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
-
 	lookup = {
 		0: [0, 1, 2], 1: [0, 1, 2], 2: [0, 1, 2],
 		3: [3, 4, 5], 4: [3, 4, 5], 5: [3, 4, 5],
 		6: [6, 7, 8], 7: [6, 7, 8], 8: [6, 7, 8]
 		}
 
-	# unpack block_info
-	# key for dict on missing vals in two boxes, leading to eliminating
-	# those missing vals as possibilities in third box
+	# Unpack block_info.
+	# Key for dict on missing vals in two boxes, leading to eliminating
+	# those missing vals as possibilities in third box.
 	for block_key in block_info.keys():
 		box_info = block_info[block_key]  # value is a dict
 
@@ -258,38 +228,28 @@ def remove_row_in_box(self, block_info):
 		in_boxes = box_info['in_boxes']
 
 
-		# figure out the box to remove info from
+		# Figure out the box to remove info from.
 		box_remaining = [0, 3, 6]
 		for box in in_boxes:
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
 
-		# figure out the row to remove info from
+		# Figure out the row to remove info from.
 		row_remaining = lookup[in_rows[0]].copy()
 		for num in in_rows:
 			row_remaining.remove(num)
 		row_remaining = row_remaining[0]
 
 
-		# get the coordinates to remove num_missing
+		# Get the coordinates to remove num_missing.
 		for i in range(3):
 			this_col = i + box_remaining
 			this_coord = (row_remaining, this_col)
 
-			"""
-			print('num_missing: {0}'.format(num_missing), end='\t')
-			print('this coord: {0}'.format(this_coord))
-			"""
+			self.possible_vals_check(this_coord, num_missing)
 
-			if this_coord in self.possible_values:
-				poss_values = self.possible_values[this_coord]
-
-				if num_missing in poss_values:
-					poss_values.remove(num_missing)
-
-
-
+		self.solve_queue()  # Not sure if this goes here.
 
 
 
