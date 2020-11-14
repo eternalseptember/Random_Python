@@ -265,6 +265,9 @@ def check_box_col_elim(self, coord):
 	print()
 
 
+def remove_col_in_box(self, block_info):
+	print()
+
 
 
 
