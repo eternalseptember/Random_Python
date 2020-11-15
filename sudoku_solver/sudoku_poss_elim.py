@@ -152,6 +152,10 @@ def check_block_row(self):
 	by the process of elimination, deduce where that number is in the third row
 	"""
 
+	#
+	# DETERMINING THE ROW TO KEEP CONSTANT?????
+	#
+
 	# keys: hashable string; value: dict containing info about missing vals
 	# subdict keys: "num_missing", "in_rows", "in_boxes"
 	block_info = {}
@@ -258,7 +262,16 @@ def remove_row_in_box(self, block_info):
 
 
 def check_block_col(self):
-	print()
+	# keys: hashable string; value: dict containing info about missing vals
+	# subdict keys: "num_missing", "in_cols", "in_boxes"
+	block_info = {}
+
+	for box_row in [0, 3, 6]:  # checking a col means col is constant.
+		print()
+
+
+
+
 
 
 def check_box_col_elim(self, coord):
