@@ -1,4 +1,5 @@
 """
+BLOCK ELIM ROWS:
 In the central row of boxes:
 8 can't be in (rows 3 to 5; cols 2 to 3).
 
@@ -37,8 +38,7 @@ sudoku.print_possible_values()
 
 
 print('Test block interaction')
-# sudoku.check_box_row_elim((3, 0))
-sudoku.check_block_row()
+sudoku.check_block_row((3, 0))
 sudoku.print_possible_values()
 
 

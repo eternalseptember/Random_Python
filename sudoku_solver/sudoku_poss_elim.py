@@ -144,24 +144,21 @@ def check_block_level_elim(self):
 	print()
 
 
-def check_block_row(self):
-	"""
-	within each 3x3 box,
-	tally up whether unfilled values fit within the same rows.
-	then check with neighboring boxes.
-	by the process of elimination, deduce where that number is in the third row
-	"""
+def check_block_row(self, coord):
+	# Within each 3x3 box,
+	# tally up whether unfilled values fit within the same two rows.
+	# Then check neighboring boxes.
+	# By the process of elimination,
+	# deduce where that number is in the third row.
 
-	#
-	# DETERMINING THE ROW TO KEEP CONSTANT?????
-	#
+	ref_row, ref_col = coord
 
 	# keys: hashable string; value: dict containing info about missing vals
 	# subdict keys: "num_missing", "in_rows", "in_boxes"
 	block_info = {}
 
 	for box_col in [0, 3, 6]:  # checking a row means row is constant.
-		coord = (3, box_col)
+		coord = (ref_row, box_col)
 		rows_list = self.check_box_row_elim((coord))
 
 		# Create a hashable key out of the info given.
@@ -261,7 +258,9 @@ def remove_row_in_box(self, block_info):
 
 
 
-def check_block_col(self):
+def check_block_col(self, coord):
+	ref_row, ref_col = coord
+
 	# keys: hashable string; value: dict containing info about missing vals
 	# subdict keys: "num_missing", "in_cols", "in_boxes"
 	block_info = {}
