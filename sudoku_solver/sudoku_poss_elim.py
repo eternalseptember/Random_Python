@@ -105,7 +105,7 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 	ref_row, ref_col = coord
 	box_col = ref_col // 3  # Box coord is in.
 
-	for i in range(9):  # i goes across
+	for i in range(9):  # i goes across.
 		# Skip the box with coord.
 		if i // 3 == box_col:
 			continue
@@ -123,7 +123,7 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 	ref_row, ref_col = coord
 	box_row = ref_row // 3  # Box coord is in.
 
-	for j in range(9):  # j goes across
+	for j in range(9):  # j goes down.
 		# Skip the box with coord.
 		if j // 3 == box_row:
 			continue
@@ -202,7 +202,6 @@ def check_box_row_elim(self, coord):
 		if len(in_rows_list) < 3:
 			rows_list[missing_val] = in_rows_list
 
-
 	# Returns info for each individual 3x3 box.
 	# Use it to establish what needs to be eliminated in the remaining box.
 	return rows_list
@@ -212,11 +211,6 @@ def check_box_row_elim(self, coord):
 def remove_row_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
-	lookup = {
-		0: [0, 1, 2], 1: [0, 1, 2], 2: [0, 1, 2],
-		3: [3, 4, 5], 4: [3, 4, 5], 5: [3, 4, 5],
-		6: [6, 7, 8], 7: [6, 7, 8], 8: [6, 7, 8]
-		}
 
 	# Unpack block_info.
 	# Key for dict on missing vals in two boxes, leading to eliminating
@@ -228,27 +222,19 @@ def remove_row_in_box(self, block_info):
 		in_rows = box_info['in_rows']
 		in_boxes = box_info['in_boxes']
 
-
 		# Figure out the box to remove info from.
 		box_remaining = [0, 3, 6]
 		for box in in_boxes:
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
-
-		# Figure out the row to remove info from.
-		row_remaining = lookup[in_rows[0]].copy()
-		for num in in_rows:
-			row_remaining.remove(num)
-		row_remaining = row_remaining[0]
-
-
-		# Get the coordinates to remove num_missing.
+		# Remove num_missing.
 		for i in range(3):
 			this_col = i + box_remaining
-			this_coord = (row_remaining, this_col)
 
-			self.possible_vals_check(this_coord, num_missing)
+			for elim_val_in_this_row in in_rows:
+				this_coord = (elim_val_in_this_row, this_col)
+				self.possible_vals_check(this_coord, num_missing)
 
 		self.solve_queue()  # Not sure if this goes here.
 

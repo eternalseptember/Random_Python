@@ -2,12 +2,11 @@
 BLOCK ELIM ROWS:
 In the central row of boxes:
 8 can't be in (rows 3 to 5; cols 2 to 3).
-
-Therefore, in the first two boxes:
 8 can only be in (rows 3 and 5; cols 0 to 1) and (rows 3 and 5; cols 4 to 5).
 
-In the third box:
+So in the third box:
 8 can only be in (row 4; cols 6 to 8).
+Eliminate 8 from (rows 3 and 5; cols 6 to 8)
 """
 
 import sys
