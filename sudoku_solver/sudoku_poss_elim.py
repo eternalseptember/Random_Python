@@ -30,30 +30,22 @@ def check_within_a_box(self, coord):
 		poss_locs_list = poss_vals_in_box[missing_val]
 
 		# Are they in the same row or col?
-		is_same_row, row_num = self.in_same_row(poss_locs_list)
-		is_same_col, col_num = self.in_same_col(poss_locs_list)
+		self.in_same_row(poss_locs_list, missing_val, coord)
+		# is_same_col, col_num = self.in_same_col(poss_locs_list)
 
 		# Remove missing_val.
-		if is_same_row:
-			self.remove_in_row_outside_box(missing_val, coord)
-		if is_same_col:
-			self.remove_in_col_outside_box(missing_val, coord)
+		# if is_same_col:
+		# 	self.remove_in_col_outside_box(missing_val, coord)
 
 
-def in_same_row(self, coords_list):
+
+def in_same_row(self, coords_list, missing_val, coord):
 	# Are all the cells in coords_list in the same row?
 	rows_list = self.in_which_rows(coords_list)
 
-	# Are they all in the same row?
-	# And if they are, which row?
+	# Remove missing val if they're in the same row.
 	if len(rows_list) == 1:
-
-		print('rows_list:', end=' ')
-		print(rows_list)
-
-		return True, rows_list[0]
-	else:
-		return False, None
+		self.remove_in_row_outside_box(missing_val, coord)
 
 
 def in_which_rows(self, coords_list):
@@ -136,12 +128,6 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 
 
 # =============================================================================
-
-
-def check_block_level_elim(self):
-	# known info from two sets of 3x3 box, what does it mean for the third 3x3
-	# box in the same board-level row or col?
-	print()
 
 
 def check_block_row(self, coord):
