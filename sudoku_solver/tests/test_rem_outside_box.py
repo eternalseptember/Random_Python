@@ -17,8 +17,8 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("check_within_box_row.txt")
-# sudoku.import_board("check_within_box_col.txt")
+# sudoku.import_board("check_within_box_row.txt")
+sudoku.import_board("check_within_box_col.txt")
 sudoku.print_board()
 print('===============================')
 

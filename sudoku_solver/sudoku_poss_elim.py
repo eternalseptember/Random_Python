@@ -31,12 +31,7 @@ def check_within_a_box(self, coord):
 
 		# Are they in the same row or col?
 		self.in_same_row(poss_locs_list, missing_val, coord)
-		# is_same_col, col_num = self.in_same_col(poss_locs_list)
-
-		# Remove missing_val.
-		# if is_same_col:
-		# 	self.remove_in_col_outside_box(missing_val, coord)
-
+		self.in_same_col(poss_locs_list, missing_val, coord)
 
 
 def in_same_row(self, coords_list, missing_val, coord):
@@ -61,21 +56,13 @@ def in_which_rows(self, coords_list):
 	return list(set(rows))
 
 
-def in_same_col(self, coords_list):
+def in_same_col(self, coords_list, missing_val, coord):
 	# Are all the cells in coords_list in the same row?
-	cols = []
+	cols_list = self.in_which_cols(coords_list)
 
-	# Unpack and tally cols here.
-	for coord in coords_list:
-		row, col = coord
-		cols.append(col)
-
-	# Are they all in the same col?
-	# And if they are, which col?
-	if len(set(cols)) == 1:
-		return True, cols[0]
-	else:
-		return False, None
+	# Remove missing val if they're in the same col.
+	if len(set(cols_list)) == 1:
+		self.remove_in_col_outside_box(missing_val, coord)
 
 
 def in_which_cols(self, coords_list):
