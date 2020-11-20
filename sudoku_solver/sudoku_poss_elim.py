@@ -29,18 +29,100 @@ def check_within_a_box(self, coord):
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
 
-		# Are they in the same row or col?
-		self.in_same_row(poss_locs_list, missing_val, coord)
-		self.in_same_col(poss_locs_list, missing_val, coord)
+		# Are they in the same row?
+		rows_list = self.in_which_rows(poss_locs_list)
+
+		# Remove missing val if they're in the same row.
+		if len(rows_list) == 1:
+			self.remove_in_row_outside_box(missing_val, coord)
 
 
-def in_same_row(self, coords_list, missing_val, coord):
-	# Are all the cells in coords_list in the same row?
-	rows_list = self.in_which_rows(coords_list)
+		# Are they in the same col?
+		cols_list = self.in_which_cols(poss_locs_list)
 
-	# Remove missing val if they're in the same row.
-	if len(rows_list) == 1:
-		self.remove_in_row_outside_box(missing_val, coord)
+		# Remove missing val if they're in the same col.
+		if len(set(cols_list)) == 1:
+			self.remove_in_col_outside_box(missing_val, coord)
+
+
+
+
+
+
+
+def check_box_row_elim(self, coord):
+	# coord defines the 3x3 box.
+	# Check within a single box to see whether missing values can be narrowed
+	# down to specific rows.
+	# could merge with check_within_a_box function
+	rows_list = {}
+
+	# Get the list of missing values and their possible locations in this box.
+	poss_vals_in_box = self.get_box_poss_vals(coord)
+
+	# For each missing value, analyze the list of their possible locations.
+	for missing_val in poss_vals_in_box.keys():
+		poss_locs_list = poss_vals_in_box[missing_val]
+
+		# Check which rows the missing values are in.
+		in_rows_list = self.in_which_rows(poss_locs_list)
+
+		if len(in_rows_list) < 3:
+			rows_list[missing_val] = in_rows_list
+
+	# Returns info for each individual 3x3 box.
+	# Use it to establish what needs to be eliminated in the remaining box.
+	return rows_list
+
+
+
+
+def check_block_row(self, coord):
+	# Within each 3x3 box,
+	# tally up whether unfilled values fit within the same two rows.
+	# Then check neighboring boxes.
+	# By the process of elimination,
+	# deduce where that number is in the third row.
+
+	ref_row, ref_col = coord
+
+	# keys: hashable string; value: dict containing info about missing vals
+	# subdict keys: "num_missing", "in_rows", "in_boxes"
+	block_info = {}
+
+	for box_col in [0, 3, 6]:  # checking a row means row is constant.
+		coord = (ref_row, box_col)
+		rows_list = self.check_box_row_elim((coord))
+
+		# Create a hashable key out of the info given.
+		for missing_val in rows_list.keys():
+			rows_str = ''
+			rows_str += '{0}-'.format(missing_val)
+			rows_str += ''.join(map(str, rows_list[missing_val]))
+
+			# Info about missing values.
+			if rows_str not in block_info:
+				block_info[rows_str] = {
+					'num_missing': missing_val,
+					'in_rows': rows_list[missing_val],
+					'in_boxes': [box_col]
+					}
+			else:
+				row_info = block_info[rows_str]
+				row_info['in_boxes'].append(box_col)
+
+	# Eliminate possibilities in third box.
+	self.remove_rows_in_box(block_info)
+
+
+
+
+
+
+
+
+
+
 
 
 def in_which_rows(self, coords_list):
@@ -56,13 +138,6 @@ def in_which_rows(self, coords_list):
 	return list(set(rows))
 
 
-def in_same_col(self, coords_list, missing_val, coord):
-	# Are all the cells in coords_list in the same row?
-	cols_list = self.in_which_cols(coords_list)
-
-	# Remove missing val if they're in the same col.
-	if len(set(cols_list)) == 1:
-		self.remove_in_col_outside_box(missing_val, coord)
 
 
 def in_which_cols(self, coords_list):
@@ -76,6 +151,10 @@ def in_which_cols(self, coords_list):
 
 	# Not useful if it returns 3.
 	return list(set(cols))
+
+
+
+
 
 
 def remove_in_row_outside_box(self, eliminated_val, coord):
@@ -117,71 +196,7 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 # =============================================================================
 
 
-def check_block_row(self, coord):
-	# Within each 3x3 box,
-	# tally up whether unfilled values fit within the same two rows.
-	# Then check neighboring boxes.
-	# By the process of elimination,
-	# deduce where that number is in the third row.
-
-	ref_row, ref_col = coord
-
-	# keys: hashable string; value: dict containing info about missing vals
-	# subdict keys: "num_missing", "in_rows", "in_boxes"
-	block_info = {}
-
-	for box_col in [0, 3, 6]:  # checking a row means row is constant.
-		coord = (ref_row, box_col)
-		rows_list = self.check_box_row_elim((coord))
-
-		# Create a hashable key out of the info given.
-		for missing_val in rows_list.keys():
-			rows_str = ''
-			rows_str += '{0}-'.format(missing_val)
-			rows_str += ''.join(map(str, rows_list[missing_val]))
-
-			# Info about missing values.
-			if rows_str not in block_info:
-				block_info[rows_str] = {
-					'num_missing': missing_val,
-					'in_rows': rows_list[missing_val],
-					'in_boxes': [box_col]
-					}
-			else:
-				row_info = block_info[rows_str]
-				row_info['in_boxes'].append(box_col)
-
-	# Eliminate possibilities in third box.
-	self.remove_row_in_box(block_info)
-
-
-def check_box_row_elim(self, coord):
-	# coord defines the 3x3 box.
-	# Check within a single box to see whether missing values can be narrowed
-	# down to specific rows.
-	# could merge with check_within_a_box function
-	rows_list = {}
-
-	# Get the list of missing values and their possible locations in this box.
-	poss_vals_in_box = self.get_box_poss_vals(coord)
-
-	# For each missing value, analyze the list of their possible locations.
-	for missing_val in poss_vals_in_box.keys():
-		poss_locs_list = poss_vals_in_box[missing_val]
-
-		# Check which rows the missing values are in.
-		in_rows_list = self.in_which_rows(poss_locs_list)
-
-		if len(in_rows_list) < 3:
-			rows_list[missing_val] = in_rows_list
-
-	# Returns info for each individual 3x3 box.
-	# Use it to establish what needs to be eliminated in the remaining box.
-	return rows_list
-
-
-
-def remove_row_in_box(self, block_info):
+def remove_rows_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
 
@@ -236,7 +251,7 @@ def check_box_col_elim(self, coord):
 	print()
 
 
-def remove_col_in_box(self, block_info):
+def remove_cols_in_box(self, block_info):
 	print()
 
 

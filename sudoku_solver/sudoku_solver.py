@@ -15,10 +15,10 @@ class Sudoku_Solver():
 		in_same_box, remove_in_box, remove_matching_sets
 
 	from sudoku_poss_elim import check_within_boxes, check_within_a_box, \
-		in_same_row, in_same_col, remove_in_row_outside_box, \
+		remove_in_row_outside_box, \
 		remove_in_col_outside_box, check_block_row, \
 		check_block_col, check_box_row_elim, check_box_col_elim, \
-		in_which_rows, in_which_cols, remove_row_in_box, remove_col_in_box
+		in_which_rows, in_which_cols, remove_rows_in_box, remove_cols_in_box
 
 
 	def __init__(self):
