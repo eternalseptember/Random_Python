@@ -37,7 +37,7 @@ sudoku.print_possible_values()
 
 
 print('Test block interaction')
-sudoku.check_block_row((3, 0))
+sudoku.check_within_boxes()
 sudoku.print_possible_values()
 
 
