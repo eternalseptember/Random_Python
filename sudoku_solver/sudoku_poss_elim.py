@@ -12,7 +12,12 @@ because box is mostly solved, but col is not.
 
 def check_within_boxes(self):
 	# Check all nine boxes for patterns to eliminate possibilities.
-	for i in [0, 3, 6]:
+
+	# set up dicts to hold info about each column (j)
+	block_col_info = {}
+
+
+	for i in [0, 3, 6]:  # i goes down.
 
 		# Within each 3x3 box,
 		# tally up whether unfilled values fit within the same two rows.
@@ -24,11 +29,12 @@ def check_within_boxes(self):
 		# subdict keys: "num_missing", "in_rows", "in_boxes"
 		block_row_info = {}
 
-		for j in [0, 3, 6]:
+		for j in [0, 3, 6]:  # j goes across.
 			coord = (i, j)
 
-			rows_list = self.check_within_a_box(coord)
+			rows_list, cols_list = self.check_within_a_box(coord)
 
+			# Process info for block-row analysis.
 			# Create a hashable key out of the info given.
 			for missing_val in rows_list.keys():
 				rows_str = ''
@@ -46,8 +52,19 @@ def check_within_boxes(self):
 					row_info = block_row_info[rows_str]
 					row_info['in_boxes'].append(j)
 
-		# Eliminate possibilities in third box.
+
+			# process info for block-col analysis.
+
+
+
+		# Eliminate possibilities in this row's third box.
 		self.remove_rows_in_box(block_row_info)
+
+
+	# will not have info about cols until here
+
+	# eliminate possibilities in each col's third box.
+	self.remove_cols_in_box(block_col_info)
 
 
 
@@ -58,6 +75,7 @@ def check_within_a_box(self, coord):
 	# Check within a single box to see whether missing values can be narrowed
 	# down to specific rows.
 	rows_list = {}
+	cols_list = {}
 
 	# Get the list of missing values and their possible locations in this box.
 	poss_vals_in_box = self.get_box_poss_vals(coord)
@@ -72,24 +90,27 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one row within this box, then remove
 		# missing_val as possibilities in the rest of the row outside this box.
 		if len(in_rows_list) == 1:
-			self.remove_in_row_outside_box(missing_val, coord)
+			self.remove_row_outside_box(missing_val, coord)
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_rows_list) == 2:
 			rows_list[missing_val] = in_rows_list
 
-		"""
+
 		# Are they in the same col?
 		in_cols_list = self.in_which_cols(poss_locs_list)
 
 		# If missing_val can only be in one col within this box, then remove
 		# missing_val as possibilities in the rest of the col outside this box.
 		if len(set(in_cols_list)) == 1:
-			self.remove_in_col_outside_box(missing_val, coord)
-		"""
+			self.remove_col_outside_box(missing_val, coord)
+		# Otherwise, collect info for block-level analysis.
+		elif len(in_cols_list) == 2:
+			cols_list[missing_val] = in_cols_list
+
 
 	# Returns info for each individual 3x3 box.
 	# Use it to establish what needs to be eliminated in the remaining box.
-	return rows_list
+	return rows_list, cols_list
 
 
 
@@ -122,7 +143,7 @@ def in_which_cols(self, coords_list):
 	return list(set(cols))
 
 
-def remove_in_row_outside_box(self, eliminated_val, coord):
+def remove_row_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
 	# coord defines the 3x3 box.
 	ref_row, ref_col = coord
@@ -140,7 +161,7 @@ def remove_in_row_outside_box(self, eliminated_val, coord):
 	self.solve_queue()  # Not sure if this goes here.
 
 
-def remove_in_col_outside_box(self, eliminated_val, coord):
+def remove_col_outside_box(self, eliminated_val, coord):
 	# eliminated_val is the value to be removed
 	# coord defines the 3x3 box.
 	ref_row, ref_col = coord
@@ -156,9 +177,6 @@ def remove_in_col_outside_box(self, eliminated_val, coord):
 		self.possible_vals_check(this_cell, eliminated_val)
 
 	self.solve_queue()  # Not sure if this goes here.
-
-
-# =============================================================================
 
 
 def remove_rows_in_box(self, block_info):
@@ -193,27 +211,6 @@ def remove_rows_in_box(self, block_info):
 
 
 
-# =============================================================================
-
-
-
-def check_block_col(self, coord):
-	ref_row, ref_col = coord
-
-	# keys: hashable string; value: dict containing info about missing vals
-	# subdict keys: "num_missing", "in_cols", "in_boxes"
-	block_info = {}
-
-	for box_row in [0, 3, 6]:  # checking a col means col is constant.
-		print()
-
-
-
-
-
-
-def check_box_col_elim(self, coord):
-	print()
 
 
 def remove_cols_in_box(self, block_info):
