@@ -207,14 +207,16 @@ def remove_rows_in_box(self, block_info):
 				this_coord = (elim_val_in_this_row, this_col)
 				self.possible_vals_check(this_coord, num_missing)
 
-		self.solve_queue()  # Not sure if this goes here.
+	self.solve_queue()  # Not sure if this goes here.
 
 
 
 
 
 def remove_cols_in_box(self, block_info):
-	print()
+	for  block_key in block_info.keys():
+		box_info = block_info[block_key]
+	self.solve_queue()
 
 
 
