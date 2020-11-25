@@ -214,8 +214,14 @@ def remove_rows_in_box(self, block_info):
 
 
 def remove_cols_in_box(self, block_info):
-	for  block_key in block_info.keys():
+	for block_key in block_info.keys():
 		box_info = block_info[block_key]
+
+		num_missing = box_info['num_missing']
+		in_cols = box_info['in_cols']
+		in_boxes = box_info['in_boxes']
+
+
 	self.solve_queue()
 
 
