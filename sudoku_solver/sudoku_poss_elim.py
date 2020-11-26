@@ -54,6 +54,8 @@ def check_within_boxes(self):
 
 
 			# process info for block-col analysis.
+			for missing_val in cols_list.keys():
+				cols_str = ''
 
 
 
