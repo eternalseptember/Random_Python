@@ -59,6 +59,12 @@ def check_within_boxes(self):
 				cols_str += '{0}-'.format(missing_val)
 				cols_str += ''.join(map(str, cols_list[missing_val]))
 
+				# info about missing values
+				if cols_str not in block_col_info:
+					block_col_info[cols_str] = {
+					# stuff here
+					}
+
 
 
 		# Eliminate possibilities in this row's third box.
