@@ -62,7 +62,9 @@ def check_within_boxes(self):
 				# info about missing values
 				if cols_str not in block_col_info:
 					block_col_info[cols_str] = {
-					# stuff here
+						'num_missing': missing_val,
+						'in_cols': cols_list[missing_val],
+						'in_boxes': [i]  # ??????
 					}
 
 
