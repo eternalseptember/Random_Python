@@ -66,6 +66,9 @@ def check_within_boxes(self):
 						'in_cols': cols_list[missing_val],
 						'in_boxes': [i]  # ??????
 					}
+				else:
+					col_info = block_col_info[cols_str]
+					col_info['in_boxes'].append(i)
 
 
 
