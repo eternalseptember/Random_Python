@@ -239,6 +239,10 @@ def remove_cols_in_box(self, block_info):
 		box_remaining = [0, 3, 6]
 		for box in in_boxes:
 			box_remaining.remove(box)
+		box_remaining = box_remaining[0]
+
+		for j in range(3):
+			print()
 
 
 	self.solve_queue()
