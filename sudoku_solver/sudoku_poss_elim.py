@@ -229,23 +229,32 @@ def remove_rows_in_box(self, block_info):
 
 
 def remove_cols_in_box(self, block_info):
+	# Given info about a missing value and which two cols of which two boxes
+	# they're in, remove those possibilities in the third box.
+
+	# Unpack block_info.
+	# Key for dict on missing vals in two boxes, leading to eliminating
+	# those missing vals as possibilities in third box.
 	for block_key in block_info.keys():
-		box_info = block_info[block_key]
+		box_info = block_info[block_key]  # value is a dict
 
 		num_missing = box_info['num_missing']
 		in_cols = box_info['in_cols']
 		in_boxes = box_info['in_boxes']
 
+		# Figure out the box to remove info from.
 		box_remaining = [0, 3, 6]
 		for box in in_boxes:
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
+		# Remove num_missing.
 		for j in range(3):
-			print()
+			this_row = j + box_remaining  #?
 
 
-	self.solve_queue()
+	self.solve_queue()  # Not sure if this goes here.
+
 
 
 
