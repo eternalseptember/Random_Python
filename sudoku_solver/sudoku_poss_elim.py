@@ -250,7 +250,11 @@ def remove_cols_in_box(self, block_info):
 
 		# Remove num_missing.
 		for j in range(3):
-			this_row = j + box_remaining  #?
+			this_row = j + box_remaining  # ?
+
+			for elim_val_in_this_col in in_cols:
+				this_coord = (elim_val_in_this_col, this_row)
+				self.possible_vals_check(this_coord, num_missing)
 
 
 	self.solve_queue()  # Not sure if this goes here.
