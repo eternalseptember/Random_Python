@@ -254,6 +254,9 @@ def remove_cols_in_box(self, block_info):
 
 			for elim_val_in_this_col in in_cols:
 				this_coord = (elim_val_in_this_col, this_row)
+
+				print('remove {0} from {1}'.format(num_missing, this_coord))
+
 				self.possible_vals_check(this_coord, num_missing)
 
 

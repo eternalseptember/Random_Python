@@ -7,6 +7,15 @@ In the central row of boxes:
 So in the third box:
 8 can only be in (row 4; cols 6 to 8).
 Eliminate 8 from (rows 3 and 5; cols 6 to 8)
+
+
+BLOCK ELIM COLS:
+In the top two rows:
+8 can't be in (rows 2 and 3).
+
+In the middle box of the last row:
+8 can only be in (rows 6 to 8; col 4).
+Eliminate 8 from (rows 6 to 8; cols 3 and 5).
 """
 
 import sys
