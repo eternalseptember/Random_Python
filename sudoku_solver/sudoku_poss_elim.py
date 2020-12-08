@@ -77,10 +77,10 @@ def check_within_boxes(self):
 
 
 	# will not have info about cols until here
-
 	# eliminate possibilities in each col's third box.
 	self.remove_cols_in_box(block_col_info)
 
+	self.solve_queue()  # Not sure if this goes here.
 
 
 
@@ -191,7 +191,7 @@ def remove_col_outside_box(self, eliminated_val, coord):
 		this_cell = (j, ref_col)
 		self.possible_vals_check(this_cell, eliminated_val)
 
-	self.solve_queue()  # Not sure if this goes here.
+	
 
 
 def remove_rows_in_box(self, block_info):
@@ -222,9 +222,6 @@ def remove_rows_in_box(self, block_info):
 				this_coord = (elim_val_in_this_row, this_col)
 				self.possible_vals_check(this_coord, num_missing)
 
-	self.solve_queue()  # Not sure if this goes here.
-
-
 
 
 
@@ -254,13 +251,8 @@ def remove_cols_in_box(self, block_info):
 
 			for elim_val_in_this_col in in_cols:
 				this_coord = (this_row, elim_val_in_this_col)
-
-				# print('remove {0} from {1}'.format(num_missing, this_coord))
-
 				self.possible_vals_check(this_coord, num_missing)
 
-
-	self.solve_queue()  # Not sure if this goes here.
 
 
 

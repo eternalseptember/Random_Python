@@ -19,13 +19,13 @@ print('===============================')
 print('Init reduce:')
 sudoku.init_reduce()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 
 
 print('Check matching sets:')
 sudoku.check_matching_sets()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 
 
 """
@@ -39,7 +39,7 @@ sudoku.print_possible_values()
 print('Eliminate based on what\'s inside a block:')
 sudoku.check_within_boxes()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 
 
 
