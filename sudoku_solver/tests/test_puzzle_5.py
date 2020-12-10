@@ -25,7 +25,7 @@ sudoku.print_board()
 print('Check matching sets:')
 sudoku.check_matching_sets()
 sudoku.print_board()
-# sudoku.print_possible_values()
+sudoku.print_possible_values()
 
 
 """

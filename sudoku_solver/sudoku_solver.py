@@ -139,9 +139,9 @@ class Sudoku_Solver():
 	def possible_vals_check(self, coord, solved_value):
 		# Check if there is a stored list of possible values in this coord.
 		# If there isn't, then this location has been solved.
+		# Otherwise, remove solved_value as a possible choice in this coord.
+		# Then check if this coord has been solved.
 		if coord in self.possible_values:
-
-			# Remove solved_value as a possible choice in this coord.
 			poss_values = self.possible_values[coord]
 
 			if solved_value in poss_values:

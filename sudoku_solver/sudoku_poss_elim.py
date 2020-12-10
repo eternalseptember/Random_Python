@@ -54,6 +54,7 @@ def check_within_boxes(self):
 
 
 			# process info for block-col analysis.
+			# Create a hashable key out of the info given.
 			for missing_val in cols_list.keys():
 				cols_str = ''
 				cols_str += '{0}-'.format(missing_val)
@@ -69,7 +70,6 @@ def check_within_boxes(self):
 				else:
 					col_info = block_col_info[cols_str]
 					col_info['in_boxes'].append(i)
-
 
 
 		# Eliminate possibilities in this row's third box.
@@ -126,10 +126,6 @@ def check_within_a_box(self, coord):
 	# Returns info for each individual 3x3 box.
 	# Use it to establish what needs to be eliminated in the remaining box.
 	return rows_list, cols_list
-
-
-
-
 
 
 def in_which_rows(self, coords_list):
@@ -191,10 +187,10 @@ def remove_col_outside_box(self, eliminated_val, coord):
 		this_cell = (j, ref_col)
 		self.possible_vals_check(this_cell, eliminated_val)
 
-	
-
 
 def remove_rows_in_box(self, block_info):
+	print('eliminate possibilities in ROW\'s third box')
+
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
 
@@ -224,8 +220,8 @@ def remove_rows_in_box(self, block_info):
 
 
 
-
 def remove_cols_in_box(self, block_info):
+	print('eliminate possibilities in COL\'s third box')
 	# Given info about a missing value and which two cols of which two boxes
 	# they're in, remove those possibilities in the third box.
 

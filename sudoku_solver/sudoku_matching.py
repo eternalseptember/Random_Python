@@ -148,8 +148,8 @@ def remove_matching_sets(self, coord, matched_set, label=''):
 
 		if poss_values == matched_set:
 			# Don't want to erase the match.
-			print('{0} match found: {1} at {2}'
-				.format(label, matched_set, coord))
+			# print('{0} match found: {1} at {2}'
+			# 	.format(label, matched_set, coord))
 			return
 		else:
 			# Remove any values in the matched set.
