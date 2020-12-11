@@ -210,6 +210,8 @@ def remove_rows_in_box(self, block_info):
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
+		print('num: {0} in rows: {1} in box: {2}'.format(num_missing, in_rows, box_remaining))
+
 		# Remove num_missing.
 		for i in range(3):
 			this_col = i + box_remaining
@@ -240,6 +242,8 @@ def remove_cols_in_box(self, block_info):
 		for box in in_boxes:
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
+
+		print('num: {0} in box: {1} in cols: {2}'.format(num_missing, box_remaining, in_cols))
 
 		# Remove num_missing.
 		for j in range(3):
