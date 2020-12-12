@@ -36,6 +36,7 @@ def check_within_boxes(self):
 
 			# Process info for block-row analysis.
 			# Create a hashable key out of the info given.
+			"""
 			for missing_val in rows_list.keys():
 				rows_str = ''
 				rows_str += '{0}-'.format(missing_val)
@@ -51,10 +52,11 @@ def check_within_boxes(self):
 				else:
 					row_info = block_row_info[rows_str]
 					row_info['in_boxes'].append(j)
-
+			"""
 
 			# process info for block-col analysis.
 			# Create a hashable key out of the info given.
+			"""
 			for missing_val in cols_list.keys():
 				cols_str = ''
 				cols_str += '{0}-'.format(missing_val)
@@ -70,17 +72,18 @@ def check_within_boxes(self):
 				else:
 					col_info = block_col_info[cols_str]
 					col_info['in_boxes'].append(i)
+				"""
 
 
 		# Eliminate possibilities in this row's third box.
-		self.remove_rows_in_box(block_row_info)
+		# self.remove_rows_in_box(block_row_info)
 
 
 	# will not have info about cols until here
 	# eliminate possibilities in each col's third box.
-	self.remove_cols_in_box(block_col_info)
+	# self.remove_cols_in_box(block_col_info)
 
-	self.solve_queue()  # Not sure if this goes here.
+	# self.solve_queue()  # Not sure if this goes here.
 
 
 
@@ -168,8 +171,6 @@ def remove_row_outside_box(self, eliminated_val, coord):
 		# Remove eliminated_val as a possible val in this cell.
 		this_cell = (ref_row, i)
 		self.possible_vals_check(this_cell, eliminated_val)
-
-	self.solve_queue()  # Not sure if this goes here.
 
 
 def remove_col_outside_box(self, eliminated_val, coord):
