@@ -101,9 +101,12 @@ def check_within_a_box(self, coord):
 	# For each missing value, analyze the list of their possible locations.
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
+		print('missing_val: {0}'.format(missing_val))
+		print('\tposs locs: {0}'.format(poss_locs_list))
 
 		# Are they in the same row?
 		in_rows_list = self.in_which_rows(poss_locs_list)
+		print('\tin_rows_list: {0}'.format(in_rows_list))
 
 		# If missing_val can only be in one row within this box, then remove
 		# missing_val as possibilities in the rest of the row outside this box.
@@ -116,6 +119,7 @@ def check_within_a_box(self, coord):
 
 		# Are they in the same col?
 		in_cols_list = self.in_which_cols(poss_locs_list)
+		print('\tin_cols_list: {0}'.format(in_cols_list))
 
 		# If missing_val can only be in one col within this box, then remove
 		# missing_val as possibilities in the rest of the col outside this box.
