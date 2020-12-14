@@ -111,6 +111,7 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one row within this box, then remove
 		# missing_val as possibilities in the rest of the row outside this box.
 		if len(in_rows_list) == 1:
+			print('\t\tremove row outside box. val {0} coord: {1}'.format(missing_val, coord))
 			self.remove_row_outside_box(missing_val, coord)
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_rows_list) == 2:
@@ -124,6 +125,7 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one col within this box, then remove
 		# missing_val as possibilities in the rest of the col outside this box.
 		if len(set(in_cols_list)) == 1:
+			print('\t\tremove col outside box. val {0} coord: {1}'.format(missing_val, coord))
 			self.remove_col_outside_box(missing_val, coord)
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_cols_list) == 2:
