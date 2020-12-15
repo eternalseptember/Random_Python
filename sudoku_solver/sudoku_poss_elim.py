@@ -95,13 +95,14 @@ def check_within_a_box(self, coord):
 	rows_list = {}
 	cols_list = {}
 
+
 	# Get the list of missing values and their possible locations in this box.
 	poss_vals_in_box = self.get_box_poss_vals(coord)
 
 	# For each missing value, analyze the list of their possible locations.
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
-		print('missing_val: {0}'.format(missing_val))
+		print('missing_val {0} in box {1}'.format(missing_val, coord))
 		print('\tposs locs: {0}'.format(poss_locs_list))
 
 		# Are they in the same row?
@@ -111,7 +112,8 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one row within this box, then remove
 		# missing_val as possibilities in the rest of the row outside this box.
 		if len(in_rows_list) == 1:
-			print('\t\tremove row outside box. val {0} coord: {1}'.format(missing_val, coord))
+
+			print('\t\toutside box, remove {0} in row. coord: {1}'.format(missing_val, coord))
 			self.remove_row_outside_box(missing_val, coord)
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_rows_list) == 2:
@@ -125,7 +127,7 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one col within this box, then remove
 		# missing_val as possibilities in the rest of the col outside this box.
 		if len(set(in_cols_list)) == 1:
-			print('\t\tremove col outside box. val {0} coord: {1}'.format(missing_val, coord))
+			print('\t\toutside box, remove {0} in col. coord: {1}'.format(missing_val, coord))
 			self.remove_col_outside_box(missing_val, coord)
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_cols_list) == 2:
