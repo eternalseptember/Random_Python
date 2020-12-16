@@ -102,19 +102,15 @@ def check_within_a_box(self, coord):
 	# For each missing value, analyze the list of their possible locations.
 	for missing_val in poss_vals_in_box.keys():
 		poss_locs_list = poss_vals_in_box[missing_val]
-		print('missing_val {0} in box {1}'.format(missing_val, coord))
-		print('\tposs locs: {0}'.format(poss_locs_list))
 
 		# Are they in the same row?
 		in_rows_list = self.in_which_rows(poss_locs_list)
-		print('\tin_rows_list: {0}'.format(in_rows_list))
 
 		# If missing_val can only be in one row within this box, then remove
 		# missing_val as possibilities in the rest of the row outside this box.
 		if len(in_rows_list) == 1:
-
-			print('\t\toutside box, remove {0} in row. coord: {1}'.format(missing_val, coord))
-			self.remove_row_outside_box(missing_val, coord)
+			print('remove {0} in row {1} outside box {2}'.format(missing_val, in_rows_list[0], coord))
+			self.remove_row_outside_box(missing_val, coord, in_rows_list[0])
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_rows_list) == 2:
 			rows_list[missing_val] = in_rows_list
@@ -122,13 +118,12 @@ def check_within_a_box(self, coord):
 
 		# Are they in the same col?
 		in_cols_list = self.in_which_cols(poss_locs_list)
-		print('\tin_cols_list: {0}'.format(in_cols_list))
 
 		# If missing_val can only be in one col within this box, then remove
 		# missing_val as possibilities in the rest of the col outside this box.
 		if len(set(in_cols_list)) == 1:
-			print('\t\toutside box, remove {0} in col. coord: {1}'.format(missing_val, coord))
-			self.remove_col_outside_box(missing_val, coord)
+			print('remove {0} in col {1} outside box {2}'.format(missing_val, in_cols_list[0], coord))
+			self.remove_col_outside_box(missing_val, coord, in_cols_list[0])
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_cols_list) == 2:
 			cols_list[missing_val] = in_cols_list
@@ -165,10 +160,10 @@ def in_which_cols(self, coords_list):
 	return list(set(cols))
 
 
-def remove_row_outside_box(self, eliminated_val, coord):
+def remove_row_outside_box(self, eliminated_val, ref_box, in_row):
 	# eliminated_val is the value to be removed
-	# coord defines the 3x3 box.
-	ref_row, ref_col = coord
+	# in_box defines the 3x3 box.
+	ref_row, ref_col = ref_box
 	box_col = ref_col // 3  # Box coord is in.
 
 	for i in range(9):  # i goes across.
@@ -177,14 +172,14 @@ def remove_row_outside_box(self, eliminated_val, coord):
 			continue
 
 		# Remove eliminated_val as a possible val in this cell.
-		this_cell = (ref_row, i)
+		this_cell = (in_row, i)
 		self.possible_vals_check(this_cell, eliminated_val)
 
 
-def remove_col_outside_box(self, eliminated_val, coord):
+def remove_col_outside_box(self, eliminated_val, ref_box, in_col):
 	# eliminated_val is the value to be removed
 	# coord defines the 3x3 box.
-	ref_row, ref_col = coord
+	ref_row, ref_col = ref_box
 	box_row = ref_row // 3  # Box coord is in.
 
 	for j in range(9):  # j goes down.
@@ -193,7 +188,7 @@ def remove_col_outside_box(self, eliminated_val, coord):
 			continue
 
 		# Remove eliminated_val as a possible val in this cell.
-		this_cell = (j, ref_col)
+		this_cell = (j, in_col)
 		self.possible_vals_check(this_cell, eliminated_val)
 
 
