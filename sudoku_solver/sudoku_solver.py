@@ -82,7 +82,7 @@ class Sudoku_Solver():
 		row, col = coord
 		solved_value = self.possible_values.pop(coord)
 
-		print('\tRESOLVE coord: {0}\tsolved value: {1}'.format(coord, solved_value))
+		# print('\tRESOLVE coord: {0}\tsolved value: {1}'.format(coord, solved_value))
 
 		self.board[row][col] = solved_value[0]  # Set the value on the board.
 		self.remove_num(coord, solved_value[0])
@@ -154,7 +154,7 @@ class Sudoku_Solver():
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
 
-					print('QUEUE coord: {0}\tsolved value: {1}'.format(coord, poss_values))
+					# print('QUEUE coord: {0}\tsolved value: {1}'.format(coord, poss_values))
 
 
 	def solve(self, coord):

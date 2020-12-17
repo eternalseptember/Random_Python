@@ -36,7 +36,7 @@ def check_within_boxes(self):
 
 			# Process info for block-row analysis.
 			# Create a hashable key out of the info given.
-			"""
+
 			for missing_val in rows_list.keys():
 				rows_str = ''
 				rows_str += '{0}-'.format(missing_val)
@@ -52,7 +52,7 @@ def check_within_boxes(self):
 				else:
 					row_info = block_row_info[rows_str]
 					row_info['in_boxes'].append(j)
-			"""
+
 
 			# process info for block-col analysis.
 			# Create a hashable key out of the info given.
@@ -76,14 +76,14 @@ def check_within_boxes(self):
 
 
 		# Eliminate possibilities in this row's third box.
+		print('third box possiblities')
 		# self.remove_rows_in_box(block_row_info)
 
 
-	# will not have info about cols until here
-	# eliminate possibilities in each col's third box.
+	# Eliminate possibilities in each col's third box.
 	# self.remove_cols_in_box(block_col_info)
 
-	# self.solve_queue()  # Not sure if this goes here.
+	self.solve_queue()  # Not sure if this goes here.
 
 
 
@@ -109,7 +109,6 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one row within this box, then remove
 		# missing_val as possibilities in the rest of the row outside this box.
 		if len(in_rows_list) == 1:
-			print('remove {0} in row {1} outside box {2}'.format(missing_val, in_rows_list[0], coord))
 			self.remove_row_outside_box(missing_val, coord, in_rows_list[0])
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_rows_list) == 2:
@@ -122,7 +121,6 @@ def check_within_a_box(self, coord):
 		# If missing_val can only be in one col within this box, then remove
 		# missing_val as possibilities in the rest of the col outside this box.
 		if len(set(in_cols_list)) == 1:
-			print('remove {0} in col {1} outside box {2}'.format(missing_val, in_cols_list[0], coord))
 			self.remove_col_outside_box(missing_val, coord, in_cols_list[0])
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_cols_list) == 2:
