@@ -77,6 +77,9 @@ def check_within_boxes(self):
 
 		# Eliminate possibilities in this row's third box.
 		print('third box possiblities')
+		for str_key in rows_list.keys():
+			print('key: {0}'.format(str_key))
+			print('\t{0}'.format(rows_list[str_key]))
 		# self.remove_rows_in_box(block_row_info)
 
 
