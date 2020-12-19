@@ -106,7 +106,7 @@ def solve_lookup_table(self, lookup_dict):
 			new_coord = lookup_dict[poss_value][0]
 			self.possible_values[new_coord] = [poss_value]
 
-			print('{0} is in {1}'.format(poss_value, new_coord))
+			# print('{0} is in {1}'.format(poss_value, new_coord))
 			self.solved_queue.append(new_coord)
 
 			# Could run this somewhere else.

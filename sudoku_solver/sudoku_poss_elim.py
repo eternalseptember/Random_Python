@@ -36,7 +36,7 @@ def check_within_boxes(self):
 
 			# Process info for block-row analysis.
 			# Create a hashable key out of the info given.
-
+			"""
 			for missing_val in rows_list.keys():
 				rows_str = ''
 				rows_str += '{0}-'.format(missing_val)
@@ -52,6 +52,7 @@ def check_within_boxes(self):
 				else:
 					row_info = block_row_info[rows_str]
 					row_info['in_boxes'].append(j)
+			"""
 
 
 			# process info for block-col analysis.
@@ -76,14 +77,18 @@ def check_within_boxes(self):
 
 
 		# Eliminate possibilities in this row's third box.
+		"""
 		print('third box possiblities')
 		for str_key in rows_list.keys():
 			print('key: {0}'.format(str_key))
 			print('\t{0}'.format(rows_list[str_key]))
+		"""
+		# print('eliminate possibilities in third box of ROW')
 		# self.remove_rows_in_box(block_row_info)
 
 
 	# Eliminate possibilities in each col's third box.
+	# print('eliminate possibilities in third box of COL')
 	# self.remove_cols_in_box(block_col_info)
 
 	self.solve_queue()  # Not sure if this goes here.
@@ -162,10 +167,10 @@ def in_which_cols(self, coords_list):
 
 
 def remove_row_outside_box(self, eliminated_val, ref_box, in_row):
-	# eliminated_val is the value to be removed
-	# in_box defines the 3x3 box.
+	# eliminated_val is the value to be removed.
+	# ref_box defines the 3x3 box.
 	ref_row, ref_col = ref_box
-	box_col = ref_col // 3  # Box coord is in.
+	box_col = ref_col // 3  # Remove in row outside this box.
 
 	for i in range(9):  # i goes across.
 		# Skip the box with coord.
@@ -178,10 +183,10 @@ def remove_row_outside_box(self, eliminated_val, ref_box, in_row):
 
 
 def remove_col_outside_box(self, eliminated_val, ref_box, in_col):
-	# eliminated_val is the value to be removed
-	# coord defines the 3x3 box.
+	# eliminated_val is the value to be removed.
+	# ref_box defines the 3x3 box.
 	ref_row, ref_col = ref_box
-	box_row = ref_row // 3  # Box coord is in.
+	box_row = ref_row // 3  # Remove in col outside this box.
 
 	for j in range(9):  # j goes down.
 		# Skip the box with coord.
@@ -194,8 +199,6 @@ def remove_col_outside_box(self, eliminated_val, ref_box, in_col):
 
 
 def remove_rows_in_box(self, block_info):
-	print('eliminate possibilities in ROW\'s third box')
-
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
 
@@ -215,7 +218,8 @@ def remove_rows_in_box(self, block_info):
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
-		print('num: {0} in rows: {1} in box: {2}'.format(num_missing, in_rows, box_remaining))
+		print('num: {0} in rows: {1} in box: {2}'
+			.format(num_missing, in_rows, box_remaining))
 
 		# Remove num_missing.
 		for i in range(3):
@@ -228,7 +232,6 @@ def remove_rows_in_box(self, block_info):
 
 
 def remove_cols_in_box(self, block_info):
-	print('eliminate possibilities in COL\'s third box')
 	# Given info about a missing value and which two cols of which two boxes
 	# they're in, remove those possibilities in the third box.
 
@@ -248,7 +251,8 @@ def remove_cols_in_box(self, block_info):
 			box_remaining.remove(box)
 		box_remaining = box_remaining[0]
 
-		print('num: {0} in box: {1} in cols: {2}'.format(num_missing, box_remaining, in_cols))
+		print('num: {0} in box: {1} in cols: {2}'
+			.format(num_missing, box_remaining, in_cols))
 
 		# Remove num_missing.
 		for j in range(3):

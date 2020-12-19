@@ -8,7 +8,6 @@ sys.path.append('../')
 from sudoku_solver import *
 
 
-
 sudoku = Sudoku_Solver()
 sudoku.import_board("puzzle_5.txt")
 sudoku.print_board()
@@ -30,20 +29,18 @@ sudoku.print_board()
 print('===============================')
 
 
-"""
+print('Eliminate block-level possibilities:')
+sudoku.check_within_boxes()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
 print('Check unique locations:')
 sudoku.check_all_unique()
 sudoku.print_board()
 sudoku.print_possible_values()
-"""
-
-
-print('Eliminate based on what\'s inside a block:')
-sudoku.check_within_boxes()
-sudoku.print_board()
-sudoku.print_possible_values()
-
-
+print('===============================')
 
 
 
