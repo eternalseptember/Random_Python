@@ -24,7 +24,7 @@ class Sudoku_Solver():
 		self.input = None
 		self.board = self.create_board()
 		self.possible_values = {}  # {(row, col): [possible values]}
-		self.init_queue = []  # from init pass
+		# self.init_queue = []  # from init pass
 		self.solved_list = []
 		self.solved_queue = []
 
@@ -49,9 +49,9 @@ class Sudoku_Solver():
 				if cell_value == '-':
 					self.possible_values[(row, col)] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 				else:
-					cell_value = int(cell_value)
-					self.board[row][col] = cell_value
-					self.init_queue.append((row, col))
+					self.board[row][col] = int(cell_value)
+					self.possible_values[(row, col)] = [int(cell_value)]
+					self.solved_queue.append((row, col))
 
 
 	def init_reduce(self):
