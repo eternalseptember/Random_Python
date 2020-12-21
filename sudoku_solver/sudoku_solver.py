@@ -4,7 +4,7 @@
 
 class Sudoku_Solver():
 	from sudoku_print import print_board, print_possible_values, \
-		print_init_queue, print_solved_queue
+		print_solved_queue
 
 	from sudoku_unique import check_all_unique, check_unique_row, \
 		check_unique_col, check_unique_box, get_box_poss_vals, \
@@ -24,7 +24,6 @@ class Sudoku_Solver():
 		self.input = None
 		self.board = self.create_board()
 		self.possible_values = {}  # {(row, col): [possible values]}
-		# self.init_queue = []  # from init pass
 		self.solved_list = []
 		self.solved_queue = []
 
@@ -54,20 +53,6 @@ class Sudoku_Solver():
 					self.solved_queue.append((row, col))
 
 
-	def init_reduce(self):
-		# Reduce list of possible values.
-		# solved_value is the number on the board on first pass.
-		while len(self.init_queue) > 0:
-			solved_cell = self.init_queue.pop(0)
-			self.solved_list.append(solved_cell)
-
-			row, col = solved_cell
-			solved_value = self.board[row][col]
-			self.remove_num(solved_cell, solved_value)
-
-		self.solve_queue()
-
-
 	def solve_queue(self):
 		# solved_value is a reduced list after the first pass.
 		while len(self.solved_queue) > 0:
@@ -81,10 +66,6 @@ class Sudoku_Solver():
 
 		row, col = coord
 		solved_value = self.possible_values.pop(coord)
-
-		# print('\tRESOLVE coord: {0}\tsolved value: {1}'
-		# 	.format(coord, solved_value))
-
 		self.board[row][col] = solved_value[0]  # Set the value on the board.
 		self.remove_num(coord, solved_value[0])
 
@@ -150,8 +131,7 @@ class Sudoku_Solver():
 
 			# Add to solved queue if only one possible value is remaining.
 			if len(poss_values) == 1:
-				if (coord not in self.init_queue) and \
-					(coord not in self.solved_list) and \
+				if (coord not in self.solved_list) and \
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
 

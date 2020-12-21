@@ -28,13 +28,6 @@ def print_possible_values(self):
 	print()
 
 
-def print_init_queue(self):
-	print('Init solved queue:', end=' ')
-	for coord in self.init_queue:
-		print(coord, end=' ')
-	print()
-
-
 def print_solved_queue(self):
 	print('Solved queue:', end=' ')
 	for coord in self.solved_queue:
