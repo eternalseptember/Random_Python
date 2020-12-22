@@ -34,22 +34,25 @@ print('===============================')
 
 # Testing steps
 print('Init reduce:')
-sudoku.init_reduce()
+sudoku.solve_queue()
 sudoku.print_board()
 # sudoku.print_possible_values()
+print('===============================')
 
 """
 print('Check matching sets:')
 sudoku.check_matching_sets()
 sudoku.print_board()
 sudoku.print_possible_values()
+print('===============================')
 """
 
 
-print('Test block interaction')
+print('Test block interaction:')
 sudoku.check_within_boxes()
+# sudoku.print_board()
 sudoku.print_possible_values()
-
+print('===============================')
 
 
 

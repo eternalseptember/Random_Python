@@ -16,16 +16,17 @@ print('===============================')
 
 # Solve
 print('Init reduce:')
-sudoku.init_reduce()
+sudoku.solve_queue()
 sudoku.print_board()
 sudoku.print_possible_values()
+print('===============================')
 
 
 print('Unique lookup test:')
 sudoku.check_all_unique()
 sudoku.print_board()
-sudoku.print_possible_values()
-
+# sudoku.print_possible_values()
+print('===============================')
 
 
 
