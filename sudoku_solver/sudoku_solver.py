@@ -17,7 +17,7 @@ class Sudoku_Solver():
 	from sudoku_poss_elim import check_within_boxes, check_within_a_box, \
 		in_which_rows, in_which_cols, \
 		remove_row_outside_box, remove_col_outside_box, \
-		remove_rows_in_box, remove_cols_in_box
+		remove_rows_in_box, remove_cols_in_box, check_block_elim
 
 
 	def __init__(self):

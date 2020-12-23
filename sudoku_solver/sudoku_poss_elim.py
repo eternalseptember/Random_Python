@@ -198,6 +198,7 @@ def remove_col_outside_box(self, eliminated_val, ref_box, in_col):
 		self.possible_vals_check(this_cell, eliminated_val)
 
 
+
 def remove_rows_in_box(self, block_info):
 	# Given info about a missing value and which two rows of which two boxes
 	# they're in, remove those possibilities in the third box.
@@ -263,7 +264,8 @@ def remove_cols_in_box(self, block_info):
 				self.possible_vals_check(this_coord, num_missing)
 
 
-
+def check_box_elim(self):
+	return None
 
 
 
