@@ -12,22 +12,14 @@ because box is mostly solved, but col is not.
 
 def check_within_boxes(self):
 	# Check all nine boxes for patterns to eliminate possibilities.
+	# Within each 3x3 box, tally up whether unfilled values fit within row.
+	# If so, then eliminate them as possibilities from neighboring boxes.
 
-	# set up dicts to hold info about each column (j)
-	block_col_info = {}
-
+	# keys: hashable string; value: dict containing info about missing vals
+	block_col_info = {}  # subdict keys: "num_missing", "in_cols", "in_boxes"
 
 	for i in [0, 3, 6]:  # i goes down.
-
-		# Within each 3x3 box,
-		# tally up whether unfilled values fit within the same two rows.
-		# Then check neighboring boxes.
-		# By the process of elimination,
-		# deduce where that number is in the third row.
-
-		# keys: hashable string; value: dict containing info about missing vals
-		# subdict keys: "num_missing", "in_rows", "in_boxes"
-		block_row_info = {}
+		block_row_info = {}  # subdict keys: "num_missing", "in_rows", "in_boxes"
 
 		for j in [0, 3, 6]:  # j goes across.
 			coord = (i, j)
@@ -264,8 +256,35 @@ def remove_cols_in_box(self, block_info):
 				self.possible_vals_check(this_coord, num_missing)
 
 
-def check_box_elim(self):
-	return None
+def check_block_elim(self):
+	# Check all nine boxes for patterns to eliminate possibilities.
+	# Within each 3x3 box, 
+	# tally up whether unfilled values fit within the same two rows.
+	# Then check neighboring boxes.
+	# By the process of elimination,
+	# deduce where that number is in the third row.
+
+
+	# keys: hashable string; value: dict containing info about missing vals
+	# subdict keys: "num_missing", "in_cols", "in_boxes"
+	block_col_info = {}
+
+	for i in [0, 3, 6]:  # i goes down.
+		block_row_info = {}  # subdict keys: "num_missing", "in_rows", "in_boxes"
+
+		for j in [0, 3, 6]:  # j goes across.
+			coord = (i, j)
+
+			# Get list of missing vals and their poss locs in this box.
+			poss_vals_in_box = self.get_box_poss_vals(coord)
+
+			# For each missing val, get list of their possible locations.
+			for missing_val in poss_vals_in_box.keys():
+				poss_locs_list = poss_vals_in_box[missing_val]
+
+				# are they in the same rows or cols?
+				in_rows_list = self.in_which_rows(poss_locs_list)
+				in_cols_list = self.in_which_cols(poss_locs_list)
 
 
 
