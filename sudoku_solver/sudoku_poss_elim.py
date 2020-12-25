@@ -264,7 +264,6 @@ def check_block_elim(self):
 	# By the process of elimination,
 	# deduce where that number is in the third row.
 
-
 	# keys: hashable string; value: dict containing info about missing vals
 	# subdict keys: "num_missing", "in_cols", "in_boxes"
 	block_col_info = {}
