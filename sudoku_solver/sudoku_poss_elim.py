@@ -24,7 +24,8 @@ def check_within_boxes(self):
 		for j in [0, 3, 6]:  # j goes across.
 			coord = (i, j)
 
-			rows_list, cols_list = self.check_within_a_box(coord)
+			# rows_list, cols_list = self.check_within_a_box(coord)
+			self.check_within_a_box(coord)
 
 			# Process info for block-row analysis.
 			# Create a hashable key out of the info given.
@@ -92,9 +93,10 @@ def check_within_a_box(self, coord):
 	# coord defines the 3x3 box.
 	# Check within a single box to see whether missing values can be narrowed
 	# down to specific rows.
+	"""
 	rows_list = {}
 	cols_list = {}
-
+	"""
 
 	# Get the list of missing values and their possible locations in this box.
 	poss_vals_in_box = self.get_box_poss_vals(coord)
@@ -110,10 +112,11 @@ def check_within_a_box(self, coord):
 		# missing_val as possibilities in the rest of the row outside this box.
 		if len(in_rows_list) == 1:
 			self.remove_row_outside_box(missing_val, coord, in_rows_list[0])
+		"""
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_rows_list) == 2:
 			rows_list[missing_val] = in_rows_list
-
+		"""
 
 		# Are they in the same col?
 		in_cols_list = self.in_which_cols(poss_locs_list)
@@ -122,14 +125,15 @@ def check_within_a_box(self, coord):
 		# missing_val as possibilities in the rest of the col outside this box.
 		if len(set(in_cols_list)) == 1:
 			self.remove_col_outside_box(missing_val, coord, in_cols_list[0])
+		"""
 		# Otherwise, collect info for block-level analysis.
 		elif len(in_cols_list) == 2:
 			cols_list[missing_val] = in_cols_list
-
+		"""
 
 	# Returns info for each individual 3x3 box.
 	# Use it to establish what needs to be eliminated in the remaining box.
-	return rows_list, cols_list
+	# return rows_list, cols_list
 
 
 def in_which_rows(self, coords_list):
@@ -285,7 +289,11 @@ def check_block_elim(self):
 				in_rows_list = self.in_which_rows(poss_locs_list)
 				in_cols_list = self.in_which_cols(poss_locs_list)
 
+				if len(in_rows_list) == 2:
+					print('do stuff here')
 
+				if len(in_cols_list) == 2:
+					print('do more stuff here')
 
 
 

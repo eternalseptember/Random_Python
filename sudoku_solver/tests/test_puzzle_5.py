@@ -32,16 +32,16 @@ print('===============================')
 print('Eliminate block-level possibilities:')
 sudoku.check_within_boxes()
 sudoku.print_board()
-# sudoku.print_possible_values()
+sudoku.print_possible_values()
 print('===============================')
 
-
+"""
 print('Check unique locations:')
 sudoku.check_all_unique()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-
+"""
 
 
 
