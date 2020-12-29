@@ -52,7 +52,7 @@ print('Test block interaction:')
 # sudoku.check_within_boxes()
 sudoku.check_block_elim()
 # sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 print('===============================')
 
 

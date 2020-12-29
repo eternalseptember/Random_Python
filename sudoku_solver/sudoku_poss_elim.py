@@ -291,14 +291,17 @@ def check_block_elim(self):
 
 				if len(in_rows_list) == 2:
 					block_row_info[missing_val] = in_rows_list
+					print('scanning at coord {0}\tmissing val: {1}\tin rows: {2}'.format(coord, missing_val, in_rows_list))
+
+					# create a hashable key
+
+
 
 				"""
 				if len(in_cols_list) == 2:
 					print('do more stuff here')
 				"""
 
-		for missing_val in block_row_info.keys():
-			print('{0} \t{1}'.format(missing_val, block_row_info[missing_val]))
 
 
 
