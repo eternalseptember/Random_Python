@@ -294,6 +294,7 @@ def check_block_elim(self):
 					print('scanning at coord {0}\tmissing val: {1}\tin rows: {2}'.format(coord, missing_val, in_rows_list))
 
 					# create a hashable key
+					rows_str = '{0}-'.format(missing_val)
 
 
 
