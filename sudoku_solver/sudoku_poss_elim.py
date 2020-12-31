@@ -295,6 +295,8 @@ def check_block_elim(self):
 
 					# create a hashable key
 					rows_str = '{0}-'.format(missing_val)
+					rows_str += ''.join(map(str, in_rows_list))
+					print('hash string: {0}'.format(rows_str))
 
 
 
