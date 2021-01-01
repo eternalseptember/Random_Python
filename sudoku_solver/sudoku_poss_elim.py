@@ -296,7 +296,12 @@ def check_block_elim(self):
 					# create a hashable key
 					rows_str = '{0}-'.format(missing_val)
 					rows_str += ''.join(map(str, in_rows_list))
-					print('hash string: {0}'.format(rows_str))
+					# print('hash string: {0}'.format(rows_str))
+
+					if rows_str not in block_row_info:
+						print('insert info here')
+					else:
+						print('add to info')
 
 
 
