@@ -299,7 +299,11 @@ def check_block_elim(self):
 					# print('hash string: {0}'.format(rows_str))
 
 					if rows_str not in block_row_info:
-						print('insert info here')
+						block_row_info[rows_str] = {
+							'num_missing': missing_val,
+							'in_rows': in_rows_list,
+							'in_boxes': [j]
+						}
 					else:
 						print('add to info')
 
