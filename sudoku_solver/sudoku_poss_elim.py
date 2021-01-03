@@ -291,7 +291,7 @@ def check_block_elim(self):
 
 				if len(in_rows_list) == 2:
 					block_row_info[missing_val] = in_rows_list
-					print('scanning at coord {0}\tmissing val: {1}\tin rows: {2}'.format(coord, missing_val, in_rows_list))
+					# print('scanning at coord {0}\tmissing val: {1}\tin rows: {2}'.format(coord, missing_val, in_rows_list))
 
 					# create a hashable key
 					rows_str = '{0}-'.format(missing_val)
@@ -305,7 +305,8 @@ def check_block_elim(self):
 							'in_boxes': [j]
 						}
 					else:
-						print('add to info')
+						row_info = block_row_info[rows_str]
+						row_info['in_boxes'].append(j)
 
 
 
