@@ -270,10 +270,10 @@ def check_block_elim(self):
 
 	# keys: hashable string; value: dict containing info about missing vals
 	# subdict keys: "num_missing", "in_cols", "in_boxes"
+	block_row_info = {}  # subdict keys: "num_missing", "in_rows", "in_boxes"
 	block_col_info = {}  # pre-hashed?
 
 	for i in [0, 3, 6]:  # i goes down.
-		block_row_info = {}  # subdict keys: "num_missing", "in_rows", "in_boxes"
 
 		for j in [0, 3, 6]:  # j goes across.
 			coord = (i, j)
@@ -309,12 +309,13 @@ def check_block_elim(self):
 						row_info['in_boxes'].append(j)
 
 
-
 				"""
 				if len(in_cols_list) == 2:
 					print('do more stuff here')
 				"""
 
+	for item in block_row_info.keys():
+		print('key: {0}, value: {1}'.format(item, block_row_info[item]))
 
 
 
