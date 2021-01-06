@@ -291,12 +291,14 @@ def check_block_elim(self):
 
 				if len(in_rows_list) == 2:
 					block_row_info[missing_val] = in_rows_list
-					# print('scanning at coord {0}\tmissing val: {1}\tin rows: {2}'.format(coord, missing_val, in_rows_list))
+
+					print('scanning at coord {0}\tmissing val: {1}\tin rows: {2}'.format(coord, missing_val, in_rows_list))
 
 					# create a hashable key
 					rows_str = '{0}-'.format(missing_val)
 					rows_str += ''.join(map(str, in_rows_list))
-					# print('hash string: {0}'.format(rows_str))
+
+					print('hash string: {0}'.format(rows_str))
 
 					if rows_str not in block_row_info:
 						block_row_info[rows_str] = {
@@ -313,6 +315,8 @@ def check_block_elim(self):
 				if len(in_cols_list) == 2:
 					print('do more stuff here')
 				"""
+
+	print('NUMBER OF KEYS: {0}'.format(len(block_row_info.keys())))
 
 	for item in block_row_info.keys():
 		print('key: {0}, value: {1}'.format(item, block_row_info[item]))
