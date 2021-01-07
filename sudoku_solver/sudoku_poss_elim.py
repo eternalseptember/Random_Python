@@ -287,17 +287,12 @@ def check_block_elim(self):
 
 				# are they in the same rows or cols?
 				in_rows_list = self.in_which_rows(poss_locs_list)
-				# in_cols_list = self.in_which_cols(poss_locs_list)
+				in_cols_list = self.in_which_cols(poss_locs_list)
 
 				if len(in_rows_list) == 2:
-					block_row_info[missing_val] = in_rows_list
-
 					# create a hashable key
 					rows_str = '{0}-'.format(missing_val)
 					rows_str += ''.join(map(str, in_rows_list))
-
-					print('\thash: {0}\tcoord {1}\tcol: {2}'.format(rows_str, coord, j))
-					print('\tmissing val: {0}\tin rows: {1}\t'.format(missing_val, in_rows_list))
 
 					if rows_str not in block_row_info:
 						block_row_info[rows_str] = {
@@ -305,13 +300,10 @@ def check_block_elim(self):
 							'in_rows': in_rows_list,
 							'in_boxes': [j]
 						}
-
-						print(block_row_info[rows_str])
 					else:
 						row_info = block_row_info[rows_str]
 						row_info['in_boxes'].append(j)
 
-						print(block_row_info[rows_str])
 
 
 				"""
@@ -319,10 +311,13 @@ def check_block_elim(self):
 					print('do more stuff here')
 				"""
 
-	# print('NUMBER OF KEYS: {0}'.format(len(block_row_info.keys())))
+	"""
 	print()
 	for item in block_row_info.keys():
 		print('key: {0}, value: {1}'.format(item, block_row_info[item]))
+	"""
+	print('eliminate possibilities in third box of ROW')
+	self.remove_rows_in_box(block_row_info)
 
 
 
