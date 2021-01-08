@@ -306,17 +306,13 @@ def check_block_elim(self):
 
 
 
-				"""
 				if len(in_cols_list) == 2:
-					print('do more stuff here')
-				"""
+					# create a hashable key
+					cols_str = '{0}-'.format(missing_val)
+					cols_str += ''.join(map(str, in_cols_list))
 
-	"""
-	print()
-	for item in block_row_info.keys():
-		print('key: {0}, value: {1}'.format(item, block_row_info[item]))
-	"""
-	print('eliminate possibilities in third box of ROW')
+
+
 	self.remove_rows_in_box(block_row_info)
 
 
