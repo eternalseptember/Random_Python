@@ -311,6 +311,11 @@ def check_block_elim(self):
 					cols_str = '{0}-'.format(missing_val)
 					cols_str += ''.join(map(str, in_cols_list))
 
+					if cols_str not in block_col_info:
+						print()
+					else:
+						print()
+
 
 
 	self.remove_rows_in_box(block_row_info)
