@@ -314,7 +314,8 @@ def check_block_elim(self):
 					if cols_str not in block_col_info:
 						print()
 					else:
-						print()
+						col_info = block_col_info[cols_str]
+						col_info['in_boxes'].append(i)
 
 
 
