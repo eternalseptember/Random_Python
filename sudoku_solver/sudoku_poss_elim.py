@@ -312,7 +312,11 @@ def check_block_elim(self):
 					cols_str += ''.join(map(str, in_cols_list))
 
 					if cols_str not in block_col_info:
-						print()
+						block_col_info[cols_str] = {
+							'num_missing': missing_val,
+							'in_cols': in_cols_list,
+							'in_boxes': [i]
+						}
 					else:
 						col_info = block_col_info[cols_str]
 						col_info['in_boxes'].append(i)
