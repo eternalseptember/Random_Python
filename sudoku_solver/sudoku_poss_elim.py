@@ -31,8 +31,7 @@ def check_within_boxes(self):
 			# Create a hashable key out of the info given.
 			"""
 			for missing_val in rows_list.keys():
-				rows_str = ''
-				rows_str += '{0}-'.format(missing_val)
+				rows_str = '{0}-'.format(missing_val)
 				rows_str += ''.join(map(str, rows_list[missing_val]))
 
 				# Info about missing values.
@@ -52,8 +51,7 @@ def check_within_boxes(self):
 			# Create a hashable key out of the info given.
 			"""
 			for missing_val in cols_list.keys():
-				cols_str = ''
-				cols_str += '{0}-'.format(missing_val)
+				cols_str = '{0}-'.format(missing_val)
 				cols_str += ''.join(map(str, cols_list[missing_val]))
 
 				# info about missing values
@@ -70,18 +68,10 @@ def check_within_boxes(self):
 
 
 		# Eliminate possibilities in this row's third box.
-		"""
-		print('third box possiblities')
-		for str_key in rows_list.keys():
-			print('key: {0}'.format(str_key))
-			print('\t{0}'.format(rows_list[str_key]))
-		"""
-		# print('eliminate possibilities in third box of ROW')
 		# self.remove_rows_in_box(block_row_info)
 
 
 	# Eliminate possibilities in each col's third box.
-	# print('eliminate possibilities in third box of COL')
 	# self.remove_cols_in_box(block_col_info)
 
 	self.solve_queue()  # Not sure if this goes here.
@@ -285,12 +275,12 @@ def check_block_elim(self):
 			for missing_val in poss_vals_in_box.keys():
 				poss_locs_list = poss_vals_in_box[missing_val]
 
-				# are they in the same rows or cols?
+				# Are they in the same rows or cols?
 				in_rows_list = self.in_which_rows(poss_locs_list)
 				in_cols_list = self.in_which_cols(poss_locs_list)
 
 				if len(in_rows_list) == 2:
-					# create a hashable key
+					# Create a hashable key.
 					rows_str = '{0}-'.format(missing_val)
 					rows_str += ''.join(map(str, in_rows_list))
 
@@ -307,7 +297,7 @@ def check_block_elim(self):
 
 
 				if len(in_cols_list) == 2:
-					# create a hashable key
+					# Create a hashable key.
 					cols_str = '{0}-'.format(missing_val)
 					cols_str += ''.join(map(str, in_cols_list))
 
@@ -324,6 +314,7 @@ def check_block_elim(self):
 
 
 	self.remove_rows_in_box(block_row_info)
+	self.remove_cols_in_box(block_col_info)
 
 
 
