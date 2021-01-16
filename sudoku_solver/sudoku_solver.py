@@ -66,6 +66,7 @@ class Sudoku_Solver():
 
 		row, col = coord
 		solved_value = self.possible_values.pop(coord)
+		print('coord: {0} solved value: {1}'.format(coord, solved_value))
 		self.board[row][col] = solved_value[0]  # Set the value on the board.
 		self.remove_num(coord, solved_value[0])
 
