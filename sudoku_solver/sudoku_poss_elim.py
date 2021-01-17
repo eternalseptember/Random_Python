@@ -238,7 +238,7 @@ def check_block_elim(self):
 						col_info['in_boxes'].append(i)
 
 
-	self.remove_rows_in_box(block_row_info)
+	# self.remove_rows_in_box(block_row_info)
 	self.remove_cols_in_box(block_col_info)
 	self.solve_queue()
 

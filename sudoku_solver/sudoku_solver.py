@@ -136,8 +136,8 @@ class Sudoku_Solver():
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
 
-					# print('QUEUE coord: {0}\tsolved value: {1}'
-					# 	.format(coord, poss_values))
+					print('\tQUEUE coord: {0}\tsolved value: {1}'
+						.format(coord, poss_values))
 
 
 	def solve(self, coord):

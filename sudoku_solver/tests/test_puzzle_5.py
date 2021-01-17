@@ -36,11 +36,20 @@ sudoku.print_possible_values()
 print('===============================')
 
 
+print('Check unique locations:')
+sudoku.check_all_unique()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
 print('Block-level eliminations:')
 sudoku.check_block_elim()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+
+
 
 """
 print('Check unique locations:')
