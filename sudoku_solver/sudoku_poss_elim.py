@@ -175,13 +175,14 @@ def remove_cols_in_box(self, block_info):
 				self.possible_vals_check(this_coord, num_missing)
 
 
+
 def check_block_elim(self):
 	# Check all nine boxes for patterns to eliminate possibilities.
 	# Within each 3x3 box,
-	# tally up whether unfilled values fit within the same two rows.
+	# tally up whether unfilled values fit within the same two rows/cols.
 	# Then check neighboring boxes.
 	# By the process of elimination,
-	# deduce where that number is in the third row.
+	# deduce where that number is in the third row/col.
 
 	# keys: hashable string; value: dict containing info about missing vals
 	# subdict keys: "num_missing", "in_cols" or "in_rows, "in_boxes"
@@ -239,14 +240,20 @@ def check_block_elim(self):
 							'in_cols': in_cols_list,
 							'in_boxes': [i]
 						}
-						print('\t\tcreating dict entry: {0}'.format(cols_str))
-						print('\t\t{0}'.format(block_col_info[cols_str]))
+						print('\t\tcreating dict entry: {0}:'.format(cols_str), end=' ')
+						print('{0}'.format(block_col_info[cols_str]))
 
 					else:
 						col_info = block_col_info[cols_str]
 						col_info['in_boxes'].append(i)
-						print('\t\tappending dict entry: {0}'.format(cols_str))
-						print('\t\t{0}'.format(block_col_info[cols_str]))
+						print('\t\tappending dict entry: {0}:'.format(cols_str), end=' ')
+						print('{0}'.format(block_col_info[cols_str]))
+
+
+	print()
+	for val in block_col_info.keys():
+		print('hash: {0}\tvalue: {1}'.format(val, block_col_info[val]))
+	print()
 
 
 	# self.remove_rows_in_box(block_row_info)
