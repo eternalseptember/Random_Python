@@ -29,7 +29,7 @@ sudoku.print_board()
 print('===============================')
 
 
-print('Eliminate block-level possibilities:')
+print('Eliminate single-box block-level possibilities:')
 sudoku.check_within_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()
@@ -43,7 +43,7 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-print('Block-level eliminations:')
+print('Multi-boxes block-level eliminations:')
 sudoku.check_block_elim()
 sudoku.print_board()
 sudoku.print_possible_values()
