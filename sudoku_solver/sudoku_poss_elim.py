@@ -161,6 +161,9 @@ def remove_cols_in_box(self, block_info):
 		in_boxes = box_info['in_boxes']
 
 		# Figure out the box to remove info from.
+		if len(in_boxes) != 2:
+			continue
+
 		box_remaining = [0, 3, 6]
 		for box in in_boxes:
 			box_remaining.remove(box)
@@ -171,7 +174,7 @@ def remove_cols_in_box(self, block_info):
 
 		# Remove num_missing.
 		for j in range(3):
-			this_row = j + box_remaining  # ?
+			this_row = j + box_remaining
 
 			for elim_val_in_this_col in in_cols:
 				this_coord = (this_row, elim_val_in_this_col)
@@ -204,7 +207,7 @@ def check_block_elim(self):
 			for missing_val in poss_vals_in_box.keys():
 				poss_locs_list = poss_vals_in_box[missing_val]
 
-
+				"""
 				# Are they in the same rows?
 				in_rows_list = self.in_which_rows(poss_locs_list)
 
@@ -222,9 +225,9 @@ def check_block_elim(self):
 					else:
 						row_info = block_row_info[rows_str]
 						row_info['in_boxes'].append(j)
-
-
 				"""
+
+
 				# Are they in the same cols?
 				in_cols_list = self.in_which_cols(poss_locs_list)
 
@@ -251,25 +254,24 @@ def check_block_elim(self):
 						col_info['in_boxes'].append(i)
 						print('\t\tappending dict entry: {0}:'.format(cols_str), end=' ')
 						print('{0}'.format(block_col_info[cols_str]))
-				"""
 
 	"""
-	print()
-	for val in block_col_info.keys():
-		print('hash: {0}\tvalue: {1}'.format(val, block_col_info[val]))
-	print()
-	"""
-
-
 	print()
 	for val in block_row_info.keys():
 		print('hash: {0}\tvalue: {1}'.format(val, block_row_info[val]))
 	print()
+	"""
+
+
+	print()
+	for val in block_col_info.keys():
+		print('hash: {0}\tvalue: {1}'.format(val, block_col_info[val]))
+	print()
 
 
 
-	self.remove_rows_in_box(block_row_info)
-	# self.remove_cols_in_box(block_col_info)
+	# self.remove_rows_in_box(block_row_info)
+	self.remove_cols_in_box(block_col_info)
 	self.solve_queue()
 
 
