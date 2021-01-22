@@ -1,6 +1,6 @@
 """
 Test file for puzzle_2.
-Can be solved by checking all unique once.
+Solved by checking all unique once.
 """
 
 import sys

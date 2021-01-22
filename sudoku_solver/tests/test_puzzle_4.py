@@ -1,6 +1,6 @@
 """
 Test file for puzzle_4.
-Not yet solved.
+Solved by single- and double- boxed-based eliminations and checking unique.
 """
 
 import sys
@@ -18,30 +18,51 @@ print('===============================')
 print('Init reduce:')
 sudoku.solve_queue()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 print('===============================')
 
 
 print('Check matching sets:')
 sudoku.check_matching_sets()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 print('===============================')
 
 
-print('Eliminate single-box block-level possibilities:')
-sudoku.check_within_boxes()
+print('Check unique locations:')
+sudoku.check_all_unique()
 sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')
 
 
-print('Multi-boxes block-level eliminations:')
-sudoku.check_block_elim()
+print('Single-box block-level eliminations:')
+sudoku.check_within_boxes()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 print('===============================')
 
+"""
+print('Check unique locations:')
+sudoku.check_all_unique()
+sudoku.print_board()
+# sudoku.print_possible_values()
+print('===============================')
+"""
+
+print('Double-boxed block-level eliminations:')
+sudoku.check_block_elim()
+sudoku.print_board()
+# sudoku.print_possible_values()
+print('===============================')
+
+"""
+print('Check unique locations:')
+sudoku.check_all_unique()
+sudoku.print_board()
+# sudoku.print_possible_values()
+print('===============================')
+"""
 
 
 
