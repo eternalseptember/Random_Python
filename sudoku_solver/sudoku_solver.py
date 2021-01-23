@@ -19,6 +19,8 @@ class Sudoku_Solver():
 		remove_row_outside_box, remove_col_outside_box, \
 		remove_rows_in_box, remove_cols_in_box, check_block_elim
 
+	from sudoku_naked_subset import check_naked_subset
+
 
 	def __init__(self):
 		self.input = None

@@ -1,13 +1,7 @@
 # Functions that eliminate possibilities based on row/box/col interactions.
 # Import into the main sudoku_solver class.
 
-"""
-In puzzle_5:
-the missing values of the central box are in the same col, so remove
-6 and 9 as possiblities outside the box in the same column (row, 4).
-Remove possibilities from same col outside of this box,
-because box is mostly solved, but col is not.
-"""
+# Could put the single- and double-boxed elims within a single function.
 
 
 def check_within_boxes(self):
