@@ -14,7 +14,6 @@ sudoku.print_board()
 print('===============================')
 
 
-
 # Testing steps
 print('Init reduce:')
 sudoku.solve_queue()
