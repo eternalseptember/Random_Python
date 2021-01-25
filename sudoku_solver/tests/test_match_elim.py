@@ -8,8 +8,8 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("col_test.txt")
-sudoku.import_board("row_test.txt")
+# sudoku.import_board("naked_sub_col.txt")
+sudoku.import_board("naked_sub_row.txt")
 sudoku.print_board()
 print('===============================')
 

@@ -1,5 +1,7 @@
 """
-
+HIDDEN SUBSET COL:
+There are three possible locations for 5,
+but two of them are the only possible choices for 6 and 7.
 """
 
 import sys
@@ -8,7 +10,7 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-sudoku.import_board("naked_subset_col.txt")
+sudoku.import_board("hidden_subset_col.txt")
 sudoku.print_board()
 print('===============================')
 

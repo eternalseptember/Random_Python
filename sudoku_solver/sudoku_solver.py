@@ -10,7 +10,7 @@ class Sudoku_Solver():
 		check_unique_col, check_unique_box, get_box_poss_vals, \
 		set_lookup_table, solve_lookup_table
 
-	from sudoku_matching import check_matching_sets, check_matching_cols, \
+	from sudoku_naked_subset import check_matching_sets, check_matching_cols, \
 		check_matching_rows, set_missing_val_table, find_matches, \
 		in_same_box, remove_in_box, remove_matching_sets
 
@@ -19,7 +19,8 @@ class Sudoku_Solver():
 		remove_row_outside_box, remove_col_outside_box, \
 		remove_rows_in_box, remove_cols_in_box, check_block_elim
 
-	from sudoku_naked_subset import check_naked_subset
+	from sudoku_hidden_subset import analyze_hidden_subsets
+
 
 
 	def __init__(self):
