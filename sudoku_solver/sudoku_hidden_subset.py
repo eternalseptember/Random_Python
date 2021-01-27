@@ -8,6 +8,10 @@ def analyze_hidden_subsets(self):
 
 def analyze_hidden_sub_col(self):
 	# get list of missing values of this col
-	for j in range(9):
-		return None
+	# manually setting for now
+	col = 0
+
+	for j in range(9):  # row goes down, col is constant
+		this_cell = (j, col)
+
 
