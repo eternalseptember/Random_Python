@@ -8,6 +8,8 @@ def analyze_hidden_subsets(self):
 
 def analyze_hidden_sub_col(self):
 	# get list of missing values of this col
+	col_missing_vals = {}
+
 	# manually setting for now
 	col = 0
 
