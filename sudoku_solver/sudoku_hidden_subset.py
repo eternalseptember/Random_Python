@@ -15,5 +15,9 @@ def analyze_hidden_sub_col(self):
 
 	for j in range(9):  # row goes down, col is constant
 		this_cell = (j, col)
+		self.set_missing_val_table(this_cell, col_missing_vals)
+
+
+
 
 
