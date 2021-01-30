@@ -19,6 +19,13 @@ print('===============================')
 print('Init reduce:')
 sudoku.solve_queue()
 sudoku.print_board()
+# sudoku.print_possible_values()
+print('===============================')
+
+
+print('Find hidden subset:')
+sudoku.check_hidden_sub_col()
+sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
