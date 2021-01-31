@@ -22,4 +22,8 @@ def check_hidden_sub_col(self):
 		print('{0}: {1}'.format(info, col_missing_vals[info]))
 
 
+def check_hidden_sub_row(self):
+
+
+
 
