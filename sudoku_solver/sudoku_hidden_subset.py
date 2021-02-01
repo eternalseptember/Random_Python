@@ -23,7 +23,7 @@ def check_hidden_sub_col(self):
 
 
 def check_hidden_sub_row(self):
-
+	return None
 
 
 
