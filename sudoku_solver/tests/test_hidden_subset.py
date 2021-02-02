@@ -10,8 +10,8 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("hidden_subset_col.txt")
-sudoku.import_board("hidden_subset_row.txt")
+sudoku.import_board("hidden_subset_col.txt")
+# sudoku.import_board("hidden_subset_row.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -27,7 +27,7 @@ print('===============================')
 print('Find hidden subset:')
 sudoku.check_hidden_sub_col()
 sudoku.print_board()
-sudoku.print_possible_values()
+# sudoku.print_possible_values()
 print('===============================')
 
 
