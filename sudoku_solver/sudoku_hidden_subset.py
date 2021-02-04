@@ -29,5 +29,10 @@ def check_hidden_sub_row(self):
 	row_missing_vals = {}
 	row = 4
 
+	for i in range(9):  # col goes across
+		this_cell = (row, i)
+
+		# stuff here
+
 
 
