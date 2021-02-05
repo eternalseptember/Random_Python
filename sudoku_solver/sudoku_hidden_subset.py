@@ -33,6 +33,16 @@ def check_hidden_sub_row(self):
 		this_cell = (row, i)
 
 		# stuff here
+		self.set_missing_val_table(this_cell, row_missing_vals)
+
+
+	for info in row_missing_vals.keys():
+		print('{0}: {1}'.format(info, row_missing_vals[info]))
+
+
+
+
+
 
 
 
