@@ -25,13 +25,21 @@ sudoku.print_board()
 print('===============================')
 
 
+"""
 print('Find hidden subset:')
 # sudoku.check_hidden_sub_col()
 sudoku.check_hidden_sub_row()
 sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')
+"""
 
+
+print('Check matching sets:')
+sudoku.check_matching_sets()
+sudoku.print_board()
+# sudoku.print_possible_values()
+print('===============================')
 
 
 
