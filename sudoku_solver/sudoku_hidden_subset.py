@@ -3,7 +3,11 @@
 
 
 def check_hidden_subsets(self):
-	return None
+	# Temporarily using this function to test.
+
+	# self.check_hidden_sub_col()
+	# self.check_hidden_sub_row()
+	self.check_hidden_sub_box()
 
 
 def check_hidden_sub_col(self):
@@ -39,6 +43,10 @@ def check_hidden_sub_row(self):
 	for info in row_missing_vals.keys():
 		print('{0}: {1}'.format(info, row_missing_vals[info]))
 
+
+def check_hidden_sub_box(self):
+	# probably do a naked subset version of this function as well?
+	return None
 
 
 
