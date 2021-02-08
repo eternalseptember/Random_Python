@@ -11,27 +11,22 @@ def check_hidden_subsets(self):
 
 
 def check_hidden_sub_col(self):
-	# ... NOT SURE I UNDERSTAND CONCEPTUALLY ...
-
 	col_missing_vals = {}  # get list of missing values of this col
 	col = 0  # manually setting for now
 
 	for j in range(9):  # row goes down, col is constant
 		this_cell = (j, col)
-		# self.set_missing_val_table(this_cell, col_missing_vals)
-		if this_cell in self.possible_values:
-			print('{0}: {1}'.format(this_cell, self.possible_values[this_cell]))
+		self.set_missing_val_table(this_cell, col_missing_vals)
 
 
-	"""
 	for info in col_missing_vals.keys():
 		print('{0}: {1}'.format(info, col_missing_vals[info]))
-	"""
+
 
 
 def check_hidden_sub_row(self):
 	row_missing_vals = {}
-	row = 4
+	row = 4  # manually setting for now
 
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
@@ -46,7 +41,10 @@ def check_hidden_sub_row(self):
 
 def check_hidden_sub_box(self):
 	# probably do a naked subset version of this function as well?
-	return None
+	# iterate boxes like in previous functions
+
+	box_coord = (3, 3)  # manually setting to center box
+
 
 
 
