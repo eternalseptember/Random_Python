@@ -43,7 +43,10 @@ def check_hidden_sub_box(self):
 	# probably do a naked subset version of this function as well?
 	# iterate boxes like in previous functions
 
-	box_coord = (3, 3)  # manually setting to center box
+	ref_box = (3, 3)  # manually setting to center box
+	ref_row, ref_col = ref_box
+	box_row = ref_row // 3
+	box_col = ref_box // 3
 
 
 
