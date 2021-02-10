@@ -48,6 +48,11 @@ def check_hidden_sub_box(self):
 	box_row = ref_row // 3
 	box_col = ref_box // 3
 
+	for i in range(3):
+		for j in range(3):
+			this_row = box_row * 3 + i
+			this_col = box_col * 3 + j
+
 
 
 
