@@ -46,12 +46,13 @@ def check_hidden_sub_box(self):
 	ref_box = (3, 3)  # manually setting to center box
 	ref_row, ref_col = ref_box
 	box_row = ref_row // 3
-	box_col = ref_box // 3
+	box_col = ref_col // 3
 
 	for i in range(3):
 		for j in range(3):
 			this_row = box_row * 3 + i
 			this_col = box_col * 3 + j
+			print('({0}, {1})'.format(this_row, this_col))
 
 
 
