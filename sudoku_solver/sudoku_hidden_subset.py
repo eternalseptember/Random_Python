@@ -47,6 +47,7 @@ def check_hidden_sub_box(self):
 	ref_row, ref_col = ref_box
 	box_row = ref_row // 3
 	box_col = ref_col // 3
+	box_missing_vals = {}
 
 	for i in range(3):
 		for j in range(3):
