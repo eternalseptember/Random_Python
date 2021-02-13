@@ -53,7 +53,10 @@ def check_hidden_sub_box(self):
 		for j in range(3):
 			this_row = box_row * 3 + i
 			this_col = box_col * 3 + j
-			print('({0}, {1})'.format(this_row, this_col))
+			# print('({0}, {1})'.format(this_row, this_col))
+
+			this_cell = (this_row, this_col)
+			
 
 
 
