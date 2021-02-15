@@ -59,6 +59,8 @@ def check_hidden_sub_box(self):
 			self.set_missing_val_table(this_cell, box_missing_vals)
 
 	# print missing val dict
+	for item in box_missing_vals.keys():
+		print('{0}: {1}'.format(item, box_missing_vals[item]))
 
 
 
