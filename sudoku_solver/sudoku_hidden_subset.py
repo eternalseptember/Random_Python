@@ -44,26 +44,15 @@ def check_hidden_sub_box(self):
 	# iterate boxes like in previous functions
 
 	ref_box = (3, 3)  # manually setting to center box
-	ref_row, ref_col = ref_box
-	box_row = ref_row // 3
-	box_col = ref_col // 3
 	box_missing_vals = {}
 
-	for i in range(3):
-		for j in range(3):
-			this_row = box_row * 3 + i
-			this_col = box_col * 3 + j
-			# print('({0}, {1})'.format(this_row, this_col))
-
-			this_cell = (this_row, this_col)
-			self.get_box_poss_vals(this_cell)
+	poss_values = self.get_box_poss_vals(ref_box)
 
 
-			# self.set_missing_val_table(this_cell, box_missing_vals)
+	for item in poss_values.keys():
+		print('{0}: {1}'.format(item, poss_values[item]))
 
-	# print missing val dict
-	# for item in box_missing_vals.keys():
-	# 	print('{0}: {1}'.format(item, box_missing_vals[item])
+
 
 
 
