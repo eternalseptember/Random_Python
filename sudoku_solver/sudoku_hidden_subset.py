@@ -47,9 +47,18 @@ def check_hidden_sub_box(self):
 	ref_box = (3, 3)
 	poss_values = self.get_box_poss_vals(ref_box)
 
-
 	for item in poss_values.keys():
 		print('{0}: {1}'.format(item, poss_values[item]))
+
+	# Getting list of possible values in each location.
+	print()
+	box_possible_vals = {}
+	for i in [3, 4, 5]:
+		for j in [3, 4, 5]:
+			this_cell = (i, j)
+			if this_cell in self.possible_values:
+				poss_values = self.possible_values[this_cell]
+				print('{0}: {1}'.format(this_cell, poss_values))
 
 
 	# key: turn the locations into a string
