@@ -41,16 +41,20 @@ def check_hidden_sub_row(self):
 
 def check_hidden_sub_box(self):
 	# probably do a naked subset version of this function as well?
-	# iterate boxes like in previous functions
 
-	ref_box = (3, 3)  # manually setting to center box
-	box_missing_vals = {}
-
+	# The function that calls this will iterate the whole grid.
+	# But for testing here, define a single box instead.
+	ref_box = (3, 3)
 	poss_values = self.get_box_poss_vals(ref_box)
 
 
 	for item in poss_values.keys():
 		print('{0}: {1}'.format(item, poss_values[item]))
+
+
+	# key: turn the locations into a string
+	# value: list of possible locations
+	box_missing_info = {}
 
 
 
