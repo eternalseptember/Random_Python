@@ -30,8 +30,6 @@ def check_hidden_sub_row(self):
 
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
-
-		# stuff here
 		self.set_missing_val_table(this_cell, row_missing_vals)
 
 
@@ -46,13 +44,12 @@ def check_hidden_sub_box(self):
 	# But for testing here, define a single box instead.
 	ref_box = (3, 3)
 	poss_values = self.get_box_poss_vals(ref_box)
-
 	for item in poss_values.keys():
 		print('{0}: {1}'.format(item, poss_values[item]))
 
+
 	# Getting list of possible values in each location.
 	print()
-	box_possible_vals = {}
 	for i in [3, 4, 5]:
 		for j in [3, 4, 5]:
 			this_cell = (i, j)
@@ -61,9 +58,22 @@ def check_hidden_sub_box(self):
 				print('{0}: {1}'.format(this_cell, poss_values))
 
 
-	# key: turn the locations into a string
-	# value: list of possible locations
-	box_missing_info = {}
+	# ??? how to determine subset???
+	# search through poss_values
+	# if length of poss_values[item] is 2 or 3
+	# add the missing value in a list... poss_pair or poss_trip?
+
+
+	# Collect info about subset from previous step.
+	# Subset check: X candidates can only be found in X cells...
+	subset_vals = []
+	subset_locs = []
+
+	# [1, 8] could be in [(4, 3), (4, 5)]
+	# go to [(4, 3), (4, 5)] and remove all other possibilities not in subset
+
+
+
 
 
 
