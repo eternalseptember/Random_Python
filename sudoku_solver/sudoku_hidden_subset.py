@@ -5,22 +5,23 @@
 def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
-	# self.check_hidden_sub_col()
+	self.check_hidden_sub_col()
 	# self.check_hidden_sub_row()
-	self.check_hidden_sub_box()
+	# self.check_hidden_sub_box()
 
 
 def check_hidden_sub_col(self):
 	col_missing_vals = {}  # get list of missing values of this col
-	col = 0  # manually setting for now
+	col = 8  # manually setting for now
 
 	for j in range(9):  # row goes down, col is constant
 		this_cell = (j, col)
-		self.set_missing_val_table(this_cell, col_missing_vals)
+		self.set_lookup_table(this_cell, col_missing_vals)
 
 
 	for info in col_missing_vals.keys():
 		print('{0}: {1}'.format(info, col_missing_vals[info]))
+
 
 
 
@@ -30,11 +31,9 @@ def check_hidden_sub_row(self):
 
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
-		self.set_missing_val_table(this_cell, row_missing_vals)
+		# stuff here
 
 
-	for info in row_missing_vals.keys():
-		print('{0}: {1}'.format(info, row_missing_vals[info]))
 
 
 def check_hidden_sub_box(self):
