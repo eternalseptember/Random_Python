@@ -22,10 +22,13 @@ def check_hidden_sub_col(self):
 	# format info for subset analysis
 	possible_subsets = {}
 	for info in col_missing_vals.keys():
-		print('{0}: {1}'.format(info, col_missing_vals[info]))
+		subset_locs = col_missing_vals[info]
+		print('{0}: {1}'.format(info, subset_locs))
 
 		# need a separate function that does this better
-		subset_str = ''.join(map(str, col_missing_vals[info]))
+		subset_str = ''.join(map(str, subset_locs))
+
+
 		print('{0}'.format(subset_str))
 
 
