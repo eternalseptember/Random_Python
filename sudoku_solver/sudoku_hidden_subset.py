@@ -31,10 +31,10 @@ def check_hidden_sub_col(self):
 			if len(subset) > 0:
 				subset += '-'
 			loc_row, loc_col = (loc)
-			subset_str =+ '{0},{1}'.join(loc_row, loc_col)
+			subset += '{0},{1}'.format(loc_row, loc_col)
 
 
-		print('{0}'.format(subset_str))
+		print('{0}'.format(subset))
 
 
 
