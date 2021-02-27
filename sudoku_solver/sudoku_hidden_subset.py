@@ -26,15 +26,19 @@ def check_hidden_sub_col(self):
 		# print('{0}: {1}'.format(info, subset_locs))
 
 		# need a separate function that does this better
-		subset = ''
+		subset_str = ''
 		for loc in subset_locs:
-			if len(subset) > 0:
-				subset += '-'
+			if len(subset_str) > 0:
+				subset_str += '-'
 			loc_row, loc_col = (loc)
-			subset += '{0},{1}'.format(loc_row, loc_col)
+			subset_str += '{0},{1}'.format(loc_row, loc_col)
 
+		# print('{0}'.format(subset_str))
 
-		print('{0}'.format(subset))
+		if subset_str not in possible_subsets:
+			print()  # do stuff here
+		else:
+			print()  # modify entry
 
 
 
