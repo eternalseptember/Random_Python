@@ -36,9 +36,11 @@ def check_hidden_sub_col(self):
 		# print('{0}'.format(subset_str))
 
 		if subset_str not in possible_subsets:
-			print()  # do stuff here
+			possible_subsets[subset_str] = {
+			# stuff here
+			}
 		else:
-			print()  # modify entry
+			subset_info = possible_subsets[subset_str]
 
 
 
