@@ -39,13 +39,12 @@ def check_hidden_sub_col(self):
 
 		if subset_str not in possible_subsets:
 			possible_subsets[subset_str] = {
-				# stuff here
 				'subset_locs': subset_locs,
-				'missing_num': missing_num
+				'missing_num': [missing_num]
 			}
 		else:
 			subset_info = possible_subsets[subset_str]
-			# more stuff here
+			subset_info['missing_num'].append(missing_num)
 
 
 
