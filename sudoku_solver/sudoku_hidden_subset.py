@@ -47,8 +47,14 @@ def check_hidden_sub_col(self):
 
 
 	# checking the dictionary
+	"""
 	for item in possible_subsets.keys():
 		print('{0}: {1}'.format(item, possible_subsets[item]))
+	"""
+
+	# looking for subsets
+	for item_key in possible_subsets.keys():
+		item = possible_subsets[item_key]
 
 
 
