@@ -47,10 +47,8 @@ def check_hidden_sub_col(self):
 
 
 	# checking the dictionary
-	"""
-	for item in possible_subsets.keys():
-		print('{0}: {1}'.format(item, possible_subsets[item]))
-	"""
+	# for item in possible_subsets.keys():
+	# 	print('{0}: {1}'.format(item, possible_subsets[item]))
 
 	# looking for subsets
 	for item_key in possible_subsets.keys():
@@ -59,6 +57,19 @@ def check_hidden_sub_col(self):
 		missing_nums = item['missing_num']
 		if len(missing_nums) == len(subset_locs):
 			print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
+
+
+
+
+
+
+def remove_hidden_col(self, subset_info):
+	# subset_info is dict with keys 'subset_locs' and 'missing_num'
+	return None
+
+
+
+
 
 
 

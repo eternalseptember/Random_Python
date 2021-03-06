@@ -20,7 +20,8 @@ class Sudoku_Solver():
 		remove_rows_in_box, remove_cols_in_box, check_block_elim
 
 	from sudoku_hidden_subset import check_hidden_subsets, \
-		check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box
+		check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \
+		remove_hidden_col
 
 
 
