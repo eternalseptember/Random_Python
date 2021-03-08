@@ -23,7 +23,6 @@ def check_hidden_sub_col(self):
 	possible_subsets = {}
 	for missing_num in col_missing_vals.keys():
 		subset_locs = col_missing_vals[missing_num]
-		# print('{0}: {1}'.format(missing_num, subset_locs))
 
 
 		# need a separate function that does this better
@@ -46,17 +45,12 @@ def check_hidden_sub_col(self):
 			subset_info['missing_num'].append(missing_num)
 
 
-	# checking the dictionary
-	# for item in possible_subsets.keys():
-	# 	print('{0}: {1}'.format(item, possible_subsets[item]))
-
 	# looking for subsets
 	for item_key in possible_subsets.keys():
 		item = possible_subsets[item_key]
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
 		if len(missing_nums) == len(subset_locs):
-			print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
 			self.remove_hidden_col(item)
 
 
@@ -68,9 +62,11 @@ def remove_hidden_col(self, subset_info):
 	# subset_info is dict with keys 'subset_locs' and 'missing_num'
 	subset_locs = subset_info['subset_locs']
 	missing_nums = subset_info['missing_num']
+	print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
 
-
-
+	# get the column number
+	first_coord = subset_locs[0]
+	print('first coord: {0}'.format(first_coord))
 
 
 
