@@ -66,7 +66,8 @@ def remove_hidden_col(self, subset_info):
 
 	# get the column number
 	first_coord = subset_locs[0]
-	print('first coord: {0}'.format(first_coord))
+	coord_row, coord_col = first_coord
+	print('first coord: {0} \tcol: {1}'.format(first_coord, coord_col))
 
 
 
