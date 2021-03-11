@@ -62,12 +62,17 @@ def remove_hidden_col(self, subset_info):
 	# subset_info is dict with keys 'subset_locs' and 'missing_num'
 	subset_locs = subset_info['subset_locs']
 	missing_nums = subset_info['missing_num']
-	print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
+	# print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
 
 	# get the column number
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
-	print('first coord: {0} \tcol: {1}'.format(first_coord, coord_col))
+	# print('first coord: {0} \tcol: {1}'.format(first_coord, coord_col))
+
+	for i in range(9):  # row goes down, col is constant
+		this_coord = (i, coord_col)
+
+
 
 
 
