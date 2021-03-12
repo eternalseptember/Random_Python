@@ -74,8 +74,19 @@ def remove_hidden_col(self, subset_info):
 	for i in range(9):  # row goes down, col is constant
 		this_cell = (i, coord_col)
 
+		# This cell has not been solved. Could be part of the subset or not.
 		if this_cell in self.possible_values:
 			poss_values = self.possible_values[this_cell]
+
+			# If this_cell is part of the subset_locs,
+			# then remove poss_values that are not in missing_nums.
+			if this_cell not in subset_locs:
+				print()
+			else:
+				# This_cell is not part of the subset,
+				# so remove missing_nums from poss_values.
+				print()
+
 
 
 
