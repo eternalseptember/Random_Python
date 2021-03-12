@@ -14,19 +14,19 @@ def check_hidden_sub_col(self):
 	col_missing_vals = {}  # get list of missing values of this col
 	col = 8  # manually setting for now
 
+	# Get list of possible values for each location.
 	for j in range(9):  # row goes down, col is constant
 		this_cell = (j, col)
 		self.set_lookup_table(this_cell, col_missing_vals)
 
 
-	# format info for subset analysis
+	# Format list of possibilties for subset analysis.
 	possible_subsets = {}
 	for missing_num in col_missing_vals.keys():
 		subset_locs = col_missing_vals[missing_num]
 
-
 		# need a separate function that does this better
-		# formats location of subset into a string
+		# Formats location of subset into a string.
 		subset_str = ''
 		for loc in subset_locs:
 			if len(subset_str) > 0:
@@ -45,11 +45,12 @@ def check_hidden_sub_col(self):
 			subset_info['missing_num'].append(missing_num)
 
 
-	# looking for subsets
+	# Looking for hidden subsets.
 	for item_key in possible_subsets.keys():
 		item = possible_subsets[item_key]
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
+
 		if len(missing_nums) == len(subset_locs):
 			self.remove_hidden_col(item)
 
@@ -57,20 +58,24 @@ def check_hidden_sub_col(self):
 
 
 
-
 def remove_hidden_col(self, subset_info):
+	# Goes down a col and cleans up subset possibilities.
 	# subset_info is dict with keys 'subset_locs' and 'missing_num'
+
 	subset_locs = subset_info['subset_locs']
 	missing_nums = subset_info['missing_num']
 	# print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
 
-	# get the column number
+	# Get the column number.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
 	# print('first coord: {0} \tcol: {1}'.format(first_coord, coord_col))
 
 	for i in range(9):  # row goes down, col is constant
-		this_coord = (i, coord_col)
+		this_cell = (i, coord_col)
+
+		if this_cell in self.possible_values:
+			poss_values = self.possible_values[this_cell]
 
 
 
@@ -84,8 +89,6 @@ def check_hidden_sub_row(self):
 
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
-		# stuff here
-
 
 
 
