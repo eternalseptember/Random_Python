@@ -63,8 +63,8 @@ def remove_hidden_col(self, subset_info):
 	# subset_info is dict with keys 'subset_locs' and 'missing_num'
 
 	subset_locs = subset_info['subset_locs']
-	missing_nums = subset_info['missing_num']
-	# print('subset found: {0} - {1}'.format(missing_nums, subset_locs))
+	subset_nums = subset_info['missing_num']
+	# print('subset found: {0} - {1}'.format(subset_nums, subset_locs))
 
 	# Get the column number.
 	first_coord = subset_locs[0]
@@ -79,13 +79,18 @@ def remove_hidden_col(self, subset_info):
 			poss_values = self.possible_values[this_cell]
 
 			# If this_cell is part of the subset_locs,
-			# then remove poss_values that are not in missing_nums.
+			# then remove poss_values that are not in subset_nums.
 			if this_cell not in subset_locs:
-				print()
+				print('not part of the subset: {0}'.format(poss_values))
+				for poss_val in poss_values:
+					if poss_val in subset_nums:
+						poss_values.remove(poss_val)
+						# check to see it needs to be added to the solved queue
+
 			else:
 				# This_cell is not part of the subset,
-				# so remove missing_nums from poss_values.
-				print()
+				# so remove subset_nums from poss_values.
+				print('IS part of the subset: {0}'.format(poss_values))
 
 
 
