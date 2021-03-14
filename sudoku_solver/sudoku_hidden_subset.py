@@ -61,34 +61,34 @@ def check_hidden_sub_col(self):
 def remove_hidden_col(self, subset_info):
 	# Goes down a col and cleans up subset possibilities.
 	# subset_info is dict with keys 'subset_locs' and 'missing_num'
-
 	subset_locs = subset_info['subset_locs']
 	subset_nums = subset_info['missing_num']
-	# print('subset found: {0} - {1}'.format(subset_nums, subset_locs))
 
 	# Get the column number.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
-	# print('first coord: {0} \tcol: {1}'.format(first_coord, coord_col))
 
+	# Clean up the column based on knowledge of subset.
 	for i in range(9):  # row goes down, col is constant
 		this_cell = (i, coord_col)
 
-		# This cell has not been solved. Could be part of the subset or not.
+		# Unsolved cell. Could be part of the subset or not.
 		if this_cell in self.possible_values:
 			poss_values = self.possible_values[this_cell]
 
-			# If this_cell is part of the subset_locs,
+			# If this_cell IS part of the subset, subset_locs,
 			# then remove poss_values that are not in subset_nums.
-			if this_cell not in subset_locs:
-				print('not part of the subset: {0}'.format(poss_values))
-				for poss_val in poss_values:
-					if poss_val in subset_nums:
-						poss_values.remove(poss_val)
-						# check to see it needs to be added to the solved queue
+			if this_cell in subset_locs:
+				# print('not part of the subset: {0}'.format(poss_values))
+				new_poss_vals = [poss_val for poss_val in poss_values if poss_val in subset_nums]
+				
+				# Then re-assign new_poss_vals as the new poss_values.
+
+				# Check if solved.
+						
 
 			else:
-				# This_cell is not part of the subset,
+				# This_cell is NOT part of the subset,
 				# so remove subset_nums from poss_values.
 				print('IS part of the subset: {0}'.format(poss_values))
 
