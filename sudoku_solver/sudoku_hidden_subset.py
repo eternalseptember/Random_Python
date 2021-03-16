@@ -81,12 +81,15 @@ def remove_hidden_col(self, subset_info):
 			if this_cell in subset_locs:
 				new_poss_vals = \
 					[poss_val for poss_val in poss_values if poss_val in subset_nums]
-				self.possible_values[this_cell] = new_poss_vals
 
 			else:
 				# This_cell is NOT part of the subset,
 				# so remove subset_nums from poss_values.
-				print('IS part of the subset: {0}'.format(poss_values))
+				# print('IS part of the subset: {0}'.format(poss_values))
+				new_poss_vals = \
+					[poss_val for poss_val in poss_values if poss_val not in subset_nums]
+
+			self.possible_values[this_cell] = new_poss_vals
 
 
 				# Then check if solved.
