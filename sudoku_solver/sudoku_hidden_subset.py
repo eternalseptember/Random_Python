@@ -70,29 +70,33 @@ def remove_hidden_col(self, subset_info):
 
 	# Clean up the column based on knowledge of subset.
 	for i in range(9):  # row goes down, col is constant
-		this_cell = (i, coord_col)
+		coord = (i, coord_col)
 
 		# Unsolved cell. Could be part of the subset or not.
-		if this_cell in self.possible_values:
-			poss_values = self.possible_values[this_cell]
+		if coord in self.possible_values:
+			poss_values = self.possible_values[coord]
 
-			# If this_cell IS part of the subset, subset_locs,
+			# If coord IS part of the subset, subset_locs,
 			# then remove poss_values that are not in subset_nums.
-			if this_cell in subset_locs:
+			if coord in subset_locs:
 				new_poss_vals = \
 					[poss_val for poss_val in poss_values if poss_val in subset_nums]
 
 			else:
-				# This_cell is NOT part of the subset,
+				# coord is NOT part of the subset,
 				# so remove subset_nums from poss_values.
 				# print('IS part of the subset: {0}'.format(poss_values))
 				new_poss_vals = \
 					[poss_val for poss_val in poss_values if poss_val not in subset_nums]
 
-			self.possible_values[this_cell] = new_poss_vals
+			self.possible_values[coord] = new_poss_vals
 
 
-				# Then check if solved.
+			# Then check if solved.
+			if len(poss_values) == 1:
+				if (coord not in self.solved_list) and \
+					(coord not in self.solved_queue):
+					self.solved_queue.append(coord)
 
 
 
