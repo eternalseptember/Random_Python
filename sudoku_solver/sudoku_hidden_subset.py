@@ -11,8 +11,8 @@ def check_hidden_subsets(self):
 
 
 def check_hidden_sub_col(self):
+	col = 8  # MANUALLY SETTING FOR TESTING
 	col_missing_vals = {}  # get list of missing values of this col
-	col = 8  # manually setting for now
 
 	# Get list of possible values for each location.
 	for j in range(9):  # row goes down, col is constant
@@ -65,6 +65,7 @@ def remove_hidden_col(self, subset_info):
 	subset_nums = subset_info['missing_num']
 
 	# Get the column number.
+	# COULD BE PASSED FROM THE FUNCTION CALLING THIS.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
 
@@ -85,7 +86,6 @@ def remove_hidden_col(self, subset_info):
 			else:
 				# coord is NOT part of the subset,
 				# so remove subset_nums from poss_values.
-				# print('IS part of the subset: {0}'.format(poss_values))
 				new_poss_vals = \
 					[poss_val for poss_val in poss_values if poss_val not in subset_nums]
 
@@ -104,11 +104,24 @@ def remove_hidden_col(self, subset_info):
 
 
 def check_hidden_sub_row(self):
+	row = 0  # MANUALLY SETTING FOR TESTING
 	row_missing_vals = {}
-	row = 4  # manually setting for now
+
 
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
+
+
+
+
+
+def remove_hidden_row(self, subset_info):
+	return None
+
+
+
+
+
 
 
 

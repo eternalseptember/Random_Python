@@ -28,7 +28,7 @@ print('===============================')
 print('Find hidden subset:')
 sudoku.check_hidden_subsets()
 sudoku.print_board()
-# sudoku.print_possible_values()
+sudoku.print_possible_values()
 print('===============================')
 
 
