@@ -105,13 +105,17 @@ def remove_hidden_col(self, subset_info):
 
 def check_hidden_sub_row(self):
 	row = 0  # MANUALLY SETTING FOR TESTING
-	row_missing_vals = {}
+	row_missing_vals = {}  # get list of missing values of this col
 
-
+	# Get list of possible values for each location.
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
 		self.set_lookup_table(this_cell, row_missing_vals)
 
+	# Format list of possibilties for subset analysis.
+	possible_subsets = {}
+	for missing_num in row_missing_vals.keys():
+		print()
 
 
 
