@@ -110,7 +110,7 @@ def check_hidden_sub_row(self):
 
 	for i in range(9):  # col goes across
 		this_cell = (row, i)
-
+		self.set_lookup_table(this_cell, row_missing_vals)
 
 
 
