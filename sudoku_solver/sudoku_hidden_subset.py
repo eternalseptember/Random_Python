@@ -115,7 +115,8 @@ def check_hidden_sub_row(self):
 	# Format list of possibilties for subset analysis.
 	possible_subsets = {}
 	for missing_num in row_missing_vals.keys():
-		print()
+		subset_locs = row_missing_vals[missing_num]
+		subset_str = ''
 
 
 
