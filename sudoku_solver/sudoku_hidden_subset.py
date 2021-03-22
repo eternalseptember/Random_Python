@@ -59,7 +59,8 @@ def check_hidden_sub_col(self):
 
 
 def remove_hidden_col(self, subset_info):
-	# Goes down a col and cleans up subset possibilities.
+
+	 Goes dacross a rowand cleans up subset possibilities.
 	# subset_info is dict with keys 'subset_locs' and 'missing_num'
 	subset_locs = subset_info['subset_locs']
 	subset_nums = subset_info['missing_num']
@@ -121,7 +122,11 @@ def check_hidden_sub_row(self):
 
 
 def remove_hidden_row(self, subset_info):
-	return None
+	# Goes across a row and cleans up subset possibilities.
+	# subset_info is dict with keys 'subset_locs' and 'missing_num'
+	subset_locs = subset_info['subset_locs']
+	subset_nums = subset_info['missing_num']
+
 
 
 
