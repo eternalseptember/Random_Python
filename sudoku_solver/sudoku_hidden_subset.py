@@ -123,6 +123,8 @@ def check_hidden_sub_row(self):
 		for loc in subset_locs:
 			if len(subset_str) > 0:
 				subset_str += '-'
+			loc_row, loc_col = (loc)
+			subset_str += '{0},{1}'.format(loc_row, loc_col)
 
 
 
