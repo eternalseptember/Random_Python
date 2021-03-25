@@ -126,6 +126,9 @@ def check_hidden_sub_row(self):
 			loc_row, loc_col = (loc)
 			subset_str += '{0},{1}'.format(loc_row, loc_col)
 
+		if subset_str not in possible_subsets:
+			possible_subsets[subset_str] = {}
+
 
 
 
