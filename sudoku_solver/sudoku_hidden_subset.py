@@ -131,6 +131,9 @@ def check_hidden_sub_row(self):
 				'subset_locs': subset_locs,
 				'missing_num': [missing_num]
 			}
+		else:
+			subset_info = possible_subsets[subset_str]
+			subset_info['missing_num'].append(missing_num)
 
 
 
