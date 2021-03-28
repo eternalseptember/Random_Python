@@ -20,29 +20,7 @@ def check_hidden_sub_col(self):
 		self.set_lookup_table(this_cell, col_missing_vals)
 
 
-	# Format list of possibilties for subset analysis.
-	possible_subsets = {}
-	for missing_num in col_missing_vals.keys():
-		subset_locs = col_missing_vals[missing_num]
-
-		# need a separate function that does this better
-		# Formats location of subset into a string.
-		subset_str = ''
-		for loc in subset_locs:
-			if len(subset_str) > 0:
-				subset_str += '-'
-			loc_row, loc_col = (loc)
-			subset_str += '{0},{1}'.format(loc_row, loc_col)
-
-
-		if subset_str not in possible_subsets:
-			possible_subsets[subset_str] = {
-				'subset_locs': subset_locs,
-				'missing_num': [missing_num]
-			}
-		else:
-			subset_info = possible_subsets[subset_str]
-			subset_info['missing_num'].append(missing_num)
+	possible_subsets = self.check_hidden_subset_info(col_missing_vals)
 
 
 	# Looking for hidden subsets.
@@ -53,8 +31,6 @@ def check_hidden_sub_col(self):
 
 		if len(missing_nums) == len(subset_locs):
 			self.remove_hidden_col(item)
-
-
 
 
 
@@ -114,9 +90,27 @@ def check_hidden_sub_row(self):
 
 
 	# Format list of possibilties for subset analysis.
+	self.check_hidden_subset_info(row_missing_vals)
+
+
+
+def remove_hidden_row(self, subset_info):
+	# Goes across a row and cleans up subset possibilities.
+	# subset_info is dict with keys 'subset_locs' and 'missing_num'
+	subset_locs = subset_info['subset_locs']
+	subset_nums = subset_info['missing_num']
+	# more stuff here
+
+
+
+
+
+def check_hidden_subset_info(self, missing_val_info):
+	# missing_val_info is a dict with possible values in each location.
+	# Format list of possibilties for subset analysis.
 	possible_subsets = {}
-	for missing_num in row_missing_vals.keys():
-		subset_locs = row_missing_vals[missing_num]
+	for missing_num in missing_val_info.keys():
+		subset_locs = missing_val_info[missing_num]
 
 		# Formats location of subset into a string.
 		subset_str = ''
@@ -125,6 +119,7 @@ def check_hidden_sub_row(self):
 				subset_str += '-'
 			loc_row, loc_col = (loc)
 			subset_str += '{0},{1}'.format(loc_row, loc_col)
+
 
 		if subset_str not in possible_subsets:
 			possible_subsets[subset_str] = {
@@ -135,17 +130,15 @@ def check_hidden_sub_row(self):
 			subset_info = possible_subsets[subset_str]
 			subset_info['missing_num'].append(missing_num)
 
+	return possible_subsets
 
 
 
 
 
 
-def remove_hidden_row(self, subset_info):
-	# Goes across a row and cleans up subset possibilities.
-	# subset_info is dict with keys 'subset_locs' and 'missing_num'
-	subset_locs = subset_info['subset_locs']
-	subset_nums = subset_info['missing_num']
+
+
 
 
 
