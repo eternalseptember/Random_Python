@@ -19,11 +19,9 @@ def check_hidden_sub_col(self):
 		this_cell = (j, col)
 		self.set_lookup_table(this_cell, col_missing_vals)
 
-
+	# Check for subsets.
 	possible_subsets = self.check_hidden_subset_info(col_missing_vals)
 
-
-	# Looking for hidden subsets.
 	for item_key in possible_subsets.keys():
 		item = possible_subsets[item_key]
 		subset_locs = item['subset_locs']
@@ -88,9 +86,12 @@ def check_hidden_sub_row(self):
 		this_cell = (row, i)
 		self.set_lookup_table(this_cell, row_missing_vals)
 
+	# Check for subsets.
+	possible_subsets = self.check_hidden_subset_info(row_missing_vals)
 
-	# Format list of possibilties for subset analysis.
-	self.check_hidden_subset_info(row_missing_vals)
+	for item_key in possible_subsets.keys():
+		# more stuff here
+		print()
 
 
 
