@@ -90,8 +90,11 @@ def check_hidden_sub_row(self):
 	possible_subsets = self.check_hidden_subset_info(row_missing_vals)
 
 	for item_key in possible_subsets.keys():
-		# more stuff here
-		print()
+		item = possible_subsets[item_key]
+		subset_locs = item['subset_locs']
+		missing_nums = item['missing_num']
+
+		# remove hidden subset in row
 
 
 
