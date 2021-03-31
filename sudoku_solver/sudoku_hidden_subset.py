@@ -27,6 +27,7 @@ def check_hidden_sub_col(self):
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
 
+		# a function that captures this needs to adjust for col or row
 		if len(missing_nums) == len(subset_locs):
 			self.remove_hidden_col(item)
 
@@ -95,6 +96,11 @@ def check_hidden_sub_row(self):
 		missing_nums = item['missing_num']
 
 		# remove hidden subset in row
+		if len(missing_nums) == len(subset_locs):
+			self.remove_hidden_col(item)
+
+
+
 
 
 
