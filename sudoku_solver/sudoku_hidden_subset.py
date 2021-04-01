@@ -97,7 +97,7 @@ def check_hidden_sub_row(self):
 
 		# remove hidden subset in row
 		if len(missing_nums) == len(subset_locs):
-			self.remove_hidden_col(item)
+			self.remove_hidden_row(item)
 
 
 
@@ -143,6 +143,9 @@ def check_hidden_subset_info(self, missing_val_info):
 	return possible_subsets
 
 
+def clean_hidden_subsets(self, subsets_info, label=''):
+	# mode is 'col' or 'row'
+	return None
 
 
 

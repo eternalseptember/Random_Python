@@ -21,7 +21,8 @@ class Sudoku_Solver():
 
 	from sudoku_hidden_subset import check_hidden_subsets, \
 		check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \
-		remove_hidden_col, remove_hidden_row, check_hidden_subset_info
+		remove_hidden_col, remove_hidden_row, check_hidden_subset_info, \
+		clean_hidden_subsets
 
 
 
