@@ -156,7 +156,10 @@ def clean_hidden_subsets(self, subsets_info, label=''):
 
 		# a function that captures this needs to adjust for col or row
 		if len(missing_nums) == len(subset_locs):
-			self.remove_hidden_col(item)
+			if label == 'col':
+				self.remove_hidden_col(item)
+			else:
+				self.remove_hidden_row(item)
 
 
 
