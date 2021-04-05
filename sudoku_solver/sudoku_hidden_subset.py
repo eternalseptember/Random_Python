@@ -19,20 +19,11 @@ def check_hidden_sub_col(self):
 		this_cell = (j, col)
 		self.set_lookup_table(this_cell, col_missing_vals)
 
-	# Check for subsets.
+	# Check for subsets and then clean col.
 	possible_subsets = self.check_hidden_subset_info(col_missing_vals)
 	self.clean_hidden_subsets(possible_subsets, 'col')
 
-	"""
-	for item_key in possible_subsets.keys():
-		item = possible_subsets[item_key]
-		subset_locs = item['subset_locs']
-		missing_nums = item['missing_num']
 
-		# a function that captures this needs to adjust for col or row
-		if len(missing_nums) == len(subset_locs):
-			self.remove_hidden_col(item)
-	"""
 
 
 def remove_hidden_col(self, subset_info):
@@ -89,20 +80,11 @@ def check_hidden_sub_row(self):
 		this_cell = (row, i)
 		self.set_lookup_table(this_cell, row_missing_vals)
 
-	# Check for subsets.
+	# Check for subsets and then clean row.
 	possible_subsets = self.check_hidden_subset_info(row_missing_vals)
-	# self.clean_hidden_subsets(possible_subsets, 'row')
+	self.clean_hidden_subsets(possible_subsets, 'row')
 
-	"""
-	for item_key in possible_subsets.keys():
-		item = possible_subsets[item_key]
-		subset_locs = item['subset_locs']
-		missing_nums = item['missing_num']
 
-		# remove hidden subset in row
-		if len(missing_nums) == len(subset_locs):
-			self.remove_hidden_row(item)
-	"""
 
 
 
@@ -147,7 +129,7 @@ def check_hidden_subset_info(self, missing_val_info):
 	return possible_subsets
 
 
-def clean_hidden_subsets(self, subsets_info, label=''):
+def clean_hidden_subsets(self, possible_subsets, label=''):
 	# mode is 'col' or 'row'
 	for item_key in possible_subsets.keys():
 		item = possible_subsets[item_key]
