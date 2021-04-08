@@ -140,6 +140,10 @@ def remove_hidden_row(self, subset_info):
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
 
+	# Clean up the row based on knowledge of subset.
+	for j in range(9):  # col goes down, row is constant
+		coord = (coord_row, j)
+
 
 
 

@@ -1,7 +1,6 @@
 """
 HIDDEN SUBSET COL 1:
-There are three possible locations for 5,
-but two of them are the only possible choices for 6 and 7.
+[1,9] can only be in (4,8) and (6,8).
 """
 
 import sys
