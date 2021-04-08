@@ -144,6 +144,10 @@ def remove_hidden_row(self, subset_info):
 	for j in range(9):  # col goes down, row is constant
 		coord = (coord_row, j)
 
+		# Unsolved cell. Could be part of the subset or not.
+		if coord in self.possible_values:
+			poss_values = self.possible_values[coord]
+
 
 
 
