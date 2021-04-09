@@ -150,6 +150,11 @@ def remove_hidden_row(self, subset_info):
 
 
 
+def clean_hidden_subset(self, coord, subset_info):
+	# subset_info is dict with keys 'subset_locs' and 'missing_num'
+	subset_locs = subset_info['subset_locs']
+	subset_nums = subset_info['missing_num']
+
 
 
 
