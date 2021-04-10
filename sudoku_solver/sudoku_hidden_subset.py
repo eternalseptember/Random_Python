@@ -92,7 +92,6 @@ def remove_hidden_col(self, subset_info):
 	subset_nums = subset_info['missing_num']
 
 	# Get the column number.
-	# COULD BE PASSED FROM THE FUNCTION CALLING THIS.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
 
@@ -150,10 +149,10 @@ def remove_hidden_row(self, subset_info):
 
 
 
-def clean_hidden_subset(self, coord, subset_info):
-	# subset_info is dict with keys 'subset_locs' and 'missing_num'
-	subset_locs = subset_info['subset_locs']
-	subset_nums = subset_info['missing_num']
+def clean_hidden_subset(self, coord, subset_locs, subset_nums):
+	# Unsolved cell. Could be part of the subset or not.
+	if coord in self.possible_values:
+		poss_values = self.possible_values[coord]
 
 
 
