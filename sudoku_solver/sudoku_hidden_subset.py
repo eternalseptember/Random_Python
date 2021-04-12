@@ -157,6 +157,11 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 		if coord in subset_locs:
 			new_poss_vals = \
 				[poss_val for poss_val in poss_values if poss_val in subset_nums]
+		else:
+			# coord is NOT part of the subset,
+			# so remove subset_nums from poss_values.
+			new_poss_vals = \
+				[poss_val for poss_val in poss_values if poss_val not in subset_nums]
 
 
 
