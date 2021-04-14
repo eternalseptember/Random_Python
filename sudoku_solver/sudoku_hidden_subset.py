@@ -166,6 +166,11 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 		# new_poss_vals comes from the if/else statement.
 		self.possible_values[coord] = new_poss_vals
 
+		# Then check if solved.
+		if len(poss_values) == 1:
+			if (coord not in self.solved_list) and \
+				(coord not in self.solved_queue):
+				self.solved_queue.append(coord)
 
 
 
