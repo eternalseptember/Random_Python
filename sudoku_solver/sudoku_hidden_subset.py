@@ -99,6 +99,7 @@ def remove_hidden_col(self, subset_info):
 	for i in range(9):  # row goes down, col is constant
 		coord = (i, coord_col)
 
+		"""
 		# Unsolved cell. Could be part of the subset or not.
 		if coord in self.possible_values:
 			poss_values = self.possible_values[coord]
@@ -123,7 +124,9 @@ def remove_hidden_col(self, subset_info):
 				if (coord not in self.solved_list) and \
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
+		"""
 
+		self.clean_hidden_subset(coord, subset_locs, subset_nums)
 
 
 
