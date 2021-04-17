@@ -20,7 +20,7 @@ def check_hidden_sub_col(self):
 		self.set_lookup_table(this_cell, col_missing_vals)
 
 	# Check for subsets and then clean col.
-	possible_subsets = self.check_hidden_subset_info(col_missing_vals)
+	possible_subsets = self.format_hidden_subset_info(col_missing_vals)
 	self.clean_hidden_subsets(possible_subsets, 'col')
 
 
@@ -35,12 +35,12 @@ def check_hidden_sub_row(self):
 		self.set_lookup_table(this_cell, row_missing_vals)
 
 	# Check for subsets and then clean row.
-	possible_subsets = self.check_hidden_subset_info(row_missing_vals)
+	possible_subsets = self.format_hidden_subset_info(row_missing_vals)
 	self.clean_hidden_subsets(possible_subsets, 'row')
 
 
 
-def check_hidden_subset_info(self, missing_val_info):
+def format_hidden_subset_info(self, missing_val_info):
 	# missing_val_info is a dict with possible values in each location.
 	# Format list of possibilties for subset analysis.
 	possible_subsets = {}
@@ -189,7 +189,8 @@ def check_hidden_sub_box(self):
 
 
 
-
+def clean_hidden_sub_box(self):
+	return None
 
 
 
