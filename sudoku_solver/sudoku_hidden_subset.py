@@ -7,7 +7,7 @@ def check_hidden_subsets(self):
 
 	self.check_hidden_sub_col()
 	# self.check_hidden_sub_row()
-	# self.check_hidden_sub_box()
+	# self.check_hidden_sub_boxes()
 
 
 def check_hidden_sub_col(self):
@@ -152,13 +152,8 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 
 
 
-def check_hidden_sub_box(self):
-	# The function that calls this will iterate the whole grid.
-	# But for testing here, define a single box instead.
-	ref_box = (3, 3)  # MANUALLY SETTING FOR TESTING
-	box_missing_vals = {}
-
-
+def check_hidden_sub_boxes(self):
+	# Iterates through all the boxes.
 	# Getting list of possible values in each location.
 	print()
 	for i in [3, 4, 5]:
@@ -180,6 +175,14 @@ def check_hidden_sub_box(self):
 
 	# [1, 8] could be in [(4, 3), (4, 5)]
 	# go to [(4, 3), (4, 5)] and remove all other possibilities not in subset
+
+
+def check_hidden_sub_box(self):
+	# checks for hidden subsets within ONE box
+	# For testing, define a single box instead.
+	ref_box = (3, 3)  # MANUALLY SETTING FOR TESTING
+	box_missing_vals = {}
+
 
 
 
