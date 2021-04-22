@@ -5,8 +5,8 @@
 def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
-	self.check_hidden_sub_col()
-	# self.check_hidden_sub_row()
+	# self.check_hidden_sub_col()
+	self.check_hidden_sub_row()
 	# self.check_hidden_sub_boxes()
 
 
@@ -182,6 +182,8 @@ def check_hidden_sub_box(self):
 	# For testing, define a single box instead.
 	ref_box = (3, 3)  # MANUALLY SETTING FOR TESTING
 	box_missing_vals = {}
+
+	ref_row, ref_col = ref_box
 
 
 
