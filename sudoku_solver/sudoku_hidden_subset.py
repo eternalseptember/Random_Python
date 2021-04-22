@@ -184,6 +184,8 @@ def check_hidden_sub_box(self):
 	box_missing_vals = {}
 
 	ref_row, ref_col = ref_box
+	box_row = ref_row // 3
+	box_col = ref_col // 3
 
 
 
