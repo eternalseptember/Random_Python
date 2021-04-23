@@ -187,6 +187,10 @@ def check_hidden_sub_box(self):
 	box_row = ref_row // 3
 	box_col = ref_col // 3
 
+	for i in range(3):
+		for j in range(3):
+			this_coord = (box_row+i, bow_col+j)
+
 
 
 
