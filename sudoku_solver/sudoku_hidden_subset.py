@@ -180,7 +180,7 @@ def check_hidden_sub_boxes(self):
 def check_hidden_sub_box(self):
 	# checks for hidden subsets within ONE box
 	# For testing, define a single box instead.
-	ref_box = (3, 3)  # MANUALLY SETTING FOR TESTING
+	ref_box = (4, 4)  # MANUALLY SETTING FOR TESTING
 	box_missing_vals = {}
 
 	ref_row, ref_col = ref_box
@@ -189,7 +189,8 @@ def check_hidden_sub_box(self):
 
 	for i in range(3):
 		for j in range(3):
-			this_coord = (box_row+i, bow_col+j)
+			this_cell = (box_row+i, box_col+j)
+			self.set_lookup_table(this_cell, box_missing_vals)
 
 
 
