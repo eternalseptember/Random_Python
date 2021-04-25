@@ -6,8 +6,8 @@ def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
 	# self.check_hidden_sub_col()
-	self.check_hidden_sub_row()
-	# self.check_hidden_sub_boxes()
+	# self.check_hidden_sub_row()
+	self.check_hidden_sub_boxes()
 
 
 def check_hidden_sub_col(self):
@@ -155,35 +155,25 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 def check_hidden_sub_boxes(self):
 	# Iterates through all the boxes.
 	# Getting list of possible values in each location.
-	print()
-	for i in [3, 4, 5]:
-		for j in [3, 4, 5]:
+	"""
+	for i in [0, 3, 6]:
+		for j in [0, 3, 6]:
 			this_cell = (i, j)
+	"""
+	box_coord = (4, 4)  # MANUALLY SETTING FOR TESTING
+	self.check_hidden_sub_box(box_coord)
 
 
 
-	# ??? how to determine subset???
-	# search through poss_values
-	# if length of poss_values[item] is 2 or 3
-	# add the missing value in a list... poss_pair or poss_trip?
 
 
-	# Collect info about subset from previous step.
-	# Subset check: X candidates can only be found in X cells...
-	subset_vals = []
-	subset_locs = []
 
-	# [1, 8] could be in [(4, 3), (4, 5)]
-	# go to [(4, 3), (4, 5)] and remove all other possibilities not in subset
-
-
-def check_hidden_sub_box(self):
+def check_hidden_sub_box(self, box_coord):
 	# checks for hidden subsets within ONE box
 	# For testing, define a single box instead.
-	ref_box = (4, 4)  # MANUALLY SETTING FOR TESTING
 	box_missing_vals = {}
 
-	ref_row, ref_col = ref_box
+	ref_row, ref_col = box_coord
 	box_row = ref_row // 3
 	box_col = ref_col // 3
 

@@ -3,7 +3,10 @@ HIDDEN SUBSET COL 1:
 [1,9] can only be in (4,8) and (6,8).
 
 HIDDEN SUBSET ROW 1:
+[4,7] can only be in (0,0) and (0,1).
 
+HIDDEN SUBSET BOX 1:
+[1,8] can only be in (4,3) and (4,5).
 """
 
 import sys
@@ -12,9 +15,9 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("hidden_subset_box_1.txt")
+sudoku.import_board("hidden_subset_box_1.txt")
 # sudoku.import_board("hidden_subset_col_1.txt")
-sudoku.import_board("hidden_subset_row_1.txt")
+# sudoku.import_board("hidden_subset_row_1.txt")
 sudoku.print_board()
 print('===============================')
 
