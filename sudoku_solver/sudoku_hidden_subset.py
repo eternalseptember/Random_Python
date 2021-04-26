@@ -5,23 +5,25 @@
 def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
-	# self.check_hidden_sub_col()
+	self.check_hidden_sub_col()
 	# self.check_hidden_sub_row()
-	self.check_hidden_sub_boxes()
+	# self.check_hidden_sub_boxes()
 
 
 def check_hidden_sub_col(self):
-	col = 8  # MANUALLY SETTING FOR TESTING
-	col_missing_vals = {}  # get list of missing values of this col
-
 	# Get list of possible values for each location.
-	for j in range(9):  # row goes down, col is constant
-		this_cell = (j, col)
-		self.set_lookup_table(this_cell, col_missing_vals)
 
-	# Check for subsets and then clean col.
-	possible_subsets = self.format_hidden_subset_info(col_missing_vals)
-	self.clean_hidden_subsets(possible_subsets, 'col')
+	# for i in range(9):  # first, iterate through cols
+	for i in [8]:  # MANUALLY SETTING FOR TESTING
+		col_missing_vals = {}  # get list of missing values of this col
+
+		for j in range(9):  # row goes down, col is constant
+			this_cell = (j, i)
+			self.set_lookup_table(this_cell, col_missing_vals)
+
+		# Check for subsets and then clean col.
+		possible_subsets = self.format_hidden_subset_info(col_missing_vals)
+		self.clean_hidden_subsets(possible_subsets, 'col')
 
 
 
