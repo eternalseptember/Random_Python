@@ -5,8 +5,8 @@
 def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
-	self.check_hidden_sub_col()
-	# self.check_hidden_sub_row()
+	# self.check_hidden_sub_col()
+	self.check_hidden_sub_row()
 	# self.check_hidden_sub_boxes()
 
 
@@ -30,7 +30,7 @@ def check_hidden_sub_row(self):
 	# Get list of possible values for each location.
 
 	# for j in range(9):
-	for j in range[0]:  # MANUALLY SETTING FOR TESTING
+	for j in [0]:  # MANUALLY SETTING FOR TESTING
 		row_missing_vals = {}  # get list of missing values of this row
 
 		for i in range(9):  # col goes across
