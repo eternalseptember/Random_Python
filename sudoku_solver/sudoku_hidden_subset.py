@@ -26,19 +26,20 @@ def check_hidden_sub_col(self):
 		self.clean_hidden_subsets(possible_subsets, 'col')
 
 
-
 def check_hidden_sub_row(self):
-	row = 0  # MANUALLY SETTING FOR TESTING
-	row_missing_vals = {}  # get list of missing values of this row
-
 	# Get list of possible values for each location.
-	for i in range(9):  # col goes across
-		this_cell = (row, i)
-		self.set_lookup_table(this_cell, row_missing_vals)
 
-	# Check for subsets and then clean row.
-	possible_subsets = self.format_hidden_subset_info(row_missing_vals)
-	self.clean_hidden_subsets(possible_subsets, 'row')
+	# for j in range(9):
+	for j in range[0]:  # MANUALLY SETTING FOR TESTING
+		row_missing_vals = {}  # get list of missing values of this row
+
+		for i in range(9):  # col goes across
+			this_cell = (j, i)
+			self.set_lookup_table(this_cell, row_missing_vals)
+
+		# Check for subsets and then clean row.
+		possible_subsets = self.format_hidden_subset_info(row_missing_vals)
+		self.clean_hidden_subsets(possible_subsets, 'row')
 
 
 
