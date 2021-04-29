@@ -30,7 +30,7 @@ def check_hidden_sub_row(self):
 	# Get list of possible values for each location.
 
 	# for j in range(9):
-	for j in [0]:  # MANUALLY SETTING FOR TESTING
+	for j in range[0]:  # MANUALLY SETTING FOR TESTING
 		row_missing_vals = {}  # get list of missing values of this row
 
 		for i in range(9):  # col goes across
@@ -184,6 +184,8 @@ def check_hidden_sub_box(self, box_coord):
 		for j in range(3):
 			this_cell = (box_row+i, box_col+j)
 			self.set_lookup_table(this_cell, box_missing_vals)
+
+		possible_subsets = self.format_hidden_subset_info(box_missing_vals)
 
 
 
