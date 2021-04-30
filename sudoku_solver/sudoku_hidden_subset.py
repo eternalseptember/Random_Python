@@ -186,11 +186,12 @@ def check_hidden_sub_box(self, box_coord):
 			self.set_lookup_table(this_cell, box_missing_vals)
 
 		possible_subsets = self.format_hidden_subset_info(box_missing_vals)
+		self.clean_hidden_sub_box(possible_subsets)
 
 
 
 
-def clean_hidden_sub_box(self):
+def clean_hidden_sub_box(self, subset_info):
 	return None
 
 
