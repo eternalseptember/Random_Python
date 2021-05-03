@@ -192,8 +192,8 @@ def check_hidden_sub_box(self, box_coord):
 
 
 def clean_hidden_sub_box(self, subset_info):
-	return None
-
+	for item_key in subset_info.keys():
+		item = subset_info[item_key]
 
 
 
