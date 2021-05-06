@@ -197,6 +197,10 @@ def clean_hidden_sub_box(self, subset_info, box_row, box_col):
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
 
+		if len(missing_nums) == len(subset_locs):
+			# figure out which box function to use
+			print()
+
 
 
 

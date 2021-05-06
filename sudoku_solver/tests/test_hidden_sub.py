@@ -15,9 +15,9 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("hidden_subset_box_1.txt")
-# sudoku.import_board("hidden_subset_col_1.txt")
-sudoku.import_board("hidden_subset_row_1.txt")
+# sudoku.import_board("hidden_sub_box_1.txt")
+# sudoku.import_board("hidden_sub_col_1.txt")
+sudoku.import_board("hidden_sub_row_1.txt")
 sudoku.print_board()
 print('===============================')
 
