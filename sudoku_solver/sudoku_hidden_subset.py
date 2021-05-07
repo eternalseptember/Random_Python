@@ -79,7 +79,7 @@ def clean_hidden_subsets(self, possible_subsets, label=''):
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
 
-		# a function that captures this needs to adjust for col or row
+		# Hidden subset identified.
 		if len(missing_nums) == len(subset_locs):
 			if label == 'col':
 				self.remove_hidden_col(item)
@@ -185,6 +185,7 @@ def check_hidden_sub_box(self, box_coord):
 			this_cell = (box_row+i, box_col+j)
 			self.set_lookup_table(this_cell, box_missing_vals)
 
+		# Check for subsets
 		possible_subsets = self.format_hidden_subset_info(box_missing_vals)
 		self.clean_hidden_sub_box(possible_subsets, box_row, box_col)
 
@@ -198,8 +199,8 @@ def clean_hidden_sub_box(self, subset_info, box_row, box_col):
 		missing_nums = item['missing_num']
 
 		if len(missing_nums) == len(subset_locs):
-			# figure out which box function to use
-			print()
+			# Clean up the box
+			first_coord = subset_locs[0]
 
 
 
