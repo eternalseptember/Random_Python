@@ -82,18 +82,14 @@ def clean_hidden_subsets(self, possible_subsets, label=''):
 		# Hidden subset identified.
 		if len(missing_nums) == len(subset_locs):
 			if label == 'col':
-				self.remove_hidden_col(item)
+				self.remove_hidden_col(subset_locs, missing_nums)
 			elif label == 'row':
-				self.remove_hidden_row(item)
+				self.remove_hidden_row(subset_locs, missing_nums)
 
 
 
-def remove_hidden_col(self, subset_info):
+def remove_hidden_col(self, subset_locs, missing_nums):
 	# Goes down a col and cleans up subset possibilities.
-	# subset_info is dict with keys 'subset_locs' and 'missing_num'
-	subset_locs = subset_info['subset_locs']
-	subset_nums = subset_info['missing_num']
-
 	# Get the column number.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
@@ -101,16 +97,12 @@ def remove_hidden_col(self, subset_info):
 	# Clean up the column based on knowledge of subset.
 	for i in range(9):  # row goes down, col is constant
 		coord = (i, coord_col)
-		self.clean_hidden_subset(coord, subset_locs, subset_nums)
+		self.clean_hidden_subset(coord, subset_locs, missing_nums)
 
 
 
-def remove_hidden_row(self, subset_info):
+def remove_hidden_row(self, subset_locs, missing_nums):
 	# Goes across a row and cleans up subset possibilities.
-	# subset_info is dict with keys 'subset_locs' and 'missing_num'
-	subset_locs = subset_info['subset_locs']
-	subset_nums = subset_info['missing_num']
-
 	# Get the row number.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
@@ -118,7 +110,7 @@ def remove_hidden_row(self, subset_info):
 	# Clean up the row based on knowledge of subset.
 	for j in range(9):  # col goes down, row is constant
 		coord = (coord_row, j)
-		self.clean_hidden_subset(coord, subset_locs, subset_nums)
+		self.clean_hidden_subset(coord, subset_locs, missing_nums)
 
 
 
