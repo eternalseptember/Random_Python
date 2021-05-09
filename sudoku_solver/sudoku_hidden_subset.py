@@ -194,6 +194,9 @@ def clean_hidden_sub_box(self, subset_info, box_row, box_col):
 			# Clean up the box
 			first_coord = subset_locs[0]
 
+			for i in range(3):  # row goes across
+				print()
+
 
 
 
