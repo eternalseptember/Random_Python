@@ -196,7 +196,8 @@ def clean_hidden_sub_box(self, subset_info, box_row, box_col):
 
 			for i in range(3):  # row goes across
 				for j in range(3):  # col goes down
-					print()
+					# what is the new coord?
+					print('what is the new coord? ')
 
 
 
