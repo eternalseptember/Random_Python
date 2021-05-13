@@ -198,6 +198,8 @@ def clean_hidden_sub_box(self, subset_info, box_row, box_col):
 				for j in range(3):  # col goes down
 					# what is the new coord?
 					print('what is the new coord? ')
+					this_row = box_row + i
+					this_col = bow_col + j
 
 
 
