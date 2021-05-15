@@ -6,8 +6,8 @@ def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
 	# self.check_hidden_sub_col()
-	self.check_hidden_sub_row()
-	# self.check_hidden_sub_boxes()
+	# self.check_hidden_sub_row()
+	self.check_hidden_sub_boxes()
 
 
 def check_hidden_sub_col(self):
@@ -199,7 +199,7 @@ def clean_hidden_sub_box(self, subset_info, box_row, box_col):
 					# what is the new coord?
 					print('what is the new coord?', end=' ')
 					this_row = box_row + i
-					this_col = bow_col + j
+					this_col = box_col + j
 					print('({0}, {1})'.format(this_row, this_col))
 
 
