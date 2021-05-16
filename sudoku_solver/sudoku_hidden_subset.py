@@ -179,12 +179,15 @@ def check_hidden_sub_box(self, box_coord):
 
 		# Check for subsets
 		possible_subsets = self.format_hidden_subset_info(box_missing_vals)
-		self.clean_hidden_sub_box(possible_subsets, box_row, box_col)
+		self.clean_hidden_sub_box(possible_subsets, box_coord)
 
 
 
 
-def clean_hidden_sub_box(self, subset_info, box_row, box_col):
+def clean_hidden_sub_box(self, subset_info, box_coord):
+	ref_row, ref_col = box_coord
+	box_row = ref_row // 3
+	box_col = ref_col // 3
 	print('clean hidden sub box values:')
 	print('{0}, {1}'.format(box_row, box_col))
 
