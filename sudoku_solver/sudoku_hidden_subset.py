@@ -185,6 +185,10 @@ def check_hidden_sub_box(self, box_coord):
 
 
 def clean_hidden_sub_box(self, subset_info, box_row, box_col):
+	print('clean hidden sub box values:')
+	print('{0}, {1}'.format(box_row, box_col))
+
+
 	for item_key in subset_info.keys():
 		item = subset_info[item_key]
 		subset_locs = item['subset_locs']
