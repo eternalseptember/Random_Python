@@ -188,9 +188,6 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 	ref_row, ref_col = box_coord
 	box_row = ref_row // 3
 	box_col = ref_col // 3
-	print('clean hidden sub box values:')
-	print('{0}, {1}'.format(box_row, box_col))
-
 
 	for item_key in subset_info.keys():
 		item = subset_info[item_key]
@@ -203,11 +200,12 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 
 			for i in range(3):  # row goes across
 				for j in range(3):  # col goes down
-					# what is the new coord?
-					print('what is the new coord?', end=' ')
 					this_row = box_row * 3 + i
 					this_col = box_col * 3 + j
-					print('({0}, {1})'.format(this_row, this_col))
+
+					print('missing nums: {0}'.format(missing_nums))
+
+
 
 
 
