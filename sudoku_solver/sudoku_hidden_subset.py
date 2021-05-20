@@ -180,9 +180,8 @@ def check_hidden_sub_box(self, box_coord):
 		# Check for subsets
 		possible_subsets = self.format_hidden_subset_info(box_missing_vals)
 
-		print(possible_subsets)
-
-		# self.clean_hidden_sub_box(possible_subsets, box_coord)
+		# print(possible_subsets)
+		self.clean_hidden_sub_box(possible_subsets, box_coord)
 
 
 
@@ -199,8 +198,11 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 
 		if len(missing_nums) == len(subset_locs):
 			# Clean up the box
-			first_coord = subset_locs[0]
+			print('missing nums: {0}'.format(missing_nums))
+			print('\tsubset: {0}'.format(subset_locs))
 
+
+			"""
 			for i in range(3):  # row goes across
 				for j in range(3):  # col goes down
 					this_row = box_row * 3 + i
@@ -208,8 +210,7 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 
 					print('this coord: ({0}, {1})'.format(this_row, this_col))
 					print('missing nums: {0}'.format(missing_nums))
-
-
+			"""
 
 
 
