@@ -13,11 +13,11 @@ def check_hidden_subsets(self):
 def check_hidden_sub_col(self):
 	# Get list of possible values for each location.
 
-	# for i in range(9):  # first, iterate through cols
+	# for i in range(9):  # iterate through cols
 	for i in [8]:  # MANUALLY SETTING FOR TESTING
 		col_missing_vals = {}  # get list of missing values of this col
 
-		for j in range(9):  # row goes down, col is constant
+		for j in range(9):  # row/j goes down, col/i is constant
 			this_cell = (j, i)
 			self.set_lookup_table(this_cell, col_missing_vals)
 
@@ -29,11 +29,11 @@ def check_hidden_sub_col(self):
 def check_hidden_sub_row(self):
 	# Get list of possible values for each location.
 
-	# for j in range(9):
+	# for j in range(9):  iterate down rows
 	for j in [0]:  # MANUALLY SETTING FOR TESTING
 		row_missing_vals = {}  # get list of missing values of this row
 
-		for i in range(9):  # col goes across
+		for i in range(9):  # col/i goes across, row/j is constant
 			this_cell = (j, i)
 			self.set_lookup_table(this_cell, row_missing_vals)
 
@@ -160,9 +160,6 @@ def check_hidden_sub_boxes(self):
 
 
 
-
-
-
 def check_hidden_sub_box(self, box_coord):
 	# checks for hidden subsets within ONE box
 	# For testing, define a single box instead.
@@ -177,12 +174,9 @@ def check_hidden_sub_box(self, box_coord):
 			this_cell = (box_row+i, box_col+j)
 			self.set_lookup_table(this_cell, box_missing_vals)
 
-		# Check for subsets
-		possible_subsets = self.format_hidden_subset_info(box_missing_vals)
-
-		# print(possible_subsets)
-		self.clean_hidden_sub_box(possible_subsets, box_coord)
-
+	# Check for subsets and then clean box.
+	possible_subsets = self.format_hidden_subset_info(box_missing_vals)
+	self.clean_hidden_sub_box(possible_subsets, box_coord)
 
 
 
@@ -196,26 +190,32 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
 
-		print('item:', end=' ')
-		print(item)
+		print('item: {0}'.format(item))
 
+		# Hidden subset identified.
 		if len(missing_nums) == len(subset_locs):
-			# Clean up the box
-			"""
-			print('missing nums: {0}'.format(missing_nums))
-			print('\tsubset: {0}'.format(subset_locs))
-			"""
-			print('\t clean up box')
+			self.remove_hidden_box(box_coord, subset_locs, missing_nums)
 
-			"""
-			for i in range(3):  # row goes across
-				for j in range(3):  # col goes down
-					this_row = box_row * 3 + i
-					this_col = box_col * 3 + j
 
-					print('this coord: ({0}, {1})'.format(this_row, this_col))
-					print('missing nums: {0}'.format(missing_nums))
-			"""
+
+def remove_hidden_box(self, box_coord, subset_locs, missing_nums):
+	# Remove possibilities from the rest of the box once a hidden subset has
+	# been identified.
+	ref_row, ref_col = box_coord
+	box_row = ref_row // 3
+	box_col = ref_col // 3
+
+	# Iterate the box
+	for i in range(3):
+		for j in range(3):
+			this_row = box_row * 3 + i
+			this_col = box_col * 3 + j
+
+			print('this coord: ({0}, {1})'.format(this_row, this_col))
+			print('remove these nums: {0}'.format(missing_nums))
+
+			# self.clean_hidden_subset()
+
 
 
 

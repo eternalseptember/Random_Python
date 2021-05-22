@@ -23,7 +23,7 @@ class Sudoku_Solver():
 		check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \
 		remove_hidden_col, remove_hidden_row, format_hidden_subset_info, \
 		clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
-		check_hidden_sub_boxes
+		check_hidden_sub_boxes, remove_hidden_box
 
 
 
