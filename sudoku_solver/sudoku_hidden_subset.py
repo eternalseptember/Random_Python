@@ -196,11 +196,16 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 		subset_locs = item['subset_locs']
 		missing_nums = item['missing_num']
 
+		print('item:', end=' ')
+		print(item)
+
 		if len(missing_nums) == len(subset_locs):
 			# Clean up the box
+			"""
 			print('missing nums: {0}'.format(missing_nums))
 			print('\tsubset: {0}'.format(subset_locs))
-
+			"""
+			print('\t clean up box')
 
 			"""
 			for i in range(3):  # row goes across
