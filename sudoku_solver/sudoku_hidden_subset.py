@@ -53,8 +53,9 @@ def clean_hidden_subsets(self, possible_subsets, label=''):
 				self.remove_hidden_row(subset_locs, missing_nums)
 
 
-def remove_hidden_col(self, subset_locs, missing_nums):
+def remove_hidden_col(self, subset_locs, subset_nums):
 	# Goes down a col and cleans up subset possibilities.
+
 	# Get the column number.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
@@ -62,11 +63,12 @@ def remove_hidden_col(self, subset_locs, missing_nums):
 	# Clean up the column based on knowledge of subset.
 	for j in range(9):  # row/j goes down, col/i is constant
 		coord = (j, coord_col)
-		self.clean_hidden_subset(coord, subset_locs, missing_nums)
+		self.clean_hidden_subset(coord, subset_locs, subset_nums)
 
 
-def remove_hidden_row(self, subset_locs, missing_nums):
+def remove_hidden_row(self, subset_locs, subset_nums):
 	# Goes across a row and cleans up subset possibilities.
+
 	# Get the row number.
 	first_coord = subset_locs[0]
 	coord_row, coord_col = first_coord
@@ -74,15 +76,15 @@ def remove_hidden_row(self, subset_locs, missing_nums):
 	# Clean up the row based on knowledge of subset.
 	for i in range(9):  # col/i goes down, row/j is constant
 		coord = (coord_row, i)
-		self.clean_hidden_subset(coord, subset_locs, missing_nums)
+		self.clean_hidden_subset(coord, subset_locs, subset_nums)
 
 
-def format_hidden_subset_info(self, missing_val_info):
-	# missing_val_info is a dict with possible values in each location.
+def format_hidden_subset_info(self, missing_vals_info):
+	# missing_vals_info is a dict with possible values in each location.
 	# Format list of possibilties for subset analysis.
 	possible_subsets = {}
-	for missing_num in missing_val_info.keys():
-		subset_locs = missing_val_info[missing_num]
+	for missing_num in missing_vals_info.keys():
+		subset_locs = missing_vals_info[missing_num]
 
 		# Formats location of subset into a string.
 		subset_str = ''
@@ -162,10 +164,10 @@ def check_hidden_sub_box(self, box_coord):
 
 	# Check for subsets and then clean box.
 	possible_subsets = self.format_hidden_subset_info(box_missing_vals)
-	self.clean_hidden_sub_box(possible_subsets, box_coord)
+	self.clean_hidden_sub_box(box_coord, possible_subsets)
 
 
-def clean_hidden_sub_box(self, subset_info, box_coord):
+def clean_hidden_sub_box(self, box_coord, subset_info):
 	# Hidden subset not yet identified.
 	for poss_key in subset_info.keys():
 		item = subset_info[poss_key]
@@ -174,28 +176,23 @@ def clean_hidden_sub_box(self, subset_info, box_coord):
 
 		# Hidden subset identified.
 		if len(missing_nums) == len(subset_locs):
-			print('{0} in {1}'.format(missing_nums, subset_locs))
-			# self.remove_hidden_box(box_coord, subset_locs, missing_nums)
+			self.remove_hidden_box(box_coord, subset_locs, missing_nums)
 
 
-
-def remove_hidden_box(self, box_coord, subset_locs, missing_nums):
+def remove_hidden_box(self, box_coord, subset_locs, subset_nums):
 	# Remove possibilities from the rest of the box once a hidden subset has
 	# been identified.
-	ref_row, ref_col = box_coord
-	box_row = ref_row // 3
-	box_col = ref_col // 3
+	print('remove hidden box')
+	box_row, box_col = box_coord
 
 	# Iterate the box
 	for i in range(3):
 		for j in range(3):
 			this_row = box_row * 3 + i
 			this_col = box_col * 3 + j
+			this_coord = (this_row, this_col)
 
-			print('this coord: ({0}, {1})'.format(this_row, this_col))
-			print('remove these nums: {0}'.format(missing_nums))
-
-			# self.clean_hidden_subset()
+			self.clean_hidden_subset(this_coord, subset_locs, subset_nums)
 
 
 
