@@ -184,12 +184,14 @@ def remove_hidden_box(self, box_coord, subset_locs, subset_nums):
 	# been identified.
 	print('remove hidden box')
 	box_row, box_col = box_coord
+	ref_row = box_row // 3
+	ref_col = box_col // 3
 
 	# Iterate the box
 	for i in range(3):
 		for j in range(3):
-			this_row = box_row * 3 + i
-			this_col = box_col * 3 + j
+			this_row = ref_row * 3 + i
+			this_col = ref_col * 3 + j
 			this_coord = (this_row, this_col)
 
 			print('this coord: {0}'.format(this_coord))
