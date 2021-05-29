@@ -194,11 +194,13 @@ def remove_hidden_box(self, box_coord, subset_locs, subset_nums):
 			this_col = ref_col * 3 + j
 			this_coord = (this_row, this_col)
 
+			"""
 			print('this coord: {0}'.format(this_coord))
 			print('\tsubset locs: {0}'.format(subset_locs))
 			print('\tsubset nums: {0}'.format(subset_nums))
+			"""
 
-			# self.clean_hidden_subset(this_coord, subset_locs, subset_nums)
+			self.clean_hidden_subset(this_coord, subset_locs, subset_nums)
 
 
 
