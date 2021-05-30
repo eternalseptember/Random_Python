@@ -143,13 +143,16 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 def check_hidden_sub_boxes(self):
 	# Iterates through all the boxes.
 	# Getting list of possible values in each location.
-	"""
+
 	for i in [0, 3, 6]:
 		for j in [0, 3, 6]:
-			this_cell = (i, j)
+			box_coord = (i, j)
+			self.check_hidden_sub_box(box_coord)
+
 	"""
 	box_coord = (3, 3)  # MANUALLY SETTING FOR TESTING
 	self.check_hidden_sub_box(box_coord)
+	"""
 
 
 def check_hidden_sub_box(self, box_coord):
@@ -187,18 +190,12 @@ def remove_hidden_box(self, box_coord, subset_locs, subset_nums):
 	ref_row = box_row // 3
 	ref_col = box_col // 3
 
-	# Iterate the box
+	# Iterate the box.
 	for i in range(3):
 		for j in range(3):
 			this_row = ref_row * 3 + i
 			this_col = ref_col * 3 + j
 			this_coord = (this_row, this_col)
-
-			"""
-			print('this coord: {0}'.format(this_coord))
-			print('\tsubset locs: {0}'.format(subset_locs))
-			print('\tsubset nums: {0}'.format(subset_nums))
-			"""
 
 			self.clean_hidden_subset(this_coord, subset_locs, subset_nums)
 
