@@ -5,8 +5,14 @@ HIDDEN SUBSET COL 1:
 HIDDEN SUBSET ROW 1:
 [4,7] can only be in (0,0) and (0,1).
 
+HIDDEN SUBSET ROW 2:
+
+
 HIDDEN SUBSET BOX 1:
 [1,8] can only be in (4,3) and (4,5).
+
+HIDDEN SUBSET TRIPLE 1:
+col 4: [3, 4, 7]. Should be able to remove 1 from the top cell (0, 4).
 """
 
 import sys
@@ -18,7 +24,8 @@ sudoku = Sudoku_Solver()
 # sudoku.import_board("hidden_sub_col_1.txt")
 # sudoku.import_board("hidden_sub_row_1.txt")
 # sudoku.import_board("hidden_sub_box_1.txt")
-sudoku.import_board("hidden_sub_trip_1.txt")
+sudoku.import_board("hidden_sub_row_2.txt")
+# sudoku.import_board("hidden_sub_trip_1.txt")
 sudoku.print_board()
 print('===============================')
 
