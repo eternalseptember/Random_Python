@@ -6,8 +6,8 @@ def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
 	# self.check_hidden_sub_col()
-	# self.check_hidden_sub_row()
-	self.check_hidden_sub_boxes()  # named differently while testing
+	self.check_hidden_sub_row()
+	# self.check_hidden_sub_boxes()  # named differently while testing
 
 
 def check_hidden_sub_col(self):
@@ -185,7 +185,6 @@ def clean_hidden_sub_box(self, box_coord, subset_info):
 def remove_hidden_box(self, box_coord, subset_locs, subset_nums):
 	# Remove possibilities from the rest of the box once a hidden subset has
 	# been identified.
-	print('remove hidden box')
 	box_row, box_col = box_coord
 	ref_row = box_row // 3
 	ref_col = box_col // 3
