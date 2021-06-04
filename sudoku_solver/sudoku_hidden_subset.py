@@ -26,7 +26,8 @@ def check_hidden_sub_col(self):
 
 def check_hidden_sub_row(self):
 	# Get list of possible values for each location.
-	for j in range(9):  # iterate down rows
+	# for j in range(9):  # iterate down rows
+	for j in [4]:  # TESTING
 		row_missing_vals = {}  # list of missing values in this row
 
 		for i in range(9):  # col/i goes across, row/j is constant
@@ -35,7 +36,8 @@ def check_hidden_sub_row(self):
 
 		# Check for subsets and then clean row.
 		possible_subsets = self.format_hidden_subset_info(row_missing_vals)
-		self.clean_hidden_subsets(possible_subsets, 'row')
+		print(possible_subsets)
+		# self.clean_hidden_subsets(possible_subsets, 'row')
 
 
 def clean_hidden_subsets(self, possible_subsets, label=''):
