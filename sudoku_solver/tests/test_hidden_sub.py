@@ -5,7 +5,7 @@ HIDDEN SUBSET COL 1:
 HIDDEN SUBSET ROW 1:
 [4,7] can only be in (0,0) and (0,1).
 
-HIDDEN SUBSET ROW 2: (NEW)
+HIDDEN SUBSET ROW 2: (hidden triple) (NEW)
 [1, 2, 6] can only be in (4, 0), (4, 5), and (4, 7)????
 
 HIDDEN SUBSET BOX 1:
@@ -24,8 +24,8 @@ from sudoku_solver import *
 sudoku = Sudoku_Solver()
 # sudoku.import_board("hidden_sub_col_1.txt")
 # sudoku.import_board("hidden_sub_row_1.txt")
-# sudoku.import_board("hidden_sub_box_1.txt")
 sudoku.import_board("hidden_sub_row_2.txt")
+# sudoku.import_board("hidden_sub_box_1.txt")
 # sudoku.import_board("hidden_sub_quad_1.txt")
 sudoku.print_board()
 print('===============================')
@@ -39,21 +39,29 @@ sudoku.print_possible_values()
 print('===============================')
 
 
+print('Check matching sets:')
+sudoku.check_matching_sets()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
 
-print('Find hidden subset:')
-sudoku.check_hidden_subsets()
+
+print('Test block interaction:')
+sudoku.check_within_boxes()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
 
 """
-print('Check matching sets:')
-sudoku.check_matching_sets()
+print('Find hidden subset:')
+sudoku.check_hidden_subsets()
 sudoku.print_board()
-# sudoku.print_possible_values()
+sudoku.print_possible_values()
 print('===============================')
 """
+
+
 
 
 

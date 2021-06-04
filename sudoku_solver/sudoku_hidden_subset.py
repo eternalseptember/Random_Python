@@ -36,8 +36,12 @@ def check_hidden_sub_row(self):
 
 		# Check for subsets and then clean row.
 		possible_subsets = self.format_hidden_subset_info(row_missing_vals)
-		print(possible_subsets)
-		# self.clean_hidden_subsets(possible_subsets, 'row')
+		self.clean_hidden_subsets(possible_subsets, 'row')
+
+		"""
+		for key in possible_subsets.keys():
+			print(possible_subsets[key])
+		"""
 
 
 def clean_hidden_subsets(self, possible_subsets, label=''):
