@@ -39,18 +39,15 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-print('Check matching sets:')
+print('Getting to the point where the test follows the example:')
 sudoku.check_matching_sets()
-sudoku.print_board()
-sudoku.print_possible_values()
-print('===============================')
-
-
-print('Test block interaction:')
+sudoku.check_matching_sets()
 sudoku.check_within_boxes()
+
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+
 
 
 """

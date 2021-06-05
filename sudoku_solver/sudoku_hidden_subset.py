@@ -26,8 +26,8 @@ def check_hidden_sub_col(self):
 
 def check_hidden_sub_row(self):
 	# Get list of possible values for each location.
-	# for j in range(9):  # iterate down rows
-	for j in [4]:  # TESTING
+	for j in range(9):  # iterate down rows
+	# for j in [4]:  # TESTING
 		row_missing_vals = {}  # list of missing values in this row
 
 		for i in range(9):  # col/i goes across, row/j is constant
