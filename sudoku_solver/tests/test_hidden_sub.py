@@ -2,11 +2,15 @@
 HIDDEN SUBSET COL 1:
 [1,9] can only be in (4,8) and (6,8).
 
+HIDDEN SUBSET COL 2: (hidden triple) (NEW)
+[1,3, ???] can only be in (3,4), (5,4), and (7,4).
+is 9 part of the triple?
+
 HIDDEN SUBSET ROW 1:
 [4,7] can only be in (0,0) and (0,1).
 
 HIDDEN SUBSET ROW 2: (hidden triple) (NEW)
-[1, 2, 6] can only be in (4, 0), (4, 5), and (4, 7)????
+[1,2,6] can only be in (4,0), (4,5), and (4,7)????
 
 HIDDEN SUBSET BOX 1:
 [1,8] can only be in (4,3) and (4,5).
@@ -23,8 +27,9 @@ from sudoku_solver import *
 
 sudoku = Sudoku_Solver()
 # sudoku.import_board("hidden_sub_col_1.txt")
+sudoku.import_board("hidden_sub_col_2.txt")
 # sudoku.import_board("hidden_sub_row_1.txt")
-sudoku.import_board("hidden_sub_row_2.txt")
+# sudoku.import_board("hidden_sub_row_2.txt")
 # sudoku.import_board("hidden_sub_box_1.txt")
 # sudoku.import_board("hidden_sub_quad_1.txt")
 sudoku.print_board()
