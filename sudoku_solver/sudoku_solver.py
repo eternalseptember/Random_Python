@@ -25,6 +25,8 @@ class Sudoku_Solver():
 		clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
 		check_hidden_sub_boxes, remove_hidden_box
 
+	from sudoku_hidden_trip import check_hidden_trip
+
 
 
 	def __init__(self):

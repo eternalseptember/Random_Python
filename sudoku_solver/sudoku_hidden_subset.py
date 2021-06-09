@@ -5,9 +5,9 @@
 def check_hidden_subsets(self):
 	# Temporarily using this function to test.
 
-	# self.check_hidden_sub_col()
+	self.check_hidden_sub_col()
 	self.check_hidden_sub_row()
-	# self.check_hidden_sub_boxes()  # named differently while testing
+	self.check_hidden_sub_boxes()  # named differently while testing
 
 
 def check_hidden_sub_col(self):
@@ -141,11 +141,6 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 
 
 
-
-
-
-
-
 def check_hidden_sub_boxes(self):
 	# Iterates through all the boxes.
 	# Getting list of possible values in each location.
@@ -155,10 +150,6 @@ def check_hidden_sub_boxes(self):
 			box_coord = (i, j)
 			self.check_hidden_sub_box(box_coord)
 
-	"""
-	box_coord = (3, 3)  # MANUALLY SETTING FOR TESTING
-	self.check_hidden_sub_box(box_coord)
-	"""
 
 
 def check_hidden_sub_box(self, box_coord):
