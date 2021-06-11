@@ -1,5 +1,5 @@
-# Similar to naked subset.
 # Import into the main sudoku_solver class.
+# Similar to naked subset.
 
 
 def check_hidden_subsets(self):
@@ -149,7 +149,6 @@ def check_hidden_sub_boxes(self):
 		for j in [0, 3, 6]:
 			box_coord = (i, j)
 			self.check_hidden_sub_box(box_coord)
-
 
 
 def check_hidden_sub_box(self, box_coord):

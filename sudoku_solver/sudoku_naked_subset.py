@@ -1,5 +1,6 @@
-# Functions that eliminate possibilities based on matching pairs or triplets.
 # Import into the main sudoku_solver class.
+# Functions that eliminate possibilities based on matching pairs or triplets.
+# Naked: Exact list of candidates in exact cells.
 
 
 def check_matching_sets(self):
