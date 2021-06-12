@@ -25,7 +25,8 @@ class Sudoku_Solver():
 		clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
 		check_hidden_sub_boxes, remove_hidden_box
 
-	from sudoku_triples import check_naked_triples, check_naked_triples_col
+	from sudoku_naked_triples import check_naked_triples, \
+		check_naked_triples_col
 
 
 
