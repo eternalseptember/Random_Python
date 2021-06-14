@@ -4,7 +4,7 @@
 
 
 def check_naked_triples(self):
-	self.check_hidden_trip_col()
+	self.check_naked_triples_col()
 
 
 
