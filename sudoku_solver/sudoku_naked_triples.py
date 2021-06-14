@@ -9,5 +9,6 @@ def check_naked_triples(self):
 
 
 def check_naked_triples_col(self):
-	print()
+	# collect every possibility first
+	row = 4
 

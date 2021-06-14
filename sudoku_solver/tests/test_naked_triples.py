@@ -2,6 +2,10 @@
 Naked triple: 
 Not all cells must contain all three candidates, but there must not be more
 than three candidates in the three cells all together.
+
+TRIPLE ROW:
+[5,8,9] can only be in (4,3), (4,4), and (4,5);
+	but some numbers are missing in (4,4) and (4,5).
 """
 
 import sys
