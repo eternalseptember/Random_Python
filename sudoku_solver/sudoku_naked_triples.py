@@ -12,3 +12,6 @@ def check_naked_triples_col(self):
 	# collect every possibility first
 	row = 4
 
+	for i in range(9):
+		this_cell = (row, i)
+
