@@ -11,7 +11,9 @@ def check_naked_triples(self):
 def check_naked_triples_col(self):
 	# collect every possibility first
 	row = 4
+	col_missing_vals = {}
 
 	for i in range(9):
 		this_cell = (row, i)
+		self.set_lookup_table(this_cell, col_missing_vals)
 
