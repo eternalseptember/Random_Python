@@ -21,11 +21,15 @@ def check_naked_triples_col(self):
 		self.set_lookup_table(this_cell, col_missing_vals)
 
 	self.find_naked_triple(col_missing_vals)
+	# self.clean_hidden_subsets()
 
 
 
 def find_naked_triple(self, missing_vals):
-	return None
+	naked_subsets = {}
+
+
+	return naked_subsets
 
 
 
