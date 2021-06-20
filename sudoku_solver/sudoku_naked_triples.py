@@ -20,16 +20,20 @@ def check_naked_triples_col(self):
 		this_cell = (row, i)
 		self.set_lookup_table(this_cell, col_missing_vals)
 
-	print(col_missing_vals)
 
 	# possible_subsets = self.find_naked_triple(col_missing_vals)
 	# print(possible_subsets)
 	# self.clean_hidden_subsets()
 
 
+	for key in col_missing_vals.keys():
+		print('{0}: {1}'.format(key, col_missing_vals[key]))
+
+
 
 
 def find_naked_triple(self, missing_vals):
+	# How to identify group?
 	naked_subsets = {}
 
 
