@@ -7,27 +7,48 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	self.check_naked_triples_col()
+	self.check_naked_triples_row()
 
 
 
-def check_naked_triples_col(self):
+def check_naked_triples_row(self):
 	# collect every possibility first
 	row = 4
-	col_missing_vals = {}
+	row_missing_vals = {}
 
+	# get the possibilities in each cell, then compare?
 	for i in range(9):
 		this_cell = (row, i)
-		self.set_lookup_table(this_cell, col_missing_vals)
+		poss_vals = self.possible_values[this_cell]
 
 
-	# possible_subsets = self.find_naked_triple(col_missing_vals)
-	# print(possible_subsets)
-	# self.clean_hidden_subsets()
+	"""
+	for i in range(9):
+		this_cell = (row, i)
+		self.set_lookup_table(this_cell, row_missing_vals)
+
+	# this portion will become find_naked_triple()
+	# for missing_val in row_missing_vals.keys():
+	# 	print('{0}: {1}'.format(missing_val, row_missing_vals[missing_val]))
+
+	possible_subsets = self.find_naked_triple(col_missing_vals)
+	self.clean_hidden_subsets()
+
+	"""
 
 
-	for key in col_missing_vals.keys():
-		print('{0}: {1}'.format(key, col_missing_vals[key]))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
