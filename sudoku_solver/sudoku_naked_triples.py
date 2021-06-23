@@ -15,6 +15,7 @@ def check_naked_triples_row(self):
 	# collect every possibility first
 	row = 4
 	row_missing_vals = {}
+	poss_trips = {}
 
 	# get the possibilities in each cell, then compare?
 	for i in range(9):
@@ -24,6 +25,10 @@ def check_naked_triples_row(self):
 		# if the group is greater than three, then can't be part of the triple
 		if len(poss_vals) > 3:
 			continue
+		else:
+			# convert to string
+
+			poss_trips[this_cell] = poss_vals
 
 
 
