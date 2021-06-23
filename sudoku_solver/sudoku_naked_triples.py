@@ -21,6 +21,12 @@ def check_naked_triples_row(self):
 		this_cell = (row, i)
 		poss_vals = self.possible_values[this_cell]
 
+		# if the group is greater than three, then can't be part of the triple
+		if len(poss_vals) > 3:
+			continue
+
+
+
 
 	"""
 	for i in range(9):
