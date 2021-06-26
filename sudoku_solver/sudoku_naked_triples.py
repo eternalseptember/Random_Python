@@ -28,7 +28,7 @@ def check_naked_triples_row(self):
 		else:
 			# convert cells to string as key??
 			trip_group = {}  # store the coordinates and possibilities
-			subset_str = ''
+			subset_str = '({0},{1})'.format(row, i)
 
 			# trip_group store coordinates
 			trip_group['poss_vals'] = poss_vals
