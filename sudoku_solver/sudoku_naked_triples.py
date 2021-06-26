@@ -27,12 +27,13 @@ def check_naked_triples_row(self):
 			continue
 		else:
 			# convert cells to string as key??
-			trip_group = {}  # store the coordinates and possibilities\
+			trip_group = {}  # store the coordinates and possibilities
 			subset_str = ''
 
-			# 
+			# trip_group store coordinates
+			trip_group['poss_vals'] = poss_vals
 
-			poss_trips[this_cell] = poss_vals
+			poss_trips.append(trip_group)
 
 
 
