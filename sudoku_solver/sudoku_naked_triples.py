@@ -15,7 +15,7 @@ def check_naked_triples_row(self):
 	# collect every possibility first
 	row = 4
 	row_missing_vals = {}
-	poss_trips = []  # contains a list of dicts
+	poss_trips = {}  # stores coords and their possibilities
 
 	# get the possibilities in each cell, then compare?
 	for i in range(9):
@@ -26,14 +26,10 @@ def check_naked_triples_row(self):
 		if len(poss_vals) > 3:
 			continue
 		else:
-			# convert cells to string as key??
-			trip_group = {}  # store the coordinates and possibilities
+			# convert cells to string as key
 			subset_str = '({0},{1})'.format(row, i)
+			poss_trips[subset_str] = poss_vals
 
-			# trip_group store coordinates
-			trip_group['poss_vals'] = poss_vals
-
-			poss_trips.append(trip_group)
 
 
 
