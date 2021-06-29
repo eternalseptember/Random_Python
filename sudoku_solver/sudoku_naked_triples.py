@@ -17,18 +17,21 @@ def check_naked_triples_row(self):
 	row_missing_vals = {}
 	poss_trips = {}  # stores coords and their possibilities
 
+	# if cell hasn't been solved,
 	# get the possibilities in each cell, then compare?
 	for i in range(9):
 		this_cell = (row, i)
-		poss_vals = self.possible_values[this_cell]
 
-		# if the group is greater than three, then can't be part of the triple
-		if len(poss_vals) > 3:
-			continue
-		else:
-			# convert cells to string as key
-			subset_str = '({0},{1})'.format(row, i)
-			poss_trips[subset_str] = poss_vals
+		if this_cell in self.possible_values:
+			poss_vals = self.possible_values[this_cell]
+
+			# if the group is greater than three, then can't be part of the triple
+			if len(poss_vals) > 3:
+				continue
+			else:
+				# convert cells to string as key
+				subset_str = '({0},{1})'.format(row, i)
+				poss_trips[subset_str] = poss_vals
 
 
 
