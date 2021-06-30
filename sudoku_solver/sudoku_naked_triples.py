@@ -12,68 +12,43 @@ def check_naked_triples(self):
 
 
 def check_naked_triples_row(self):
-	# collect every possibility first
+	# Collect candidate cells and their possibilities first.
 	row = 4
-	row_missing_vals = {}
-	poss_trips = {}  # stores coords and their possibilities
+	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
 
-	# if cell hasn't been solved,
-	# get the possibilities in each cell, then compare?
 	for i in range(9):
 		this_cell = (row, i)
 
+		# Skip over solved cells.
 		if this_cell in self.possible_values:
 			poss_vals = self.possible_values[this_cell]
 
-			# if the group is greater than three, then can't be part of the triple
+			# Can't be part of a triple if there are more than 3 candidates.
 			if len(poss_vals) > 3:
 				continue
 			else:
-				# convert cells to string as key
-				subset_str = '({0},{1})'.format(row, i)
-				poss_trips[subset_str] = poss_vals
+				# Convert cells to string as key.
+				subset_str = '{0},{1}'.format(row, i)
+				poss_trip_list[subset_str] = poss_vals
 
 
 
 
-
-	"""
-	for i in range(9):
-		this_cell = (row, i)
-		self.set_lookup_table(this_cell, row_missing_vals)
-
-	# this portion will become find_naked_triple()
-	# for missing_val in row_missing_vals.keys():
-	# 	print('{0}: {1}'.format(missing_val, row_missing_vals[missing_val]))
-
-	possible_subsets = self.find_naked_triple(col_missing_vals)
-	self.clean_hidden_subsets()
-
-	"""
+	# possible_subsets = self.find_naked_triple(poss_trip_list)
+	# self.clean_hidden_subsets()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def find_naked_triple(self, missing_vals):
+def find_naked_triple(self, poss_trip_list):
 	# How to identify group?
-	naked_subsets = {}
+	triples = {}
+
+	for item in triples.keys():
+		# decode the key for the coordinate first
+		print()
 
 
-	return naked_subsets
+	return triples
 
 
 
