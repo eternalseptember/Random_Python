@@ -34,7 +34,7 @@ def check_naked_triples_row(self):
 
 
 
-	# possible_subsets = self.find_naked_triple(poss_trip_list)
+	possible_subsets = self.find_naked_triple(poss_trip_list)
 	# self.clean_hidden_subsets()
 
 
@@ -45,6 +45,8 @@ def find_naked_triple(self, poss_trip_list):
 
 	for item in triples.keys():
 		# decode the key for the coordinate first
+		coord_str = str(item)
+		print(coord_str)
 
 		poss_vals = poss_trip_list[item]
 		print()
