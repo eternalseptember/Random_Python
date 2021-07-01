@@ -45,6 +45,8 @@ def find_naked_triple(self, poss_trip_list):
 
 	for item in triples.keys():
 		# decode the key for the coordinate first
+
+		poss_vals = poss_trip_list[item]
 		print()
 
 
