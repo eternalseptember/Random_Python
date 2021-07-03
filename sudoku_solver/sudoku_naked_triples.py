@@ -19,6 +19,8 @@ def check_naked_triples_row(self):
 	for i in range(9):
 		this_cell = (row, i)
 
+		print('this_cell: {0}'.format(this_cell))
+
 		# Skip over solved cells.
 		if this_cell in self.possible_values:
 			poss_vals = self.possible_values[this_cell]
@@ -46,7 +48,8 @@ def find_naked_triple(self, poss_trip_list):
 	for item in triples.keys():
 		# decode the key for the coordinate first
 		coord_str = str(item)
-		print(coord_str)
+		coord = [int(i) for i in coord_str.split(',')]
+		# print(coord_str)
 
 		poss_vals = poss_trip_list[item]
 		print()
