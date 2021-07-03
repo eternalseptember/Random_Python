@@ -1,6 +1,6 @@
 # Import into the main sudoku_solver class.
 """
-Naked triple: 
+Naked triple:
 Not all cells must contain all three candidates, but there must not be more
 than three candidates in the three cells all together.
 """
@@ -19,7 +19,6 @@ def check_naked_triples_row(self):
 	for i in range(9):
 		this_cell = (row, i)
 
-		print('this_cell: {0}'.format(this_cell))
 
 		# Skip over solved cells.
 		if this_cell in self.possible_values:
@@ -34,6 +33,9 @@ def check_naked_triples_row(self):
 				poss_trip_list[subset_str] = poss_vals
 
 
+	for coord_str in poss_trip_list.keys():
+		cell_poss = poss_trip_list[coord_str]
+		print('{0}: {1}'.format(coord_str, cell_poss))
 
 
 	possible_subsets = self.find_naked_triple(poss_trip_list)
@@ -48,7 +50,7 @@ def find_naked_triple(self, poss_trip_list):
 	for item in triples.keys():
 		# decode the key for the coordinate first
 		coord_str = str(item)
-		coord = [int(i) for i in coord_str.split(',')]
+		coord = list(map(int, coord_str.split(',')))
 		# print(coord_str)
 
 		poss_vals = poss_trip_list[item]
