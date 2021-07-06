@@ -46,17 +46,18 @@ def check_naked_triples_row(self):
 def find_naked_triple(self, poss_trip_list):
 	# How to identify group?
 	triples = {}
-
+	trip_set = []
 
 
 	for item in poss_trip_list.keys():
 		# decode the key for the coordinate first
 		coord_str = str(item)
 		coord = list(map(int, coord_str.split(',')))
-		print(coord_str)
 
 		poss_vals = poss_trip_list[item]
-		print()
+
+		if len(trip_set) == 0:
+			trip_set = poss_vals[:]
 
 
 	return triples
