@@ -56,8 +56,13 @@ def find_naked_triple(self, poss_trip_list):
 
 		poss_vals = poss_trip_list[item]
 
-		if len(trip_set) == 0:
+		if len(trip_set) == 0:  # might not be three poss vals at first
 			trip_set = poss_vals[:]
+		elif len(trip_set) == 3:  # just compare for now
+			print()
+			# if it is part of the triple, then add the coordinates to the list?
+		else:  # if 1 or 2 poss vals, then see if trip_set needs to be merged
+			print()
 
 
 	return triples
