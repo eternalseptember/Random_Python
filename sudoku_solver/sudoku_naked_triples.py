@@ -59,8 +59,10 @@ def find_naked_triple(self, poss_trip_list):
 		if len(trip_set) == 0:  # might not be three poss vals at first
 			trip_set = poss_vals[:]
 		elif len(trip_set) == 3:  # just compare for now
-			print()
 			# if it is part of the triple, then add the coordinates to the list?
+			for poss_val in poss_vals:
+				if poss_val not in trip_set:  # not part of the ref triple
+					continue
 		else:  # if 1 or 2 poss vals, then see if trip_set needs to be merged
 			print()
 
