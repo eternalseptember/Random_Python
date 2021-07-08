@@ -45,29 +45,37 @@ def check_naked_triples_row(self):
 
 def find_naked_triple(self, poss_trip_list):
 	# How to identify group?
-	triples = {}
-	trip_set = []
+	trip_set = []  # possible triplet values
+	trip_coords = []  # coords in trip_set
+
 
 
 	for item in poss_trip_list.keys():
 		# decode the key for the coordinate first
 		coord_str = str(item)
-		coord = list(map(int, coord_str.split(',')))
+		coord = tuple(map(int, coord_str.split(',')))
 
-		poss_vals = poss_trip_list[item]
+		poss_vals = poss_trip_list[item]  # used for comparison in this loops
 
 		if len(trip_set) == 0:  # might not be three poss vals at first
 			trip_set = poss_vals[:]
+			trip_coords.append(coord)
+
 		elif len(trip_set) == 3:  # just compare for now
 			# if it is part of the triple, then add the coordinates to the list?
+			part_of_triple = True
+
 			for poss_val in poss_vals:
 				if poss_val not in trip_set:  # not part of the ref triple
 					continue
+
+			# if made it down here, then all values
+
 		else:  # if 1 or 2 poss vals, then see if trip_set needs to be merged
+			# unless len(trip_set) + len(poss_vals) > 3
 			print()
 
-
-	return triples
+	return trip_coords
 
 
 
