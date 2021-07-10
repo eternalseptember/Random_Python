@@ -67,9 +67,12 @@ def find_naked_triple(self, poss_trip_list):
 
 			for poss_val in poss_vals:
 				if poss_val not in trip_set:  # not part of the ref triple
+					part_of_triple = False
 					continue
 
 			# if made it down here, then all values
+			if part_of_triple:
+				trip_coords.append(coord)
 
 		else:  # if 1 or 2 poss vals, then see if trip_set needs to be merged
 			# unless len(trip_set) + len(poss_vals) > 3
