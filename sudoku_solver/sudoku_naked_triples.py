@@ -45,12 +45,15 @@ def check_naked_triples_row(self):
 
 def find_naked_triple(self, poss_trip_list):
 	# How to identify group?
-	trip_set = []  # possible triplet values
-	trip_coords = []  # coords in trip_set
+	trip_set = []  # possible triplet values. Max 3.
+	trip_coords = []  # coords in trip_set. Max 3.
 
 
+	# Keep track of which poss_trip_list has been used for comparison.
+	poss_trip_keys = poss_trip_list.keys()
 
-	for item in poss_trip_list.keys():
+
+	for item in poss_trip_keys:
 		# decode the key for the coordinate first
 		coord_str = str(item)
 		coord = tuple(map(int, coord_str.split(',')))
