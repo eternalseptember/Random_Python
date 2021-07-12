@@ -79,7 +79,11 @@ def find_naked_triple(self, poss_trip_list):
 
 		else:  # if 1 or 2 poss vals, then see if trip_set needs to be merged
 			# unless len(trip_set) + len(poss_vals) > 3
-			print()
+
+			if (len(trip_set) + len(poss_vals)) > 3:
+				# coord not part of triple as referenced by trip_set
+				print()
+
 
 	return trip_coords
 
