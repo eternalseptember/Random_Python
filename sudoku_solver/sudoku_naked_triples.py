@@ -85,7 +85,8 @@ def find_naked_triple(self, poss_trip_list):
 				return
 			else:
 				# combine the two set of coords and re-run the comparison
-				print()
+				trip_coords.append(coord)
+
 
 
 	return trip_coords
