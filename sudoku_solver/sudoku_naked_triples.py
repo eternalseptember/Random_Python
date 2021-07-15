@@ -82,9 +82,16 @@ def find_naked_triple(self, poss_trip_list):
 
 			if (len(trip_set) + len(poss_vals)) > 3:
 				# coord not part of triple as referenced by trip_set
+
+				# unless there are duplicate poss vals
+
 				return
 			else:
 				# combine the two set of coords and re-run the comparison
+				combined_poss = list(set(trip_set+poss_vals))
+
+				# clean duplicates
+
 				trip_coords.append(coord)
 
 
