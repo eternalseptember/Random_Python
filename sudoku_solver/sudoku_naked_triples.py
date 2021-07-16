@@ -90,9 +90,10 @@ def find_naked_triple(self, poss_trip_list):
 				# combine the two set of coords and re-run the comparison
 				combined_poss = list(set(trip_set+poss_vals))
 
-				# clean duplicates
+				if len(combined_poss) <= 3:
+					trip_coords.append(coord)
 
-				trip_coords.append(coord)
+				
 
 
 
