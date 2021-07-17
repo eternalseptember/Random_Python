@@ -77,23 +77,17 @@ def find_naked_triple(self, poss_trip_list):
 			if part_of_triple:
 				trip_coords.append(coord)
 
-		else:  # if 1 or 2 poss vals, then see if trip_set needs to be merged
-			# unless len(trip_set) + len(poss_vals) > 3
+		else:  # see if two lists could be merged together
+			combined_poss = list(set(trip_set+poss_vals))
 
-			if (len(trip_set) + len(poss_vals)) > 3:
+			if len(combined_poss) > 3:
 				# coord not part of triple as referenced by trip_set
-
-				# unless there are duplicate poss vals
-
 				return
 			else:
 				# combine the two set of coords and re-run the comparison
-				combined_poss = list(set(trip_set+poss_vals))
+				trip_coords.append(coord)
 
-				if len(combined_poss) <= 3:
-					trip_coords.append(coord)
 
-				
 
 
 
