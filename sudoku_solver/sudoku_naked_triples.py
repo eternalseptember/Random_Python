@@ -48,7 +48,6 @@ def find_naked_triple(self, poss_trip_list):
 	trip_set = []  # possible triplet values. Max 3.
 	trip_coords = []  # coords in trip_set. Max 3.
 
-
 	# Keep track of which poss_trip_list has been used for comparison.
 	poss_trip_keys = poss_trip_list.keys()
 
@@ -73,7 +72,6 @@ def find_naked_triple(self, poss_trip_list):
 					part_of_triple = False
 					continue
 
-			# if made it down here, then all values
 			if part_of_triple:
 				trip_coords.append(coord)
 
@@ -85,6 +83,7 @@ def find_naked_triple(self, poss_trip_list):
 				return
 			else:
 				# combine the two set of coords and re-run the comparison
+				trip_set = combined_poss
 				trip_coords.append(coord)
 
 
