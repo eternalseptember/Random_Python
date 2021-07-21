@@ -94,7 +94,7 @@ def find_naked_triple(self, poss_trip_list):
 
 
 
-def clean_triple(self, trip_set, trip_coords):
+def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 	return None
 
