@@ -95,8 +95,10 @@ def find_naked_triple(self, poss_trip_list):
 
 
 def clean_triple_row(self, trip_set, trip_coords, row_num):
+	# remove triple vals in cells outside the triple
+	for i in range(row_num):
+		print()
 
-	return None
 
 
 
