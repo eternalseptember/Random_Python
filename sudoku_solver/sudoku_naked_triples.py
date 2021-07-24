@@ -101,6 +101,9 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 		# if this_cell is in trip_coords, ... skip?
 		# if it's not, then remove cells in trip_set
 
+		if this_cell in trip_coords:
+			continue
+
 
 
 
