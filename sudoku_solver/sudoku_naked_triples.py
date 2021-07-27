@@ -106,6 +106,12 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 		else:
 			poss_vals = self.possible_values[this_cell]
 
+			# removal here
+
+			self.possible_values[this_cell] = poss_vals
+
+			# check if there's only one value left?
+
 
 
 
