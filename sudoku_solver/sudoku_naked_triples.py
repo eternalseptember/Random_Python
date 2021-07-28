@@ -111,7 +111,10 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 			self.possible_values[this_cell] = poss_vals
 
 			# check if there's only one value left?
-
+			if len(poss_vals) == 1:
+				if (this_cell not in self.solved_list) and \
+					(this_cell not in self.solved_queue):
+					self.solved_queue.append(this_cell)
 
 
 
