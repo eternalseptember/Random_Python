@@ -106,8 +106,12 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 		else:
 			poss_vals = self.possible_values[this_cell]
 
-			# removal here
+			# remove triples in cells outside the trip_coords
+			for trip_val in trip_set:
+				if trip_val in poss_vals:
+					poss_vals.remove(trip_val)
 
+			# reassign
 			self.possible_values[this_cell] = poss_vals
 
 			# check if there's only one value left?
