@@ -124,3 +124,19 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 
 
+
+
+
+
+
+
+def check_naked_triples_col(self):
+	return None
+
+
+def clean_triple_col(self, trip_set, trip_coords, col_num):
+	return None
+
+
+
+
