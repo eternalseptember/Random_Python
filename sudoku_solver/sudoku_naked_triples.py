@@ -35,7 +35,7 @@ def check_naked_triples_row(self):
 
 	for coord_str in poss_trip_list.keys():
 		cell_poss = poss_trip_list[coord_str]
-		print('{0}: {1}'.format(coord_str, cell_poss))
+		print('({0}): {1}'.format(coord_str, cell_poss))
 
 
 	trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
@@ -88,8 +88,9 @@ def find_naked_triple(self, poss_trip_list):
 
 	print('combined set: {0}'.format(trip_set))
 
+	row_num = trip_coords[0][0]
 
-	return trip_set, trip_coords
+	return trip_set, trip_coords, row_num
 
 
 
