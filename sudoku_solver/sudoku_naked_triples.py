@@ -89,6 +89,7 @@ def find_naked_triple(self, poss_trip_list):
 	print('combined set: {0}'.format(trip_set))
 
 	row_num = trip_coords[0][0]
+	print('row num: {0}'.format(row_num))
 
 	return trip_set, trip_coords, row_num
 
