@@ -38,7 +38,7 @@ def check_naked_triples_row(self):
 		print('({0}): {1}'.format(coord_str, cell_poss))
 
 
-	trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
+	trip_set, trip_coords, row_num = self.find_naked_triple(poss_trip_list)
 	# self.clean_hidden_subsets()
 
 
