@@ -106,6 +106,8 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 		if this_cell in trip_coords:
 			continue
+		elif this_cell not in self.possible_values:
+			continue
 		else:
 			poss_vals = self.possible_values[this_cell]
 
