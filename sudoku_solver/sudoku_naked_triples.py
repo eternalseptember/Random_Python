@@ -44,6 +44,68 @@ def check_naked_triples_row(self):
 
 
 
+def clean_triple_row(self, trip_set, trip_coords, row_num):
+	# remove triple vals in cells outside the triple
+	for i in range(9):
+		this_cell = (row_num, i)
+		# if this_cell is in trip_coords, ... skip?
+		# if it's not, then remove cells in trip_set
+
+		if this_cell in trip_coords:
+			continue
+		elif this_cell not in self.possible_values:
+			continue
+		else:
+			poss_vals = self.possible_values[this_cell]
+
+			# remove triples in cells outside the trip_coords
+			for trip_val in trip_set:
+				if trip_val in poss_vals:
+					poss_vals.remove(trip_val)
+
+			# reassign
+			self.possible_values[this_cell] = poss_vals
+
+			# check if there's only one value left?
+			if len(poss_vals) == 1:
+				if (this_cell not in self.solved_list) and \
+					(this_cell not in self.solved_queue):
+					self.solved_queue.append(this_cell)
+
+
+
+
+
+
+
+
+def check_naked_triples_col(self):
+	# Collect candidate cells and their possibilities first.
+	col = 4
+
+
+
+
+
+
+def clean_triple_col(self, trip_set, trip_coords, col_num):
+	return None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def find_naked_triple(self, poss_trip_list):
 	# How to identify group?
 	trip_set = []  # possible triplet values. Max 3.
@@ -89,58 +151,13 @@ def find_naked_triple(self, poss_trip_list):
 
 	print('combined set: {0}'.format(trip_set))
 
-	row_num = trip_coords[0][0]
-	print('row num: {0}'.format(row_num))
+	row_or_col_num = trip_coords[0][0]
+	print('row num: {0}'.format(row_or_col_num))
 
-	return trip_set, trip_coords, row_num
-
-
-
-
-def clean_triple_row(self, trip_set, trip_coords, row_num):
-	# remove triple vals in cells outside the triple
-	for i in range(9):
-		this_cell = (row_num, i)
-		# if this_cell is in trip_coords, ... skip?
-		# if it's not, then remove cells in trip_set
-
-		if this_cell in trip_coords:
-			continue
-		elif this_cell not in self.possible_values:
-			continue
-		else:
-			poss_vals = self.possible_values[this_cell]
-
-			# remove triples in cells outside the trip_coords
-			for trip_val in trip_set:
-				if trip_val in poss_vals:
-					poss_vals.remove(trip_val)
-
-			# reassign
-			self.possible_values[this_cell] = poss_vals
-
-			# check if there's only one value left?
-			if len(poss_vals) == 1:
-				if (this_cell not in self.solved_list) and \
-					(this_cell not in self.solved_queue):
-					self.solved_queue.append(this_cell)
+	return trip_set, trip_coords, row_or_col_num
 
 
 
-
-
-
-
-
-
-
-
-def check_naked_triples_col(self):
-	return None
-
-
-def clean_triple_col(self, trip_set, trip_coords, col_num):
-	return None
 
 
 
