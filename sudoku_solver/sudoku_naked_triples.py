@@ -82,6 +82,7 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 def check_naked_triples_col(self):
 	# Collect candidate cells and their possibilities first.
 	col = 4
+	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
 
 
 
