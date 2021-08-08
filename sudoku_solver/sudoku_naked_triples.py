@@ -19,7 +19,6 @@ def check_naked_triples_row(self):
 	for i in range(9):
 		this_cell = (row, i)
 
-
 		# Skip over solved cells.
 		if this_cell in self.possible_values:
 			poss_vals = self.possible_values[this_cell]
@@ -87,7 +86,9 @@ def check_naked_triples_col(self):
 	for j in range(9):
 		this_cell = (j, col)
 
-
+		# Skip over solved cells.
+		if this_cell in self.possible_values:
+			poss_vals = self.possible_values[this_cell]
 
 
 
