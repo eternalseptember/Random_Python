@@ -84,6 +84,9 @@ def check_naked_triples_col(self):
 	col = 4
 	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
 
+	for j in range(9):
+		this_cell = (j, col)
+
 
 
 
