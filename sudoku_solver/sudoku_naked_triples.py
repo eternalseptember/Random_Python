@@ -93,6 +93,10 @@ def check_naked_triples_col(self):
 			# Can't be part of a triple if there are more than 3 candidates.
 			if len(poss_vals) > 3:
 				continue
+			else:
+				# Convert cells to string as key.
+				subset_str = '{0},{1}'.format(j, col)
+				poss_trip_list[subset_str] = poss_vals
 
 
 
