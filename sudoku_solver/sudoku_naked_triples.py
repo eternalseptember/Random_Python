@@ -32,6 +32,7 @@ def check_naked_triples_row(self):
 				poss_trip_list[subset_str] = poss_vals
 
 
+	# for testing
 	for coord_str in poss_trip_list.keys():
 		cell_poss = poss_trip_list[coord_str]
 		print('({0}): {1}'.format(coord_str, cell_poss))
@@ -97,6 +98,12 @@ def check_naked_triples_col(self):
 				# Convert cells to string as key.
 				subset_str = '{0},{1}'.format(j, col)
 				poss_trip_list[subset_str] = poss_vals
+
+
+	# for testing
+	for coord_str in poss_trip_list.keys():
+		cell_poss = poss_trip_list[coord_str]
+		print('({0}): {1}'.format(coord_str, cell_poss))
 
 
 
