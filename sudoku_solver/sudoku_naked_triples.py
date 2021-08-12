@@ -12,10 +12,10 @@ def check_naked_triples(self):
 
 
 def check_naked_triples_row(self):
-	# Collect candidate cells and their possibilities first.
 	row = 4
 	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
 
+	# Collect candidate cells and their possibilities first.
 	for i in range(9):
 		this_cell = (row, i)
 
@@ -31,13 +31,12 @@ def check_naked_triples_row(self):
 				subset_str = '{0},{1}'.format(row, i)
 				poss_trip_list[subset_str] = poss_vals
 
-
 	# for testing
 	for coord_str in poss_trip_list.keys():
 		cell_poss = poss_trip_list[coord_str]
 		print('({0}): {1}'.format(coord_str, cell_poss))
 
-
+	# cleanup
 	trip_set, trip_coords, row_num = self.find_naked_triple(poss_trip_list)
 	self.clean_triple_row(trip_set, trip_coords, row_num)
 	# self.clean_hidden_subsets()
@@ -80,10 +79,10 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 
 def check_naked_triples_col(self):
-	# Collect candidate cells and their possibilities first.
 	col = 4
 	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
 
+	# Collect candidate cells and their possibilities first.
 	for j in range(9):
 		this_cell = (j, col)
 
@@ -99,11 +98,15 @@ def check_naked_triples_col(self):
 				subset_str = '{0},{1}'.format(j, col)
 				poss_trip_list[subset_str] = poss_vals
 
-
 	# for testing
 	for coord_str in poss_trip_list.keys():
 		cell_poss = poss_trip_list[coord_str]
 		print('({0}): {1}'.format(coord_str, cell_poss))
+
+	# cleanup
+	trip_set, trip_coords, col_num = self.find_naked_triple(poss_trip_list)
+	self.clean_triple_col(trip_set, trip_coords, col_num)
+	# self.clean_hidden_subsets()
 
 
 

@@ -6,6 +6,10 @@ than three candidates in the three cells all together.
 TRIPLE ROW:
 [5,8,9] can only be in (4,3), (4,4), and (4,5);
 	but some numbers are missing in (4,4) and (4,5).
+
+TRIPLE COL: ??? ???
+[5,8,9] can only be in (3,4), (4,4), and (5,4);
+	but some numbers are missing in (4,4) and (5,4).
 """
 
 import sys
