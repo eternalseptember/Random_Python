@@ -112,7 +112,9 @@ def check_naked_triples_col(self):
 
 
 def clean_triple_col(self, trip_set, trip_coords, col_num):
-	return None
+	# remove triple vals in cells outside the triple
+	for j in range(9):
+		this_cell = (j, col)
 
 
 
