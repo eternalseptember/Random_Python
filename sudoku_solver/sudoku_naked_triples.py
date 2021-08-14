@@ -10,14 +10,17 @@ def check_naked_triples(self):
 	self.check_naked_triples_row()
 
 
+def check_naked_triples_rows(self):
+	for j in range(9):
+		self.check_naked_triples_row(j)
 
-def check_naked_triples_row(self):
-	row = 4
+
+def check_naked_triples_row(self, row_num):
 	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
 
 	# Collect candidate cells and their possibilities first.
 	for i in range(9):
-		this_cell = (row, i)
+		this_cell = (row_num, i)
 
 		# Skip over solved cells.
 		if this_cell in self.possible_values:
@@ -28,7 +31,7 @@ def check_naked_triples_row(self):
 				continue
 			else:
 				# Convert cells to string as key.
-				subset_str = '{0},{1}'.format(row, i)
+				subset_str = '{0},{1}'.format(row_num, i)
 				poss_trip_list[subset_str] = poss_vals
 
 	# for testing
