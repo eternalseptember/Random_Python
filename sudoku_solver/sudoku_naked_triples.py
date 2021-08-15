@@ -7,7 +7,8 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	self.check_naked_triples_row()
+	# self.check_naked_triples_row(4)
+	self.check_naked_triples_rows()
 
 
 def check_naked_triples_rows(self):
