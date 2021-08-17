@@ -40,17 +40,14 @@ def check_naked_triples_row(self, row_num):
 				poss_trip_list[subset_str] = poss_vals
 
 	# for testing
-	print('possible triples list?')
+	print('possible triples candidates?')
 	for coord_str in poss_trip_list.keys():
 		cell_poss = poss_trip_list[coord_str]
 		print('({0}): {1}'.format(coord_str, cell_poss))
 
-	# cleanup
-	# trip_set, trip_coords, row_num = self.find_naked_triple(poss_trip_list)
+	# Analyze if triple exists.
+	trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
 	# self.clean_triple_row(trip_set, trip_coords, row_num)
-
-
-
 
 
 
@@ -90,8 +87,13 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 
 def find_naked_triple(self, poss_trip_list):
+	# List of all possible triplets.
+	# poss_triplets[trip_vals] = [coords]
+	# only add after a possible triplet is formed
+	poss_triplets = {}
+
 	# How to identify group?
-	trip_set = []  # possible triplet values. Max 3.
+	trip_set = []  # possible values in a possible triplet. Max 3.
 	trip_coords = []  # coords in trip_set. Max 3.
 
 	# Keep track of which poss_trip_list has been used for comparison.
@@ -134,11 +136,7 @@ def find_naked_triple(self, poss_trip_list):
 
 	print('combined set: {0}'.format(trip_set))
 
-	row_or_col_num = trip_coords[0][0]
-	print('row num: {0}'.format(row_or_col_num))
-
-	return trip_set, trip_coords, row_or_col_num
-
+	return trip_set, trip_coords
 
 
 
