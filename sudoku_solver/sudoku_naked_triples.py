@@ -46,9 +46,12 @@ def check_naked_triples_row(self, row_num):
 		print('({0}): {1}'.format(coord_str, cell_poss))
 
 	# Analyze if triple exists.
-	trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
+	# trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
 	# self.clean_triple_row(trip_set, trip_coords, row_num)
 
+
+	# ENUMERATING AND TESTING POSSIBLE TRIPLETS
+	self.find_naked_triple(poss_trip_list)
 
 
 def clean_triple_row(self, trip_set, trip_coords, row_num):
@@ -85,7 +88,7 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 
 
-
+"""
 def find_naked_triple(self, poss_trip_list):
 	# List of all possible triplets.
 	# poss_triplets[trip_vals] = [coords]
@@ -137,6 +140,28 @@ def find_naked_triple(self, poss_trip_list):
 	print('combined set: {0}'.format(trip_set))
 
 	return trip_set, trip_coords
+"""
+
+
+def find_naked_triple(self, poss_trip_list):
+	# make a list of every merged triplet set
+	poss_triplets = []
+
+	for item in poss_trip_list.keys():
+		# decode the key for the coordinate first
+		coord_str = str(item)
+		coord = tuple(map(int, coord_str.split(',')))
+
+		# get values in that coord
+		# then combine and find valid possible triplets
+
+
+
+
+
+
+
+
 
 
 
