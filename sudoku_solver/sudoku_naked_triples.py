@@ -155,6 +155,9 @@ def find_naked_triple(self, poss_trip_list):
 		# get values in that coord
 		# then combine and find valid possible triplets
 
+		poss_vals = poss_trip_list[item]
+		print('poss_vals {0} in {1}'.format(coord_str, poss_vals))
+
 
 
 
