@@ -145,9 +145,15 @@ def find_naked_triple(self, poss_trip_list):
 
 def find_naked_triple(self, poss_trip_list):
 	# make a list of every merged triplet set
-	poss_triplets = []
+	poss_triplets = []  # list of lists
 
-	for item in poss_trip_list.keys():
+	# Two cells that combined have fewer than 3 possible combinations are
+	# taken care by other functions.
+
+	poss_trip_keys = poss_trip_list.keys()
+	number_of_cells = len(poss_trip_keys)
+
+	for item in poss_trip_keys:
 		# decode the key for the coordinate first
 		coord_str = str(item)
 		coord = tuple(map(int, coord_str.split(',')))
@@ -156,7 +162,7 @@ def find_naked_triple(self, poss_trip_list):
 		# then combine and find valid possible triplets
 
 		poss_vals = poss_trip_list[item]
-		print('poss_vals {0} in {1}'.format(coord_str, poss_vals))
+		print('poss_vals {0} in {1}'.format(coord, poss_vals))
 
 
 
