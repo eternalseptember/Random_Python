@@ -153,7 +153,13 @@ def find_naked_triple(self, poss_trip_list):
 	poss_trip_keys = poss_trip_list.keys()
 	number_of_cells = len(poss_trip_keys)
 
-	for item in poss_trip_keys:
+	for cell in range(number_of_cells-1):
+		item_1 = poss_trip_list[cell]
+		item_2 = poss_trip_list[cell+1]
+
+		print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
+
+		"""
 		# decode the key for the coordinate first
 		coord_str = str(item)
 		coord = tuple(map(int, coord_str.split(',')))
@@ -163,7 +169,7 @@ def find_naked_triple(self, poss_trip_list):
 
 		poss_vals = poss_trip_list[item]
 		print('poss_vals {0} in {1}'.format(coord, poss_vals))
-
+		"""
 
 
 
