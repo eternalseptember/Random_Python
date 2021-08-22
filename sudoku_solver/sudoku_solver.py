@@ -136,19 +136,31 @@ class Sudoku_Solver():
 		# Otherwise, remove solved_value as a possible choice in this coord.
 		# Then check if this coord has been solved.
 		if coord in self.possible_values:
-			poss_values = self.possible_values[coord]
+			poss_vals = self.possible_values[coord]
 
-			if solved_value in poss_values:
-				poss_values.remove(solved_value)
+			if solved_value in poss_vals:
+				poss_vals.remove(solved_value)
 
 			# Add to solved queue if only one possible value is remaining.
-			if len(poss_values) == 1:
+			if len(poss_vals) == 1:
 				if (coord not in self.solved_list) and \
 					(coord not in self.solved_queue):
 					self.solved_queue.append(coord)
 
 					# print('\tQUEUE coord: {0}\tsolved value: {1}'
-					# 	.format(coord, poss_values))
+					# 	.format(coord, poss_vals))
+
+
+	def check_if_solved(self, coord):
+		# Check if this coord has been solved.
+		if coord in self.possible_values:
+			poss_vals = self.possible_values[coord]
+
+		# Add to solved queue if only one possible value is remaining.
+		if len(poss_vals) == 1:
+			if (coord not in self.solved_list) and \
+				(coord not in self.solved_queue):
+				self.solved_queue.append(coord)
 
 
 	def solve(self, coord):
