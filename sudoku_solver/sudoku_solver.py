@@ -151,11 +151,10 @@ class Sudoku_Solver():
 					# 	.format(coord, poss_vals))
 
 
-	def check_if_solved(self, coord):
+	def check_if_solved(self, coord, poss_vals):
 		# Check if this coord has been solved.
-		if coord in self.possible_values:
-			poss_vals = self.possible_values[coord]
-
+		# It's assumed that this function is executed after doing some
+		# comparisons and assignments with poss_vals.
 		# Add to solved queue if only one possible value is remaining.
 		if len(poss_vals) == 1:
 			if (coord not in self.solved_list) and \
