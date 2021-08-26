@@ -83,6 +83,44 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 
 
+def find_naked_triple(self, poss_trip_list):
+	# make a list of every merged triplet set
+	poss_triplets = []  # list of lists
+
+	# Two cells that combined have fewer than 3 possible combinations are
+	# taken care by other functions.
+
+	poss_trip_keys = poss_trip_list.keys()
+	number_of_cells = len(poss_trip_keys)
+
+	print('number of cells: {0}'.format(number_of_cells))
+
+	for i in range(number_of_cells):
+		print('i: {0}, j: {1}'.format(i, i+1))
+
+	"""
+	for cell in range(number_of_cells-1):
+		item_1 = poss_trip_list[cell]
+		item_2 = poss_trip_list[cell+1]
+
+		print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
+
+
+		# decode the key for the coordinate first
+		coord_str = str(item)
+		coord = tuple(map(int, coord_str.split(',')))
+
+		# get values in that coord
+		# then combine and find valid possible triplets
+
+		poss_vals = poss_trip_list[item]
+		print('poss_vals {0} in {1}'.format(coord, poss_vals))
+		"""
+
+
+
+
+
 
 
 """
@@ -139,34 +177,6 @@ def find_naked_triple(self, poss_trip_list):
 	return trip_set, trip_coords
 """
 
-
-def find_naked_triple(self, poss_trip_list):
-	# make a list of every merged triplet set
-	poss_triplets = []  # list of lists
-
-	# Two cells that combined have fewer than 3 possible combinations are
-	# taken care by other functions.
-
-	poss_trip_keys = poss_trip_list.keys()
-	number_of_cells = len(poss_trip_keys)
-
-	for cell in range(number_of_cells-1):
-		item_1 = poss_trip_list[cell]
-		item_2 = poss_trip_list[cell+1]
-
-		print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
-
-		"""
-		# decode the key for the coordinate first
-		coord_str = str(item)
-		coord = tuple(map(int, coord_str.split(',')))
-
-		# get values in that coord
-		# then combine and find valid possible triplets
-
-		poss_vals = poss_trip_list[item]
-		print('poss_vals {0} in {1}'.format(coord, poss_vals))
-		"""
 
 
 
