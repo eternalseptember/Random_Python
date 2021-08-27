@@ -39,19 +39,21 @@ def check_naked_triples_row(self, row_num):
 				subset_str = '{0},{1}'.format(row_num, i)
 				poss_trip_list[subset_str] = poss_vals
 
-	# for testing
+	# FOR TESTING
 	print('possible triples candidates?')
 	for coord_str in poss_trip_list.keys():
 		cell_poss = poss_trip_list[coord_str]
 		print('({0}): {1}'.format(coord_str, cell_poss))
+
+	# ENUMERATING AND TESTING POSSIBLE TRIPLETS
+	self.find_naked_triple(poss_trip_list)
 
 	# Analyze if triple exists.
 	# trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
 	# self.clean_triple_row(trip_set, trip_coords, row_num)
 
 
-	# ENUMERATING AND TESTING POSSIBLE TRIPLETS
-	self.find_naked_triple(poss_trip_list)
+
 
 
 def clean_triple_row(self, trip_set, trip_coords, row_num):
@@ -95,7 +97,7 @@ def find_naked_triple(self, poss_trip_list):
 
 	print('number of cells: {0}'.format(number_of_cells))
 
-	for i in range(number_of_cells):
+	for i in range(number_of_cells-1):
 		print('i: {0}, j: {1}'.format(i, i+1))
 
 	"""
