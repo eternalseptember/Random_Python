@@ -104,10 +104,15 @@ def find_naked_triple(self, poss_trip_list):
 
 
 	for cell in range(number_of_cells-1):
-		item_1 = poss_trip_keys[cell]
-		item_2 = poss_trip_keys[cell+1]
+		cell_1 = poss_trip_keys[cell]
+		cell_2 = poss_trip_keys[cell+1]
+		print('cell 1: ({0})\tcell 2: ({1})'.format(cell_1, cell_2))
 
+		item_1 = poss_trip_list[cell_1]
+		item_2 = poss_trip_list[cell_2]
 		print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
+
+
 
 	"""
 		# decode the key for the coordinate first
