@@ -12,7 +12,7 @@ def check_naked_triples(self):
 
 
 def check_naked_triples_rows(self):
-	for j in range(9):
+	for j in range(9):  # j is row number
 		print('looking for naked triples in row: {0}'.format(j))
 		self.check_naked_triples_row(j)
 		print()
@@ -21,10 +21,10 @@ def check_naked_triples_rows(self):
 
 
 def check_naked_triples_row(self, row_num):
-	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
+	poss_trip_list = []
 
 	# Collect candidate cells and their possibilities first.
-	for i in range(9):
+	for i in range(9):  # i is col number
 		this_cell = (row_num, i)
 
 		# Skip over solved cells.
@@ -32,25 +32,49 @@ def check_naked_triples_row(self, row_num):
 			poss_vals = self.possible_values[this_cell]
 
 			# Can't be part of a triple if there are more than 3 candidates.
-			if len(poss_vals) > 3:
-				continue
-			else:
-				# Convert cells to string as key.
-				subset_str = '{0},{1}'.format(row_num, i)
-				poss_trip_list[subset_str] = poss_vals
+			if len(poss_vals) <= 3:
+				# look up the possible values later
+				poss_trip_list.append(this_cell)
 
-	# FOR TESTING
-	print('possible triples candidates?')
-	for coord_str in poss_trip_list.keys():
-		cell_poss = poss_trip_list[coord_str]
-		print('({0}): {1}'.format(coord_str, cell_poss))
 
 	# ENUMERATING AND TESTING POSSIBLE TRIPLETS
 	self.find_naked_triple(poss_trip_list)
 
 	# Analyze if triple exists.
-	# trip_set, trip_coords = self.find_naked_triple(poss_trip_list)
-	# self.clean_triple_row(trip_set, trip_coords, row_num)
+	
+
+
+
+
+
+
+def find_naked_triple(self, poss_trip_list):
+	# make a list of every merged triplet set
+	poss_triplets = []  # list of lists
+
+	# Two cells that combined have fewer than 3 possible combinations are
+	# taken care by other functions.
+	number_of_cells = len(poss_trip_list)
+
+	for cell in range(number_of_cells-1):
+		cell_1 = poss_trip_list[cell]
+		cell_2 = poss_trip_list[cell+1]
+		# print('cell 1: ({0})\tcell 2: ({1})'.format(cell_1, cell_2))
+
+		item_1 = self.possible_values[cell_1]
+		item_2 = self.possible_values[cell_2]
+		# print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
+
+		# get values in that coord
+		# then combine and find valid possible triplets
+		combined_poss = list(set(item_1 + item_2))
+		# print('combined set: {0}'.format(combined_poss))
+
+		if len(combined_poss) <= 3:
+			print('combined set: {0}'.format(combined_poss))
+
+
+
 
 
 
@@ -85,93 +109,6 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 
 
-def find_naked_triple(self, poss_trip_list):
-	# make a list of every merged triplet set
-	poss_triplets = []  # list of lists
-
-	# Two cells that combined have fewer than 3 possible combinations are
-	# taken care by other functions.
-	poss_trip_keys = list(poss_trip_list.keys())
-	number_of_cells = len(poss_trip_keys)
-
-	for cell in range(number_of_cells-1):
-		cell_1 = poss_trip_keys[cell]
-		cell_2 = poss_trip_keys[cell+1]
-		# print('cell 1: ({0})\tcell 2: ({1})'.format(cell_1, cell_2))
-
-		item_1 = poss_trip_list[cell_1]
-		item_2 = poss_trip_list[cell_2]
-		# print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
-
-		# get values in that coord
-		# then combine and find valid possible triplets
-		combined_poss = list(set(item_1 + item_2))
-		# print('combined set: {0}'.format(combined_poss))
-
-		if len(combined_poss) <= 3:
-			print('combined set: {0}'.format(combined_poss))
-
-
-
-
-
-
-
-
-
-"""
-def find_naked_triple(self, poss_trip_list):
-	# List of all possible triplets.
-	# poss_triplets[trip_vals] = [coords]
-	# only add after a possible triplet is formed
-	poss_triplets = {}
-
-	# How to identify group?
-	trip_set = []  # possible values in a possible triplet. Max 3.
-	trip_coords = []  # coords in trip_set. Max 3.
-
-	# Keep track of which poss_trip_list has been used for comparison.
-	poss_trip_keys = poss_trip_list.keys()
-
-
-	for item in poss_trip_keys:
-		# decode the key for the coordinate first
-		coord_str = str(item)
-		coord = tuple(map(int, coord_str.split(',')))
-
-		poss_vals = poss_trip_list[item]  # used for comparison in this loops
-
-		if len(trip_set) == 0:  # might not be three poss vals at first
-			trip_set = poss_vals[:]
-			trip_coords.append(coord)
-
-		elif len(trip_set) == 3:  # just compare for now
-			# if it is part of the triple, then add the coordinates to the list?
-			part_of_triple = True
-
-			for poss_val in poss_vals:
-				if poss_val not in trip_set:  # not part of the ref triple
-					part_of_triple = False
-					continue
-
-			if part_of_triple:
-				trip_coords.append(coord)
-
-		else:  # see if two lists could be merged together
-			combined_poss = list(set(trip_set+poss_vals))
-
-			if len(combined_poss) > 3:
-				# coord not part of triple as referenced by trip_set
-				return
-			else:
-				# combine the two set of coords and re-run the comparison
-				trip_set = combined_poss
-				trip_coords.append(coord)
-
-	print('combined set: {0}'.format(trip_set))
-
-	return trip_set, trip_coords
-"""
 
 
 
@@ -191,33 +128,7 @@ def find_naked_triple(self, poss_trip_list):
 
 def check_naked_triples_col(self):
 	col = 4
-	poss_trip_list = {}  # poss_trip_list[coord_str] = [poss_vals]
-
-	# Collect candidate cells and their possibilities first.
-	for j in range(9):
-		this_cell = (j, col)
-
-		# Skip over solved cells.
-		if this_cell in self.possible_values:
-			poss_vals = self.possible_values[this_cell]
-
-			# Can't be part of a triple if there are more than 3 candidates.
-			if len(poss_vals) > 3:
-				continue
-			else:
-				# Convert cells to string as key.
-				subset_str = '{0},{1}'.format(j, col)
-				poss_trip_list[subset_str] = poss_vals
-
-	# for testing
-	for coord_str in poss_trip_list.keys():
-		cell_poss = poss_trip_list[coord_str]
-		print('({0}): {1}'.format(coord_str, cell_poss))
-
-	# cleanup
-	trip_set, trip_coords, col_num = self.find_naked_triple(poss_trip_list)
-	self.clean_triple_col(trip_set, trip_coords, col_num)
-	# self.solve_queue()
+	poss_trip_list = []
 
 
 
