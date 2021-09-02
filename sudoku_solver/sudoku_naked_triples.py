@@ -37,10 +37,10 @@ def check_naked_triples_row(self, row_num):
 				poss_trip_list.append(this_cell)
 
 
-	# ENUMERATING AND TESTING POSSIBLE TRIPLETS
+	# Analyze if triple exists.
 	self.find_naked_triple(poss_trip_list)
 
-	# Analyze if triple exists.
+
 	
 
 
@@ -51,9 +51,6 @@ def check_naked_triples_row(self, row_num):
 def find_naked_triple(self, poss_trip_list):
 	# make a list of every merged triplet set
 	poss_triplets = []  # list of lists
-
-	# Two cells that combined have fewer than 3 possible combinations are
-	# taken care by other functions.
 	number_of_cells = len(poss_trip_list)
 
 	for cell in range(number_of_cells-1):
@@ -65,14 +62,16 @@ def find_naked_triple(self, poss_trip_list):
 		item_2 = self.possible_values[cell_2]
 		# print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
 
-		# get values in that coord
-		# then combine and find valid possible triplets
+		# get values in that coord, then combine
 		combined_poss = list(set(item_1 + item_2))
 		# print('combined set: {0}'.format(combined_poss))
 
+
+		# Two cells that combined have fewer than 3 possible combinations are
+		# taken care by other functions.
 		if len(combined_poss) <= 3:
 			print('combined set: {0}'.format(combined_poss))
-
+			poss_triplets.append(combined_poss)			
 
 
 
