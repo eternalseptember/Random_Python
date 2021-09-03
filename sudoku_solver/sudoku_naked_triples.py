@@ -71,7 +71,8 @@ def find_naked_triple(self, poss_trip_list):
 		# taken care by other functions.
 		if len(combined_poss) <= 3:
 			print('combined set: {0}'.format(combined_poss))
-			poss_triplets.append(combined_poss)			
+			if combined_poss not in poss_triplets:
+				poss_triplets.append(combined_poss)			
 
 
 
