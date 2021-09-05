@@ -12,10 +12,16 @@ def check_naked_triples(self):
 
 
 def check_naked_triples_rows(self):
+	"""
 	for j in range(9):  # j is row number
 		print('looking for naked triples in row: {0}'.format(j))
 		self.check_naked_triples_row(j)
 		print()
+	"""
+	j = 4
+	print('looking for naked triples in row: {0}'.format(j))
+	self.check_naked_triples_row(j)
+
 
 	# self.solve_queue()
 
@@ -38,10 +44,10 @@ def check_naked_triples_row(self, row_num):
 
 
 	# Analyze if triple exists.
-	self.find_naked_triples(poss_trip_list)
+	poss_triplets = self.find_naked_triples(poss_trip_list)
 
 
-	
+
 
 
 
@@ -51,20 +57,22 @@ def check_naked_triples_row(self, row_num):
 def find_naked_triples(self, poss_trip_list):
 	# make a list of every merged triplet set
 	poss_triplets = []  # list of lists
+	poss_trip_coords = {}  # [] = [list of coords for that possible location]
 	number_of_cells = len(poss_trip_list)
 
 	for cell in range(number_of_cells-1):
 		cell_1 = poss_trip_list[cell]
 		cell_2 = poss_trip_list[cell+1]
-		# print('cell 1: ({0})\tcell 2: ({1})'.format(cell_1, cell_2))
+		print('cell 1: {0}\tcell 2: {1}'.format(cell_1, cell_2))
 
 		item_1 = self.possible_values[cell_1]
 		item_2 = self.possible_values[cell_2]
 		# print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
 
 		# get values in that coord, then combine
-		combined_poss = list(set(item_1 + item_2))
-		# print('combined set: {0}'.format(combined_poss))
+		combined_poss = sorted(list(set(item_1 + item_2)))
+
+		
 
 
 		# Two cells that combined have fewer than 3 possible combinations are
@@ -73,6 +81,9 @@ def find_naked_triples(self, poss_trip_list):
 			if combined_poss not in poss_triplets:
 				poss_triplets.append(combined_poss)
 				print('combined set: {0}'.format(combined_poss))
+
+				# turn combined_poss into key
+				# and add coordinates
 
 	return poss_triplets
 
