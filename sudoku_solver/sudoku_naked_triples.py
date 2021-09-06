@@ -83,6 +83,8 @@ def find_naked_triples(self, poss_trip_list):
 				print('combined set: {0}'.format(combined_poss))
 
 				# turn combined_poss into key
+				poss_str = ''.join(map(str, combined_poss))
+
 				# and add coordinates
 
 	return poss_triplets
