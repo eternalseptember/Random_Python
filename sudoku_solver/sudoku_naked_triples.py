@@ -89,6 +89,8 @@ def find_naked_triples(self, poss_trip_list):
 				if poss_str not in poss_trip_coords:
 					poss_trip_coords[poss_str] = [cell_1, cell_2]
 				# otherwise, add coords to existing entry
+				else:
+					saved_info = poss_trip_coords[poss_str]
 
 				# eventually, compare length of list. needs 3 coords
 
