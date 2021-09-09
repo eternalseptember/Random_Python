@@ -72,7 +72,6 @@ def find_naked_triples(self, poss_trip_list):
 		# get values in that coord, then combine
 		combined_poss = sorted(list(set(item_1 + item_2)))
 
-		
 
 
 		# Two cells that combined have fewer than 3 possible combinations are
@@ -84,15 +83,22 @@ def find_naked_triples(self, poss_trip_list):
 
 				# turn combined_poss into key
 				poss_str = ''.join(map(str, combined_poss))
+				trip_coords = [cell_1, cell_2]
 
 				# and add coordinates
 				if poss_str not in poss_trip_coords:
-					poss_trip_coords[poss_str] = [cell_1, cell_2]
+					poss_trip_coords[poss_str] = trip_coords
 				# otherwise, add coords to existing entry
 				else:
 					saved_info = poss_trip_coords[poss_str]
+					
+					for coord in trip_coords:
+						if coord not in saved_info:
+							saved_info.append(coord)
 
-				# eventually, compare length of list. needs 3 coords
+					# update dictionary with new list?
+
+		# compare length of list. need 3 coords
 
 	return poss_triplets
 
