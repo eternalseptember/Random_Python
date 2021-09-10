@@ -57,7 +57,7 @@ def check_naked_triples_row(self, row_num):
 def find_naked_triples(self, poss_trip_list):
 	# make a list of every merged triplet set
 	poss_triplets = []  # list of lists
-	poss_trip_coords = {}  # [] = [list of coords for that possible location]
+	poss_trip_coords = {}  # [trip_str] = [list of coords]
 	number_of_cells = len(poss_trip_list)
 
 	for cell in range(number_of_cells-1):
@@ -67,11 +67,7 @@ def find_naked_triples(self, poss_trip_list):
 
 		item_1 = self.possible_values[cell_1]
 		item_2 = self.possible_values[cell_2]
-		# print('item 1: {0}\titem 2: {1}'.format(item_1, item_2))
-
-		# get values in that coord, then combine
 		combined_poss = sorted(list(set(item_1 + item_2)))
-
 
 
 		# Two cells that combined have fewer than 3 possible combinations are
@@ -82,21 +78,25 @@ def find_naked_triples(self, poss_trip_list):
 				print('combined set: {0}'.format(combined_poss))
 
 				# turn combined_poss into key
-				poss_str = ''.join(map(str, combined_poss))
+				trip_str = ''.join(map(str, combined_poss))
 				trip_coords = [cell_1, cell_2]
 
 				# and add coordinates
-				if poss_str not in poss_trip_coords:
-					poss_trip_coords[poss_str] = trip_coords
+				if trip_str not in poss_trip_coords:
+					poss_trip_coords[trip_str] = trip_coords
 				# otherwise, add coords to existing entry
 				else:
-					saved_info = poss_trip_coords[poss_str]
+					saved_info = poss_trip_coords[trip_str]
 					
 					for coord in trip_coords:
 						if coord not in saved_info:
 							saved_info.append(coord)
 
 					# update dictionary with new list?
+					poss_trip_coords[trip_str] = saved_info
+
+					# look at the dictionary
+
 
 		# compare length of list. need 3 coords
 
