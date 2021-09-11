@@ -14,14 +14,12 @@ def check_naked_triples(self):
 def check_naked_triples_rows(self):
 	"""
 	for j in range(9):  # j is row number
-		print('looking for naked triples in row: {0}'.format(j))
 		self.check_naked_triples_row(j)
-		print()
 	"""
-	j = 4
-	print('looking for naked triples in row: {0}'.format(j))
-	self.check_naked_triples_row(j)
 
+	j = 4
+	# print('looking for naked triples in row: {0}'.format(j))
+	self.check_naked_triples_row(j)
 
 	# self.solve_queue()
 
@@ -63,7 +61,6 @@ def find_naked_triples(self, poss_trip_list):
 	for cell in range(number_of_cells-1):
 		cell_1 = poss_trip_list[cell]
 		cell_2 = poss_trip_list[cell+1]
-		print('cell 1: {0}\tcell 2: {1}'.format(cell_1, cell_2))
 
 		item_1 = self.possible_values[cell_1]
 		item_2 = self.possible_values[cell_2]
@@ -75,6 +72,8 @@ def find_naked_triples(self, poss_trip_list):
 		if len(combined_poss) <= 3:
 			if combined_poss not in poss_triplets:
 				poss_triplets.append(combined_poss)
+
+				print('cell 1: {0}\tcell 2: {1}'.format(cell_1, cell_2))
 				print('combined set: {0}'.format(combined_poss))
 
 				# turn combined_poss into key
@@ -95,10 +94,17 @@ def find_naked_triples(self, poss_trip_list):
 					# update dictionary with new list?
 					poss_trip_coords[trip_str] = saved_info
 
-					# look at the dictionary
+
+	# look at possible triplets
+
+	# look at the dictionary
+	print('what\'s getting passed?')
+	for poss_trip in poss_trip_coords:
+		coords = poss_trip_coords[poss_trip]
+		print('{0}: {1}'.format(poss_trip, coords))
 
 
-		# compare length of list. need 3 coords
+	# compare length of list. need 3 coords
 
 	return poss_triplets
 
