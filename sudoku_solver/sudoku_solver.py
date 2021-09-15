@@ -141,14 +141,7 @@ class Sudoku_Solver():
 			if solved_value in poss_vals:
 				poss_vals.remove(solved_value)
 
-			# Add to solved queue if only one possible value is remaining.
-			if len(poss_vals) == 1:
-				if (coord not in self.solved_list) and \
-					(coord not in self.solved_queue):
-					self.solved_queue.append(coord)
-
-					# print('\tQUEUE coord: {0}\tsolved value: {1}'
-					# 	.format(coord, poss_vals))
+			self.check_if_solved(coord, poss_vals)
 
 
 	def check_if_solved(self, coord, poss_vals):

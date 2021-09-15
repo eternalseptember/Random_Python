@@ -133,14 +133,6 @@ def clean_hidden_subset(self, coord, subset_locs, subset_nums):
 		# not sure if poss_vals or new_poss_vals
 		self.check_if_solved(coord, new_poss_vals)
 
-		"""
-		# Then check if solved.
-		if len(poss_values) == 1:
-			if (coord not in self.solved_list) and \
-				(coord not in self.solved_queue):
-				self.solved_queue.append(coord)
-		"""
-
 
 
 

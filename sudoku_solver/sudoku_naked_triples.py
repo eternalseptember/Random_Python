@@ -68,15 +68,15 @@ def find_naked_triples(self, poss_trip_list):
 		# Two cells that combined have fewer than 3 possible combinations are
 		# taken care by other functions.
 		if len(combined_poss) <= 3:
+			# New possible triplet.
 			if trip_str not in poss_trips_info:
-				# New possible triplet.
 				poss_trips_info[trip_str] = trip_coords
 
 				print('cell 1: {0}\tcell 2: {1}'.format(cell_1, cell_2))
 				print('combined set: {0}'.format(combined_poss))
 
+			# Otherwise, add coords to existing entry.
 			else:
-				# Add coords to existing entry.
 				saved_info = poss_trips_info[trip_str]
 
 				for coord in trip_coords:
