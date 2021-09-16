@@ -101,6 +101,8 @@ def find_naked_triples(self, poss_trip_list):
 			items_to_remove.append(poss_trip)
 
 	# remove invalid triples
+	for item in items_to_remove:
+		poss_trips_info.pop(item)
 
 
 	return poss_trips_info
