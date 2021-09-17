@@ -42,6 +42,7 @@ def check_naked_triples_row(self, row_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
+	self.clean_triple_row(poss_trips_info, row_num)
 
 
 
@@ -108,11 +109,19 @@ def find_naked_triples(self, poss_trip_list):
 	return poss_trips_info
 
 
+def clean_triple_row(self, poss_trips_info, row_num):
+	return None
 
 
 
 
 
+
+
+
+
+
+"""
 def clean_triple_row(self, trip_set, trip_coords, row_num):
 	# remove triple vals in cells outside the triple
 	for i in range(9):
@@ -137,7 +146,7 @@ def clean_triple_row(self, trip_set, trip_coords, row_num):
 
 			# check if there's only one value left?
 			self.check_if_solved(this_cell, poss_vals)
-
+"""
 
 
 
