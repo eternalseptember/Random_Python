@@ -112,7 +112,8 @@ def find_naked_triples(self, poss_trip_list):
 def clean_triple_row(self, poss_trips_info, row_num):
 	for item in poss_trips_info.keys():
 		# decode key and turn it back into a list of numbers
-		print()
+		trip_set = [int(trip_val) for trip_val in item]
+		print('trip set: {0}'.format(trip_set))
 
 
 
