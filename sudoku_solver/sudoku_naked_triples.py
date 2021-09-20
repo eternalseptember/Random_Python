@@ -115,6 +115,10 @@ def clean_triple_row(self, poss_trips_info, row_num):
 		trip_set = [int(trip_val) for trip_val in item]
 		print('trip set: {0}'.format(trip_set))
 
+		# skip over cells that are part of this triple?
+		# remove trip values from cells not part of triple
+		for i in range(9):  # i is col number
+			this_cell = (row_num, i)
 
 
 
