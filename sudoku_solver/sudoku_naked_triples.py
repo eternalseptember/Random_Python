@@ -113,12 +113,15 @@ def clean_triple_row(self, poss_trips_info, row_num):
 	for item in poss_trips_info.keys():
 		# decode key and turn it back into a list of numbers
 		trip_set = [int(trip_val) for trip_val in item]
+		coords_set = poss_trips_info[item]
 		print('trip set: {0}'.format(trip_set))
+		print('coords: {0}'.format(coords_set))
 
 		# skip over cells that are part of this triple?
 		# remove trip values from cells not part of triple
 		for i in range(9):  # i is col number
 			this_cell = (row_num, i)
+
 
 
 
