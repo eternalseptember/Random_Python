@@ -104,7 +104,11 @@ def find_naked_triples(self, poss_trip_list):
 			items_to_remove.append(poss_trip)
 
 		# No coord is in more than one trip set.
-
+		for coord in coords_list:
+			if coord not in trips_coords:
+				trips_coords.append(coord)
+			else:
+				print('in multiple trip: {0}'.format(coord))
 
 
 
