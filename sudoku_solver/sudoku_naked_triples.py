@@ -142,6 +142,10 @@ def clean_triple_row(self, poss_trips_info, row_num):
 		for i in range(9):  # i is col number
 			this_cell = (row_num, i)
 
+			if this_cell not in coords_set:
+				# remove values in trip_set from this cell's possible values
+				poss_vals = self.possible_values[this_cell]
+
 
 
 
