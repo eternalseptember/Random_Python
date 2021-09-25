@@ -160,11 +160,7 @@ def remove_matching_sets(self, coord, matched_set, label=''):
 					poss_values.remove(val)
 
 			# Check if solved.
-			if len(poss_values) == 1:
-				if (coord not in self.solved_list) and \
-					(coord not in self.solved_queue):
-					self.solved_queue.append(coord)
-
+			self.check_if_solved(coord, poss_values)
 
 
 

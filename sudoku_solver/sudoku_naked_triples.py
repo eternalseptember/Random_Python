@@ -146,6 +146,10 @@ def clean_triple_row(self, poss_trips_info, row_num):
 				# remove values in trip_set from this cell's possible values
 				poss_vals = self.possible_values[this_cell]
 
+				for trip_val in trip_set:
+					if trip_val in poss_vals:
+						poss_vals.remove(trip_val)
+
 
 
 
