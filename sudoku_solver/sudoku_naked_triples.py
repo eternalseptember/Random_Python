@@ -135,7 +135,7 @@ def clean_triple_row(self, poss_trips_info, row_num):
 		trip_set = [int(trip_val) for trip_val in item]
 		coords_set = poss_trips_info[item]
 
-		print('trip set: {0}\t\tcoords: {1}'.format(trip_set, coords_set))
+		print('trip set: {0}\t\tcoords set: {1}'.format(trip_set, coords_set))
 
 		# skip over cells that are part of this triple?
 		# remove trip values from cells not part of triple
@@ -143,12 +143,14 @@ def clean_triple_row(self, poss_trips_info, row_num):
 			this_cell = (row_num, i)
 
 			if this_cell not in coords_set:
-				# remove values in trip_set from this cell's possible values
-				poss_vals = self.possible_values[this_cell]
+				if this_cell in self.possible_values:
 
-				for trip_val in trip_set:
-					if trip_val in poss_vals:
-						poss_vals.remove(trip_val)
+					# remove values in trip_set from this cell's possible values
+					poss_vals = self.possible_values[this_cell]
+
+					for trip_val in trip_set:
+						if trip_val in poss_vals:
+							poss_vals.remove(trip_val)
 
 
 
