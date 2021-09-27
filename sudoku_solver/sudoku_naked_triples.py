@@ -152,6 +152,8 @@ def clean_triple_row(self, poss_trips_info, row_num):
 						if trip_val in poss_vals:
 							poss_vals.remove(trip_val)
 
+					self.check_if_solved(this_cell, poss_vals)
+
 
 
 
