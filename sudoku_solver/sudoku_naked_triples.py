@@ -100,9 +100,13 @@ def check_naked_triples_col(self):
 
 
 
-def clean_triple_col(self, trips_info, col_num):
+def clean_triple_col(self, poss_trips_info, col_num):
 	# Remove trip possibilities in cells that are not part of the triple.
-	print()
+	for item in poss_trips_info.keys():
+
+		# Decode key and turn it back into a list of numbers.
+		trip_set = [int(trip_val) for trip_val in item]
+		coords_set = poss_trips_info[item]
 
 
 
