@@ -101,6 +101,11 @@ def check_naked_triples_col(self):
 		if this_cell in self.possible_values:
 			poss_vals = self.possible_values[this_cell]
 
+			# Can't be part of a triple if there are more than 3 candidates.
+			if len(poss_vals) <= 3:
+				poss_trip_list.append(this_cell)
+
+
 
 
 
