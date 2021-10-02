@@ -89,7 +89,7 @@ def check_naked_triples_cols(self):
 
 
 
-def check_naked_triples_col(self):
+def check_naked_triples_col(self, col_num):
 	# Collect candidate cells and their possibilities.
 	poss_trip_list = []
 
@@ -104,6 +104,10 @@ def check_naked_triples_col(self):
 			# Can't be part of a triple if there are more than 3 candidates.
 			if len(poss_vals) <= 3:
 				poss_trip_list.append(this_cell)
+
+	# Analyze if triple exists.
+	poss_trips_info = self.find_naked_triples(poss_trip_list)
+	self.clean_triple_col(poss_trips_info, col_num)
 
 
 
