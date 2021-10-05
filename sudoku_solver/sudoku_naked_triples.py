@@ -125,7 +125,8 @@ def clean_triple_col(self, poss_trips_info, col_num):
 				if this_cell in self.possible_values:
 					poss_vals = self.possible_values[this_cell]
 
-
+					# remove values in trip_set from this cell's possible values
+					poss_vals = self.possible_values[this_cell]
 
 
 
