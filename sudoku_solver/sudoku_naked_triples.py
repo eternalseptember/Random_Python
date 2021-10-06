@@ -45,7 +45,6 @@ def check_naked_triples_row(self, row_num):
 	self.clean_triple_row(poss_trips_info, row_num)
 
 
-
 def clean_triple_row(self, poss_trips_info, row_num):
 	# Remove trip possibilities in cells that are not part of the triple.
 	for item in poss_trips_info.keys():
@@ -72,6 +71,10 @@ def clean_triple_row(self, poss_trips_info, row_num):
 							poss_vals.remove(trip_val)
 
 					self.check_if_solved(this_cell, poss_vals)
+
+
+
+
 
 
 
@@ -128,7 +131,9 @@ def clean_triple_col(self, poss_trips_info, col_num):
 					# remove values in trip_set from this cell's possible values
 					poss_vals = self.possible_values[this_cell]
 
-
+					for trip_val in trip_set:
+						if trip_val in poss_vals:
+							poss_vals.remove(trip_val)
 
 
 
