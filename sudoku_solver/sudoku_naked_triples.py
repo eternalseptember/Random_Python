@@ -23,6 +23,7 @@ def check_naked_triples_rows(self):
 	# self.solve_queue()
 
 
+
 def check_naked_triples_row(self, row_num):
 	# Collect candidate cells and their possibilities.
 	poss_trip_list = []
@@ -39,10 +40,10 @@ def check_naked_triples_row(self, row_num):
 			if len(poss_vals) <= 3:
 				poss_trip_list.append(this_cell)
 
-
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
 	self.clean_triple_row(poss_trips_info, row_num)
+
 
 
 def clean_triple_row(self, poss_trips_info, row_num):
@@ -71,6 +72,8 @@ def clean_triple_row(self, poss_trips_info, row_num):
 							poss_vals.remove(trip_val)
 
 					self.check_if_solved(this_cell, poss_vals)
+
+
 
 
 
@@ -111,6 +114,7 @@ def check_naked_triples_col(self, col_num):
 	self.clean_triple_col(poss_trips_info, col_num)
 
 
+
 def clean_triple_col(self, poss_trips_info, col_num):
 	# Remove trip possibilities in cells that are not part of the triple.
 	for item in poss_trips_info.keys():
@@ -135,6 +139,7 @@ def clean_triple_col(self, poss_trips_info, col_num):
 						if trip_val in poss_vals:
 							poss_vals.remove(trip_val)
 
+					self.check_if_solved(this_cell, poss_vals)
 
 
 
@@ -179,16 +184,6 @@ def find_naked_triples(self, poss_trip_list):
 				poss_trips_info[trip_str] = saved_info
 
 
-	# look at the dictionary
-	"""
-	print('what\'s getting passed?')
-	for poss_trip in poss_trips_info:
-		coords = poss_trips_info[poss_trip]
-
-		print('key: {0}\t\t\t\tval: {1}'.format(poss_trip, coords))
-	"""
-
-
 	# Verify that triples are valid:
 	items_to_remove = []
 	trips_coords = []
@@ -206,7 +201,6 @@ def find_naked_triples(self, poss_trip_list):
 				trips_coords.append(coord)
 			else:
 				print('in multiple trip: {0}'.format(coord))
-
 
 
 	# Remove invalid triples.
