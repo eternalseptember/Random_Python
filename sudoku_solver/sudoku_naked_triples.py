@@ -7,8 +7,9 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	# self.check_naked_triples_row(4)
-	self.check_naked_triples_rows()
+	# self.check_naked_triples_rows()
+	self.check_naked_triples_cols()
+
 
 
 def check_naked_triples_rows(self):
@@ -99,7 +100,7 @@ def check_naked_triples_col(self, col_num):
 
 	# Get a list of cells that can be part of a triple.
 	for j in range(9):
-		this_cell = (j, col)
+		this_cell = (j, col_num)
 
 		# Skip over solved cells.
 		if this_cell in self.possible_values:
