@@ -154,6 +154,8 @@ class Sudoku_Solver():
 				(coord not in self.solved_queue):
 				self.solved_queue.append(coord)
 
+				print('added to solved queue: {0}'.format(coord))
+
 
 	def solve(self, coord):
 		# To MANUALLY resolve one individual cell.

@@ -83,14 +83,14 @@ def clean_triple_row(self, poss_trips_info, row_num):
 
 
 def check_naked_triples_cols(self):
-	"""
+
 	for i in range(9):  # i is col number
 		self.check_naked_triples_col(i)
-	"""
-	i = 4
 
+	# i = 4
+	# self.check_naked_triples_col(i)
 	# print('looking for naked triples in col: {0}'.format(i))
-	self.check_naked_triples_col(i)
+	
 	# self.solve_queue()
 
 
