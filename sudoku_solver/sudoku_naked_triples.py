@@ -7,21 +7,17 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	# self.check_naked_triples_rows()
-	self.check_naked_triples_cols()
+	self.check_naked_triples_rows()
+	# self.check_naked_triples_cols()
 
 
 
 def check_naked_triples_rows(self):
-	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
-	"""
 
-	j = 4
-	# print('looking for naked triples in row: {0}'.format(j))
-	self.check_naked_triples_row(j)
-	# self.solve_queue()
+	self.print_possible_values()
+	self.solve_queue()
 
 
 
@@ -91,7 +87,7 @@ def check_naked_triples_cols(self):
 	# self.check_naked_triples_col(i)
 	# print('looking for naked triples in col: {0}'.format(i))
 	
-	# self.solve_queue()
+	self.solve_queue()  # error here
 
 
 def check_naked_triples_col(self, col_num):
