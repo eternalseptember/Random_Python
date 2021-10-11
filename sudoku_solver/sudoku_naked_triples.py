@@ -13,8 +13,14 @@ def check_naked_triples(self):
 
 
 def check_naked_triples_rows(self):
+	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
+	"""
+	j = 4
+	self.check_naked_triples_row(j)
+
+	# (6, 0) has an empty list?
 
 	self.print_possible_values()
 	self.solve_queue()
