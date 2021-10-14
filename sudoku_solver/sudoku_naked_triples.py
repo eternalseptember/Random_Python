@@ -187,7 +187,7 @@ def find_naked_triples(self, poss_trip_list):
 	# Verify that triples are valid:
 	items_to_remove = []
 	trips_coords = []  # used for finding cells in multiple possible trips.
-	multiple_trips = []
+	multiple_trips = []  # used for removing coords in multiple trips
 
 	for poss_trip in poss_trips_info.keys():
 		coords_list = poss_trips_info[poss_trip]
@@ -205,6 +205,8 @@ def find_naked_triples(self, poss_trip_list):
 				multiple_trips.append(coord)
 
 	# search through poss_trips_info.keys() for entries in multiple_trips
+	if len(multiple_trips) > 0:
+		print('do stuff')
 
 
 	# Remove invalid triples.
