@@ -204,10 +204,15 @@ def find_naked_triples(self, poss_trip_list):
 				print('in multiple trip: {0}'.format(coord))
 				multiple_trips.append(coord)
 
+
 	# search through poss_trips_info.keys() for entries in multiple_trips
 	if len(multiple_trips) > 0:
 		for entry in poss_trips_info.keys():
 			coords_list = poss_trips_info[entry]
+
+			# check for multiple trips here
+			items_to_remove.append(entry)
+
 
 
 	# Remove invalid triples.
