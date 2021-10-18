@@ -211,11 +211,16 @@ def find_naked_triples(self, poss_trip_list):
 			coords_list = poss_trips_info[entry]
 
 			# check for multiple trips here
-			for coord in coords_list:
-				if coord in multiple_trips:
+			for coord in multiple_trips:
+				if coord in coords_list:
 					items_to_remove.append(entry)
+					continue
+					# once entry has been added to items_to_remove,
+					# continue to new entry
 
-					# check what's getting removed?
+
+
+	# check what's getting removed?
 
 
 
