@@ -214,9 +214,10 @@ def find_naked_triples(self, poss_trip_list):
 			for coord in multiple_trips:
 				if coord in coords_list:
 					items_to_remove.append(entry)
-					continue
-					# once entry has been added to items_to_remove,
-					# continue to new entry
+
+					# Once entry has been added to items_to_remove,
+					# break to new entry.
+					break
 
 
 
