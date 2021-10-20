@@ -221,12 +221,10 @@ def find_naked_triples(self, poss_trip_list):
 
 
 
-	# check what's getting removed?
-
-
-
 	# Remove invalid triples.
 	for item in items_to_remove:
+		# check what's getting removed?
+		print('item being removed: {0}'.format(item))
 		poss_trips_info.pop(item)
 
 
