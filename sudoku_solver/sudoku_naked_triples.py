@@ -227,6 +227,10 @@ def find_naked_triples(self, poss_trip_list):
 		print('item being removed: {0}'.format(item))
 		poss_trips_info.pop(item)
 
+	print('poss trips info')
+	for item in poss_trips_info.keys():
+		print('{0}: {1}'.format(item, poss_trips_info[item]))
+
 
 	return poss_trips_info
 
