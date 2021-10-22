@@ -13,18 +13,21 @@ def check_naked_triples(self):
 
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
-	"""
+
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
-	"""
-	# j = 4
-	j = 6
-	self.check_naked_triples_row(j)
 
+
+	# j = 4
+	# j = 6
+	# self.check_naked_triples_row(j)
 	# (6, 0) has an empty list?
+
 	self.print_possible_values()
 
-	# self.solve_queue()
+	print('something in solved queue? {0}'.format(len(self.solved_queue)))
+
+	self.solve_queue()
 
 
 
@@ -224,13 +227,14 @@ def find_naked_triples(self, poss_trip_list):
 	# Remove invalid triples.
 	for item in items_to_remove:
 		# check what's getting removed?
-		print('item being removed: {0}'.format(item))
+		# print('item being removed: {0}'.format(item))
 		poss_trips_info.pop(item)
 
+	"""
 	print('poss trips info')
 	for item in poss_trips_info.keys():
 		print('{0}: {1}'.format(item, poss_trips_info[item]))
-
+	"""
 
 	return poss_trips_info
 
