@@ -14,17 +14,17 @@ def check_naked_triples(self):
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
 
+	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
-
+	"""
 
 	# j = 4
-	# j = 6
-	# self.check_naked_triples_row(j)
-	# (6, 0) has an empty list?
+
+	j = 0
+	self.check_naked_triples_row(j)
 
 	self.print_possible_values()
-
 	print('something in solved queue? {0}'.format(len(self.solved_queue)))
 
 	self.solve_queue()
