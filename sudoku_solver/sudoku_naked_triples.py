@@ -20,7 +20,6 @@ def check_naked_triples_rows(self):
 	"""
 
 	# j = 4
-
 	j = 0
 	self.check_naked_triples_row(j)
 
@@ -152,8 +151,11 @@ def clean_triple_col(self, poss_trips_info, col_num):
 
 
 
+
 def find_naked_triples(self, poss_trip_list):
+	#
 	# Make a list of every merged triplet set.
+	#
 	poss_trips_info = {}  # [trip_str] = [list of coords]
 	number_of_cells = len(poss_trip_list)
 
@@ -166,7 +168,7 @@ def find_naked_triples(self, poss_trip_list):
 		trip_str = ''.join(map(str, combined_poss))
 		trip_coords = [cell_1, cell_2]
 
-		# Two cells that combined have fewer than 3 possible combinations are
+		# Two cells combined and have fewer than 3 possible combinations are
 		# taken care by other functions.
 		if len(combined_poss) <= 3:
 			# New possible triplet.
@@ -176,7 +178,7 @@ def find_naked_triples(self, poss_trip_list):
 				print('cell 1: {0}\tcell 2: {1}\t'.format(cell_1, cell_2), end='')
 				print('combined set: {0}'.format(combined_poss))
 
-			# Otherwise, add coords to existing entry.
+			# Otherwise, add coord to existing triplet.
 			else:
 				saved_info = poss_trips_info[trip_str]
 
@@ -187,10 +189,13 @@ def find_naked_triples(self, poss_trip_list):
 				poss_trips_info[trip_str] = saved_info
 
 
-	# Verify that triples are valid:
+	#
+	# Verify that triples are valid.
+	#
 	items_to_remove = []
-	trips_coords = []  # used for finding cells in multiple possible trips.
-	multiple_trips = []  # used for removing coords in multiple trips
+	trips_coords = []  # For finding coords in multiple possible trips.
+	trips_vals = []  # For finding vals in multiple possible trips.
+	multiple_trips = []  # For removing entries in multiple trips.
 
 	for poss_trip in poss_trips_info.keys():
 		coords_list = poss_trips_info[poss_trip]
@@ -207,8 +212,12 @@ def find_naked_triples(self, poss_trip_list):
 				print('in multiple trip: {0}'.format(coord))
 				multiple_trips.append(coord)
 
+		# No possible value is in more than one trip set.
 
-	# search through poss_trips_info.keys() for entries in multiple_trips
+
+
+
+	# Search through poss_trips_info for coords in multiple_trips.
 	if len(multiple_trips) > 0:
 		for entry in poss_trips_info.keys():
 			coords_list = poss_trips_info[entry]
@@ -221,6 +230,10 @@ def find_naked_triples(self, poss_trip_list):
 					# Once entry has been added to items_to_remove,
 					# break to new entry.
 					break
+
+
+
+
 
 
 
