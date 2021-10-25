@@ -197,12 +197,12 @@ def find_naked_triples(self, poss_trip_list):
 	trips_vals = []  # For finding vals in multiple possible trips.
 	multiple_trips = []  # For removing entries in multiple trips.
 
-	for poss_trip in poss_trips_info.keys():
-		coords_list = poss_trips_info[poss_trip]
+	for trip_str in poss_trips_info.keys():
+		coords_list = poss_trips_info[trip_str]
 
 		# Length of list: Need 3 coords.
 		if len(coords_list) > 3:
-			items_to_remove.append(poss_trip)
+			items_to_remove.append(trip_str)
 
 		# No coord is in more than one trip set.
 		for coord in coords_list:
@@ -213,11 +213,13 @@ def find_naked_triples(self, poss_trip_list):
 				multiple_trips.append(coord)
 
 		# No possible value is in more than one trip set.
+		# convert
+		trip_vals = list(map(int, trip_str))
 
 
 
 
-	# Search through poss_trips_info for coords in multiple_trips.
+	# Remove from triplet consideration: coords and vals in multiple trips.
 	if len(multiple_trips) > 0:
 		for entry in poss_trips_info.keys():
 			coords_list = poss_trips_info[entry]
