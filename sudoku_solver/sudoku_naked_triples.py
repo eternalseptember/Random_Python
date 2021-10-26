@@ -214,7 +214,12 @@ def find_naked_triples(self, poss_trip_list):
 
 		# No possible value is in more than one trip set.
 		# convert
-		trip_vals = list(map(int, trip_str))
+		this_trip_vals = list(map(int, trip_str))
+
+		for trip_val in this_trip_vals:
+			if trip_val not in trips_vals:
+				trips_vals.append(trip_val)
+			
 
 
 
