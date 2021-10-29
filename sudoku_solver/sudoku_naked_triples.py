@@ -225,7 +225,7 @@ def find_naked_triples(self, poss_trip_list):
 
 
 
-	# Remove from triplet consideration: coords and vals in multiple trips.
+	# Remove from triplet consideration: coords in multiple trips.
 	if len(coords_in_mult_trips) > 0:
 		for entry in poss_trips_info.keys():
 			coords_list = poss_trips_info[entry]
@@ -241,7 +241,9 @@ def find_naked_triples(self, poss_trip_list):
 
 	if len(vals_in_mult_trips) > 0:
 		# get coordinates and put them in coords_to_remove
-		print()
+		for trip_str in poss_trips_info.keys():
+			this_trip_vals = list(map(int, trip_str))  # convert
+
 
 
 
