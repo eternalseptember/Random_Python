@@ -192,45 +192,53 @@ def find_naked_triples(self, poss_trip_list):
 	#
 	# Verify that triples are valid.
 	#
-	coords_to_remove = []
-	trips_coords = []  # For finding coords in multiple possible trips.
-	trips_vals = []  # For finding vals in multiple possible trips.
-	coords_in_mult_trips = []  # Remove these coords.
-	vals_in_mult_trips = []  # Remove these vals.
+	# List of str keys.
+	entries_to_remove = []
+
+	# List of vals and coords in possible triplets.
+	# Used for finding vals and coords in multiple possible trips.
+	trips_coords = []
+	trips_vals = []
+
+	# Used for finding the first set for removal.
+	coords_in_mult_trips = []
+	vals_in_mult_trips = []
 
 	for trip_str in poss_trips_info.keys():
 		coords_list = poss_trips_info[trip_str]
+		trip_vals_list = list(map(int, trip_str))  # converted to list
 
 		# Length of list: Need 3 coords.
 		if len(coords_list) > 3:
-			coords_to_remove.append(trip_str)
+			entries_to_remove.append(trip_str)
 
 		# No coord is in more than one trip set.
 		for coord in coords_list:
 			if coord not in trips_coords:
 				trips_coords.append(coord)
 			else:
+				entries_to_remove.append(trip_str)
+
+				# go back to find the first occurance and remove
 				print('in multiple trip: {0}'.format(coord))
 				coords_in_mult_trips.append(coord)
 
-		# No possible value is in more than one trip set.
-		this_trip_vals = list(map(int, trip_str))  # convert
 
-		for trip_val in this_trip_vals:
+		# No possible value is in more than one trip set.
+		for trip_val in trip_vals_list:
 			if trip_val not in trips_vals:
 				trips_vals.append(trip_val)
 			else:
+				entries_to_remove.append(trip_str)
+
 				print('in multiple trip: {0}'.format(trip_val))
 				vals_in_mult_trips.append(trip_val)
 
-				# add the coords that has vals in multiple trips
-				for coord in coords_list:
-					if coord not in trips_coords:
-						trips_coords.append(coord)
 
 
 
-	# Remove from triplet consideration: coords in multiple trips.
+	# search through the list for the FIRST occurance
+	# Remove from triplet consideration: coords and vals in multiple trips.
 	if len(coords_in_mult_trips) > 0:
 		for entry in poss_trips_info.keys():
 			coords_list = poss_trips_info[entry]
@@ -238,18 +246,17 @@ def find_naked_triples(self, poss_trip_list):
 			# check for multiple trips here
 			for coord in coords_in_mult_trips:
 				if coord in coords_list:
-					coords_to_remove.append(entry)
+					entries_to_remove.append(entry)
 
-					# Once entry has been added to coords_to_remove,
+					# Once entry has been added to entries_to_remove,
 					# break to new entry.
 					break
 
 
-	# search through the list for the first occurance
 	if len(vals_in_mult_trips) > 0:
-		# get coordinates and put them in coords_to_remove
+		# get coordinates and put them in entries_to_remove
 		for trip_str in poss_trips_info.keys():
-			this_trip_vals = list(map(int, trip_str))  # convert
+			trip_vals_list = list(map(int, trip_str))  # convert
 
 
 
@@ -259,7 +266,7 @@ def find_naked_triples(self, poss_trip_list):
 
 
 	# Remove invalid triples.
-	for item in coords_to_remove:
+	for item in entries_to_remove:
 		# check what's getting removed?
 		# print('item being removed: {0}'.format(item))
 		poss_trips_info.pop(item)
