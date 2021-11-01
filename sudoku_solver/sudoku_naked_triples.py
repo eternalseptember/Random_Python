@@ -258,6 +258,9 @@ def find_naked_triples(self, poss_trip_list):
 		for trip_str in poss_trips_info.keys():
 			trip_vals_list = list(map(int, trip_str))  # convert
 
+			for val in vals_in_mult_trips:
+				return
+
 
 
 
