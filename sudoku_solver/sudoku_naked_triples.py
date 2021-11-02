@@ -259,6 +259,8 @@ def find_naked_triples(self, poss_trip_list):
 			trip_vals_list = list(map(int, trip_str))  # convert
 
 			for val in vals_in_mult_trips:
+				if val in trip_vals_list:
+					entries_to_remove.append(trip_str)
 				return
 
 
