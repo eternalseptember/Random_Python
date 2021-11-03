@@ -261,7 +261,7 @@ def find_naked_triples(self, poss_trip_list):
 			for val in vals_in_mult_trips:
 				if val in trip_vals_list:
 					entries_to_remove.append(trip_str)
-				return
+					return
 
 
 
@@ -276,11 +276,10 @@ def find_naked_triples(self, poss_trip_list):
 		# print('item being removed: {0}'.format(item))
 		poss_trips_info.pop(item)
 
-	"""
+
 	print('poss trips info')
 	for item in poss_trips_info.keys():
 		print('{0}: {1}'.format(item, poss_trips_info[item]))
-	"""
 
 	return poss_trips_info
 
