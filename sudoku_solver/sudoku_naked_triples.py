@@ -23,10 +23,10 @@ def check_naked_triples_rows(self):
 	j = 0
 	self.check_naked_triples_row(j)
 
-	self.print_possible_values()
-	print('something in solved queue? {0}'.format(len(self.solved_queue)))
+	# self.print_possible_values()
+	# print('something in solved queue? {0}'.format(len(self.solved_queue)))
 
-	self.solve_queue()
+	# self.solve_queue()
 
 
 
@@ -48,7 +48,7 @@ def check_naked_triples_row(self, row_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
-	self.clean_triple_row(poss_trips_info, row_num)
+	# self.clean_triple_row(poss_trips_info, row_num)
 
 
 
@@ -261,7 +261,7 @@ def find_naked_triples(self, poss_trip_list):
 			for val in vals_in_mult_trips:
 				if val in trip_vals_list:
 					entries_to_remove.append(trip_str)
-					return
+					break
 
 
 
@@ -273,7 +273,7 @@ def find_naked_triples(self, poss_trip_list):
 	# Remove invalid triples.
 	for item in entries_to_remove:
 		# check what's getting removed?
-		# print('item being removed: {0}'.format(item))
+		print('item being removed: {0}'.format(item))
 		poss_trips_info.pop(item)
 
 
