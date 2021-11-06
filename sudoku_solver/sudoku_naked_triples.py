@@ -246,8 +246,7 @@ def find_naked_triples(self, poss_trip_list):
 			# check for multiple trips here
 			for coord in coords_in_mult_trips:
 				if coord in coords_list:
-					if entry not in entries_to_remove:
-						entries_to_remove.append(entry)
+					entries_to_remove.append(entry)
 
 					# Once entry has been added to entries_to_remove,
 					# break to next entry.
@@ -262,8 +261,7 @@ def find_naked_triples(self, poss_trip_list):
 			# check if val is in multiple trips here
 			for val in vals_in_mult_trips:
 				if val in trip_vals_list:
-					if trip_str not in entries_to_remove:
-						entries_to_remove.append(trip_str)
+					entries_to_remove.append(trip_str)
 
 					# once trip_str has been added to entries_to_remove,
 					# break to next trip_str
@@ -271,7 +269,8 @@ def find_naked_triples(self, poss_trip_list):
 
 
 
-
+	# Remove duplicate from list of entries to remove:
+	entries_to_remove = list(set(entries_to_remove))
 
 
 
@@ -280,12 +279,13 @@ def find_naked_triples(self, poss_trip_list):
 	for item in entries_to_remove:
 		# check what's getting removed?
 		print('item being removed: {0}'.format(item))
-		poss_trips_info.pop(item)
+		# poss_trips_info.pop(item)
 
-
+	"""
 	print('poss trips info')
 	for item in poss_trips_info.keys():
 		print('{0}: {1}'.format(item, poss_trips_info[item]))
+	"""
 
 	return poss_trips_info
 
