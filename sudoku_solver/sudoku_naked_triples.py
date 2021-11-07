@@ -13,20 +13,16 @@ def check_naked_triples(self):
 
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
-
-	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
-	"""
 
 	# j = 4
-	j = 0
-	self.check_naked_triples_row(j)
+	# self.check_naked_triples_row(j)
 
-	# self.print_possible_values()
-	# print('something in solved queue? {0}'.format(len(self.solved_queue)))
+	self.print_possible_values()
+	print('something in solved queue? {0}'.format(len(self.solved_queue)))
 
-	# self.solve_queue()
+	self.solve_queue()
 
 
 
@@ -217,10 +213,10 @@ def find_naked_triples(self, poss_trip_list):
 			if coord not in trips_coords:
 				trips_coords.append(coord)
 			else:
+				# print('coord in multiple trip: {0}'.format(coord))
 				entries_to_remove.append(trip_str)
 
-				# go back to find the first occurance and remove
-				print('coord in multiple trip: {0}'.format(coord))
+				# For finding the first occurance to remove.
 				coords_in_mult_trips.append(coord)
 
 
@@ -229,12 +225,11 @@ def find_naked_triples(self, poss_trip_list):
 			if trip_val not in trips_vals:
 				trips_vals.append(trip_val)
 			else:
+				# print('val in multiple trip: {0}'.format(trip_val))
 				entries_to_remove.append(trip_str)
 
-				print('val in multiple trip: {0}'.format(trip_val))
+				# For finding the first occurance to remove.
 				vals_in_mult_trips.append(trip_val)
-
-
 
 
 	# search through the list for the FIRST occurance
@@ -263,32 +258,25 @@ def find_naked_triples(self, poss_trip_list):
 				if val in trip_vals_list:
 					entries_to_remove.append(trip_str)
 
-					# once trip_str has been added to entries_to_remove,
-					# break to next trip_str
+					# Once trip_str has been added to entries_to_remove,
+					# break to next trip_str.
 					break
 
 
-
-	# Remove duplicate from list of entries to remove:
+	# Remove duplicates first, then remove triplet candidates.
 	entries_to_remove = list(set(entries_to_remove))
-
-
-
-
-	# Remove invalid triples.
 	for item in entries_to_remove:
-		# check what's getting removed?
-		print('item being removed: {0}'.format(item))
-		# poss_trips_info.pop(item)
+		poss_trips_info.pop(item)
 
-	"""
-	print('poss trips info')
-	for item in poss_trips_info.keys():
-		print('{0}: {1}'.format(item, poss_trips_info[item]))
-	"""
 
 	return poss_trips_info
 
+
+
+
+
+def verify_triples_list(self, poss_trips_info):
+	return None
 
 
 
