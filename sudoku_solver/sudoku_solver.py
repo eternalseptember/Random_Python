@@ -27,7 +27,8 @@ class Sudoku_Solver():
 
 	from sudoku_naked_triples import check_naked_triples, find_naked_triples, \
 		check_naked_triples_rows, check_naked_triples_row, clean_triple_row, \
-		check_naked_triples_cols, check_naked_triples_col, clean_triple_col
+		check_naked_triples_cols, check_naked_triples_col, clean_triple_col, \
+		verify_triples_list
 
 
 

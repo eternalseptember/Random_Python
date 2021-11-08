@@ -20,7 +20,7 @@ def check_naked_triples_rows(self):
 	# self.check_naked_triples_row(j)
 
 	self.print_possible_values()
-	print('something in solved queue? {0}'.format(len(self.solved_queue)))
+	# print('something in solved queue? {0}'.format(len(self.solved_queue)))
 
 	self.solve_queue()
 
@@ -185,11 +185,17 @@ def find_naked_triples(self, poss_trip_list):
 				poss_trips_info[trip_str] = saved_info
 
 
-	#
+	self.verify_triples_list(poss_trips_info)
+
+
+
+
+
+
+def verify_triples_list(self, poss_trips_info):
 	# Verify that triples are valid.
-	#
-	# List of str keys.
-	entries_to_remove = []
+
+	entries_to_remove = []  # List of str keys.
 
 	# List of vals and coords in possible triplets.
 	# Used for finding vals and coords in multiple possible trips.
@@ -270,13 +276,6 @@ def find_naked_triples(self, poss_trip_list):
 
 
 	return poss_trips_info
-
-
-
-
-
-def verify_triples_list(self, poss_trips_info):
-	return None
 
 
 
