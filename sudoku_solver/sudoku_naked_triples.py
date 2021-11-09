@@ -20,10 +20,7 @@ def check_naked_triples_rows(self):
 	# self.check_naked_triples_row(j)
 
 	self.print_possible_values()
-	# print('something in solved queue? {0}'.format(len(self.solved_queue)))
-
 	self.solve_queue()
-
 
 
 def check_naked_triples_row(self, row_num):
@@ -45,7 +42,6 @@ def check_naked_triples_row(self, row_num):
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
 	# self.clean_triple_row(poss_trips_info, row_num)
-
 
 
 def clean_triple_row(self, poss_trips_info, row_num):
@@ -72,10 +68,6 @@ def clean_triple_row(self, poss_trips_info, row_num):
 							poss_vals.remove(trip_val)
 
 					self.check_if_solved(this_cell, poss_vals)
-
-
-
-
 
 
 
@@ -113,7 +105,6 @@ def check_naked_triples_col(self, col_num):
 	self.clean_triple_col(poss_trips_info, col_num)
 
 
-
 def clean_triple_col(self, poss_trips_info, col_num):
 	# Remove trip possibilities in cells that are not part of the triple.
 	for item in poss_trips_info.keys():
@@ -148,10 +139,10 @@ def clean_triple_col(self, poss_trips_info, col_num):
 
 
 
+
 def find_naked_triples(self, poss_trip_list):
-	#
-	# Make a list of every merged triplet set.
-	#
+	# Make a list of every possible merged triplet set.
+
 	poss_trips_info = {}  # [trip_str] = [list of coords]
 	number_of_cells = len(poss_trip_list)
 
@@ -171,8 +162,8 @@ def find_naked_triples(self, poss_trip_list):
 			if trip_str not in poss_trips_info:
 				poss_trips_info[trip_str] = trip_coords
 
-				print('cell 1: {0}\tcell 2: {1}\t'.format(cell_1, cell_2), end='')
-				print('combined set: {0}'.format(combined_poss))
+				# print('cell 1: {0}\tcell 2: {1}\t'.format(cell_1, cell_2), end='')
+				# print('combined set: {0}'.format(combined_poss))
 
 			# Otherwise, add coord to existing triplet.
 			else:
@@ -184,17 +175,12 @@ def find_naked_triples(self, poss_trip_list):
 
 				poss_trips_info[trip_str] = saved_info
 
-
-	self.verify_triples_list(poss_trips_info)
-
-
-
+	return self.verify_triples_list(poss_trips_info)
 
 
 
 def verify_triples_list(self, poss_trips_info):
 	# Verify that triples are valid.
-
 	entries_to_remove = []  # List of str keys.
 
 	# List of vals and coords in possible triplets.
@@ -206,6 +192,7 @@ def verify_triples_list(self, poss_trips_info):
 	coords_in_mult_trips = []
 	vals_in_mult_trips = []
 
+	# First pass at cleaning up poss_trips_info.
 	for trip_str in poss_trips_info.keys():
 		coords_list = poss_trips_info[trip_str]
 		trip_vals_list = list(map(int, trip_str))  # converted to list
@@ -238,13 +225,13 @@ def verify_triples_list(self, poss_trips_info):
 				vals_in_mult_trips.append(trip_val)
 
 
-	# search through the list for the FIRST occurance
+	# Search through the list for the FIRST occurance.
 	# Remove from triplet consideration: coords and vals in multiple trips.
 	if len(coords_in_mult_trips) > 0:
 		for entry in poss_trips_info.keys():
 			coords_list = poss_trips_info[entry]
 
-			# check for multiple trips here
+			# Check if coord is in multiple trips here.
 			for coord in coords_in_mult_trips:
 				if coord in coords_list:
 					entries_to_remove.append(entry)
@@ -259,7 +246,7 @@ def verify_triples_list(self, poss_trips_info):
 		for trip_str in poss_trips_info.keys():
 			trip_vals_list = list(map(int, trip_str))  # convert
 
-			# check if val is in multiple trips here
+			# Check if val is in multiple trips here.
 			for val in vals_in_mult_trips:
 				if val in trip_vals_list:
 					entries_to_remove.append(trip_str)
@@ -273,7 +260,6 @@ def verify_triples_list(self, poss_trips_info):
 	entries_to_remove = list(set(entries_to_remove))
 	for item in entries_to_remove:
 		poss_trips_info.pop(item)
-
 
 	return poss_trips_info
 
