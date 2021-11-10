@@ -18,8 +18,8 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-sudoku.import_board("naked_triple_row.txt")
-# sudoku.import_board("naked_triple_col.txt")
+# sudoku.import_board("naked_triple_row.txt")
+sudoku.import_board("naked_triple_col.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -36,8 +36,8 @@ print('===============================')
 
 print('Check for naked triples:')
 sudoku.check_naked_triples()
-# sudoku.print_board()
-# sudoku.print_possible_values()
+sudoku.print_board()
+sudoku.print_possible_values()
 print('===============================')
 
 

@@ -7,8 +7,8 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	self.check_naked_triples_rows()
-	# self.check_naked_triples_cols()
+	# self.check_naked_triples_rows()
+	self.check_naked_triples_cols()
 
 
 def check_naked_triples_rows(self):
@@ -19,7 +19,6 @@ def check_naked_triples_rows(self):
 	# j = 4
 	# self.check_naked_triples_row(j)
 
-	self.print_possible_values()
 	self.solve_queue()
 
 
@@ -81,7 +80,8 @@ def check_naked_triples_cols(self):
 	# i = 4
 	# self.check_naked_triples_col(i)
 
-	self.solve_queue()  # error here
+	print('size of solved queue: {0}'.format(len(self.solved_queue)))
+	# self.solve_queue()
 
 
 def check_naked_triples_col(self, col_num):
