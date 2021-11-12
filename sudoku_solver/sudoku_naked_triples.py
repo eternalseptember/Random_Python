@@ -17,8 +17,12 @@ def check_naked_triples(self):
 
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
+
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
+
+		print('possible vals after checking row: {0}'.format(j))
+		self.print_possible_values()
 
 	# j = 4
 	# self.check_naked_triples_row(j)
