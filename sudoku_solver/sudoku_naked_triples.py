@@ -32,8 +32,10 @@ def check_naked_triples_rows(self):
 
 
 
-	# j = 4
-	# self.check_naked_triples_row(j)
+	"""
+	j = 4
+	self.check_naked_triples_row(j)
+	"""
 
 	self.solve_queue()
 
@@ -232,7 +234,7 @@ def verify_triples_list(self, poss_trips_info):
 		trip_vals_list = list(map(int, trip_str))  # converted to list
 
 		# Length of list: Need 3 coords.
-		if len(coords_list) > 3:
+		if len(coords_list) != 3:
 			entries_to_remove.append(trip_str)
 
 		# No coord is in more than one trip set.
