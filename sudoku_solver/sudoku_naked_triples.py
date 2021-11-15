@@ -18,18 +18,18 @@ def check_naked_triples(self):
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
 
-	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
-	"""
 
+
+	"""
 	# after row three, (3,1) and (3,8) have been reduced to 1?
 	for j in range(4):  # j is row number
 		self.check_naked_triples_row(j)
 
 		print('possible vals after checking row: {0}'.format(j))
 		self.print_possible_values()
-
+	"""
 
 
 	"""
@@ -64,7 +64,7 @@ def check_naked_triples_row(self, row_num):
 	# CHECK AND MAKE SURE THERE ARE THREE POSSIBLE CANDIDATES FIRST
 	#
 
-	print('valid triples to clean with?')
+	print('valid triples to clean row {0} with?'.format(row_num))
 	for trip_str in poss_trips_info.keys():
 		coord_str = poss_trips_info[trip_str]
 		print('{0}: {1}'.format(trip_str, coord_str))
