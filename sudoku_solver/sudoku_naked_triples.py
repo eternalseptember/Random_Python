@@ -7,8 +7,8 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	self.check_naked_triples_rows()
-	# self.check_naked_triples_cols()
+	# self.check_naked_triples_rows()
+	self.check_naked_triples_cols()
 
 
 
@@ -58,11 +58,6 @@ def check_naked_triples_row(self, row_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
-
-
-	#
-	# CHECK AND MAKE SURE THERE ARE THREE POSSIBLE CANDIDATES FIRST
-	#
 
 	print('valid triples to clean row {0} with?'.format(row_num))
 	for trip_str in poss_trips_info.keys():
@@ -138,6 +133,12 @@ def check_naked_triples_col(self, col_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
+
+	print('valid triples to clean col {0} with?'.format(col_num))
+	for trip_str in poss_trips_info.keys():
+		coord_str = poss_trips_info[trip_str]
+		print('{0}: {1}'.format(trip_str, coord_str))
+
 	self.clean_triple_col(poss_trips_info, col_num)
 
 
