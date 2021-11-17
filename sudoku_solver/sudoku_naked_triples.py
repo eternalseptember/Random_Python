@@ -7,7 +7,8 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	# self.check_naked_triples_rows()
+	self.check_naked_triples_rows()
+	print()  # only here for testing
 	self.check_naked_triples_cols()
 
 
@@ -17,26 +18,13 @@ def check_naked_triples(self):
 
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
-
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
 
+	# j = 4
+	# self.check_naked_triples_row(j)
 
-	"""
-	# after row three, (3,1) and (3,8) have been reduced to 1?
-	for j in range(4):  # j is row number
-		self.check_naked_triples_row(j)
-
-		print('possible vals after checking row: {0}'.format(j))
-		self.print_possible_values()
-	"""
-
-
-	"""
-	j = 4
-	self.check_naked_triples_row(j)
-	"""
-
+	print('after cleaning ROW, solved queue: {0}'.format(len(self.solved_queue)))
 	self.solve_queue()
 
 
@@ -111,8 +99,8 @@ def check_naked_triples_cols(self):
 	# i = 4
 	# self.check_naked_triples_col(i)
 
-	print('size of solved queue: {0}'.format(len(self.solved_queue)))
-	# self.solve_queue()
+	print('after cleaning COL, solved queue: {0}'.format(len(self.solved_queue)))
+	self.solve_queue()
 
 
 def check_naked_triples_col(self, col_num):
