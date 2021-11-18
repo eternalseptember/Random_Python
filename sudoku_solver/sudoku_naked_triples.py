@@ -25,6 +25,10 @@ def check_naked_triples_rows(self):
 	# self.check_naked_triples_row(j)
 
 	print('after cleaning ROW, solved queue: {0}'.format(len(self.solved_queue)))
+	for solved_item in self.solved_queue:
+		print('{0}'.format(solved_item), end=' ')
+	print()
+
 	self.solve_queue()
 
 
@@ -100,6 +104,10 @@ def check_naked_triples_cols(self):
 	# self.check_naked_triples_col(i)
 
 	print('after cleaning COL, solved queue: {0}'.format(len(self.solved_queue)))
+	for solved_item in self.solved_queue:
+		print('{0}'.format(solved_item), end=' ')
+	print()
+
 	self.solve_queue()
 
 
