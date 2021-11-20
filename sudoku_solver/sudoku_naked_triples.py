@@ -7,9 +7,15 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
+	"""
 	self.check_naked_triples_rows()
 	print()  # only here for testing
 	self.check_naked_triples_cols()
+	"""
+
+	self.check_naked_triples_cols()
+	print()  # only here for testing
+	self.check_naked_triples_rows()
 
 
 
