@@ -7,17 +7,8 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	"""
 	self.check_naked_triples_rows()
-	print()  # only here for testing
 	self.check_naked_triples_cols()
-	"""
-
-	self.check_naked_triples_cols()
-	print()  # only here for testing
-	self.check_naked_triples_rows()
-
-
 
 
 
@@ -30,10 +21,12 @@ def check_naked_triples_rows(self):
 	# j = 4
 	# self.check_naked_triples_row(j)
 
+	"""
 	print('after cleaning ROW, solved queue: {0}'.format(len(self.solved_queue)))
 	for solved_item in self.solved_queue:
 		print('{0}'.format(solved_item), end=' ')
 	print()
+	"""
 
 	self.solve_queue()
 
@@ -57,10 +50,12 @@ def check_naked_triples_row(self, row_num):
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
 
+	"""
 	print('valid triples to clean row {0} with?'.format(row_num))
 	for trip_str in poss_trips_info.keys():
 		coord_str = poss_trips_info[trip_str]
 		print('{0}: {1}'.format(trip_str, coord_str))
+	"""
 
 	self.clean_triple_row(poss_trips_info, row_num)
 
@@ -109,10 +104,12 @@ def check_naked_triples_cols(self):
 	# i = 4
 	# self.check_naked_triples_col(i)
 
+	"""
 	print('after cleaning COL, solved queue: {0}'.format(len(self.solved_queue)))
 	for solved_item in self.solved_queue:
 		print('{0}'.format(solved_item), end=' ')
 	print()
+	"""
 
 	self.solve_queue()
 
@@ -136,10 +133,12 @@ def check_naked_triples_col(self, col_num):
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
 
+	"""
 	print('valid triples to clean col {0} with?'.format(col_num))
 	for trip_str in poss_trips_info.keys():
 		coord_str = poss_trips_info[trip_str]
 		print('{0}: {1}'.format(trip_str, coord_str))
+	"""
 
 	self.clean_triple_col(poss_trips_info, col_num)
 
@@ -219,7 +218,7 @@ def find_naked_triples(self, poss_trip_list):
 
 
 def verify_triples_list(self, poss_trips_info):
-	# Verify that triples are valid.
+	# Remove entries from poss_trips_info if triple is not valid.
 	entries_to_remove = []  # List of str keys.
 
 	# List of vals and coords in possible triplets.
