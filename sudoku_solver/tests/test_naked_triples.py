@@ -15,6 +15,7 @@ TRIPLE COL 2:
 [1,5,8] can only be in col 0.
 [2,3,8] can only be in col 8.
 Clear them from the rest of their boxes.
+(5,7) should be [9].
 """
 
 import sys
@@ -25,7 +26,8 @@ from sudoku_solver import *
 sudoku = Sudoku_Solver()
 # sudoku.import_board("naked_triple_row_1.txt")
 # sudoku.import_board("naked_triple_col_1.txt")
-sudoku.import_board("naked_triple_col_2.txt")
+sudoku.import_board("naked_triple_row_2.txt")
+# sudoku.import_board("naked_triple_col_2.txt")
 sudoku.print_board()
 print('===============================')
 
