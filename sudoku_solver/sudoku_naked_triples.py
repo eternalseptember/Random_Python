@@ -303,6 +303,21 @@ def verify_triples_list(self, poss_trips_info):
 
 
 
+def check_naked_triples_box(self):
+	return None
+
+
+def clean_triple_box(self):
+	return None
+
+
+
+
+
+
+
+
+
 
 
 
