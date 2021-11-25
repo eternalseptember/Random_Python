@@ -299,11 +299,16 @@ def verify_triples_list(self, poss_trips_info):
 	for item in entries_to_remove:
 		poss_trips_info.pop(item)
 
+
+	# triples have been verified. check if they're in the same box.
+	self.check_naked_triples_box(poss_trips_info)
+
+
 	return poss_trips_info
 
 
 
-def check_naked_triples_box(self):
+def check_naked_triples_box(self, poss_trips_info):
 	return None
 
 
