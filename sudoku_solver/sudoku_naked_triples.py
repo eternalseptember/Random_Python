@@ -309,7 +309,10 @@ def verify_triples_list(self, poss_trips_info):
 
 
 def check_naked_triples_box(self, poss_trips_info):
-	return None
+	# poss_trips_info[trip_str] = [list of coords]
+	for trip_str in poss_trips_info.keys():
+		print(trip_str)
+
 
 
 def clean_triple_box(self):
