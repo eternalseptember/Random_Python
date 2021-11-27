@@ -7,7 +7,7 @@ than three candidates in the three cells all together.
 
 
 def check_naked_triples(self):
-	self.check_naked_triples_rows()
+	# self.check_naked_triples_rows()
 	self.check_naked_triples_cols()
 
 
@@ -18,15 +18,8 @@ def check_naked_triples_rows(self):
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
 
-	# j = 4
+	# j = 0
 	# self.check_naked_triples_row(j)
-
-	"""
-	print('after cleaning ROW, solved queue: {0}'.format(len(self.solved_queue)))
-	for solved_item in self.solved_queue:
-		print('{0}'.format(solved_item), end=' ')
-	print()
-	"""
 
 	self.solve_queue()
 
@@ -49,14 +42,6 @@ def check_naked_triples_row(self, row_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
-
-	"""
-	print('valid triples to clean row {0} with?'.format(row_num))
-	for trip_str in poss_trips_info.keys():
-		coord_str = poss_trips_info[trip_str]
-		print('{0}: {1}'.format(trip_str, coord_str))
-	"""
-
 	self.clean_triple_row(poss_trips_info, row_num)
 
 
@@ -92,26 +77,17 @@ def clean_triple_row(self, poss_trips_info, row_num):
 
 
 
-
-
-
-
 def check_naked_triples_cols(self):
 	# Iterate through each col to find naked triples.
+	"""
 	for i in range(9):  # i is col number
 		self.check_naked_triples_col(i)
-
-	# i = 4
-	# self.check_naked_triples_col(i)
-
-	"""
-	print('after cleaning COL, solved queue: {0}'.format(len(self.solved_queue)))
-	for solved_item in self.solved_queue:
-		print('{0}'.format(solved_item), end=' ')
-	print()
 	"""
 
-	self.solve_queue()
+	i = 0
+	self.check_naked_triples_col(i)
+
+	# self.solve_queue()
 
 
 def check_naked_triples_col(self, col_num):
@@ -132,15 +108,7 @@ def check_naked_triples_col(self, col_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
-
-	"""
-	print('valid triples to clean col {0} with?'.format(col_num))
-	for trip_str in poss_trips_info.keys():
-		coord_str = poss_trips_info[trip_str]
-		print('{0}: {1}'.format(trip_str, coord_str))
-	"""
-
-	self.clean_triple_col(poss_trips_info, col_num)
+	# self.clean_triple_col(poss_trips_info, col_num)
 
 
 def clean_triple_col(self, poss_trips_info, col_num):
@@ -176,11 +144,8 @@ def clean_triple_col(self, poss_trips_info, col_num):
 
 
 
-
-
 def find_naked_triples(self, poss_trip_list):
 	# Make a list of every possible merged triplet set.
-
 	poss_trips_info = {}  # [trip_str] = [list of coords]
 	number_of_cells = len(poss_trip_list)
 
@@ -199,9 +164,6 @@ def find_naked_triples(self, poss_trip_list):
 			# New possible triplet.
 			if trip_str not in poss_trips_info:
 				poss_trips_info[trip_str] = trip_coords
-
-				# print('cell 1: {0}\tcell 2: {1}\t'.format(cell_1, cell_2), end='')
-				# print('combined set: {0}'.format(combined_poss))
 
 			# Otherwise, add coord to existing triplet.
 			else:
@@ -308,10 +270,17 @@ def verify_triples_list(self, poss_trips_info):
 
 
 
+
+
+
+
+
 def check_naked_triples_box(self, poss_trips_info):
 	# poss_trips_info[trip_str] = [list of coords]
-	for trip_str in poss_trips_info.keys():
-		print(trip_str)
+	print('checking naked triples box')
+	for trip_vals in poss_trips_info.keys():
+		trip_coords = poss_trips_info[trip_vals]
+		print('{0}: {1}'.format(trip_vals, trip_coords))
 
 
 
