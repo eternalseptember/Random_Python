@@ -277,13 +277,21 @@ def verify_triples_list(self, poss_trips_info):
 
 def check_naked_triples_box(self, poss_trips_info):
 	# poss_trips_info[trip_str] = [list of coords]
-	triple_boxes = []  # same trip_str
+	triple_boxes = []  # store trip_str if coords are in the same box
 
 
 	print('checking naked triples box')
 	for trip_vals in poss_trips_info.keys():
 		trip_coords = poss_trips_info[trip_vals]
-		print('{0}: {1}'.format(trip_vals, trip_coords))
+		# print('{0}: {1}'.format(trip_vals, trip_coords))
+
+		row = None
+		col = None
+		# how to store matched box info?
+
+		# go through each coord
+		# set row and col if they're unset
+		# compare if they matches
 
 
 
