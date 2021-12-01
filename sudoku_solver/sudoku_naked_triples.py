@@ -287,15 +287,17 @@ def check_naked_triples_box(self, poss_trips_info):
 
 		box_row = None
 		box_col = None
-		# how to store matched box info?
 
-		# go through each coord
-		# set row and col if they're unset
-		# compare if they matches
 		for coord in trip_coords:
-			this_row, this_box = (coord)
-			print('box row: {0}\tbox col:{1}'.format(this_row, this_box))
+			this_row, this_col = (coord)
+			print('box row: {0}\tbox col:{1}'.format(this_row, this_col))
 
+			# set row and col if they're unset
+			# compare if they match
+			if box_row is None:
+				box_row = this_row
+			if box_col is None: 
+				box_col = this_col
 
 
 
