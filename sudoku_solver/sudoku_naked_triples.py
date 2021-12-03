@@ -287,6 +287,7 @@ def check_naked_triples_box(self, poss_trips_info):
 
 		box_row = None
 		box_col = None
+		same_box = True
 
 		for coord in trip_coords:
 			this_row, this_col = (coord)
