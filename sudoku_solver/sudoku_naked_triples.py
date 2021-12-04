@@ -299,11 +299,16 @@ def check_naked_triples_box(self, poss_trips_info):
 				box_row = this_row
 			elif box_row != this_row:
 				same_box = False
+				break
 
 			if box_col is None: 
 				box_col = this_col
 			elif box_col != this_col:
 				same_box = False
+				break
+
+
+
 
 
 
