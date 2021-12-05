@@ -308,6 +308,8 @@ def check_naked_triples_box(self, poss_trips_info):
 				break
 
 
+		if same_box:
+			triple_boxes.append(trip_coords)
 
 
 
