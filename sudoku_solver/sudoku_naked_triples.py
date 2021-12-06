@@ -262,7 +262,7 @@ def verify_triples_list(self, poss_trips_info):
 		poss_trips_info.pop(item)
 
 
-	# triples have been verified. check if they're in the same box.
+	# Triples have been verified. Check if they're in the same box.
 	self.check_naked_triples_box(poss_trips_info)
 
 
@@ -299,24 +299,28 @@ def check_naked_triples_box(self, poss_trips_info):
 				box_row = this_row
 			elif box_row != this_row:
 				same_box = False
-				break
+				break  # go to the next trip_vals
 
 			if box_col is None: 
 				box_col = this_col
 			elif box_col != this_col:
 				same_box = False
-				break
+				break  # go to the next trip_vals
 
 
 		if same_box:
 			triple_boxes.append(trip_coords)
 
+	# if there are any triples inside a box, clean the box.
+	if len(triple_boxes) > 0:
+		print()
 
 
 
 
 
-def clean_triple_box(self):
+
+def clean_triple_box(self, poss_trips_info, trip_box_info):
 	return None
 
 
