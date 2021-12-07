@@ -311,11 +311,15 @@ def check_naked_triples_box(self, poss_trips_info):
 		if same_box:
 			triple_boxes.append(trip_coords)
 
-	# if there are any triples inside a box, clean the box.
+	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
 		print()
 
 
+
+
+def clean_triple_boxes(self, poss_trips_info, trip_box_info):
+	return None
 
 
 
