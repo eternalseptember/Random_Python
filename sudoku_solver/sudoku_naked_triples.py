@@ -313,7 +313,7 @@ def check_naked_triples_box(self, poss_trips_info):
 
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
-		print()
+		self.clean_triple_boxes(poss_trips_info, trip_boxes)
 
 
 
