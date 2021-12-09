@@ -319,12 +319,14 @@ def check_naked_triples_box(self, poss_trips_info):
 
 
 def clean_triple_boxes(self, poss_trips_info, trip_box_info):
-	return None
+	for trip_box in trip_box_info:
+		trip_coords = poss_trips_info[trip_box]
+		self.clean_triple_box(trip_coords)
 
 
 
 
-def clean_triple_box(self, poss_trips_info, trip_box_info):
+def clean_triple_box(self, trip_coords):
 	return None
 
 
