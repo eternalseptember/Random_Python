@@ -289,6 +289,7 @@ def check_naked_triples_box(self, poss_trips_info):
 		box_col = None
 		same_box = True
 
+		# check this section
 		for coord in trip_coords:
 			this_row, this_col = (coord)
 			print('box row: {0}\tbox col:{1}'.format(this_row, this_col))
@@ -327,7 +328,9 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
 
 def clean_triple_box(self, trip_coords):
-	return None
+	box_row, box_col = trip_coords[0]
+	print('cleaning triple box: {0}'.format(trip_coords))
+	print('{0}, {1}'.format(box_row, box_col))
 
 
 
