@@ -283,7 +283,7 @@ def check_naked_triples_box(self, poss_trips_info):
 	print('checking naked triples box')
 	for trip_vals in poss_trips_info.keys():
 		trip_coords = poss_trips_info[trip_vals]
-		# print('{0}: {1}'.format(trip_vals, trip_coords))
+		print('{0}: {1}'.format(trip_vals, trip_coords))
 
 		box_row = None
 		box_col = None
@@ -292,7 +292,6 @@ def check_naked_triples_box(self, poss_trips_info):
 		# check this section
 		for coord in trip_coords:
 			this_row, this_col = (coord)
-			print('box row: {0}\tbox col:{1}'.format(this_row, this_col))
 
 			# set row and col if they're unset
 			# compare if they match
@@ -309,8 +308,12 @@ def check_naked_triples_box(self, poss_trips_info):
 				break  # go to the next trip_vals
 
 
+		print('same box? {0}'.format(same_box))
+
+
 		if same_box:
 			triple_boxes.append(trip_coords)
+
 
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
