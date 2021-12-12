@@ -287,7 +287,8 @@ def check_naked_triples_box(self, poss_trips_info):
 
 		box_row = None
 		box_col = None
-		same_box = True
+		same_row = True
+		same_col = True
 
 		# check this section
 		for coord in trip_coords:
@@ -298,20 +299,23 @@ def check_naked_triples_box(self, poss_trips_info):
 			if box_row is None:
 				box_row = this_row
 			elif box_row != this_row:
-				same_box = False
+				same_row = False
 				break  # go to the next trip_vals
 
 			if box_col is None: 
 				box_col = this_col
 			elif box_col != this_col:
-				same_box = False
+				same_col = False
 				break  # go to the next trip_vals
 
 
-		print('same box? {0}'.format(same_box))
 
 
-		if same_box:
+		print('same row? {0}'.format(same_row))
+		print('same col? {0}'.format(same_col))
+
+
+		if same_row or same_col:
 			triple_boxes.append(trip_coords)
 
 
