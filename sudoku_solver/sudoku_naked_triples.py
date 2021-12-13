@@ -321,16 +321,25 @@ def check_naked_triples_box(self, poss_trips_info):
 
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
-		self.clean_triple_boxes(poss_trips_info, trip_boxes)
+		self.clean_triple_boxes(poss_trips_info, triple_boxes)
 
 
 
 
 def clean_triple_boxes(self, poss_trips_info, trip_box_info):
+
+	"""
 	for trip_box in trip_box_info:
 		trip_coords = poss_trips_info[trip_box]
 		self.clean_triple_box(trip_coords)
+	"""
+	print('poss trips info')
+	for item in poss_trips_info.keys():
+		print('{0}: {1}'.format(item, poss_trips_info[item]))
 
+	print('trip_box_info')
+	for item in trip_box_info:
+		print(item)
 
 
 
