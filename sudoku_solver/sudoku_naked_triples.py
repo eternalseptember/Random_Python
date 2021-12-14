@@ -316,7 +316,7 @@ def check_naked_triples_box(self, poss_trips_info):
 
 
 		if same_row or same_col:
-			triple_boxes.append(trip_coords)
+			triple_boxes.append(trip_vals)
 
 
 	# if there are any triples inside a box, clean them.
