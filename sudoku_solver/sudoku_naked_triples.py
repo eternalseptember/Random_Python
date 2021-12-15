@@ -309,11 +309,8 @@ def check_naked_triples_box(self, poss_trips_info):
 				break  # go to the next trip_vals
 
 
-
-
 		print('same row? {0}'.format(same_row))
 		print('same col? {0}'.format(same_col))
-
 
 		if same_row or same_col:
 			triple_boxes.append(trip_vals)
@@ -327,26 +324,29 @@ def check_naked_triples_box(self, poss_trips_info):
 
 
 def clean_triple_boxes(self, poss_trips_info, trip_box_info):
+	# will be passed a list of keys of triple boxes
 
-	"""
 	for trip_box in trip_box_info:
 		trip_coords = poss_trips_info[trip_box]
 		self.clean_triple_box(trip_coords)
-	"""
-	print('poss trips info')
-	for item in poss_trips_info.keys():
-		print('{0}: {1}'.format(item, poss_trips_info[item]))
 
-	print('trip_box_info')
-	for item in trip_box_info:
-		print(item)
+
+
+
+
 
 
 
 def clean_triple_box(self, trip_coords):
-	box_row, box_col = trip_coords[0]
+	# trip coords of a single box
+
+	# while iterating through box, if coord is in trip_coords, then skip?
 	print('cleaning triple box: {0}'.format(trip_coords))
-	print('{0}, {1}'.format(box_row, box_col))
+
+	# determine box info
+	ref_row, ref_col = trip_coords[0]
+	print('{0}, {1}'.format(ref_row, ref_col))
+
 
 
 
