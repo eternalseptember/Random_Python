@@ -328,7 +328,7 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
 	for trip_box in trip_box_info:
 		trip_coords = poss_trips_info[trip_box]
-		self.clean_triple_box(trip_coords)
+		self.clean_triple_box(trip_box, trip_coords)
 
 
 
@@ -337,20 +337,27 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
 
 
-def clean_triple_box(self, trip_coords):
+def clean_triple_box(self, trip_vals, trip_coords):
 	# trip coords of a single box
 
 	# while iterating through box, if coord is in trip_coords, then skip?
-	print('cleaning triple box: {0}'.format(trip_coords))
+	print('cleaning triple box: {0}\tvals: {1}'.format(trip_coords, trip_vals))
 
 	# determine box info
 	ref_row, ref_col = trip_coords[0]
 	print('{0}, {1}'.format(ref_row, ref_col))
 
+	box_row = ref_row // 3
+	box_col = ref_col // 3
 
+	for i in range(3):
+		for j in range(3):
+			this_row = box_row * 3 + i
+			this_col = box_col * 3 + j
 
-
-
+			# go through the box
+			# if the cell is in trip_coords, then skip over
+			# otherwise, remove the values in trip_coords
 
 
 
