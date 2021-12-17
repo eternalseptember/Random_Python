@@ -358,7 +358,7 @@ def clean_triple_box(self, trip_vals, trip_coords):
 			# go through the box
 			# if the cell is in trip_coords, then skip over
 			# otherwise, remove the values in trip_coords
-
+			this_cell = (this_row, this_col)
 
 
 
