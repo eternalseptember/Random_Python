@@ -360,6 +360,8 @@ def clean_triple_box(self, trip_vals, trip_coords):
 			# otherwise, remove the values in trip_coords
 			this_cell = (this_row, this_col)
 
+			if this_cell not in trip_coords:
+				poss_vals_in_this_cell = self.possible_values[this_cell]
 
 
 
