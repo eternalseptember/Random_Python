@@ -345,7 +345,9 @@ def clean_triple_box(self, trip_vals, trip_coords):
 
 	# determine box info
 	ref_row, ref_col = trip_coords[0]
+	box_vals = [int(trip_val) for trip_val in trip_vals]
 	print('{0}, {1}'.format(ref_row, ref_col))
+	print('box vals: {0}'.format(box_vals))
 
 	box_row = ref_row // 3
 	box_col = ref_col // 3
