@@ -283,7 +283,6 @@ def check_naked_triples_box(self, poss_trips_info):
 	print('checking naked triples box')
 	for trip_vals in poss_trips_info.keys():
 		trip_coords = poss_trips_info[trip_vals]
-		print('{0}: {1}'.format(trip_vals, trip_coords))
 
 		box_row = None
 		box_col = None
@@ -338,19 +337,19 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
 
 def clean_triple_box(self, trip_vals, trip_coords):
-	# trip coords of a single box
+	# Info for a single 3x3 box.
 
 	# while iterating through box, if coord is in trip_coords, then skip?
-	print('cleaning triple box: {0}\tvals: {1}'.format(trip_coords, trip_vals))
-
 	# determine box info
 	ref_row, ref_col = trip_coords[0]
 	box_vals = [int(trip_val) for trip_val in trip_vals]
-	print('{0}, {1}'.format(ref_row, ref_col))
-	print('box vals: {0}'.format(box_vals))
+
 
 	box_row = ref_row // 3
 	box_col = ref_col // 3
+
+	print('cleaning triple box: {0}\tvals: {1}'.format(trip_coords, box_vals))	
+	print('box_row: {0}\tbox_col: {1}'.format(box_row, box_col))
 
 	for i in range(3):
 		for j in range(3):
@@ -362,9 +361,11 @@ def clean_triple_box(self, trip_vals, trip_coords):
 			# otherwise, remove the values in trip_coords
 			this_cell = (this_row, this_col)
 
+			print('this cell: {0}'.format(this_cell))
+			"""
 			if this_cell not in trip_coords:
 				poss_vals_in_this_cell = self.possible_values[this_cell]
-
+			"""
 
 
 
