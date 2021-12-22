@@ -1,16 +1,15 @@
 # Import into the main sudoku_solver class.
-"""
-Naked triple:
-Not all cells must contain all three candidates, but there must not be more
-than three candidates in the three cells all together.
-"""
+# Checks naked triples in rows, cols, and boxes.
+
+# Naked triple:
+# Not all cells must contain all three candidates, but there must not be more
+# than three candidates in the three cells all together.
+
 
 
 def check_naked_triples(self):
 	# self.check_naked_triples_rows()
 	self.check_naked_triples_cols()
-
-
 
 
 def check_naked_triples_rows(self):
@@ -69,10 +68,6 @@ def clean_triple_row(self, poss_trips_info, row_num):
 							poss_vals.remove(trip_val)
 
 					self.check_if_solved(this_cell, poss_vals)
-
-
-
-
 
 
 
@@ -140,141 +135,6 @@ def clean_triple_col(self, poss_trips_info, col_num):
 
 
 
-
-
-
-
-def find_naked_triples(self, poss_trip_list):
-	# Make a list of every possible merged triplet set.
-	poss_trips_info = {}  # [trip_str] = [list of coords]
-	number_of_cells = len(poss_trip_list)
-
-	for cell in range(number_of_cells-1):
-		cell_1 = poss_trip_list[cell]
-		cell_2 = poss_trip_list[cell+1]
-		item_1 = self.possible_values[cell_1]
-		item_2 = self.possible_values[cell_2]
-		combined_poss = sorted(list(set(item_1 + item_2)))
-		trip_str = ''.join(map(str, combined_poss))
-		trip_coords = [cell_1, cell_2]
-
-		# Two cells combined and have fewer than 3 possible combinations are
-		# taken care by other functions.
-		if len(combined_poss) <= 3:
-			# New possible triplet.
-			if trip_str not in poss_trips_info:
-				poss_trips_info[trip_str] = trip_coords
-
-			# Otherwise, add coord to existing triplet.
-			else:
-				saved_info = poss_trips_info[trip_str]
-
-				for coord in trip_coords:
-					if coord not in saved_info:
-						saved_info.append(coord)
-
-				poss_trips_info[trip_str] = saved_info
-
-	return self.verify_triples_list(poss_trips_info)
-
-
-
-def verify_triples_list(self, poss_trips_info):
-	# Remove entries from poss_trips_info if triple is not valid.
-	entries_to_remove = []  # List of str keys.
-
-	# List of vals and coords in possible triplets.
-	# Used for finding vals and coords in multiple possible trips.
-	trips_coords = []
-	trips_vals = []
-
-	# Used for finding the first set for removal.
-	coords_in_mult_trips = []
-	vals_in_mult_trips = []
-
-	# First pass at cleaning up poss_trips_info.
-	for trip_str in poss_trips_info.keys():
-		coords_list = poss_trips_info[trip_str]
-		trip_vals_list = list(map(int, trip_str))  # converted to list
-
-		# Length of list: Need 3 coords.
-		if len(coords_list) != 3:
-			entries_to_remove.append(trip_str)
-
-		# No coord is in more than one trip set.
-		for coord in coords_list:
-			if coord not in trips_coords:
-				trips_coords.append(coord)
-			else:
-				# print('coord in multiple trip: {0}'.format(coord))
-				entries_to_remove.append(trip_str)
-
-				# For finding the first occurance to remove.
-				coords_in_mult_trips.append(coord)
-
-
-		# No possible value is in more than one trip set.
-		for trip_val in trip_vals_list:
-			if trip_val not in trips_vals:
-				trips_vals.append(trip_val)
-			else:
-				# print('val in multiple trip: {0}'.format(trip_val))
-				entries_to_remove.append(trip_str)
-
-				# For finding the first occurance to remove.
-				vals_in_mult_trips.append(trip_val)
-
-
-	# Search through the list for the FIRST occurance.
-	# Remove from triplet consideration: coords and vals in multiple trips.
-	if len(coords_in_mult_trips) > 0:
-		for entry in poss_trips_info.keys():
-			coords_list = poss_trips_info[entry]
-
-			# Check if coord is in multiple trips here.
-			for coord in coords_in_mult_trips:
-				if coord in coords_list:
-					entries_to_remove.append(entry)
-
-					# Once entry has been added to entries_to_remove,
-					# break to next entry.
-					break
-
-
-	if len(vals_in_mult_trips) > 0:
-		# get coordinates and put them in entries_to_remove
-		for trip_str in poss_trips_info.keys():
-			trip_vals_list = list(map(int, trip_str))  # convert
-
-			# Check if val is in multiple trips here.
-			for val in vals_in_mult_trips:
-				if val in trip_vals_list:
-					entries_to_remove.append(trip_str)
-
-					# Once trip_str has been added to entries_to_remove,
-					# break to next trip_str.
-					break
-
-
-	# Remove duplicates first, then remove triplet candidates.
-	entries_to_remove = list(set(entries_to_remove))
-	for item in entries_to_remove:
-		poss_trips_info.pop(item)
-
-
-	# Triples have been verified. Check if they're in the same box.
-	self.check_naked_triples_box(poss_trips_info)
-
-
-	return poss_trips_info
-
-
-
-
-
-
-
-
 def check_naked_triples_box(self, poss_trips_info):
 	# poss_trips_info[trip_str] = [list of coords]
 	triple_boxes = []  # store trip_str if coords are in the same box
@@ -307,9 +167,10 @@ def check_naked_triples_box(self, poss_trips_info):
 				same_col = False
 				break  # go to the next trip_vals
 
-
+		"""
 		print('same row? {0}'.format(same_row))
 		print('same col? {0}'.format(same_col))
+		"""
 
 		if same_row or same_col:
 			triple_boxes.append(trip_vals)
@@ -318,7 +179,6 @@ def check_naked_triples_box(self, poss_trips_info):
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
 		self.clean_triple_boxes(poss_trips_info, triple_boxes)
-
 
 
 
@@ -331,45 +191,36 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
 
 
-
-
-
-
-
 def clean_triple_box(self, trip_vals, trip_coords):
 	# Info for a single 3x3 box.
 
-	# while iterating through box, if coord is in trip_coords, then skip?
-	# determine box info
+	# Determine box info.
 	ref_row, ref_col = trip_coords[0]
 	box_vals = [int(trip_val) for trip_val in trip_vals]
-
-
 	box_row = ref_row // 3
 	box_col = ref_col // 3
 
-	print('cleaning triple box: {0}\tvals: {1}'.format(trip_coords, box_vals))	
+	print('cleaning box: {0}\tvals: {1}'.format(trip_coords, box_vals))
 	print('box_row: {0}\tbox_col: {1}'.format(box_row, box_col))
 
+	# Go through the box.
 	for i in range(3):
 		for j in range(3):
 			this_row = box_row * 3 + i
 			this_col = box_col * 3 + j
-
-			# go through the box
-			# if the cell is in trip_coords, then skip over
-			# otherwise, remove the values in trip_coords
 			this_cell = (this_row, this_col)
 
-			# first, skip over solved cells
+			# First, skip over solved cells.
 			if this_cell not in self.possible_values:
 				continue
 
+			# If the cell is in trip_coords, then skip over.
+			if this_cell in trip_coords:
+				continue
 
-			"""
-			if this_cell not in trip_coords:
-				poss_vals_in_this_cell = self.possible_values[this_cell]
-			"""
+			# Otherwise, remove the values in trip_coords.
+			poss_vals_in_this_cell = self.possible_values[this_cell]
+
 
 
 

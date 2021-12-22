@@ -25,11 +25,13 @@ class Sudoku_Solver():
 		clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
 		check_hidden_sub_boxes, remove_hidden_box
 
-	from sudoku_naked_triples import check_naked_triples, find_naked_triples, \
+	from sudoku_naked_triples import check_naked_triples, \
 		check_naked_triples_rows, check_naked_triples_row, clean_triple_row, \
 		check_naked_triples_cols, check_naked_triples_col, clean_triple_col, \
-		verify_triples_list, check_naked_triples_box, clean_triple_boxes, \
-		clean_triple_box
+		check_naked_triples_box, clean_triple_boxes, clean_triple_box
+
+	from sudoku_naked_triples_check import find_naked_triples, \
+		verify_triples_list
 
 
 
