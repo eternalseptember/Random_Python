@@ -221,6 +221,10 @@ def clean_triple_box(self, trip_vals, trip_coords):
 			# Otherwise, remove the values in trip_coords.
 			poss_vals_in_this_cell = self.possible_values[this_cell]
 
+			for trip_val in box_vals:
+				if trip_val in poss_vals_in_this_cell:
+					poss_vals_in_this_cell.remove(trip_val)
+
 
 
 
