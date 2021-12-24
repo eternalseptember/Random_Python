@@ -225,7 +225,7 @@ def clean_triple_box(self, trip_vals, trip_coords):
 				if trip_val in poss_vals_in_this_cell:
 					poss_vals_in_this_cell.remove(trip_val)
 
-
+			self.check_if_solved(this_cell, poss_vals_in_this_cell)
 
 
 
