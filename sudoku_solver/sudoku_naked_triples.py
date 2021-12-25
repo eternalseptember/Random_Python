@@ -79,8 +79,9 @@ def check_naked_triples_cols(self):
 		self.check_naked_triples_col(i)
 	"""
 
-	i = 0
-	self.check_naked_triples_col(i)
+	# i = 0
+	for i in [0, 8]:
+		self.check_naked_triples_col(i)
 
 	# self.solve_queue()
 
