@@ -12,6 +12,7 @@ def check_naked_triples(self):
 	self.check_naked_triples_cols()
 
 
+
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
 	for j in range(9):  # j is row number
@@ -21,6 +22,7 @@ def check_naked_triples_rows(self):
 	# self.check_naked_triples_row(j)
 
 	self.solve_queue()
+
 
 
 def check_naked_triples_row(self, row_num):
@@ -42,6 +44,7 @@ def check_naked_triples_row(self, row_num):
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
 	self.clean_triple_row(poss_trips_info, row_num)
+
 
 
 def clean_triple_row(self, poss_trips_info, row_num):
@@ -67,23 +70,22 @@ def clean_triple_row(self, poss_trips_info, row_num):
 						if trip_val in poss_vals:
 							poss_vals.remove(trip_val)
 
+					# Then check if this_cell has been solved.
 					self.check_if_solved(this_cell, poss_vals)
+
+
+
 
 
 
 
 def check_naked_triples_cols(self):
 	# Iterate through each col to find naked triples.
-	"""
 	for i in range(9):  # i is col number
 		self.check_naked_triples_col(i)
-	"""
 
-	# i = 0
-	for i in [0, 8]:
-		self.check_naked_triples_col(i)
+	self.solve_queue()
 
-	# self.solve_queue()
 
 
 def check_naked_triples_col(self, col_num):
@@ -104,7 +106,8 @@ def check_naked_triples_col(self, col_num):
 
 	# Analyze if triple exists.
 	poss_trips_info = self.find_naked_triples(poss_trip_list)
-	# self.clean_triple_col(poss_trips_info, col_num)
+	self.clean_triple_col(poss_trips_info, col_num)
+
 
 
 def clean_triple_col(self, poss_trips_info, col_num):
@@ -131,17 +134,22 @@ def clean_triple_col(self, poss_trips_info, col_num):
 						if trip_val in poss_vals:
 							poss_vals.remove(trip_val)
 
+					# Then check if this_cell has been solved.
 					self.check_if_solved(this_cell, poss_vals)
 
 
 
 
+
+
+
 def check_naked_triples_box(self, poss_trips_info):
+	# Unlike the row and col versions of this function, this is called
+	# from verify_triples_list.
+
 	# poss_trips_info[trip_str] = [list of coords]
 	triple_boxes = []  # store trip_str if coords are in the same box
 
-
-	print('checking naked triples box')
 	for trip_vals in poss_trips_info.keys():
 		trip_coords = poss_trips_info[trip_vals]
 
@@ -168,14 +176,8 @@ def check_naked_triples_box(self, poss_trips_info):
 				same_col = False
 				break  # go to the next trip_vals
 
-		"""
-		print('same row? {0}'.format(same_row))
-		print('same col? {0}'.format(same_col))
-		"""
-
 		if same_row or same_col:
 			triple_boxes.append(trip_vals)
-
 
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
@@ -201,9 +203,6 @@ def clean_triple_box(self, trip_vals, trip_coords):
 	box_row = ref_row // 3
 	box_col = ref_col // 3
 
-	print('cleaning box: {0}\tvals: {1}'.format(trip_coords, box_vals))
-	print('box_row: {0}\tbox_col: {1}'.format(box_row, box_col))
-
 	# Go through the box.
 	for i in range(3):
 		for j in range(3):
@@ -226,6 +225,7 @@ def clean_triple_box(self, trip_vals, trip_coords):
 				if trip_val in poss_vals_in_this_cell:
 					poss_vals_in_this_cell.remove(trip_val)
 
+			# Then check if this_cell has been solved.
 			self.check_if_solved(this_cell, poss_vals_in_this_cell)
 
 
