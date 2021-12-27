@@ -18,9 +18,6 @@ def check_naked_triples_rows(self):
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
 
-	# j = 0
-	# self.check_naked_triples_row(j)
-
 	self.solve_queue()
 
 

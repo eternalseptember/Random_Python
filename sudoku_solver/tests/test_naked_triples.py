@@ -11,6 +11,13 @@ TRIPLE COL 1:
 [5,8,9] can only be in (3,4), (4,4), and (5,4);
 	but some numbers are missing in (4,4) and (5,4).\
 
+
+TRIPLE ROW 2:
+[1,5,8] can only be in row 0.
+[2,3,8] can only be in row 8.
+(7,3) should be [9].
+
+
 TRIPLE COL 2:
 [1,5,8] can only be in col 0.
 [2,3,8] can only be in col 8.
@@ -26,8 +33,8 @@ from sudoku_solver import *
 sudoku = Sudoku_Solver()
 # sudoku.import_board("naked_triple_row_1.txt")
 # sudoku.import_board("naked_triple_col_1.txt")
-# sudoku.import_board("naked_triple_row_2.txt")
-sudoku.import_board("naked_triple_col_2.txt")
+sudoku.import_board("naked_triple_row_2.txt")
+# sudoku.import_board("naked_triple_col_2.txt")
 sudoku.print_board()
 print('===============================')
 
