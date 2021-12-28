@@ -8,15 +8,23 @@
 
 
 def check_naked_triples(self):
-	# self.check_naked_triples_rows()
-	self.check_naked_triples_cols()
+	self.check_naked_triples_rows()
+	# self.check_naked_triples_cols()
 
 
 
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
+	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
+	"""
+
+	j = 0
+	self.check_naked_triples_row(j)
+
+	print('error checking')
+	self.print_possible_values()
 
 	self.solve_queue()
 
