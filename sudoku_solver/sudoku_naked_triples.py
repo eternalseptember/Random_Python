@@ -20,11 +20,8 @@ def check_naked_triples_rows(self):
 		self.check_naked_triples_row(j)
 	"""
 
-	j = 0
+	j = 6
 	self.check_naked_triples_row(j)
-
-	print('error checking')
-	self.print_possible_values()
 
 	self.solve_queue()
 
@@ -186,6 +183,7 @@ def check_naked_triples_box(self, poss_trips_info):
 
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
+		print('clean triple boxes?')
 		self.clean_triple_boxes(poss_trips_info, triple_boxes)
 
 
