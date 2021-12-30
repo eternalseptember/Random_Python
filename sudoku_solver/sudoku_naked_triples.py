@@ -23,7 +23,9 @@ def check_naked_triples_rows(self):
 	j = 6
 	self.check_naked_triples_row(j)
 
-	self.solve_queue()
+	self.print_possible_values()
+
+	# self.solve_queue()
 
 
 
@@ -127,7 +129,6 @@ def clean_triple_col(self, poss_trips_info, col_num):
 			# Skip over cells that are part of this triple.
 			if this_cell not in coords_set:
 				if this_cell in self.possible_values:
-					poss_vals = self.possible_values[this_cell]
 
 					# Remove vals in trip_set from this cell's possible vals.
 					poss_vals = self.possible_values[this_cell]
@@ -183,7 +184,6 @@ def check_naked_triples_box(self, poss_trips_info):
 
 	# if there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
-		print('clean triple boxes?')
 		self.clean_triple_boxes(poss_trips_info, triple_boxes)
 
 
@@ -193,6 +193,7 @@ def clean_triple_boxes(self, poss_trips_info, trip_box_info):
 
 	for trip_box in trip_box_info:
 		trip_coords = poss_trips_info[trip_box]
+		print('clean triple box: {0}\tcoords: {1}'.format(trip_box, trip_coords))
 		self.clean_triple_box(trip_box, trip_coords)
 
 
