@@ -46,7 +46,7 @@ def check_naked_triples_row(self, row_num):
 				poss_trip_list.append(this_cell)
 
 	# Analyze if triple exists.
-	poss_trips_info = self.find_naked_triples(poss_trip_list)
+	poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_row')
 	self.clean_triple_row(poss_trips_info, row_num)
 
 
@@ -146,9 +146,10 @@ def clean_triple_col(self, poss_trips_info, col_num):
 
 
 
-def check_naked_triples_box(self, poss_trips_info):
+def check_naked_triples_box(self, poss_trips_info, mode):
 	# Unlike the row and col versions of this function, this is called
 	# from verify_triples_list.
+	# 'mode' is 'check_row' or 'check_col'.
 
 	# poss_trips_info[trip_str] = [list of coords]
 	triple_boxes = []  # store trip_str if coords are in the same box
@@ -162,6 +163,12 @@ def check_naked_triples_box(self, poss_trips_info):
 		same_col = True
 
 		# check this section
+
+		# IF GETTING CALLED FROM CHECK_ROW, THEN SAME_ROW CAN'T COUNT.
+
+
+
+
 		for coord in trip_coords:
 			this_row, this_col = (coord)
 
@@ -179,10 +186,11 @@ def check_naked_triples_box(self, poss_trips_info):
 				same_col = False
 				break  # go to the next trip_vals
 
+
 		if same_row or same_col:
 			triple_boxes.append(trip_vals)
 
-	# if there are any triples inside a box, clean them.
+	# If there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
 		self.clean_triple_boxes(poss_trips_info, triple_boxes)
 

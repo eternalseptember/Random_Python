@@ -3,8 +3,9 @@
 
 
 
-def find_naked_triples(self, poss_trip_list):
+def find_naked_triples(self, poss_trip_list, mode):
 	# Make a list of every possible merged triplet set.
+	# 'mode' is 'check_row' or 'check_col'. Pass to verify function.
 	poss_trips_info = {}  # [trip_str] = [list of coords]
 	number_of_cells = len(poss_trip_list)
 
@@ -37,7 +38,9 @@ def find_naked_triples(self, poss_trip_list):
 	return self.verify_triples_list(poss_trips_info)
 
 
-def verify_triples_list(self, poss_trips_info):
+def verify_triples_list(self, poss_trips_info, mode):
+	# 'mode' is 'check_row' or 'check_col'.
+
 	# Remove entries from poss_trips_info if triple is not valid.
 	entries_to_remove = []  # List of str keys.
 
@@ -124,7 +127,7 @@ def verify_triples_list(self, poss_trips_info):
 	# THIS IS WHAT IS GETTING WORKED ON!!!
 	###
 	# Triples have been verified. Check if they're in the same box.
-	self.check_naked_triples_box(poss_trips_info)
+	self.check_naked_triples_box(poss_trips_info, mode)
 
 
 	return poss_trips_info
