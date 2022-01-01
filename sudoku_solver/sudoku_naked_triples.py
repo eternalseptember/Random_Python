@@ -163,12 +163,6 @@ def check_naked_triples_box(self, poss_trips_info, mode):
 		same_col = True
 
 		# check this section
-
-		# IF GETTING CALLED FROM CHECK_ROW, THEN SAME_ROW CAN'T COUNT.
-
-
-
-
 		for coord in trip_coords:
 			this_row, this_col = (coord)
 
@@ -186,9 +180,15 @@ def check_naked_triples_box(self, poss_trips_info, mode):
 				same_col = False
 				break  # go to the next trip_vals
 
-
-		if same_row or same_col:
+		# IF GETTING CALLED FROM CHECK_ROW, THEN SAME_ROW CAN'T COUNT.
+		if (mode == 'check_row') and same_col:
 			triple_boxes.append(trip_vals)
+
+
+
+
+
+
 
 	# If there are any triples inside a box, clean them.
 	if len(triple_boxes) > 0:
