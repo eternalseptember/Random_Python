@@ -35,7 +35,7 @@ def find_naked_triples(self, poss_trip_list, mode):
 
 				poss_trips_info[trip_str] = saved_info
 
-	return self.verify_triples_list(poss_trips_info)
+	return self.verify_triples_list(poss_trips_info, mode)
 
 
 def verify_triples_list(self, poss_trips_info, mode):

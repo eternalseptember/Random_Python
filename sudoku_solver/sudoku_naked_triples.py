@@ -184,6 +184,9 @@ def check_naked_triples_box(self, poss_trips_info, mode):
 		if (mode == 'check_row') and same_col:
 			triple_boxes.append(trip_vals)
 
+		if (mode == 'check_col') and same_row:
+			triple_boxes.append(trip_vals)
+
 
 
 
