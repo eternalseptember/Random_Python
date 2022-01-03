@@ -9,23 +9,16 @@
 
 def check_naked_triples(self):
 	self.check_naked_triples_rows()
-	# self.check_naked_triples_cols()
+	self.check_naked_triples_cols()
 
 
 
 def check_naked_triples_rows(self):
 	# Iterate through each row to find naked triples.
-	"""
 	for j in range(9):  # j is row number
 		self.check_naked_triples_row(j)
-	"""
 
-	j = 6
-	self.check_naked_triples_row(j)
-
-	self.print_possible_values()
-
-	# self.solve_queue()
+	self.solve_queue()
 
 
 
@@ -109,7 +102,7 @@ def check_naked_triples_col(self, col_num):
 				poss_trip_list.append(this_cell)
 
 	# Analyze if triple exists.
-	poss_trips_info = self.find_naked_triples(poss_trip_list)
+	poss_trips_info = self.find_naked_triples(poss_trip_list, 'check_col')
 	self.clean_triple_col(poss_trips_info, col_num)
 
 

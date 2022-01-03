@@ -123,9 +123,6 @@ def verify_triples_list(self, poss_trips_info, mode):
 		poss_trips_info.pop(item)
 
 
-	###
-	# THIS IS WHAT IS GETTING WORKED ON!!!
-	###
 	# Triples have been verified. Check if they're in the same box.
 	self.check_naked_triples_box(poss_trips_info, mode)
 
