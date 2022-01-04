@@ -38,6 +38,7 @@ def find_naked_triples(self, poss_trip_list, mode):
 	return self.verify_triples_list(poss_trips_info, mode)
 
 
+
 def verify_triples_list(self, poss_trips_info, mode):
 	# 'mode' is 'check_row' or 'check_col'.
 
