@@ -33,6 +33,8 @@ class Sudoku_Solver():
 	from sudoku_naked_triples_check import find_naked_triples, \
 		verify_triples_list
 
+	from sudoku_xwing import check_xwing
+
 
 
 	def __init__(self):
