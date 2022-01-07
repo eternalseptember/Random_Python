@@ -3,7 +3,12 @@
 
 
 def check_xwing(self):
-	return None
+	for i in range(0,8):  # i goes down
+		for j in range(0,8):  # j goes across
+			this_coord = (i, j)
+
+
+
 
 
 

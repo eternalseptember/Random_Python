@@ -1,6 +1,6 @@
-"""
 
-"""
+# 7 is locked to rows [1, 5] and cols [3, 7].
+
 
 
 import sys
