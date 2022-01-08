@@ -3,9 +3,14 @@
 
 
 def check_xwing(self):
-	for i in range(0,8):  # i goes down
-		for j in range(0,8):  # j goes across
+	val_lookup = {}
+
+	for i in range(0, 8):  # i goes down
+		for j in range(0, 8):  # j goes across
 			this_coord = (i, j)
+			self.set_lookup_table(this_coord, val_lookup)
+
+
 
 
 
