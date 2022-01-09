@@ -15,6 +15,22 @@ sudoku.print_board()
 print('===============================')
 
 
+# Testing steps
+print('Init reduce:')
+sudoku.solve_queue()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+print('Check xwing:')
+sudoku.check_xwing()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+
 
 
 
