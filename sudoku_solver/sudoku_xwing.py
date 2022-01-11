@@ -18,6 +18,11 @@ def check_xwing(self):
 
 
 
+def set_lookup_table_row(self, row_num):
+	return None
+
+
+
 
 
 
