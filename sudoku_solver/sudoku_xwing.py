@@ -14,16 +14,15 @@ def check_xwing(self):
 			if this_coord in self.possible_values:
 				self.set_lookup_table(this_coord, val_lookup)
 
-				print('coord: {0}'.format(this_coord))
-				for poss_val in val_lookup.keys():
-					print('{0} - {1}'.format(poss_val, val_lookup[poss_val]))
-				print()
+
+	for poss_val in val_lookup.keys():
+		print('{0} - {1}'.format(poss_val, val_lookup[poss_val]))
 
 
 
 
 
-def set_lookup_table_row(self, row_num):
+def check_xwing_row(self, lookup_dict):
 	return None
 
 
