@@ -30,8 +30,9 @@ def check_xwing(self):
 def check_xwing_row(self, lookup_dict):
 	return None
 
-def xwing_is_same_col(self, coord1, coord2):
-	return None
+def xwing_is_same_col(self, coord_1, coord_2):
+	row_1, col_1 = (coord_1)
+	row_2, col_2 = (coord_2)
 
 
 
