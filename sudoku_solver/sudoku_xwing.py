@@ -37,8 +37,10 @@ def xwing_is_same_cols(self, coords_row_1, coords_row_2):
 	coord_3, coord_4 = (coords_row_2)
 
 
-	# row_1, col_1 = (coord_1)
-	# row_2, col_2 = (coord_2)
+	row_1, col_1 = (coord_1)
+	row_2, col_2 = (coord_2)
+	row_3, col_3 = (coord_3)
+	row_4, col_4 = (coord_4)
 
 
 
