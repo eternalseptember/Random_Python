@@ -20,8 +20,10 @@ def check_xwing(self):
 
 
 		for poss_val in val_lookup.keys():
-			print('{0} - {1}'.format(poss_val, val_lookup[poss_val]))
+			poss_coords = val_lookup[poss_val]
+			print('{0} - {1}'.format(poss_val, poss_coords))
 		print()
+
 
 
 
@@ -30,12 +32,12 @@ def check_xwing(self):
 def check_xwing_row(self, lookup_dict):
 	return None
 
+
 def xwing_is_same_cols(self, coords_row_1, coords_row_2):
 	# have to check_xwing_row twice for two sets of coordinates
 	# coords_row_1 and coords_row_2 are lists.
 	coord_1, coord_2 = (coords_row_1)
 	coord_3, coord_4 = (coords_row_2)
-
 
 	row_1, col_1 = (coord_1)
 	row_2, col_2 = (coord_2)
