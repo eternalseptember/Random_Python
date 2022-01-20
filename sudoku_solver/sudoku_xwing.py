@@ -19,9 +19,10 @@ def check_xwing(self):
 				self.set_lookup_table(this_coord, val_lookup)
 
 
+		# end of row
 		for poss_val in val_lookup.keys():
-			poss_coords = val_lookup[poss_val]
-			print('{0} - {1}'.format(poss_val, poss_coords))
+			poss_locs = val_lookup[poss_val]
+			print('{0} - {1}'.format(poss_val, poss_locs))
 		print()
 
 
@@ -30,7 +31,13 @@ def check_xwing(self):
 
 
 def check_xwing_row(self, lookup_dict):
-	return None
+	# first check this condition:
+	# only two possible cells for a value in each of two different rows
+	for poss_val in lookup_dict.keys():
+		poss_locs = lookup_dict[poss_val]
+
+
+
 
 
 def xwing_is_same_cols(self, coords_row_1, coords_row_2):
