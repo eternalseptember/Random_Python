@@ -33,7 +33,9 @@ def check_xwing_row(self, lookup_dict):
 	#
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
-		print('{0} - {1}'.format(poss_val, poss_locs))
+
+		if len(poss_locs) == 2:
+			print('{0} - {1}'.format(poss_val, poss_locs))
 	print()
 
 
