@@ -7,6 +7,7 @@
 
 
 def check_xwing(self):
+	xwing_candidates = {}  # for all rows
 
 	# for i in [1]:
 	for i in range(0, 8):  # i goes down
@@ -30,7 +31,8 @@ def check_xwing_row(self, lookup_dict):
 	# first check this condition:
 	# only two possible cells for a value in each of two different rows
 
-	#
+	xwing_candidates = {}  # per row
+
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
 
