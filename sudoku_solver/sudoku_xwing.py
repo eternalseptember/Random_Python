@@ -21,7 +21,8 @@ def check_xwing(self):
 
 
 		# end of row
-		self.check_xwing_row(val_lookup)
+		xwing_cands_row = self.check_xwing_row(val_lookup)
+		# how to append to xwing_candidates
 
 
 
@@ -31,14 +32,16 @@ def check_xwing_row(self, lookup_dict):
 	# first check this condition:
 	# only two possible cells for a value in each of two different rows
 
-	xwing_candidates = {}  # per row
+	xwing_cands_row = {}  # per row
 
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
 
 		if len(poss_locs) == 2:
+			# add to dict
 			print('{0} - {1}'.format(poss_val, poss_locs))
-	print()
+
+	return xwing_cands_row
 
 
 
