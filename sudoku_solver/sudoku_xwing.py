@@ -39,6 +39,7 @@ def check_xwing_row(self, lookup_dict):
 
 		if len(poss_locs) == 2:
 			# add to dict
+			xwing_cands_row[poss_val] = poss_locs
 			print('{0} - {1}'.format(poss_val, poss_locs))
 
 	return xwing_cands_row
@@ -46,6 +47,13 @@ def check_xwing_row(self, lookup_dict):
 
 
 
+def xwing_is_same_cols(self, list_of_coords):
+	# check list_of_coords in groups of two
+	return None
+
+
+
+"""
 def xwing_is_same_cols(self, coords_row_1, coords_row_2):
 	# have to check_xwing_row twice for two sets of coordinates
 	# coords_row_1 and coords_row_2 are lists.
@@ -61,7 +69,7 @@ def xwing_is_same_cols(self, coords_row_1, coords_row_2):
 		return True
 	else:
 		return False
-
+"""
 
 
 
