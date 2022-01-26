@@ -23,6 +23,9 @@ def check_xwing(self):
 		# end of row
 		xwing_cands_row = self.check_xwing_row(val_lookup)
 		# how to append to xwing_candidates
+		for poss_val in xwing_cands_row.keys():
+			if poss_val in xwing_candidates:
+				print('append values')
 
 
 
