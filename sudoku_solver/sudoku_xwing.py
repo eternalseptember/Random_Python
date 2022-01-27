@@ -26,6 +26,8 @@ def check_xwing(self):
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
 				print('append values')
+			else:
+				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 
 
