@@ -25,11 +25,15 @@ def check_xwing(self):
 		# how to append to xwing_candidates
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
-				print('append values')
 				# ???
 				xwing_candidates[poss_val].extend(xwing_cands_row[poss_val])
 			else:
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
+
+	# print dictionary for testing
+	for poss_val in xwing_candidates.keys():
+		poss_coords = xwing_candidates[poss_val]
+		print('{0}: {1}'.format(poss_val, poss_coords))
 
 
 
@@ -38,16 +42,15 @@ def check_xwing(self):
 def check_xwing_row(self, lookup_dict):
 	# first check this condition:
 	# only two possible cells for a value in each of two different rows
-
 	xwing_cands_row = {}  # per row
 
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
 
+		# add to dict if there are only two possible locations
 		if len(poss_locs) == 2:
-			# add to dict
 			xwing_cands_row[poss_val] = poss_locs
-			print('{0} - {1}'.format(poss_val, poss_locs))
+			# print('{0} - {1}'.format(poss_val, poss_locs))
 
 	return xwing_cands_row
 
