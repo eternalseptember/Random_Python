@@ -9,7 +9,7 @@
 def check_xwing(self):
 	xwing_candidates = {}  # for all rows
 
-	# for i in [1]:
+	# fill a dict of all possible coord pairs
 	for i in range(0, 8):  # i goes down
 
 		val_lookup = {}
@@ -33,7 +33,10 @@ def check_xwing(self):
 	# print dictionary for testing
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
-		print('{0}: {1}'.format(poss_val, poss_coords))
+
+		# eliminate the vals with only two possible locations:
+		if len(poss_coords) > 2:
+			print('{0}: {1}'.format(poss_val, poss_coords))
 
 
 
