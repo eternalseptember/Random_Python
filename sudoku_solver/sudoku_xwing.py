@@ -31,12 +31,15 @@ def check_xwing(self):
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 	# print dictionary for testing
+	remove_list = []  # store poss_vals
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 
 		# eliminate the vals with only two possible locations:
 		if len(poss_coords) > 2:
+			remove_list.append(poss_val)
 			print('{0}: {1}'.format(poss_val, poss_coords))
+
 
 
 
