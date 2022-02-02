@@ -30,16 +30,19 @@ def check_xwing(self):
 			else:
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
-	# print dictionary for testing
+
+	# eliminate entries that can't be part of an xwing
 	remove_list = []  # store poss_vals
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 
 		# eliminate the vals with only two possible locations:
-		if len(poss_coords) > 2:
-			print('{0}: {1}'.format(poss_val, poss_coords))
-		else:
+		if len(poss_coords) < 3:
 			remove_list.append(poss_val)
+
+	# remove entries that can't be part of an xwing
+	for poss_val in remove_list:
+		xwing_candidates.pop(poss_val)
 
 
 
