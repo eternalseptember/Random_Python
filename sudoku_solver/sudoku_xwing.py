@@ -37,8 +37,11 @@ def check_xwing(self):
 
 		# eliminate the vals with only two possible locations:
 		if len(poss_coords) > 2:
-			remove_list.append(poss_val)
 			print('{0}: {1}'.format(poss_val, poss_coords))
+		else:
+			remove_list.append(poss_val)
+
+
 
 
 
