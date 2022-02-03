@@ -7,70 +7,74 @@
 
 
 def check_xwing(self):
-	xwing_candidates = {}  # for all rows
+	xwing_candidates = {}  # For all rows.
 
-	# fill a dict of all possible coord pairs
+	# Fill a dict of all possible coord pairs.
 	for i in range(0, 8):  # i goes down
 
-		val_lookup = {}
+		val_lookup_row = {}
 		for j in range(0, 8):  # j goes across
 			this_coord = (i, j)
 
 			if this_coord in self.possible_values:
-				self.set_lookup_table(this_coord, val_lookup)
+				self.set_lookup_table(this_coord, val_lookup_row)
 
-
-		# end of row
-		xwing_cands_row = self.check_xwing_row(val_lookup)
-		# how to append to xwing_candidates
+		# End of row.
+		xwing_cands_row = self.check_xwing_row(val_lookup_row)
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
-				# ???
 				xwing_candidates[poss_val].extend(xwing_cands_row[poss_val])
 			else:
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 
-	# eliminate entries that can't be part of an xwing
+	# Eliminate entries that can't be part of an xwing.
 	remove_list = []  # store poss_vals
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 
-		# eliminate the vals with only two possible locations:
+		# Eliminate the vals with only two possible locations.
 		if len(poss_coords) < 3:
 			remove_list.append(poss_val)
 
-	# remove entries that can't be part of an xwing
+	# Remove entries that can't be part of an xwing.
 	for poss_val in remove_list:
 		xwing_candidates.pop(poss_val)
 
 
-
-
+	# Then check each dict entry to see if there's an xwing
+	# within the list of coords.
+	# can consolidate this into the eliminate entries list later
+	xwing_found = {}  # contains a list of four coords
+	for poss_val in xwing_candidates.keys():
+		poss_coords = xwing_candidates[poss_val]
+		print('{0} - {1}'.format(poss_val, poss_coords))
+		self.xwing_is_same_cols(poss_val, poss_coords)
 
 
 
 
 def check_xwing_row(self, lookup_dict):
-	# first check this condition:
-	# only two possible cells for a value in each of two different rows
+	# First check this condition:
+	# Only two possible cells for a val in each of two different rows.
 	xwing_cands_row = {}  # per row
 
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
 
-		# add to dict if there are only two possible locations
+		# Add to dict if there are only two possible locations.
 		if len(poss_locs) == 2:
 			xwing_cands_row[poss_val] = poss_locs
-			# print('{0} - {1}'.format(poss_val, poss_locs))
 
 	return xwing_cands_row
 
 
 
 
-def xwing_is_same_cols(self, list_of_coords):
+def xwing_is_same_cols(self, poss_val, list_of_coords):
 	# check list_of_coords in groups of two
+
+	# return a list of four coordinates in the xwing
 	return None
 
 
