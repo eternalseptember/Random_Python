@@ -73,6 +73,7 @@ def check_xwing_row(self, lookup_dict):
 
 def xwing_is_same_cols(self, poss_val, list_of_coords):
 	# check list_of_coords in groups of two
+	number_of_sets = len(list_of_coords) // 2
 
 	# return a list of four coordinates in the xwing
 	return None
