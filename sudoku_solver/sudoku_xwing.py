@@ -75,6 +75,12 @@ def xwing_is_same_cols(self, poss_val, list_of_coords):
 	# check list_of_coords in groups of two
 	number_of_sets = len(list_of_coords) // 2
 
+	for each_pair in range(number_of_sets):
+		set_1 = number_of_sets * 2
+		set_2 = number_of_sets * 2 + 1
+
+
+
 	# return a list of four coordinates in the xwing
 	return None
 
