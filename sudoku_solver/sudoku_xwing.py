@@ -92,7 +92,8 @@ def xwing_is_same_cols(self, poss_val, list_of_coords):
 		print('{0} {1}, '.format(row_1_coord_1, row_1_coord_2))
 
 		# check if there's more coords to compare to
-		if (each_pair * 2 + 1) >= len(list_of_coords):
+		if (each_pair * 2 + 2) >= len(list_of_coords):
+			print('no more coords to compare to')
 			break
 
 		# rest of coords to compare to
