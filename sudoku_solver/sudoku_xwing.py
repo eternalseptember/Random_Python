@@ -78,25 +78,26 @@ def check_xwing_row(self, lookup_dict):
 
 
 def check_xwing_is_same_cols(self, poss_val, list_of_coords):
-	print('{0} - {1}'.format(poss_val, list_of_coords))
+	print('{0} - {1}\n'.format(poss_val, list_of_coords))
 
 	# check list_of_coords in groups of two
-	number_of_sets = len(list_of_coords) // 2
-
 	# need to account for four coords at a time
-	for each_pair in range(number_of_sets):
+	for each_pair in range(0, len(list_of_coords), 2):
 		# reference coordinates
-		row_1_coord_1 = list_of_coords[each_pair * 2]
-		row_1_coord_2 = list_of_coords[each_pair * 2 + 1]
+		row_1_coord_1 = list_of_coords[each_pair]
+		row_1_coord_2 = list_of_coords[each_pair + 1]
 
 		print('{0} {1}, '.format(row_1_coord_1, row_1_coord_2))
 
 		# check if there's more coords to compare to
-		if (each_pair * 2 + 4) >= len(list_of_coords):
+		if (each_pair + 2) >= len(list_of_coords):
 			print('no more coords to compare to')
 			break
 
+
 		# rest of coords to compare to
+		xwing_row_2_cands = list_of_coords[(each_pair + 2):]
+		print('row_2 possibilities:{0}'.format(xwing_row_2_cands))
 
 
 
