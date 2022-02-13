@@ -54,9 +54,9 @@ def check_xwing(self):
 		self.check_xwing_is_same_cols(poss_val, poss_coords)
 	"""
 
+	# smaller test than the section commented out
 	poss_val = 7
 	poss_coords = xwing_candidates[poss_val]
-	# print('{0} - {1}'.format(poss_val, poss_coords))
 	self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 
@@ -82,22 +82,28 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 	# check list_of_coords in groups of two
 	# need to account for four coords at a time
-	for each_pair in range(0, len(list_of_coords), 2):
+	for each_pair_1 in range(0, len(list_of_coords), 2):
 		# reference coordinates
-		row_1_coord_1 = list_of_coords[each_pair]
-		row_1_coord_2 = list_of_coords[each_pair + 1]
+		row_1_coord_1 = list_of_coords[each_pair_1]
+		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
 
-		print('{0} {1}, '.format(row_1_coord_1, row_1_coord_2))
+		print('{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
 		# check if there's more coords to compare to
-		if (each_pair + 2) >= len(list_of_coords):
+		if (each_pair_1 + 2) >= len(list_of_coords):
 			print('no more coords to compare to')
 			break
 
 
 		# rest of coords to compare to
-		xwing_row_2_cands = list_of_coords[(each_pair + 2):]
-		print('row_2 possibilities:{0}'.format(xwing_row_2_cands))
+		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
+		print('{0}'.format(xwing_row_2_cands))
+
+		for each_pair_2 in range(0, len(xwing_row_2_cands, 2)):
+			row_2_coord_1 = xwing_row_2_cands[each_pair_2]
+			row_2_coord_2 = xwing_row_2_cands[each_pair_2 + 2]
+
+
 
 
 
