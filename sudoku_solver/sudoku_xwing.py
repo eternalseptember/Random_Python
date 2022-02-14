@@ -99,9 +99,9 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
 		print('{0}'.format(xwing_row_2_cands))
 
-		for each_pair_2 in range(0, len(xwing_row_2_cands, 2)):
+		for each_pair_2 in range(0, len(xwing_row_2_cands), 2):
 			row_2_coord_1 = xwing_row_2_cands[each_pair_2]
-			row_2_coord_2 = xwing_row_2_cands[each_pair_2 + 2]
+			row_2_coord_2 = xwing_row_2_cands[each_pair_2 + 1]
 
 
 
