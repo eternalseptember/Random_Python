@@ -86,6 +86,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 		# reference coordinates
 		row_1_coord_1 = list_of_coords[each_pair_1]
 		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
+		row_1_coords = (row_1_coord_1, row_1_coord_2)
 
 		print('{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
@@ -102,6 +103,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 		for each_pair_2 in range(0, len(xwing_row_2_cands), 2):
 			row_2_coord_1 = xwing_row_2_cands[each_pair_2]
 			row_2_coord_2 = xwing_row_2_cands[each_pair_2 + 1]
+			row_2_coords = (row_2_coord_1, row_2_coord_2)
 
 
 
