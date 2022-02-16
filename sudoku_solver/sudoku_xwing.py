@@ -105,6 +105,11 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 			row_2_coord_2 = xwing_row_2_cands[each_pair_2 + 1]
 			row_2_coords = (row_2_coord_1, row_2_coord_2)
 
+			is_same_cols = self.is_xwing_same_cols(row_1_coords, row_2_coords)
+
+			print('row 2: {0}, {1}'.format(row_2_coord_1, row_2_coord_2))
+			print('is same cols? {0}'.format(is_same_cols))
+
 
 
 
@@ -117,8 +122,8 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 
 
-"""
-def xwing_is_same_cols(self, coords_row_1, coords_row_2):
+
+def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 	# have to check_xwing_row twice for two sets of coordinates
 	# coords_row_1 and coords_row_2 are lists.
 	coord_1, coord_2 = (coords_row_1)
@@ -133,7 +138,7 @@ def xwing_is_same_cols(self, coords_row_1, coords_row_2):
 		return True
 	else:
 		return False
-"""
+
 
 
 
