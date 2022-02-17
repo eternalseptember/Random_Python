@@ -80,6 +80,8 @@ def check_xwing_row(self, lookup_dict):
 def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 	print('{0} - {1}\n'.format(poss_val, list_of_coords))
 
+	xwing_sets = []  # a list of a set
+
 	# check list_of_coords in groups of two
 	# need to account for four coords at a time
 	for each_pair_1 in range(0, len(list_of_coords), 2):
@@ -109,6 +111,9 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 			print('row 2: {0}, {1}'.format(row_2_coord_1, row_2_coord_2))
 			print('is same cols? {0}'.format(is_same_cols))
+
+			if is_same_cols:
+				xwing_set = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
 
 
 
