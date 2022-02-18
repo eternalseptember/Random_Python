@@ -114,6 +114,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 			if is_same_cols:
 				xwing_set = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
+				xwing_sets.append(xwing_set)
 
 
 
@@ -123,7 +124,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 
 	# return a list of four coordinates in the xwing
-	return None
+	return xwing_sets
 
 
 
