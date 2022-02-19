@@ -118,12 +118,11 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 
 
-
-
-
-
-
 	# return a list of four coordinates in the xwing
+	print('xwing:')
+	for item in xwing_sets:
+		print(item)
+
 	return xwing_sets
 
 
