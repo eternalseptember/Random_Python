@@ -127,7 +127,6 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 
 
-
 def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 	# have to check_xwing_row twice for two sets of coordinates
 	# coords_row_1 and coords_row_2 are lists.
@@ -143,6 +142,15 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 		return True
 	else:
 		return False
+
+
+
+def clean_xwing_row(self, poss_val, coords_list):
+	return None
+
+
+
+
 
 
 
