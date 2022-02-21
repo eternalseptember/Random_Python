@@ -57,7 +57,10 @@ def check_xwing(self):
 	# smaller test than the section commented out
 	poss_val = 7
 	poss_coords = xwing_candidates[poss_val]
-	self.check_xwing_is_same_cols(poss_val, poss_coords)
+	xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
+
+	# testing this part
+	self.clean_xwing_row(poss_val, xwing_set)
 
 
 def check_xwing_row(self, lookup_dict):
@@ -80,7 +83,7 @@ def check_xwing_row(self, lookup_dict):
 def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 	print('{0} - {1}\n'.format(poss_val, list_of_coords))
 
-	xwing_sets = []  # a list of a set
+	xwing_set = []  # a list of a set
 
 	# check list_of_coords in groups of two
 	# need to account for four coords at a time
@@ -113,17 +116,17 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 			print('is same cols? {0}'.format(is_same_cols))
 
 			if is_same_cols:
-				xwing_set = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
-				xwing_sets.append(xwing_set)
+				xwing_coords = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
+				xwing_set.append(xwing_coords)
 
 
 
 	# return a list of four coordinates in the xwing
 	print('xwing:')
-	for item in xwing_sets:
+	for item in xwing_set:
 		print(item)
 
-	return xwing_sets
+	return xwing_set
 
 
 
