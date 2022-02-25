@@ -149,7 +149,10 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 
 
 def clean_xwing_row(self, poss_val, coords_list):
-	coord_1, coord_2, coord_3, coord_4 = (coords_list)
+	coord_1 = coords_list[0]
+	coord_2 = coords_list[1]
+	coord_3 = coords_list[2]
+	coord_4 = coords_list[3]
 
 	row_1, col_1 = (coord_1)
 	row_2, col_2 = (coord_2)
