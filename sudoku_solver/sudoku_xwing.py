@@ -93,11 +93,12 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
 		row_1_coords = (row_1_coord_1, row_1_coord_2)
 
-		print('{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
+		print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
 		# check if there's more coords to compare to
 		if (each_pair_1 + 2) >= len(list_of_coords):
-			print('no more coords to compare to')
+			# print('no more coords to compare to')
+			print()
 			break
 
 
@@ -112,7 +113,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 			is_same_cols = self.is_xwing_same_cols(row_1_coords, row_2_coords)
 
-			print('row 2: {0}, {1}'.format(row_2_coord_1, row_2_coord_2))
+			print('row 2: {0}, {1}'.format(row_2_coord_1, row_2_coord_2), end='\t')
 			print('is same cols? {0}'.format(is_same_cols))
 
 			if is_same_cols:
@@ -122,7 +123,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 
 	# return a list of four coordinates in the xwing
-	print('xwing:')
+	print('xwing:', end=' ')
 	for item in xwing_set:
 		print(item)
 
@@ -149,6 +150,10 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 
 
 def clean_xwing_row(self, poss_val, coords_list):
+	print('coords list')
+	print(coords_list)
+
+	"""
 	coord_1 = coords_list[0]
 	coord_2 = coords_list[1]
 	coord_3 = coords_list[2]
@@ -161,7 +166,7 @@ def clean_xwing_row(self, poss_val, coords_list):
 
 	clean_row_1 = col_1
 	clean_row_2 = col_3
-
+	"""
 
 
 
