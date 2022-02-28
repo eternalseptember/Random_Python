@@ -60,7 +60,7 @@ def check_xwing(self):
 	xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 	# testing this part
-	self.clean_xwing_row(poss_val, xwing_set)
+	self.clean_xwing_col(poss_val, xwing_set)
 
 
 def check_xwing_row(self, lookup_dict):
@@ -153,11 +153,7 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 
 
 
-def clean_xwing_row(self, poss_val, coords_list):
-	print('coords list')
-	print(coords_list)
-
-	"""
+def clean_xwing_col(self, poss_val, coords_list):
 	coord_1 = coords_list[0]
 	coord_2 = coords_list[1]
 	coord_3 = coords_list[2]
@@ -170,7 +166,11 @@ def clean_xwing_row(self, poss_val, coords_list):
 
 	clean_row_1 = col_1
 	clean_row_2 = col_3
-	"""
+
+	for i in range(9):  # i goes down
+		clean_coord_1 = (i, col_1)
+		clean_coord_2 = (i, col_3)
+
 
 
 
