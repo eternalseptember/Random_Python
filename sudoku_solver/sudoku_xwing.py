@@ -154,6 +154,7 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 
 
 def clean_xwing_col(self, poss_val, coords_list):
+	# coords in coords_list is listed in a specific order
 	coord_1 = coords_list[0]
 	coord_2 = coords_list[1]
 	coord_3 = coords_list[2]
@@ -164,12 +165,14 @@ def clean_xwing_col(self, poss_val, coords_list):
 	row_3, col_3 = (coord_3)
 	row_4, col_4 = (coord_4)
 
-	clean_row_1 = col_1
-	clean_row_2 = col_3
+	clean_col_1 = col_1
+	clean_col_2 = col_3
+	coords_col_1 = [coord_1, coord_3]
+	coords_col_2 = [coord_2, coord_4]
 
 	for i in range(9):  # i goes down
-		clean_coord_1 = (i, col_1)
-		clean_coord_2 = (i, col_3)
+		clean_coord_1 = (i, clean_col_1)
+		clean_coord_2 = (i, clean_col_2)
 
 
 
