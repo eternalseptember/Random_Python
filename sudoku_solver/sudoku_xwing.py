@@ -174,6 +174,11 @@ def clean_xwing_col(self, poss_val, coords_list):
 		clean_coord_1 = (i, clean_col_1)
 		clean_coord_2 = (i, clean_col_2)
 
+		# remove poss_val in col outside of coords_col_1.
+		if clean_coord_1 not in coords_col_1:
+			print()
+
+
 
 
 
