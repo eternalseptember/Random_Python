@@ -1,6 +1,4 @@
-# Import into the main sudoku_solver class.
 # Utility functions for sudoku_naked_triples.
-
 
 
 def find_naked_triples(self, poss_trip_list, mode):

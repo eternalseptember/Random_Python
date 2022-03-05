@@ -1,5 +1,3 @@
-# Import into the main sudoku_solver class.
-
 # When there are
 # * only two possible cells for a value in each of two different rows,
 # * and these candidates lie also in the same columns,

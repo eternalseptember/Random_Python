@@ -22,8 +22,8 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-# sudoku.import_board("naked_sub_col.txt")
-sudoku.import_board("naked_sub_row.txt")
+# sudoku.import_board("test_boards/naked_sub_col.txt")
+sudoku.import_board("test_boards/naked_sub_row.txt")
 sudoku.print_board()
 print('===============================')
 

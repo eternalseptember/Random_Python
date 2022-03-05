@@ -1,6 +1,4 @@
 # Functions that eliminate possibilities based on row/box/col interactions.
-# Import into the main sudoku_solver class.
-
 # Could put the single- and double-boxed elims within a single function.
 
 

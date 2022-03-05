@@ -9,7 +9,7 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-sudoku.import_board("puzzle_1.txt")
+sudoku.import_board("test_boards/puzzle_1.txt")
 sudoku.print_board()
 print('===============================')
 

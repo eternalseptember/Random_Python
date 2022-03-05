@@ -1,4 +1,3 @@
-# Import into the main sudoku_solver class.
 # Checks naked triples in rows, cols, and boxes.
 
 # Naked triple:

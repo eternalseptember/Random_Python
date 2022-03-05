@@ -1,4 +1,3 @@
-# Import into the main sudoku_solver class.
 # Similar to naked subset.
 
 

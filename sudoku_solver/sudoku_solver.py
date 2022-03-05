@@ -10,30 +10,30 @@ class Sudoku_Solver():
 		check_unique_col, check_unique_box, get_box_poss_vals, \
 		set_lookup_table, solve_lookup_table
 
-	from sudoku_naked_subset import check_matching_sets, check_matching_cols, \
+	from strats.naked_subset import check_matching_sets, check_matching_cols, \
 		check_matching_rows, set_missing_val_table, find_matches, \
 		in_same_box, remove_in_box, remove_matching_sets
 
-	from sudoku_poss_elim import check_within_boxes, check_within_a_box, \
+	from strats.poss_elim import check_within_boxes, check_within_a_box, \
 		in_which_rows, in_which_cols, \
 		remove_row_outside_box, remove_col_outside_box, \
 		remove_rows_in_box, remove_cols_in_box, check_block_elim
 
-	from sudoku_hidden_subset import check_hidden_subsets, \
+	from strats.hidden_subset import check_hidden_subsets, \
 		check_hidden_sub_col, check_hidden_sub_row, check_hidden_sub_box, \
 		remove_hidden_col, remove_hidden_row, format_hidden_subset_info, \
 		clean_hidden_subsets, clean_hidden_subset, clean_hidden_sub_box, \
 		check_hidden_sub_boxes, remove_hidden_box
 
-	from sudoku_naked_triples import check_naked_triples, \
+	from strats.naked_triples import check_naked_triples, \
 		check_naked_triples_rows, check_naked_triples_row, clean_triple_row, \
 		check_naked_triples_cols, check_naked_triples_col, clean_triple_col, \
 		check_naked_triples_box, clean_triple_boxes, clean_triple_box
 
-	from sudoku_naked_triples_check import find_naked_triples, \
+	from strats.naked_triples_check import find_naked_triples, \
 		verify_triples_list
 
-	from sudoku_xwing import check_xwing, check_xwing_row, \
+	from strats.xwing import check_xwing, check_xwing_row, \
 		check_xwing_is_same_cols, is_xwing_same_cols, clean_xwing_col
 
 

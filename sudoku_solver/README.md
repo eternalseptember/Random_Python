@@ -1,3 +1,7 @@
+* Root of the folder contains the most basic core of solving and displaying the board.
+* More advanced strategies are in the strats folder.
+* Executable tests are in the test folder. Text files of test boards are in the test_boards folder.
+
 Definitions (used for this project):
 
 * Naked Pair: Two cells in a group contain an identical pair of candidates and only those two candidates.

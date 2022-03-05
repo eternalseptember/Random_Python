@@ -1,4 +1,3 @@
-# Import into the main sudoku_solver class.
 # Functions that eliminate possibilities based on matching pairs (or triplets).
 # Focused on finding pairs. Triplets can be found incidentally.
 # Naked: EXACT list of candidates in EXACT cells.
