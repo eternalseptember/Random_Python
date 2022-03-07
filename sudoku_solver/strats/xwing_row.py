@@ -1,3 +1,5 @@
+# Starts xwing check by looking for candidates in each *row*.
+
 # When there are
 # * only two possible cells for a value in each of two different rows,
 # * and these candidates lie also in the same columns,
@@ -178,6 +180,16 @@ def clean_xwing_col(self, poss_val, coords_list):
 
 		if clean_coord_2 not in coords_col_2:
 			self.possible_vals_check(clean_coord_2, poss_val)
+
+
+
+
+
+
+
+
+
+
 
 
 

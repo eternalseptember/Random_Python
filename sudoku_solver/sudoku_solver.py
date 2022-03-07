@@ -33,7 +33,7 @@ class Sudoku_Solver():
 	from strats.naked_triples_check import find_naked_triples, \
 		verify_triples_list
 
-	from strats.xwing import check_xwing, check_xwing_row, \
+	from strats.xwing_row import check_xwing, check_xwing_row, \
 		check_xwing_is_same_cols, is_xwing_same_cols, clean_xwing_col
 
 
