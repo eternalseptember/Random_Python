@@ -6,7 +6,13 @@
 # then all other candidates for this value in the columns can be eliminated.
 
 
+
 def check_xwing(self):
+	self.check_xwing_rows()
+
+
+
+def check_xwing_rows(self):
 	xwing_candidates = {}  # For all rows.
 
 	# Fill a dict of all possible coord pairs.
