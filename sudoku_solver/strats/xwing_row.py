@@ -132,9 +132,12 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 	print('xwing:', end=' ')
 	for item in xwing_set:
 		print(item)
-	
+
 	if len(xwing_set) == 1:
 		return xwing_set[0]
+	elif len(xwing_set) == 0:
+		print('return empty set')
+		return []
 	else:
 		print('more than one xwing set being returned?')
 		return xwing_set
