@@ -66,7 +66,10 @@ def check_xwing_rows(self):
 	xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 	# testing this part
-	self.clean_xwing_col(poss_val, xwing_set)
+	if len(xwing_set) == 0:
+		return None
+	else:
+		self.clean_xwing_col(poss_val, xwing_set)
 
 
 def check_xwing_row(self, lookup_dict):
