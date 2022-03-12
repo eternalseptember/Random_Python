@@ -51,19 +51,18 @@ def check_xwing_rows(self):
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
 	# can consolidate this into the eliminate entries list later
-	xwing_found = {}  # contains a list of four coords
 
-	"""
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
-		print('{0} - {1}'.format(poss_val, poss_coords))
-		self.check_xwing_is_same_cols(poss_val, poss_coords)
-	"""
+		xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
+
+	"""
 	# smaller test than the section commented out
 	poss_val = 7
 	poss_coords = xwing_candidates[poss_val]
 	xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
+	"""
 
 	# testing this part
 	if len(xwing_set) == 0:
@@ -132,17 +131,14 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 
 	# return a list of four coordinates in the xwing
-	print('xwing:', end=' ')
-	for item in xwing_set:
-		print(item)
-
 	if len(xwing_set) == 1:
+		print('xwing set: {0}\n'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		print('return empty set')
+		print('return empty set\n')
 		return []
 	else:
-		print('more than one xwing set being returned?')
+		print('more than one xwing set being returned?\n')
 		return xwing_set
 
 
