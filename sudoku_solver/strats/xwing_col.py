@@ -8,7 +8,8 @@
 
 
 def check_xwing_col(self):
-	return None
+	xwing_candidates = {}  # For all cols.
+	
 
 
 def check_xwing_is_same_rows(self, lookup_dict):

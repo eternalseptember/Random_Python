@@ -9,6 +9,7 @@
 
 def check_xwing(self):
 	self.check_xwing_rows()
+	# self.check_xwing_cols()
 
 
 
@@ -69,6 +70,7 @@ def check_xwing_rows(self):
 		return None
 	else:
 		self.clean_xwing_col(poss_val, xwing_set)
+
 
 
 def check_xwing_row(self, lookup_dict):

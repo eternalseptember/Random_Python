@@ -16,8 +16,8 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-sudoku.import_board("test_boards/xwing_1_col.txt")
-# sudoku.import_board("test_boards/xwing_2_row.txt")
+# sudoku.import_board("test_boards/xwing_1_col.txt")
+sudoku.import_board("test_boards/xwing_2_row.txt")
 sudoku.print_board()
 print('===============================')
 
