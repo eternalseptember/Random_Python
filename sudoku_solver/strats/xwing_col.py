@@ -11,13 +11,15 @@ def check_xwing_cols(self):
 	xwing_candidates = {}  # For all cols.
 
 
+
 def check_xwing_col(self):
 	xwing_cands_col = {}  # per col
 
 
 
 def check_xwing_is_same_rows(self, lookup_dict):
-	return None
+	xwing_set = []  # a list of a set
+
 
 
 def is_xwing_same_rows(self, coords_col_1, coords_col_2):
