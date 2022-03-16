@@ -23,7 +23,10 @@ def check_xwing_is_same_rows(self, lookup_dict):
 
 
 def is_xwing_same_rows(self, coords_col_1, coords_col_2):
-	return None
+	# coords_col_1 and coords_col_2 are lists.
+	coord_1, coord_2 = (coords_col_1)
+	coord_3, coord_4 = (coords_col_2)
+
 
 
 def clean_xwing_row(self, poss_val, coords_list):
