@@ -30,7 +30,11 @@ def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 
 
 def clean_xwing_row(self, poss_val, coords_list):
-	return None
+	# coords in coords_list is listed in a specific order
+	coord_1 = coords_list[0]
+	coord_2 = coords_list[1]
+	coord_3 = coords_list[2]
+	coord_4 = coords_list[3]
 
 
 
