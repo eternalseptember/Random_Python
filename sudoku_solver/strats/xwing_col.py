@@ -41,6 +41,9 @@ def clean_xwing_row(self, poss_val, coords_list):
 	row_3, col_3 = (coord_3)
 	row_4, col_4 = (coord_4)
 
+	# maybe???
+	clean_row_1 = row_1
+	clean_row_2 = row_2
 
 
 
