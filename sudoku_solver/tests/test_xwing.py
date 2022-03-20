@@ -1,11 +1,11 @@
 """
+	xwing_1_col test
 7 is locked to rows [1, 5] and cols [3, 7].
 7 as a possible value is removed from:
 (0, 3)
 (4, 3)
 (7, 3) and (7, 7)
 (8, 3) and (8, 7)
-
 """
 
 
@@ -16,8 +16,8 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-# sudoku.import_board("test_boards/xwing_1_col.txt")
-sudoku.import_board("test_boards/xwing_2_row.txt")
+sudoku.import_board("test_boards/xwing_1_col.txt")
+# sudoku.import_board("test_boards/xwing_2_row.txt")
 sudoku.print_board()
 print('===============================')
 

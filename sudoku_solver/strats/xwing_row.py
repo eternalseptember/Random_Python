@@ -27,7 +27,7 @@ def check_xwing_rows(self):
 				self.set_lookup_table(this_coord, val_lookup_row)
 
 		# End of row.
-		xwing_cands_row = self.check_xwing_row(val_lookup_row)
+		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
 				xwing_candidates[poss_val].extend(xwing_cands_row[poss_val])
@@ -73,6 +73,7 @@ def check_xwing_rows(self):
 
 
 
+"""
 def check_xwing_row(self, lookup_dict):
 	# First check this condition:
 	# Only two possible cells for a val in each of two different rows.
@@ -86,6 +87,25 @@ def check_xwing_row(self, lookup_dict):
 			xwing_cands_row[poss_val] = poss_locs
 
 	return xwing_cands_row
+"""
+
+
+
+def check_xwing_cands(self, lookup_dict):
+	# First check this condition:
+	# Only two possible cells for a val in each of two different rows or cols.
+	xwing_cands = {}  # per row or col
+
+	for poss_val in lookup_dict.keys():
+		poss_locs = lookup_dict[poss_val]
+
+		# Add to dict if there are only two possible locations.
+		if len(poss_locs) == 2:
+			xwing_cands[poss_val] = poss_locs
+
+	return xwing_cands
+
+
 
 
 
