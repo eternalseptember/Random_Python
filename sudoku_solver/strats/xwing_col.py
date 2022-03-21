@@ -12,10 +12,6 @@ def check_xwing_cols(self):
 
 
 
-def check_xwing_col(self):
-	xwing_cands_col = {}  # per col
-
-
 
 def check_xwing_is_same_rows(self, lookup_dict):
 	xwing_set = []  # a list of a set
@@ -26,6 +22,14 @@ def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 	# coords_col_1 and coords_col_2 are lists.
 	coord_1, coord_2 = (coords_col_1)
 	coord_3, coord_4 = (coords_col_2)
+
+	row_1, col_1 = (coord_1)
+	row_2, col_2 = (coord_2)
+	row_3, col_3 = (coord_3)
+	row_4, col_4 = (coord_4)
+
+
+
 
 
 

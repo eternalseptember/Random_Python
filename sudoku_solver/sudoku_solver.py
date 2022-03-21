@@ -37,8 +37,8 @@ class Sudoku_Solver():
 		check_xwing_cands, check_xwing_is_same_cols, is_xwing_same_cols,\
 		clean_xwing_col
 
-	from strats.xwing_col import check_xwing_cols, check_xwing_col, \
-		check_xwing_is_same_rows, is_xwing_same_rows, clean_xwing_row
+	from strats.xwing_col import check_xwing_cols, check_xwing_is_same_rows, \
+		is_xwing_same_rows, clean_xwing_row
 
 
 
