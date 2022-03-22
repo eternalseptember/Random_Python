@@ -28,6 +28,12 @@ def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 	row_3, col_3 = (coord_3)
 	row_4, col_4 = (coord_4)
 
+	# maybe???
+	if (row_1 == row_3) and (row_2 == row_4):
+		return True
+	else:
+		return False
+
 
 
 
