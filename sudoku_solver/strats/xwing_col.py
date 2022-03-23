@@ -10,6 +10,13 @@
 def check_xwing_cols(self):
 	xwing_candidates = {}  # For all cols.
 
+	# Fill a dict of all possible coord pairs.
+	for j in range(0, 8):  # j goes across
+
+		val_lookup_row = {}
+		for i in range(0, 8):  # i goes down
+			this_coord = (i, j)
+
 
 
 
