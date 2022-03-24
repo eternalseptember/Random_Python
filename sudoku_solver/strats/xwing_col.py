@@ -17,6 +17,10 @@ def check_xwing_cols(self):
 		for i in range(0, 8):  # i goes down
 			this_coord = (i, j)
 
+			if this_coord in self.possible_values:
+				self.set_lookup_table(this_coord, val_lookup_row)
+
+
 
 
 
