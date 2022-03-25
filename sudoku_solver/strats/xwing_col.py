@@ -13,12 +13,15 @@ def check_xwing_cols(self):
 	# Fill a dict of all possible coord pairs.
 	for j in range(0, 8):  # j goes across
 
-		val_lookup_row = {}
+		val_lookup_col = {}
 		for i in range(0, 8):  # i goes down
 			this_coord = (i, j)
 
 			if this_coord in self.possible_values:
-				self.set_lookup_table(this_coord, val_lookup_row)
+				self.set_lookup_table(this_coord, val_lookup_col)
+
+		# End of col.
+		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
 
 
 
