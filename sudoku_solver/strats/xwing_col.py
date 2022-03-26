@@ -22,6 +22,9 @@ def check_xwing_cols(self):
 
 		# End of col.
 		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
+		for poss_val in xwing_cands_row.keys():
+			print('do stuff')
+
 
 
 
