@@ -29,6 +29,10 @@ def check_xwing_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
+	# Eliminate entries that can't be part of an xwing.
+	remove_list = []  # store poss_vals
+
+
 
 
 
