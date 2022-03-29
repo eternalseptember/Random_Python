@@ -31,7 +31,8 @@ def check_xwing_cols(self):
 
 	# Eliminate entries that can't be part of an xwing.
 	remove_list = []  # store poss_vals
-
+	for poss_val in xwing_candidates.keys():
+		poss_coords = xwing_candidates[poss_val]
 
 
 
