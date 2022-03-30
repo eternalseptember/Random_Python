@@ -35,6 +35,9 @@ def check_xwing_rows(self):
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 
+
+
+	# move this part to a separate function
 	# Eliminate entries that can't be part of an xwing.
 	remove_list = []  # store poss_vals
 	for poss_val in xwing_candidates.keys():
@@ -65,29 +68,13 @@ def check_xwing_rows(self):
 	xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 	"""
 
-	# testing this part
+
 	if len(xwing_set) == 0:
 		return None
 	else:
 		self.clean_xwing_col(poss_val, xwing_set)
 
 
-
-"""
-def check_xwing_row(self, lookup_dict):
-	# First check this condition:
-	# Only two possible cells for a val in each of two different rows.
-	xwing_cands_row = {}  # per row
-
-	for poss_val in lookup_dict.keys():
-		poss_locs = lookup_dict[poss_val]
-
-		# Add to dict if there are only two possible locations.
-		if len(poss_locs) == 2:
-			xwing_cands_row[poss_val] = poss_locs
-
-	return xwing_cands_row
-"""
 
 
 
@@ -104,6 +91,16 @@ def check_xwing_cands(self, lookup_dict):
 			xwing_cands[poss_val] = poss_locs
 
 	return xwing_cands
+
+
+
+
+
+def clean_xwing_list(self, xwing_candidates):
+	return None
+
+
+
 
 
 
