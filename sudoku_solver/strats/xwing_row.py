@@ -35,21 +35,8 @@ def check_xwing_rows(self):
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 
-
-
-	# move this part to a separate function
 	# Eliminate entries that can't be part of an xwing.
-	remove_list = []  # store poss_vals
-	for poss_val in xwing_candidates.keys():
-		poss_coords = xwing_candidates[poss_val]
-
-		# Eliminate the vals with only two possible locations.
-		if len(poss_coords) < 3:
-			remove_list.append(poss_val)
-
-	# Remove entries that can't be part of an xwing.
-	for poss_val in remove_list:
-		xwing_candidates.pop(poss_val)
+	self.clean_xwing_list(xwing_candidates)
 
 
 	# Then check each dict entry to see if there's an xwing
@@ -78,6 +65,8 @@ def check_xwing_rows(self):
 
 
 
+
+
 def check_xwing_cands(self, lookup_dict):
 	# First check this condition:
 	# Only two possible cells for a val in each of two different rows or cols.
@@ -94,10 +83,20 @@ def check_xwing_cands(self, lookup_dict):
 
 
 
-
-
 def clean_xwing_list(self, xwing_candidates):
-	return None
+	# Eliminate entries that can't be part of an xwing.
+	remove_list = []  # store poss_vals
+	for poss_val in xwing_candidates.keys():
+		poss_coords = xwing_candidates[poss_val]
+
+		# Eliminate the vals with only two possible locations.
+		if len(poss_coords) < 3:
+			remove_list.append(poss_val)
+
+	# Remove entries that can't be part of an xwing.
+	for poss_val in remove_list:
+		xwing_candidates.pop(poss_val)
+
 
 
 
