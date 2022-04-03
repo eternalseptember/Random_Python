@@ -35,6 +35,7 @@ def check_xwing_cols(self):
 
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
+		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 
 
