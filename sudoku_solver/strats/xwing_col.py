@@ -40,7 +40,8 @@ def check_xwing_cols(self):
 
 	if len(xwing_set) == 0:
 		return None
-
+	else:
+		self.clean_xwing_row(poss_val, xwing_set)
 
 
 
