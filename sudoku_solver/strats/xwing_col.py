@@ -46,8 +46,16 @@ def check_xwing_cols(self):
 
 
 
-def check_xwing_is_same_rows(self, lookup_dict):
+def check_xwing_is_same_rows(self, poss_val, list_of_coords):
+	print('{0} - {1}\n'.format(poss_val, list_of_coords))
+
 	xwing_set = []  # a list of a set
+
+
+	for each_pair_1 in range(0, len(list_of_coords), 2):
+		print()
+
+
 
 
 
