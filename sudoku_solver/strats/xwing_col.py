@@ -52,8 +52,10 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 	xwing_set = []  # a list of a set
 
 
+	# is this right?
 	for each_pair_1 in range(0, len(list_of_coords), 2):
-		print()
+		col_1_coord_1 = list_of_coords[each_pair_1]
+		col_1_coord_2 = list_of_coords[each_pair_1 + 1]
 
 
 
