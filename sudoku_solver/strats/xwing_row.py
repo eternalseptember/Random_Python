@@ -8,8 +8,8 @@
 
 
 def check_xwing(self):
-	self.check_xwing_rows()
-	# self.check_xwing_cols()
+	# self.check_xwing_rows()
+	self.check_xwing_cols()
 
 
 
