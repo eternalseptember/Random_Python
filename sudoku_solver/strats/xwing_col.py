@@ -29,21 +29,24 @@ def check_xwing_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
-	# Eliminate entries that can't be part of an xwing.
-	self.clean_xwing_list(xwing_candidates)
-
-	"""
-	print('cleaned xwing list:')
+	print('xwing list:')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
+
+
+	"""
+	# Eliminate entries that can't be part of an xwing.
+	self.clean_xwing_list(xwing_candidates)
 	"""
 
+	"""
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 	print('xwing_set:', end=' ')
 	print(xwing_set)
+	"""
 
 	"""
 	if len(xwing_set) == 0:

@@ -7,8 +7,8 @@
 (7, 3) and (7, 7)
 (8, 3) and (8, 7)
 
-	xwing_1_row test
-2 is onlly in rows [4, 8] and cols [4, 7].
+	xwing_2_row test
+2 is only in rows [4, 8] and cols [4, 7].
 2 as a possible value is removed from:
 (4, 1); (4, 2); (4, 6); (4, 8)
 (8, 3) and (8, 8)
