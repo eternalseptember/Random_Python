@@ -11,15 +11,21 @@ def check_xwing_cols(self):
 	xwing_candidates = {}  # For all cols.
 
 	# Fill a dict of all possible coord pairs.
-	for j in range(0, 8):  # j goes across
+	for j in range(0, 9):  # j goes across
 
 		val_lookup_col = {}
-		for i in range(0, 8):  # i goes down
+		for i in range(0, 9):  # i goes down
 			this_coord = (i, j)
 
 			if this_coord in self.possible_values:
 				self.set_lookup_table(this_coord, val_lookup_col)
 
+		print('val lookup at the end of col {0}'.format(j))
+		for item in val_lookup_col.keys():
+			print('{0} - {1}'.format(item, val_lookup_col[item]))
+
+
+	"""
 		# End of col.
 		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
 		for poss_val in xwing_cands_col.keys():
@@ -32,23 +38,19 @@ def check_xwing_cols(self):
 	print('xwing list:')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-
+	"""
 
 	"""
 	# Eliminate entries that can't be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
-	"""
 
-	"""
+	# Then check each dict entry to see if there's an xwing
+	# within the list of coords.
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
-	print('xwing_set:', end=' ')
-	print(xwing_set)
-	"""
 
-	"""
 	if len(xwing_set) == 0:
 		return None
 	else:

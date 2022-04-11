@@ -17,10 +17,10 @@ def check_xwing_rows(self):
 	xwing_candidates = {}  # For all rows.
 
 	# Fill a dict of all possible coord pairs.
-	for i in range(0, 8):  # i goes down
+	for i in range(0, 9):  # i goes down
 
 		val_lookup_row = {}
-		for j in range(0, 8):  # j goes across
+		for j in range(0, 9):  # j goes across
 			this_coord = (i, j)
 
 			if this_coord in self.possible_values:
@@ -42,7 +42,6 @@ def check_xwing_rows(self):
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
 	# can consolidate this into the eliminate entries list later
-
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 		xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
