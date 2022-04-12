@@ -20,12 +20,6 @@ def check_xwing_cols(self):
 			if this_coord in self.possible_values:
 				self.set_lookup_table(this_coord, val_lookup_col)
 
-		print('val lookup at the end of col {0}'.format(j))
-		for item in val_lookup_col.keys():
-			print('{0} - {1}'.format(item, val_lookup_col[item]))
-
-
-	"""
 		# End of col.
 		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
 		for poss_val in xwing_cands_col.keys():
@@ -35,15 +29,16 @@ def check_xwing_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
-	print('xwing list:')
-	for poss_val in xwing_candidates.keys():
-		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-	"""
-
-	"""
 	# Eliminate entries that can't be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
 
+	print('after eliminating non-xwing')
+	for poss_val in xwing_candidates.keys():
+		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
+
+
+	# still an error below
+	"""
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
 	for poss_val in xwing_candidates.keys():
