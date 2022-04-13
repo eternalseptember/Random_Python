@@ -29,16 +29,22 @@ def check_xwing_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
-	# Eliminate entries that can't be part of an xwing.
-	self.clean_xwing_list(xwing_candidates)
-
-	print('after eliminating non-xwing')
+	print('before cleaning')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
 
 
-	# still an error below
-	"""
+
+	# Eliminate entries without enough possible candidates be part of an xwing.
+	self.clean_xwing_list(xwing_candidates)
+
+	print('after removing candidates without enough possible locations to be part of an xwing')
+	for poss_val in xwing_candidates.keys():
+		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
+
+
+
+
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
 	for poss_val in xwing_candidates.keys():
@@ -46,6 +52,8 @@ def check_xwing_cols(self):
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 
+
+	"""
 	if len(xwing_set) == 0:
 		return None
 	else:
@@ -60,11 +68,18 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 
 	xwing_set = []  # a list of a set
 
-
 	# is this right?
+	# check list_of_coords in groups of two
+	# need to account for four coords at a time
 	for each_pair_1 in range(0, len(list_of_coords), 2):
 		col_1_coord_1 = list_of_coords[each_pair_1]
 		col_1_coord_2 = list_of_coords[each_pair_1 + 1]
+		col_1_coords = (col_1_coord_1, col_1_coord_2)
+
+		print('\t{0} {1}:'.format(col_1_coord_1, col_1_coord_2), end=' ')
+
+
+
 
 
 

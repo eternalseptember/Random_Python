@@ -35,7 +35,7 @@ def check_xwing_rows(self):
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 
-	# Eliminate entries that can't be part of an xwing.
+	# Eliminate entries without enough possible candidates be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
 
 
@@ -83,16 +83,16 @@ def check_xwing_cands(self, lookup_dict):
 
 
 def clean_xwing_list(self, xwing_candidates):
-	# Eliminate entries that can't be part of an xwing.
+	# Remove unsolved candidates that can't be part of an xwing.
 	remove_list = []  # store poss_vals
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 
-		# Eliminate the vals with only two possible locations.
-		if len(poss_coords) < 3:
+		# xwing candidates need at least four possible locations.
+		if len(poss_coords) < 4:
 			remove_list.append(poss_val)
 
-	# Remove entries that can't be part of an xwing.
+	# Remove entries.
 	for poss_val in remove_list:
 		xwing_candidates.pop(poss_val)
 
