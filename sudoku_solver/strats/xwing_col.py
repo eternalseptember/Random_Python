@@ -81,7 +81,11 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 
 	# return a list of xwing
 	if len(xwing_set) == 1:
+		print('xwing set: {0}\n'.format(xwing_set[0]))
 		return xwing_set[0]
+	elif len(xwing_set) == 0:
+		print('return empty set\n')
+		return []
 
 
 
