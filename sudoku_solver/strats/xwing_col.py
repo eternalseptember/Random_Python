@@ -53,12 +53,12 @@ def check_xwing_cols(self):
 
 
 
-	"""
+
 	if len(xwing_set) == 0:
 		return None
 	else:
 		self.clean_xwing_row(poss_val, xwing_set)
-	"""
+
 
 
 
@@ -77,6 +77,16 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 		col_1_coords = (col_1_coord_1, col_1_coord_2)
 
 		print('\t{0} {1}:'.format(col_1_coord_1, col_1_coord_2), end=' ')
+
+		# check if there's more coords to compare to
+		if (each_pair_1 + 2) >= len(list_of_coords):
+			# print('no more coords to compare to')
+			print()
+			break
+
+
+
+
 
 
 	# return a list of xwing
