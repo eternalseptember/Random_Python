@@ -84,6 +84,10 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 			print()
 			break
 
+		# rest of coords to compare to
+		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
+		print('{0}'.format(xwing_row_2_cands))
+
 
 
 
