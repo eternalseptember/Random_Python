@@ -93,6 +93,8 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 			col_2_coord_2 = xwing_col_2_cands[each_pair_2 + 1]
 			col_2_coords = (col_2_coord_1, col_2_coord_2)
 
+			is_same_rows = self.is_xwing_same_rows(col_1_coords, col_2_coords)
+
 
 
 
