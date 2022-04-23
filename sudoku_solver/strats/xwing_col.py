@@ -28,21 +28,21 @@ def check_xwing_cols(self):
 			else:
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
-
+	"""
 	print('before cleaning')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-
+	"""
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
 
+	"""
 	print('after removing candidates without enough possible locations to be part of an xwing')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-
-
+	"""
 
 
 	# Then check each dict entry to see if there's an xwing
@@ -55,6 +55,7 @@ def check_xwing_cols(self):
 
 
 	if len(xwing_set) == 0:
+		print('xwing_set is empty')
 		return None
 	else:
 		self.clean_xwing_row(poss_val, xwing_set)
