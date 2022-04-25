@@ -28,21 +28,10 @@ def check_xwing_cols(self):
 			else:
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
-	"""
-	print('before cleaning')
-	for poss_val in xwing_candidates.keys():
-		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-	"""
-
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
 
-	"""
-	print('after removing candidates without enough possible locations to be part of an xwing')
-	for poss_val in xwing_candidates.keys():
-		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-	"""
 
 
 	# Then check each dict entry to see if there's an xwing
@@ -53,20 +42,19 @@ def check_xwing_cols(self):
 
 
 
-
-	if len(xwing_set) == 0:
-		print('xwing_set is empty')
-		return None
-	else:
-		print('xwing_set: {0}'.format(xwing_set))
-		self.clean_xwing_row(poss_val, xwing_set)
+		if len(xwing_set) == 0:
+			print('\txwing_set is empty')
+			return None
+		else:
+			print('\txwing_set: {0}'.format(xwing_set))
+			self.clean_xwing_row(poss_val, xwing_set)
 
 
 
 
 
 def check_xwing_is_same_rows(self, poss_val, list_of_coords):
-	print('{0} - {1}\n'.format(poss_val, list_of_coords))
+	print('{0} - {1}'.format(poss_val, list_of_coords))
 
 	xwing_set = []  # a list of a set
 
@@ -83,7 +71,6 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 		# check if there's more coords to compare to
 		if (each_pair_1 + 2) >= len(list_of_coords):
 			# print('no more coords to compare to')
-			print()
 			break
 
 		# rest of coords to compare to
@@ -108,13 +95,13 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 
 	# return a list of xwing
 	if len(xwing_set) == 1:
-		print('xwing set: {0}\n'.format(xwing_set[0]))
+		print('xwing set: {0}'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		print('return empty set\n')
+		print('return empty set')
 		return []
 	else:
-		print('more than one xwing set being returned?\n')
+		print('more than one xwing set being returned?')
 		return xwing_set
 
 
