@@ -47,18 +47,11 @@ def check_xwing_rows(self):
 		xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 
-	"""
-	# smaller test than the section commented out
-	poss_val = 7
-	poss_coords = xwing_candidates[poss_val]
-	xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
-	"""
-
-	# indented correctly???
-	if len(xwing_set) == 0:
-		return None
-	else:
-		self.clean_xwing_col(poss_val, xwing_set)
+		# indented correctly???
+		if len(xwing_set) == 0:
+			return None
+		else:
+			self.clean_xwing_col(poss_val, xwing_set)
 
 
 

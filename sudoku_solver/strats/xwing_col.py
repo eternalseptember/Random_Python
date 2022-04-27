@@ -29,11 +29,13 @@ def check_xwing_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
+	"""
 	# testing
 	print('unsolved vals and their poss locations')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
 	print()
+	"""
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
@@ -46,7 +48,6 @@ def check_xwing_cols(self):
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
-
 
 
 		if len(xwing_set) == 0:
