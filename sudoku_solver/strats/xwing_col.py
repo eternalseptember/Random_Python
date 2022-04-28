@@ -155,6 +155,8 @@ def clean_xwing_row(self, poss_val, coords_list):
 	# maybe???
 	clean_row_1 = row_1
 	clean_row_2 = row_2
+	coords_row_1 = [coord_1, coord_3]
+	coords_row_2 = [coord_2, coord_4]
 
 
 
