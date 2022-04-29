@@ -158,6 +158,9 @@ def clean_xwing_row(self, poss_val, coords_list):
 	coords_row_1 = [coord_1, coord_3]
 	coords_row_2 = [coord_2, coord_4]
 
+	for j in range(9):  # j goes across
+		clean_coord_1 = (clean_row_1, j)
+		clean_coord_2 = (clean_row_2, j)
 
 
 
