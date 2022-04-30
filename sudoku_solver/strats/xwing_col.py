@@ -162,6 +162,10 @@ def clean_xwing_row(self, poss_val, coords_list):
 		clean_coord_1 = (clean_row_1, j)
 		clean_coord_2 = (clean_row_2, j)
 
+		# remove poss_val in row outside of coords_row_1.
+		if clean_coord_1 not in coords_row_1:
+			self.possible_vals_check(clean_coord_1, poss_val)
+
 
 
 
