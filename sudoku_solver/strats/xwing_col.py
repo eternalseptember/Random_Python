@@ -166,6 +166,9 @@ def clean_xwing_row(self, poss_val, coords_list):
 		if clean_coord_1 not in coords_row_1:
 			self.possible_vals_check(clean_coord_1, poss_val)
 
+		if clean_coord_2 not in coords_row_2:
+			self.possible_vals_check(clean_coord_2, poss_val)
+
 
 
 
