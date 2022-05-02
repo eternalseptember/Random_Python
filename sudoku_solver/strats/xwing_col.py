@@ -29,17 +29,13 @@ def check_xwing_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
-	"""
-	# testing
-	print('unsolved vals and their poss locations')
-	for poss_val in xwing_candidates.keys():
-		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-	print()
-	"""
-
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
+
+
+	print('possible values before cleaning: ')
+	self.print_possible_values()
 
 
 
