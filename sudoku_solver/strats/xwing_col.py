@@ -113,8 +113,6 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 
 
 
-
-
 def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 	# coords_col_1 and coords_col_2 are lists.
 	coord_1, coord_2 = (coords_col_1)

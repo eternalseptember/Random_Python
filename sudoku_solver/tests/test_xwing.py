@@ -49,6 +49,13 @@ print('===============================')
 
 
 
+print('Check xwing again:')
+sudoku.check_xwing()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
 
 
 
