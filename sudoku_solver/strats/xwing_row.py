@@ -10,10 +10,14 @@
 def check_xwing(self):
 	# self.check_xwing_rows()
 	self.check_xwing_cols()
+	print()
+	self.check_xwing_rows()
 
 
 
 def check_xwing_rows(self):
+	print('check xwing rows')
+
 	xwing_candidates = {}  # For all rows.
 
 	# Fill a dict of all possible coord pairs.

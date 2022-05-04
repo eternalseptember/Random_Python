@@ -15,8 +15,8 @@
 
 3 is only in rows [4, 8] and cols [1, 7].
 3 as a possible value is removed from:
-	(4, 0); (4, 2); (4, 6); (4, 8)
-	(8, 2); (8, 3); (8, 5); (8, 8)
+	(row 4; cols 0, 2, 6, 8)
+	(row 8; cols 2, 3, 5, 8)
 """
 
 
@@ -48,13 +48,13 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-
+"""
 print('Check xwing again:')
 sudoku.check_xwing()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-
+"""
 
 
 

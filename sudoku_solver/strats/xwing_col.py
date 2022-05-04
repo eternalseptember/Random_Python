@@ -8,6 +8,8 @@
 
 
 def check_xwing_cols(self):
+	print('check xwing cols')
+
 	xwing_candidates = {}  # For all cols.
 
 	# Fill a dict of all possible coord pairs.
@@ -34,9 +36,10 @@ def check_xwing_cols(self):
 	self.clean_xwing_list(xwing_candidates)
 
 
+	"""
 	print('possible values before cleaning: ')
 	self.print_possible_values()
-
+	"""
 
 
 	# Then check each dict entry to see if there's an xwing
