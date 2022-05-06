@@ -8,17 +8,13 @@
 
 
 def check_xwing(self):
-	# self.check_xwing_rows()
-	self.check_xwing_cols()
-	print()
-	self.check_xwing_rows()
-	print()
-	self.check_xwing_cols()
+	self.check_xwing_by_rows()
+	# self.check_xwing_by_cols()
 
 
 
-def check_xwing_rows(self):
-	print('check xwing rows')
+def check_xwing_by_rows(self):
+	print('check xwing by rows')
 
 	xwing_candidates = {}  # For all rows.
 
@@ -34,6 +30,7 @@ def check_xwing_rows(self):
 
 		# End of row.
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
+
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
 				xwing_candidates[poss_val].extend(xwing_cands_row[poss_val])
@@ -54,10 +51,10 @@ def check_xwing_rows(self):
 
 
 		if len(xwing_set) == 0:
-			print('\txwing_set is empty')
+			# print('\txwing_set is empty')
 			return None
 		else:
-			print('\txwing_set: {0}'.format(xwing_set))
+			# print('\txwing_set: {0}'.format(xwing_set))
 			self.clean_xwing_col(poss_val, xwing_set)
 
 

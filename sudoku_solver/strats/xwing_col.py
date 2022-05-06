@@ -7,8 +7,8 @@
 
 
 
-def check_xwing_cols(self):
-	print('check xwing cols')
+def check_xwing_by_cols(self):
+	print('check xwing by cols')
 
 	xwing_candidates = {}  # For all cols.
 
