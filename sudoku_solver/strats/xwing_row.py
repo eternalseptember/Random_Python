@@ -29,6 +29,12 @@ def check_xwing_by_rows(self):
 				self.set_lookup_table(this_coord, val_lookup_row)
 
 		# End of row.
+
+		print('lookup table at the end of row {0}'.format(i))
+		for poss_val in val_lookup_row.keys():
+			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
+
+
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
 
 		for poss_val in xwing_cands_row.keys():
