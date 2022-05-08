@@ -30,6 +30,7 @@ def check_xwing_by_rows(self):
 
 		# End of row.
 
+		# testing
 		print('lookup table at the end of row {0}'.format(i))
 		for poss_val in val_lookup_row.keys():
 			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
@@ -46,6 +47,13 @@ def check_xwing_by_rows(self):
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
+
+
+	# testing
+	print()
+	print('after removing entries that cannot be part of an xwing')
+	for poss_val in xwing_candidates.keys():
+		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
 
 
 	# Then check each dict entry to see if there's an xwing
@@ -70,7 +78,7 @@ def check_xwing_by_rows(self):
 
 
 def check_xwing_cands(self, lookup_dict):
-	# First check this condition:
+	# Check this condition:
 	# Only two possible cells for a val in each of two different rows or cols.
 	xwing_cands = {}  # per row or col
 
