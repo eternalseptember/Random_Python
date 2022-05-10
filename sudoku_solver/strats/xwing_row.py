@@ -17,6 +17,7 @@ def check_xwing_by_rows(self):
 	print('check xwing by rows')
 
 	xwing_candidates = {}  # For all rows.
+	xwing_clean_list = {}
 
 	# Fill a dict of all possible coord pairs.
 	for i in range(0, 9):  # i goes down
@@ -70,12 +71,17 @@ def check_xwing_by_rows(self):
 		xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 
-		if len(xwing_set) == 0:
-			# print('\txwing_set is empty')
-			return None
+		if len(xwing_set) > 0:
+			print('\txwing_set: {0}'.format(xwing_set))
+			xwing_clean_list[poss_val] = xwing_set
 		else:
-			# print('\txwing_set: {0}'.format(xwing_set))
-			self.clean_xwing_col(poss_val, xwing_set)
+			print('\txwing_set is empty')
+
+
+	print('cleaning poss vals lists after discovering xwing')	
+	for poss_val in xwing_clean_list.keys():
+		xwing_coords = xwing_clean_list[poss_val]
+		self.clean_xwing_col(poss_val, xwing_coords)
 
 
 
@@ -133,17 +139,17 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
 		row_1_coords = (row_1_coord_1, row_1_coord_2)
 
-		print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
+		# print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
 		# check if there's more coords to compare to
 		if (each_pair_1 + 2) >= len(list_of_coords):
-			print('no more coords to compare to')
+			# print('no more coords to compare to')
 			break
 
 
 		# rest of coords to compare to
 		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
-		print('{0}'.format(xwing_row_2_cands))
+		# print('{0}'.format(xwing_row_2_cands))
 
 		for each_pair_2 in range(0, len(xwing_row_2_cands), 2):
 			row_2_coord_1 = xwing_row_2_cands[each_pair_2]
@@ -160,13 +166,13 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 	# return a list of four coordinates in the xwing
 	if len(xwing_set) == 1:
-		print('xwing set: {0}'.format(xwing_set[0]))
+		# print('xwing set: {0}'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		print('return empty set')
+		# print('return empty set')
 		return []
 	else:
-		print('more than one xwing set being returned?')
+		print('error: more than one xwing set being returned?')
 		return xwing_set
 
 
