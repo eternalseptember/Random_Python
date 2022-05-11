@@ -49,12 +49,11 @@ def check_xwing_by_cols(self):
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 
-		if len(xwing_set) == 0:
-			print('\txwing_set is empty')
-			return None
-		else:
+		if len(xwing_set) > 0:
 			print('\txwing_set: {0}'.format(xwing_set))
-			self.clean_xwing_row(poss_val, xwing_set)
+			xwing_clean_list[poss_val] = xwing_set
+		else:
+			print('\txwing_set is empty')
 
 
 
