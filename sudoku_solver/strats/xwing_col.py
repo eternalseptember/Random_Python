@@ -11,6 +11,7 @@ def check_xwing_by_cols(self):
 	print('check xwing by cols')
 
 	xwing_candidates = {}  # For all cols.
+	xwing_clean_list = {}
 
 	# Fill a dict of all possible coord pairs.
 	for j in range(0, 9):  # j goes across
