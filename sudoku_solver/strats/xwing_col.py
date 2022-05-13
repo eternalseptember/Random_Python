@@ -57,6 +57,12 @@ def check_xwing_by_cols(self):
 			print('\txwing_set is empty')
 
 
+	print('cleaning poss vals lists after discovering xwing')	
+	for poss_val in xwing_clean_list.keys():
+		xwing_coords = xwing_clean_list[poss_val]
+		self.clean_xwing_row(poss_val, xwing_coords)
+
+
 
 
 
