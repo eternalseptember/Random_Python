@@ -11,6 +11,9 @@ def check_xwing(self):
 	# self.check_xwing_by_rows()
 	self.check_xwing_by_cols()
 
+	# testing for xwing_col_test_1
+	self.check_xwing_by_cols()
+
 
 
 def check_xwing_by_rows(self):
