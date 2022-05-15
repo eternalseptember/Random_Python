@@ -11,8 +11,11 @@ def check_xwing(self):
 	# self.check_xwing_by_rows()
 	self.check_xwing_by_cols()
 
-	# testing for xwing_col_test_1
+	# testing
+	print()
 	self.check_xwing_by_cols()
+	# self.check_xwing_by_rows()
+
 
 
 
@@ -55,11 +58,13 @@ def check_xwing_by_rows(self):
 
 
 	# testing
+	"""
 	print()
 	print('after removing entries that cannot be part of an xwing')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
 	print()
+	"""
 
 
 	# Then check each dict entry to see if there's an xwing
@@ -85,46 +90,6 @@ def check_xwing_by_rows(self):
 	for poss_val in xwing_clean_list.keys():
 		xwing_coords = xwing_clean_list[poss_val]
 		self.clean_xwing_col(poss_val, xwing_coords)
-
-
-
-
-
-
-
-def check_xwing_cands(self, lookup_dict):
-	# Check this condition:
-	# Only two possible cells for a val in each of two different rows or cols.
-	xwing_cands = {}  # per row or col
-
-	for poss_val in lookup_dict.keys():
-		poss_locs = lookup_dict[poss_val]
-
-		# Add to dict if there are only two possible locations.
-		if len(poss_locs) == 2:
-			xwing_cands[poss_val] = poss_locs
-
-	return xwing_cands
-
-
-
-def clean_xwing_list(self, xwing_candidates):
-	# Remove unsolved candidates that can't be part of an xwing.
-	remove_list = []  # store poss_vals
-	for poss_val in xwing_candidates.keys():
-		poss_coords = xwing_candidates[poss_val]
-
-		# xwing candidates need at least four possible locations.
-		if len(poss_coords) < 4:
-			remove_list.append(poss_val)
-
-	# Remove entries.
-	for poss_val in remove_list:
-		xwing_candidates.pop(poss_val)
-
-
-
-
 
 
 
@@ -164,7 +129,6 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 			if is_same_cols:
 				xwing_coords = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
 				xwing_set.append(xwing_coords)
-
 
 
 	# return a list of four coordinates in the xwing
@@ -227,13 +191,38 @@ def clean_xwing_col(self, poss_val, coords_list):
 
 
 
+# #######################################
+# More universal functions
+# #######################################
+def check_xwing_cands(self, lookup_dict):
+	# Check this condition:
+	# Only two possible cells for a val in each of two different rows or cols.
+	xwing_cands = {}  # per row or col
+
+	for poss_val in lookup_dict.keys():
+		poss_locs = lookup_dict[poss_val]
+
+		# Add to dict if there are only two possible locations.
+		if len(poss_locs) == 2:
+			xwing_cands[poss_val] = poss_locs
+
+	return xwing_cands
 
 
 
+def clean_xwing_list(self, xwing_candidates):
+	# Remove unsolved candidates that can't be part of an xwing.
+	remove_list = []  # store poss_vals
+	for poss_val in xwing_candidates.keys():
+		poss_coords = xwing_candidates[poss_val]
 
+		# xwing candidates need at least four possible locations.
+		if len(poss_coords) < 4:
+			remove_list.append(poss_val)
 
-
-
+	# Remove entries.
+	for poss_val in remove_list:
+		xwing_candidates.pop(poss_val)
 
 
 

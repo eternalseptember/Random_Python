@@ -32,14 +32,25 @@ def check_xwing_by_cols(self):
 				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
 
 
+	# testing
+	print()
+	print('poss val dict before cleanup')
+	for poss_val in xwing_candidates.keys():
+		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
+	print()
+
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
 	self.clean_xwing_list(xwing_candidates)
 
 
+	# testing
 	"""
-	print('possible values before cleaning: ')
-	self.print_possible_values()
+	print()
+	print('after removing entries that cannot be part of an xwing')
+	for poss_val in xwing_candidates.keys():
+		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
+	print()
 	"""
 
 
@@ -61,6 +72,7 @@ def check_xwing_by_cols(self):
 	for poss_val in xwing_clean_list.keys():
 		xwing_coords = xwing_clean_list[poss_val]
 		self.clean_xwing_row(poss_val, xwing_coords)
+
 
 
 
@@ -102,22 +114,16 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 				xwing_set.append(xwing_coords)
 
 
-
-
-
-
 	# return a list of xwing
 	if len(xwing_set) == 1:
-		print('xwing set: {0}'.format(xwing_set[0]))
+		# print('xwing set: {0}'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		print('return empty set')
+		# print('return empty set')
 		return []
 	else:
 		print('more than one xwing set being returned?')
 		return xwing_set
-
-
 
 
 
@@ -137,9 +143,6 @@ def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 		return True
 	else:
 		return False
-
-
-
 
 
 
@@ -171,7 +174,6 @@ def clean_xwing_row(self, poss_val, coords_list):
 
 		if clean_coord_2 not in coords_row_2:
 			self.possible_vals_check(clean_coord_2, poss_val)
-
 
 
 
