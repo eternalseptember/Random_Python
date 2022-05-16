@@ -8,7 +8,7 @@
 
 
 def check_xwing_by_cols(self):
-	print('check xwing by cols')
+	print('\t\tcheck xwing by cols')
 
 	xwing_candidates = {}  # For all cols.
 	xwing_clean_list = {}
@@ -24,6 +24,9 @@ def check_xwing_by_cols(self):
 				self.set_lookup_table(this_coord, val_lookup_col)
 
 		# End of col.
+		# testing
+		print('checking xwing candidates')
+
 		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
 		for poss_val in xwing_cands_col.keys():
 			if poss_val in xwing_candidates:
