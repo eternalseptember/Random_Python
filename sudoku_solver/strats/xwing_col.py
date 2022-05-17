@@ -25,7 +25,9 @@ def check_xwing_by_cols(self):
 
 		# End of col.
 		# testing
-		print('checking xwing candidates')
+		print('val lookup table for col {0}'.format(j))
+		for item in val_lookup_col.keys():
+			print('{0} - {1}'.format(item, val_lookup_col[item]))
 
 		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
 		for poss_val in xwing_cands_col.keys():
