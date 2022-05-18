@@ -11,17 +11,12 @@ def check_xwing(self):
 	# self.check_xwing_by_rows()
 	self.check_xwing_by_cols()
 
-	# testing
-	print()
-	self.check_xwing_by_cols()
-	# self.check_xwing_by_rows()
+
 
 
 
 
 def check_xwing_by_rows(self):
-	print('check xwing by rows')
-
 	xwing_candidates = {}  # For all rows.
 	xwing_clean_list = {}
 

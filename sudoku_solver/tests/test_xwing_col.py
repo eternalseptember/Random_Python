@@ -7,6 +7,7 @@
 	(7, 3) and (7, 7)
 	(8, 3) and (8, 7)
 
+
 	xwing_col_test_1:
 2 is only in rows [4, 8] and cols [4, 7].
 2 as a possible value is removed from:
@@ -48,13 +49,19 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-"""
+print('Check for unique possibilities:')
+sudoku.check_all_unique()
+sudoku.print_board()
+# sudoku.print_possible_values()
+print('===============================')
+
+
 print('Check xwing again:')
 sudoku.check_xwing()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-"""
+
 
 
 

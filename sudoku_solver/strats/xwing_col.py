@@ -8,8 +8,6 @@
 
 
 def check_xwing_by_cols(self):
-	print('\t\tcheck xwing by cols')
-
 	xwing_candidates = {}  # For all cols.
 	xwing_clean_list = {}
 
@@ -61,6 +59,7 @@ def check_xwing_by_cols(self):
 
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
+	print('checking each dict entry to see if there is an xwing')
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
