@@ -7,6 +7,8 @@
 	(7, 3) and (7, 7)
 	(8, 3) and (8, 7)
 
+Separate test file for col test because extra steps are needed to find the
+second xwing.
 
 	xwing_col_test_1:
 2 is only in rows [4, 8] and cols [4, 7].

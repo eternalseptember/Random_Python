@@ -8,8 +8,8 @@
 
 
 def check_xwing(self):
-	# self.check_xwing_by_rows()
-	self.check_xwing_by_cols()
+	self.check_xwing_by_rows()
+	# self.check_xwing_by_cols()
 
 
 
@@ -31,14 +31,6 @@ def check_xwing_by_rows(self):
 				self.set_lookup_table(this_coord, val_lookup_row)
 
 		# End of row.
-
-		# testing
-		"""
-		print('lookup table at the end of row {0}'.format(i))
-		for poss_val in val_lookup_row.keys():
-			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
-		"""
-
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
 
 		for poss_val in xwing_cands_row.keys():
@@ -52,40 +44,18 @@ def check_xwing_by_rows(self):
 	self.clean_xwing_list(xwing_candidates)
 
 
-	# testing
-	"""
-	print()
-	print('after removing entries that cannot be part of an xwing')
-	for poss_val in xwing_candidates.keys():
-		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-	print()
-	"""
-
-
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
-	# can consolidate this into the eliminate entries list later
+	# Can consolidate this into the eliminate entries list later.
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
-
-
-		print('checking if xwing is in same cols:')
-		print('{0} - {1}'.format(poss_val, poss_coords))
 		xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
-
 		if len(xwing_set) > 0:
-			print('\txwing_set: {0}'.format(xwing_set))
+			# print('\txwing_set: {0}'.format(xwing_set))
 			xwing_clean_list[poss_val] = xwing_set
-		else:
-			print('\txwing_set is empty')
-
-
-	print('cleaning poss vals lists after discovering xwing')	
-	for poss_val in xwing_clean_list.keys():
-		xwing_coords = xwing_clean_list[poss_val]
-		self.clean_xwing_col(poss_val, xwing_coords)
-
+		# else:
+			# print('\txwing_set is empty')
 
 
 
@@ -94,8 +64,8 @@ def check_xwing_by_rows(self):
 def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 	xwing_set = []  # a list of a set
 
-	# check list_of_coords in groups of two
-	# need to account for four coords at a time
+	# Check list_of_coords in groups of two.
+	# Need to account for four coords at a time.
 	for each_pair_1 in range(0, len(list_of_coords), 2):
 		# reference coordinates
 		row_1_coord_1 = list_of_coords[each_pair_1]
@@ -104,13 +74,13 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 
 		# print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
-		# check if there's more coords to compare to
+		# Check if there's more coords to compare to.
 		if (each_pair_1 + 2) >= len(list_of_coords):
 			# print('no more coords to compare to')
 			break
 
 
-		# rest of coords to compare to
+		# Rest of coords to compare to.
 		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
 		# print('{0}'.format(xwing_row_2_cands))
 
@@ -126,7 +96,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 				xwing_set.append(xwing_coords)
 
 
-	# return a list of four coordinates in the xwing
+	# Return a list of four coordinates in the xwing.
 	if len(xwing_set) == 1:
 		# print('xwing set: {0}'.format(xwing_set[0]))
 		return xwing_set[0]
@@ -157,7 +127,7 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 
 
 def clean_xwing_col(self, poss_val, coords_list):
-	# coords in coords_list is listed in a specific order
+	# Coords in coords_list is listed in a specific order
 	coord_1 = coords_list[0]
 	coord_2 = coords_list[1]
 	coord_3 = coords_list[2]
@@ -177,7 +147,7 @@ def clean_xwing_col(self, poss_val, coords_list):
 		clean_coord_1 = (i, clean_col_1)
 		clean_coord_2 = (i, clean_col_2)
 
-		# remove poss_val in col outside of coords_col_1.
+		# Remove poss_val in col outside of coords_col_1.
 		if clean_coord_1 not in coords_col_1:
 			self.possible_vals_check(clean_coord_1, poss_val)
 
