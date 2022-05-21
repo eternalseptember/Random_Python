@@ -11,8 +11,8 @@ def check_xwing(self):
 	print('check xwing by rows')
 	self.check_xwing_by_rows()
 
-	print('check xwing by cols')
-	self.check_xwing_by_cols()
+	# print('check xwing by cols')
+	# self.check_xwing_by_cols()
 
 
 
@@ -34,6 +34,13 @@ def check_xwing_by_rows(self):
 				self.set_lookup_table(this_coord, val_lookup_row)
 
 		# End of row.
+
+		# testing
+		print('poss val table at end of row {0}'.format(i))
+		for poss_val in val_lookup_row.keys():
+			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
+
+
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
 
 		for poss_val in xwing_cands_row.keys():
