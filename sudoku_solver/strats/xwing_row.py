@@ -43,11 +43,21 @@ def check_xwing_by_rows(self):
 
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
 
+		# testing
+		print('after checking xwing condition:')
+		for poss_val in xwing_cands_row.keys():
+			print('{0} - {1}'.format(poss_val, xwing_cands_row[poss_val]))
+
+
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
 				xwing_candidates[poss_val].extend(xwing_cands_row[poss_val])
 			else:
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
+
+
+		# testing
+		print()
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
