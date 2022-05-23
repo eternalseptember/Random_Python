@@ -35,10 +35,11 @@ def check_xwing_by_rows(self):
 
 		# End of row.
 
-		# testing
+		# testings
 		print('poss val table at end of row {0}'.format(i))
 		for poss_val in val_lookup_row.keys():
 			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
+		print()
 
 
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
@@ -47,6 +48,7 @@ def check_xwing_by_rows(self):
 		print('after checking xwing condition:')
 		for poss_val in xwing_cands_row.keys():
 			print('{0} - {1}'.format(poss_val, xwing_cands_row[poss_val]))
+		print()
 
 
 		for poss_val in xwing_cands_row.keys():
@@ -56,8 +58,11 @@ def check_xwing_by_rows(self):
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
 
 
-		# testing
-		print()
+	# testing
+	print('xwing_candidates list before cleaning')
+	for poss_val in xwing_candidates.keys():
+		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
+	print()
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
@@ -69,7 +74,7 @@ def check_xwing_by_rows(self):
 	# Can consolidate this into the eliminate entries list later.
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
-		xwing_set = self.check_xwing_is_same_cols(poss_val, poss_coords)
+		xwing_set = self.check_xwing_is_same_cols(poss_coords)
 
 		if len(xwing_set) > 0:
 			# print('\txwing_set: {0}'.format(xwing_set))
@@ -81,7 +86,7 @@ def check_xwing_by_rows(self):
 
 
 
-def check_xwing_is_same_cols(self, poss_val, list_of_coords):
+def check_xwing_is_same_cols(self, list_of_coords):
 	xwing_set = []  # a list of a set
 
 	# Check list_of_coords in groups of two.
