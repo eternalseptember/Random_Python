@@ -39,7 +39,6 @@ def check_xwing_by_rows(self):
 		print('poss val table at end of row {0}'.format(i))
 		for poss_val in val_lookup_row.keys():
 			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
-		print()
 
 
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
@@ -87,6 +86,11 @@ def check_xwing_by_rows(self):
 
 
 def check_xwing_is_same_cols(self, list_of_coords):
+	# testing
+	print('checking for same cols', end=' ')
+	print(list_of_coords)
+
+
 	xwing_set = []  # a list of a set
 
 	# Check list_of_coords in groups of two.
@@ -97,17 +101,17 @@ def check_xwing_is_same_cols(self, list_of_coords):
 		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
 		row_1_coords = (row_1_coord_1, row_1_coord_2)
 
-		# print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
+		print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
 		# Check if there's more coords to compare to.
 		if (each_pair_1 + 2) >= len(list_of_coords):
-			# print('no more coords to compare to')
+			print('no more coords to compare to')
 			break
 
 
 		# Rest of coords to compare to.
 		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
-		# print('{0}'.format(xwing_row_2_cands))
+		print('{0}'.format(xwing_row_2_cands))
 
 		for each_pair_2 in range(0, len(xwing_row_2_cands), 2):
 			row_2_coord_1 = xwing_row_2_cands[each_pair_2]
@@ -123,13 +127,13 @@ def check_xwing_is_same_cols(self, list_of_coords):
 
 	# Return a list of four coordinates in the xwing.
 	if len(xwing_set) == 1:
-		# print('xwing set: {0}'.format(xwing_set[0]))
+		print('xwing set: {0}\n'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		# print('return empty set')
+		print('return empty set\n')
 		return []
 	else:
-		print('error: more than one xwing set being returned?')
+		print('error: more than one xwing set being returned?\n')
 		return xwing_set
 
 
