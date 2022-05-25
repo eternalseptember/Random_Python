@@ -35,20 +35,22 @@ def check_xwing_by_rows(self):
 
 		# End of row.
 
-		# testings
+		# testing
+		"""
 		print('poss val table at end of row {0}'.format(i))
 		for poss_val in val_lookup_row.keys():
 			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
-
+		"""
 
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
 
 		# testing
+		"""
 		print('after checking xwing condition:')
 		for poss_val in xwing_cands_row.keys():
 			print('{0} - {1}'.format(poss_val, xwing_cands_row[poss_val]))
 		print()
-
+		"""
 
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
@@ -58,10 +60,12 @@ def check_xwing_by_rows(self):
 
 
 	# testing
+	"""
 	print('xwing_candidates list before cleaning')
 	for poss_val in xwing_candidates.keys():
 		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
 	print()
+	"""
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
@@ -76,10 +80,13 @@ def check_xwing_by_rows(self):
 		xwing_set = self.check_xwing_is_same_cols(poss_coords)
 
 		if len(xwing_set) > 0:
-			# print('\txwing_set: {0}'.format(xwing_set))
+			print('xwing_set: {0}'.format(xwing_set))
 			xwing_clean_list[poss_val] = xwing_set
-		# else:
-			# print('\txwing_set is empty')
+		else:
+			print('xwing_set is empty')
+
+		# testing
+		print()
 
 
 
@@ -87,8 +94,8 @@ def check_xwing_by_rows(self):
 
 def check_xwing_is_same_cols(self, list_of_coords):
 	# testing
-	print('checking for same cols', end=' ')
-	print(list_of_coords)
+	# print('checking for same cols', end=' ')
+	# print(list_of_coords)
 
 
 	xwing_set = []  # a list of a set
@@ -101,17 +108,17 @@ def check_xwing_is_same_cols(self, list_of_coords):
 		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
 		row_1_coords = (row_1_coord_1, row_1_coord_2)
 
-		print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
+		# print('\t{0} {1}:'.format(row_1_coord_1, row_1_coord_2), end=' ')
 
 		# Check if there's more coords to compare to.
 		if (each_pair_1 + 2) >= len(list_of_coords):
-			print('no more coords to compare to')
+			# print('no more coords to compare to')
 			break
 
 
 		# Rest of coords to compare to.
 		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
-		print('{0}'.format(xwing_row_2_cands))
+		# print('{0}'.format(xwing_row_2_cands))
 
 		for each_pair_2 in range(0, len(xwing_row_2_cands), 2):
 			row_2_coord_1 = xwing_row_2_cands[each_pair_2]
@@ -127,13 +134,13 @@ def check_xwing_is_same_cols(self, list_of_coords):
 
 	# Return a list of four coordinates in the xwing.
 	if len(xwing_set) == 1:
-		print('xwing set: {0}\n'.format(xwing_set[0]))
+		print('xwing set: {0}'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		print('return empty set\n')
+		print('return empty set')
 		return []
 	else:
-		print('error: more than one xwing set being returned?\n')
+		print('error: more than one xwing set being returned?')
 		return xwing_set
 
 
