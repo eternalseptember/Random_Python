@@ -80,13 +80,13 @@ def check_xwing_by_rows(self):
 		xwing_set = self.check_xwing_is_same_cols(poss_coords)
 
 		if len(xwing_set) > 0:
-			print('xwing_set: {0}'.format(xwing_set))
+			print('xwing_set: {0} - {1}'.format(poss_val, xwing_set))
 			xwing_clean_list[poss_val] = xwing_set
 		else:
 			print('xwing_set is empty')
 
 		# testing
-		print()
+		# print()
 
 
 
@@ -134,10 +134,10 @@ def check_xwing_is_same_cols(self, list_of_coords):
 
 	# Return a list of four coordinates in the xwing.
 	if len(xwing_set) == 1:
-		print('xwing set: {0}'.format(xwing_set[0]))
+		# print('xwing set: {0}'.format(xwing_set[0]))
 		return xwing_set[0]
 	elif len(xwing_set) == 0:
-		print('return empty set')
+		# print('return empty set')
 		return []
 	else:
 		print('error: more than one xwing set being returned?')
