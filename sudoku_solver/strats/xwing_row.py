@@ -89,6 +89,12 @@ def check_xwing_by_rows(self):
 		# print()
 
 
+	# clean xwing
+	for poss_val in xwing_clean_list.keys():
+		poss_coords = xwing_clean_list[poss_val]
+		self.clean_xwing_col(poss_val, poss_coords)
+
+
 
 
 
