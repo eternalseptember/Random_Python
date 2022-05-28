@@ -34,38 +34,13 @@ def check_xwing_by_rows(self):
 				self.set_lookup_table(this_coord, val_lookup_row)
 
 		# End of row.
-
-		# testing
-		"""
-		print('poss val table at end of row {0}'.format(i))
-		for poss_val in val_lookup_row.keys():
-			print('{0} - {1}'.format(poss_val, val_lookup_row[poss_val]))
-		"""
-
 		xwing_cands_row = self.check_xwing_cands(val_lookup_row)
-
-		# testing
-		"""
-		print('after checking xwing condition:')
-		for poss_val in xwing_cands_row.keys():
-			print('{0} - {1}'.format(poss_val, xwing_cands_row[poss_val]))
-		print()
-		"""
 
 		for poss_val in xwing_cands_row.keys():
 			if poss_val in xwing_candidates:
 				xwing_candidates[poss_val].extend(xwing_cands_row[poss_val])
 			else:
 				xwing_candidates[poss_val] = xwing_cands_row[poss_val]
-
-
-	# testing
-	"""
-	print('xwing_candidates list before cleaning')
-	for poss_val in xwing_candidates.keys():
-		print('{0} - {1}'.format(poss_val, xwing_candidates[poss_val]))
-	print()
-	"""
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
@@ -85,9 +60,6 @@ def check_xwing_by_rows(self):
 		else:
 			print('xwing_set is empty')
 
-		# testing
-		# print()
-
 
 	# clean xwing
 	for poss_val in xwing_clean_list.keys():
@@ -99,11 +71,6 @@ def check_xwing_by_rows(self):
 
 
 def check_xwing_is_same_cols(self, list_of_coords):
-	# testing
-	# print('checking for same cols', end=' ')
-	# print(list_of_coords)
-
-
 	xwing_set = []  # a list of a set
 
 	# Check list_of_coords in groups of two.
