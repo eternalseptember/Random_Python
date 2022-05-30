@@ -43,10 +43,10 @@ def check_xwing_by_cols(self):
 
 
 		if len(xwing_set) > 0:
-			# print('\txwing_set: {0}'.format(xwing_set))
+			print('xwing_set: {0} - {1}'.format(poss_val, xwing_set))
 			xwing_clean_list[poss_val] = xwing_set
-		# else:
-			# print('\txwing_set is empty')
+		else:
+			print('xwing_set is empty')
 
 
 		# clean xwing

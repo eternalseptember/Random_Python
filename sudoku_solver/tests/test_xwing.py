@@ -10,8 +10,7 @@
 	xwing_test_2:
 8 is locked to rows [1, 3] and cols [4, 6].
 8 as a possible value is removed from:
-
-
+	(2, 6) and (4, 4)
 """
 
 
@@ -41,6 +40,14 @@ sudoku.check_xwing()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+
+
+print('Check xwing again:')
+sudoku.check_xwing()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
 
 
 
