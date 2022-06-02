@@ -56,6 +56,8 @@ def check_xwing_by_cols(self):
 
 		if len(xwing_set) > 0:
 			print('xwing_set')
+		else:
+			print('xwing_set is empty')
 
 
 
