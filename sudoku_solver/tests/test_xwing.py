@@ -7,10 +7,15 @@
     (5, 1) and (5, 4)
 
 
-	xwing_test_2:
+	xwing_test_2: multiple xwing sets
 8 is locked to rows [1, 3] and cols [4, 6].
 8 as a possible value is removed from:
 	(2, 6) and (4, 4)
+
+
+8 is locked to rows [2, 4] and cols [3, 7].
+8 as a possible value is removed from:
+
 """
 
 
