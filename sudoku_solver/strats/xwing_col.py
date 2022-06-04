@@ -9,7 +9,11 @@
 
 def check_xwing_by_cols(self):
 	xwing_candidates = {}  # For all cols.
-	xwing_clean_list = []  # stores dicts of xwings to be cleaned
+
+	# stores dicts of xwings to be cleaned
+	xwing_clean_list = {}  # working so far
+	# xwing_clean_list = []
+
 
 	# Fill a dict of all possible coord pairs.
 	for j in range(0, 9):  # j goes across
@@ -40,7 +44,7 @@ def check_xwing_by_cols(self):
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 
-		"""
+
 		# working so far
 		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
@@ -49,8 +53,9 @@ def check_xwing_by_cols(self):
 			xwing_clean_list[poss_val] = xwing_set
 		else:
 			print('xwing_set is empty')
-		"""
 
+
+		"""
 		# testing
 		xwing_sets = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
@@ -60,20 +65,19 @@ def check_xwing_by_cols(self):
 			for xwing_set in xwing_sets:
 				print(xwing_set)
 
-
 				
 		else:
 			print('xwing_set is empty')
+		"""
 
 
 
 
-	"""
 	# clean xwing
 	for poss_val in xwing_clean_list.keys():
 		xwing_coords = xwing_clean_list[poss_val]
 		self.clean_xwing_row(poss_val, xwing_coords)
-	"""
+
 
 
 
@@ -113,18 +117,21 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 
 	# Return a list of [four coordinates]-lists.
 	if len(xwing_sets) == 1:
-		# print('xwing set: {0}'.format(xwing_set[0]))
-		# return xwing_set[0]  # working so far
+		# print('xwing set: {0}'.format(xwing_sets[0]))
+		return xwing_sets[0]  # working so far
 
 		# testing
-		return xwing_sets
+		# return xwing_sets
 
 	elif len(xwing_sets) == 0:
 		# print('return empty set')
 		return []
 
 	else:
-		print('more than one xwing set being returned')
+		print('more than one xwing set being returned: ')
+		for item in xwing_sets:
+			print('\t{0}'.format(item))
+
 		return xwing_sets
 
 
