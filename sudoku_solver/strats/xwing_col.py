@@ -56,15 +56,19 @@ def check_xwing_by_cols(self):
 		"""
 
 
-
 		# testing
 		xwing_sets = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 		if len(xwing_sets) > 0:
-			print('poss_val: {0} \txwing_set'.format(poss_val), end=' ')
+			print('xwing_set: {0} - {1}'.format(poss_val, xwing_sets))
 
 			for xwing_set in xwing_sets:
-				print(xwing_set)
+				xwing_dict = {}
+				xwing_dict[poss_val] = xwing_set
+
+				xwing_clean_list.append(xwing_dict)
+
+			
 
 				
 		else:
@@ -75,7 +79,6 @@ def check_xwing_by_cols(self):
 
 
 	# clean xwing
-
 	# working so far
 	"""
 	for poss_val in xwing_clean_list.keys():
@@ -84,7 +87,7 @@ def check_xwing_by_cols(self):
 	"""
 
 	for xwing_set in xwing_clean_list:
-		poss_val = xwing_set.keys()
+		poss_val = list(xwing_set.keys())[0]
 		xwing_coords = xwing_set[poss_val]
 
 		self.clean_xwing_row(poss_val, xwing_coords)
