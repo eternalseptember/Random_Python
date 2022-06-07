@@ -71,7 +71,7 @@ def check_xwing_by_rows(self):
 
 
 def check_xwing_is_same_cols(self, list_of_coords):
-	xwing_set = []  # a list of a set
+	xwing_sets = []  # a list of a set
 
 	# Check list_of_coords in groups of two.
 	# Need to account for four coords at a time.
@@ -102,20 +102,11 @@ def check_xwing_is_same_cols(self, list_of_coords):
 
 			if is_same_cols:
 				xwing_coords = [row_1_coord_1, row_1_coord_2, row_2_coord_1, row_2_coord_2]
-				xwing_set.append(xwing_coords)
+				xwing_sets.append(xwing_coords)
 
 
 	# Return a list of four coordinates in the xwing.
-	if len(xwing_set) == 1:
-		# print('xwing set: {0}'.format(xwing_set[0]))
-		return xwing_set[0]
-	elif len(xwing_set) == 0:
-		# print('return empty set')
-		return []
-	else:
-		print('error: more than one xwing set being returned?')
-		return xwing_set
-
+	return xwing_sets
 
 
 def is_xwing_same_cols(self, coords_row_1, coords_row_2):

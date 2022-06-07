@@ -129,24 +129,8 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 
 
 	# Return a list of [four coordinates]-lists.
-	# testing
 	return xwing_sets
 
-	"""
-	if len(xwing_sets) == 1:
-		# print('xwing set: {0}'.format(xwing_sets[0]))
-		return xwing_sets[0]  # working so far
-
-	elif len(xwing_sets) == 0:
-		# print('return empty set')
-		return []
-
-	else:
-		# print('more than one xwing set being returned: ')
-		# for item in xwing_sets:
-		# 	print('\t{0}'.format(item))
-		return xwing_sets
-	"""
 
 
 
