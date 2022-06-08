@@ -9,10 +9,7 @@
 
 def check_xwing_by_cols(self):
 	xwing_candidates = {}  # For all cols.
-
-	# stores dicts of xwings to be cleaned
-	# xwing_clean_list = {}  # working so far
-	xwing_clean_list = []  # testing
+	xwing_clean_list = []  # stores dicts of xwings to be cleaned
 
 
 	# Fill a dict of all possible coord pairs.
@@ -43,20 +40,6 @@ def check_xwing_by_cols(self):
 	# within the list of coords.
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
-
-		"""
-		# working so far
-		xwing_set = self.check_xwing_is_same_rows(poss_val, poss_coords)
-
-		if len(xwing_set) > 0:
-			print('xwing_set: {0} - {1}'.format(poss_val, xwing_set))
-			xwing_clean_list[poss_val] = xwing_set
-		else:
-			print('xwing_set is empty')
-		"""
-
-
-		# testing
 		xwing_sets = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 		if len(xwing_sets) > 0:
@@ -68,7 +51,6 @@ def check_xwing_by_cols(self):
 
 				xwing_clean_list.append(xwing_dict)
 
-			
 
 				
 		else:
@@ -79,17 +61,9 @@ def check_xwing_by_cols(self):
 
 
 	# clean xwing
-	# working so far
-	"""
-	for poss_val in xwing_clean_list.keys():
-		xwing_coords = xwing_clean_list[poss_val]
-		self.clean_xwing_row(poss_val, xwing_coords)
-	"""
-
 	for xwing_set in xwing_clean_list:
 		poss_val = list(xwing_set.keys())[0]
 		xwing_coords = xwing_set[poss_val]
-
 		self.clean_xwing_row(poss_val, xwing_coords)
 
 

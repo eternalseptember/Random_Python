@@ -21,7 +21,7 @@ def check_xwing(self):
 
 def check_xwing_by_rows(self):
 	xwing_candidates = {}  # For all rows.
-	xwing_clean_list = {}
+	xwing_clean_list = []  # stores dicts of xwings to be cleaned
 
 	# Fill a dict of all possible coord pairs.
 	for i in range(0, 9):  # i goes down
@@ -62,10 +62,10 @@ def check_xwing_by_rows(self):
 
 
 	# clean xwing
-	for poss_val in xwing_clean_list.keys():
-		poss_coords = xwing_clean_list[poss_val]
-		self.clean_xwing_col(poss_val, poss_coords)
-
+	for xwing_set in xwing_clean_list:
+		poss_val = list(xwing_set.keys())[0]
+		xwing_coords = xwing_set[poss_val]
+		self.clean_xwing_col(poss_val, xwing_coords)
 
 
 
@@ -125,7 +125,6 @@ def is_xwing_same_cols(self, coords_row_1, coords_row_2):
 		return False
 
 
-
 def clean_xwing_col(self, poss_val, coords_list):
 	# Coords in coords_list is listed in a specific order
 	coord_1 = coords_list[0]
@@ -153,6 +152,8 @@ def clean_xwing_col(self, poss_val, coords_list):
 
 		if clean_coord_2 not in coords_col_2:
 			self.possible_vals_check(clean_coord_2, poss_val)
+
+
 
 
 
