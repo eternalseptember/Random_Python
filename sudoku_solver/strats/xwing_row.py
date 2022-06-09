@@ -52,7 +52,7 @@ def check_xwing_by_rows(self):
 	# Can consolidate this into the eliminate entries list later.
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
-		xwing_set = self.check_xwing_is_same_cols(poss_coords)
+		xwing_sets = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 		if len(xwing_set) > 0:
 			print('xwing_set: {0} - {1}'.format(poss_val, xwing_set))
@@ -61,7 +61,10 @@ def check_xwing_by_rows(self):
 			print('xwing_set is empty')
 
 
-	# clean xwing
+
+
+
+	# Clean xwing.
 	for xwing_set in xwing_clean_list:
 		poss_val = list(xwing_set.keys())[0]
 		xwing_coords = xwing_set[poss_val]
@@ -70,7 +73,7 @@ def check_xwing_by_rows(self):
 
 
 
-def check_xwing_is_same_cols(self, list_of_coords):
+def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 	xwing_sets = []  # a list of a set
 
 	# Check list_of_coords in groups of two.

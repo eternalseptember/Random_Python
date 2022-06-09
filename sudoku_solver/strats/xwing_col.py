@@ -60,7 +60,7 @@ def check_xwing_by_cols(self):
 
 
 
-	# clean xwing
+	# Clean xwing.
 	for xwing_set in xwing_clean_list:
 		poss_val = list(xwing_set.keys())[0]
 		xwing_coords = xwing_set[poss_val]
