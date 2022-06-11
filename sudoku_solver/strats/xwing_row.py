@@ -59,6 +59,7 @@ def check_xwing_by_rows(self):
 			
 			for xwing_set in xwing_sets:
 				xwing_dict = {}
+				xwing_dict[poss_val] = xwing_set
 
 		else:
 			print('xwing_set is empty')
