@@ -35,7 +35,6 @@ def check_xwing_by_cols(self):
 	self.clean_xwing_list(xwing_candidates)
 
 
-
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
 	for poss_val in xwing_candidates.keys():
@@ -52,11 +51,8 @@ def check_xwing_by_cols(self):
 				xwing_clean_list.append(xwing_dict)
 
 
-				
 		else:
 			print('xwing_set is empty')
-
-
 
 
 

@@ -49,7 +49,6 @@ def check_xwing_by_rows(self):
 
 	# Then check each dict entry to see if there's an xwing
 	# within the list of coords.
-	# Can consolidate this into the eliminate entries list later.
 	for poss_val in xwing_candidates.keys():
 		poss_coords = xwing_candidates[poss_val]
 		xwing_sets = self.check_xwing_is_same_cols(poss_val, poss_coords)
@@ -61,10 +60,11 @@ def check_xwing_by_rows(self):
 				xwing_dict = {}
 				xwing_dict[poss_val] = xwing_set
 
+				xwing_clean_list.append(xwing_dict)
+
+
 		else:
 			print('xwing_set is empty')
-
-
 
 
 
