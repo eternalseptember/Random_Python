@@ -51,8 +51,8 @@ def check_xwing_by_cols(self):
 				xwing_clean_list.append(xwing_dict)
 
 
-		else:
-			print('xwing_set is empty')
+		# else:
+		# 	print('xwing_set is empty')
 
 
 

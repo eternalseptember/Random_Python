@@ -12,9 +12,15 @@
 8 as a possible value is removed from:
 	(2, 6) and (4, 4)
 
-
 8 is locked to rows [2, 4] and cols [3, 7].
+
+
+	xwing_test_3: rotated xwing_test_2
+8 is locked to rows [4, 6] and cols [5, 7].
 8 as a possible value is removed from:
+	(4, 4) and (6, 6)
+
+8 is locked to rows [3, 7] and cols [4, 6].
 
 """
 
@@ -27,7 +33,8 @@ from sudoku_solver import *
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
 # sudoku.import_board("test_boards/xwing_test_1.txt")
-sudoku.import_board("test_boards/xwing_test_2.txt")
+# sudoku.import_board("test_boards/xwing_test_2.txt")
+sudoku.import_board("test_boards/xwing_test_3.txt")
 sudoku.print_board()
 print('===============================')
 
