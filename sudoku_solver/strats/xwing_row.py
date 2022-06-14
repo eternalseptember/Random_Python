@@ -8,11 +8,11 @@
 
 
 def check_xwing(self):
-	# print('check xwing by rows')
-	# self.check_xwing_by_rows()
+	print('check xwing by rows')
+	self.check_xwing_by_rows()
 
-	print('check xwing by cols')
-	self.check_xwing_by_cols()
+	# print('check xwing by cols')
+	# self.check_xwing_by_cols()
 
 
 
