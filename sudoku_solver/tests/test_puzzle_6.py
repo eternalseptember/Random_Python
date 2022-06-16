@@ -21,6 +21,20 @@ sudoku.print_board()
 print('===============================')
 
 
+print('Unique lookup test:')
+sudoku.check_all_unique()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+
+
+
+
+
+
+
 
 
 
