@@ -29,6 +29,14 @@ print('===============================')
 
 
 
+print('Single-box block-level eliminations:')
+sudoku.check_within_boxes()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+
 
 
 
