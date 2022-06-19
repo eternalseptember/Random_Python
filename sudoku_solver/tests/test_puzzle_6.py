@@ -28,7 +28,7 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-# possible values list has been reduced
+# board values found and possible values list has been reduced
 print('Single-box block-level eliminations:')
 sudoku.check_within_boxes()
 sudoku.print_board()
@@ -43,6 +43,13 @@ sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
+
+# board values found and possible values list has been reduced
+print('Check unique locations:')
+sudoku.check_all_unique()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
 
 
 
