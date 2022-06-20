@@ -42,7 +42,7 @@ def check_xwing_by_cols(self):
 		xwing_sets = self.check_xwing_is_same_rows(poss_val, poss_coords)
 
 		if len(xwing_sets) > 0:
-			print('xwing_set: {0} - {1}'.format(poss_val, xwing_sets))
+			# print('xwing_set: {0} - {1}'.format(poss_val, xwing_sets))
 
 			for xwing_set in xwing_sets:
 				xwing_dict = {}

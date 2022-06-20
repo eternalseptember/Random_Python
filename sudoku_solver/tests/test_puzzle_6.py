@@ -52,6 +52,19 @@ sudoku.print_possible_values()
 print('===============================')
 
 
+# no changes?
+print('Check xwing:')
+sudoku.check_xwing()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+
+
+
+
+
 
 
 

@@ -8,11 +8,11 @@
 
 
 def check_xwing(self):
-	print('check xwing by rows')
+	# print('check xwing by rows')
 	self.check_xwing_by_rows()
 
 	# print('check xwing by cols')
-	# self.check_xwing_by_cols()
+	self.check_xwing_by_cols()
 
 
 
@@ -54,7 +54,7 @@ def check_xwing_by_rows(self):
 		xwing_sets = self.check_xwing_is_same_cols(poss_val, poss_coords)
 
 		if len(xwing_sets) > 0:
-			print('xwing_set: {0} - {1}'.format(poss_val, xwing_sets))
+			# print('xwing_set: {0} - {1}'.format(poss_val, xwing_sets))
 			
 			for xwing_set in xwing_sets:
 				xwing_dict = {}
