@@ -21,6 +21,7 @@ sudoku.print_board()
 print('===============================')
 
 
+# board values found
 print('Unique lookup test:')
 sudoku.check_all_unique()
 sudoku.print_board()
@@ -52,7 +53,8 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-# no changes?
+"""
+# no changes
 print('Check xwing:')
 sudoku.check_xwing()
 sudoku.print_board()
@@ -60,13 +62,20 @@ sudoku.print_possible_values()
 print('===============================')
 
 
-# no changes?
+# no changes
 print('Check unique locations:')
 sudoku.check_all_unique()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+"""
 
+# no changes
+print('Unique lookup test:')
+sudoku.check_all_unique()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
 
 
 
