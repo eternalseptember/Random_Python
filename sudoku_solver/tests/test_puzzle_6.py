@@ -74,7 +74,6 @@ sudoku.check_xwing()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-"""
 
 # no changes
 print('Check matching sets:')
@@ -82,6 +81,15 @@ sudoku.check_matching_sets()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+"""
+
+# no changes
+print('Check for naked triples:')
+sudoku.check_naked_triples()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
 
 
 
