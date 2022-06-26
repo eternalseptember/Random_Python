@@ -53,6 +53,15 @@ sudoku.print_possible_values()
 print('===============================')
 
 
+# poss vals list reduced for one location
+print('Single-box block-level eliminations:')
+sudoku.check_within_boxes()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
+
+
 """
 # no changes
 print('Unique lookup test:')
@@ -92,12 +101,13 @@ print('===============================')
 
 
 
-# poss vals list reduced for one coordinate
-print('Single-box block-level eliminations:')
-sudoku.check_within_boxes()
+# no changes
+print('Double-boxed block-level eliminations:')
+sudoku.check_block_elim()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+
 
 
 
