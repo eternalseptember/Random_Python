@@ -97,9 +97,6 @@ sudoku.check_naked_triples()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-"""
-
-
 
 # no changes
 print('Double-boxed block-level eliminations:')
@@ -107,6 +104,11 @@ sudoku.check_block_elim()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+"""
+
+
+
+
 
 
 
