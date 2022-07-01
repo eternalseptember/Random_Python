@@ -35,6 +35,12 @@ sudoku.print_possible_values()
 print('===============================')
 
 
+print('Double-boxed block-level eliminations:')
+sudoku.check_block_elim()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
+
 
 
 
