@@ -8,7 +8,7 @@ from sudoku_solver import *
 
 
 sudoku = Sudoku_Solver()
-sudoku.import_board("test_boards/test_elim.txt")
+sudoku.import_board("test_boards/test_pointing_elim.txt")
 sudoku.print_board()
 print('===============================')
 
@@ -27,7 +27,7 @@ sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
 
-
+"""
 print('Single-box block-level eliminations:')
 sudoku.check_within_boxes()
 sudoku.print_board()
@@ -40,6 +40,12 @@ sudoku.check_block_elim()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
+"""
+
+
+
+
+
 
 
 
