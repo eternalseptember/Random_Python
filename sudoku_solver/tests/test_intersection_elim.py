@@ -1,4 +1,6 @@
 """
+Intersection eliminations.
+
 BLOCK ELIM ROWS:
 In the central row of boxes:
 8 can't be in (row 3; cols 2-3) and (row 5; cols 2-3).
@@ -39,16 +41,9 @@ sudoku.print_board()
 # sudoku.print_possible_values()
 print('===============================')
 
-"""
-print('Check matching sets:')
-sudoku.check_matching_sets()
-sudoku.print_board()
-sudoku.print_possible_values()
-print('===============================')
-"""
 
-print('Test block interaction:')
-# sudoku.check_within_boxes()
+print('Intersection eliminations:')
+sudoku.check_within_boxes()
 sudoku.check_block_elim()
 sudoku.print_board()
 sudoku.print_possible_values()

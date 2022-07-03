@@ -1,4 +1,6 @@
 """
+Intersection eliminations.
+
 Col test:
 7 can't be in any other (4, col) locations.
 In the central box, 7 can only be in (3, 4) and (5, 4),
