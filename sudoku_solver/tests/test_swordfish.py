@@ -15,6 +15,11 @@ sudoku.print_board()
 print('===============================')
 
 
+print('Init reduce:')
+sudoku.solve_queue()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
 
 
 
