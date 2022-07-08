@@ -23,8 +23,11 @@ print('===============================')
 
 
 
-
-
+print('Check swordfish:')
+sudoku.check_swordfish()
+sudoku.print_board()
+sudoku.print_possible_values()
+print('===============================')
 
 
 
