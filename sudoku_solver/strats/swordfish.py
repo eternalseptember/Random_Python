@@ -14,9 +14,11 @@ def check_swordfish(self):
 			this_coord = (i, j)
 
 			# set lookup table
-			# but eliminate vals with fewer than 3 possible locations
 			if this_coord in self.possible_values:
 				self.set_lookup_table(this_coord, val_lookup_row)
+
+		# End of row.
+		swordfish_cands_row = self.check_swordfish_cands(val_lookup_row)
 
 
 
@@ -24,6 +26,7 @@ def check_swordfish(self):
 
 
 def check_swordfish_cands(self, lookup_dict):
+	# eliminate vals with fewer than 3 possible locations
 	return None
 
 
