@@ -27,7 +27,7 @@ def check_swordfish(self):
 
 def check_swordfish_cands(self, lookup_dict):
 	# eliminate vals with fewer than 3 possible locations
-	return None
+	swordfish_cands = {}
 
 
 
