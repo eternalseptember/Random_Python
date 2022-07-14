@@ -32,3 +32,17 @@ def check_swordfish_cands(self, lookup_dict):
 
 
 
+	return swordfish_cands
+
+
+
+
+
+
+
+
+
+
+
+
+
