@@ -30,6 +30,10 @@ def check_swordfish_cands(self, lookup_dict):
 	swordfish_cands = {}
 
 
+	for poss_val in lookup_dict.keys():
+		poss_locs = lookup_dict[poss_val]
+
+		# exactly three or at least three???
 
 
 	return swordfish_cands
