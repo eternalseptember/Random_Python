@@ -34,6 +34,9 @@ def check_swordfish_cands(self, lookup_dict):
 		poss_locs = lookup_dict[poss_val]
 
 		# exactly three or at least three???
+		# Add to dict if there are at least 3 possible locations.
+		if len(poss_locs) >= 3:
+			swordfish_cands[poss_val] = poss_locs
 
 
 	return swordfish_cands
