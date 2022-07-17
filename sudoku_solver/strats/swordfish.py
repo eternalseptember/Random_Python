@@ -5,7 +5,10 @@ swordfish is 3x3.
 
 
 def check_swordfish(self):
+	# might eventually turn into the row version of the function
+
 	# lookup table at least three possible locations per row
+	swordfish_cands = {}  # for all rows
 
 	for i in range(9):  # i goes down
 
@@ -20,6 +23,10 @@ def check_swordfish(self):
 		# End of row.
 		swordfish_cands_row = self.check_swordfish_cands(val_lookup_row)
 
+		for poss_val in swordfish_cands_row.keys():
+			if poss_val in swordfish_cands:
+				swordfish_cands[poss_val].extend(swordfish_cands_row[poss_val])
+			# else...
 
 
 
