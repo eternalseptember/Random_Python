@@ -26,7 +26,8 @@ def check_swordfish(self):
 		for poss_val in swordfish_cands_row.keys():
 			if poss_val in swordfish_cands:
 				swordfish_cands[poss_val].extend(swordfish_cands_row[poss_val])
-			# else...
+			else:
+				swordfish_cands[poss_val] = swordfish_cands_row[poss_val]
 
 
 
