@@ -30,13 +30,20 @@ def check_swordfish(self):
 				swordfish_cands[poss_val] = swordfish_cands_row[poss_val]
 
 
+	# eliminate entries that can't be part of a swordfish
+	self.clean_swordfish_list(swordfish_cands)
 
 
 
+
+
+
+# #######################################
+# General functions
+# #######################################
 def check_swordfish_cands(self, lookup_dict):
 	# eliminate vals with fewer than 3 possible locations
 	swordfish_cands = {}
-
 
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
@@ -46,10 +53,13 @@ def check_swordfish_cands(self, lookup_dict):
 		if len(poss_locs) >= 3:
 			swordfish_cands[poss_val] = poss_locs
 
-
 	return swordfish_cands
 
 
+
+def clean_swordfish_list(self, swordfish_cands):
+	# at least 9 coordinates total, 3 coords in each row
+	return None
 
 
 

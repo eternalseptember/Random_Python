@@ -40,7 +40,8 @@ class Sudoku_Solver():
 	from strats.xwing_col import check_xwing_by_cols, \
 	    check_xwing_is_same_rows, is_xwing_same_rows, clean_xwing_row
 
-	from strats.swordfish import check_swordfish, check_swordfish_cands
+	from strats.swordfish import check_swordfish, check_swordfish_cands, \
+		clean_swordfish_list
 
 
 
