@@ -42,6 +42,7 @@ def check_swordfish(self):
 # General functions
 # #######################################
 def check_swordfish_cands(self, lookup_dict):
+	print('check swordfish cands')
 	# eliminate vals with fewer than 3 possible locations
 	swordfish_cands = {}
 
@@ -58,6 +59,7 @@ def check_swordfish_cands(self, lookup_dict):
 
 
 def clean_swordfish_list(self, swordfish_cands):
+	print('clean swordfish list')
 	# at least 9 coordinates total, 3 coords in each row
 	return None
 
