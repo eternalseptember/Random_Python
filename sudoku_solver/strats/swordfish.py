@@ -5,9 +5,9 @@ swordfish is 3x3.
 
 
 def check_swordfish(self):
-	# might eventually turn into the row version of the function
+	# Row and col versions not necessary.
 
-	# lookup table at least three possible locations per row
+	# First, fill a dict of all possible coord pairs.
 	swordfish_cands = {}  # for all rows
 
 	for i in range(9):  # i goes down
@@ -16,7 +16,6 @@ def check_swordfish(self):
 		for j in range(9):  # j goes across
 			this_coord = (i, j)
 
-			# set lookup table
 			if this_coord in self.possible_values:
 				self.set_lookup_table(this_coord, val_lookup_row)
 
@@ -39,11 +38,12 @@ def check_swordfish(self):
 
 
 # #######################################
-# General functions
+# General swordfish functions
 # #######################################
 def check_swordfish_cands(self, lookup_dict):
 	print('check swordfish cands')
-	# eliminate vals with fewer than 3 possible locations
+
+	# Eliminate vals with fewer than 3 possible locations per row or col.
 	swordfish_cands = {}
 
 	for poss_val in lookup_dict.keys():
@@ -60,8 +60,20 @@ def check_swordfish_cands(self, lookup_dict):
 
 def clean_swordfish_list(self, swordfish_cands):
 	print('clean swordfish list')
-	# at least 9 coordinates total, 3 coords in each row
-	return None
+
+	# At least 9 coordinates total, 3 coords in each row.
+	remove_list = []  # store poss_vals
+
+	# check conditions
+
+	# remove from list
+
+
+
+
+
+
+
 
 
 

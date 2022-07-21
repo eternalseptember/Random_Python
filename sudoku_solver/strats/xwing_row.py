@@ -21,9 +21,10 @@ def check_xwing(self):
 
 def check_xwing_by_rows(self):
 	xwing_candidates = {}  # For all rows.
-	xwing_clean_list = []  # stores dicts of xwings to be cleaned
+	xwings_found = []  # stores dicts of xwing coords
 
-	# Fill a dict of all possible coord pairs.
+	# First, fill a dict of all possible coord pairs.
+	# Then, initial cleanup of xwings cands list at the end of each row.
 	for i in range(0, 9):  # i goes down
 
 		val_lookup_row = {}
@@ -60,16 +61,14 @@ def check_xwing_by_rows(self):
 				xwing_dict = {}
 				xwing_dict[poss_val] = xwing_set
 
-				xwing_clean_list.append(xwing_dict)
-
+				xwings_found.append(xwing_dict)
 
 		# else:
 		# 	print('xwing_set is empty')
 
 
-
 	# Clean xwing.
-	for xwing_set in xwing_clean_list:
+	for xwing_set in xwings_found:
 		poss_val = list(xwing_set.keys())[0]
 		xwing_coords = xwing_set[poss_val]
 		self.clean_xwing_col(poss_val, xwing_coords)
@@ -83,7 +82,7 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 	# Check list_of_coords in groups of two.
 	# Need to account for four coords at a time.
 	for each_pair_1 in range(0, len(list_of_coords), 2):
-		# reference coordinates
+		# Reference coordinates:
 		row_1_coord_1 = list_of_coords[each_pair_1]
 		row_1_coord_2 = list_of_coords[each_pair_1 + 1]
 		row_1_coords = (row_1_coord_1, row_1_coord_2)
@@ -94,7 +93,6 @@ def check_xwing_is_same_cols(self, poss_val, list_of_coords):
 		if (each_pair_1 + 2) >= len(list_of_coords):
 			# print('no more coords to compare to')
 			break
-
 
 		# Rest of coords to compare to.
 		xwing_row_2_cands = list_of_coords[(each_pair_1 + 2):]
@@ -165,11 +163,11 @@ def clean_xwing_col(self, poss_val, coords_list):
 
 
 # #######################################
-# More universal functions
+# General xwing functions
 # #######################################
 def check_xwing_cands(self, lookup_dict):
 	# Check this condition:
-	# Only two possible cells for a val in each of two different rows or cols.
+	# Only two possible cells for a val in this row or col.
 	xwing_cands = {}  # per row or col
 
 	for poss_val in lookup_dict.keys():

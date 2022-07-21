@@ -9,10 +9,10 @@
 
 def check_xwing_by_cols(self):
 	xwing_candidates = {}  # For all cols.
-	xwing_clean_list = []  # stores dicts of xwings to be cleaned
+	xwings_found = []  # stores dicts of xwing coords
 
-
-	# Fill a dict of all possible coord pairs.
+	# First, fill a dict of all possible coord pairs.
+	# Then, initial cleanup of xwings cands list at the end of each col.
 	for j in range(0, 9):  # j goes across
 
 		val_lookup_col = {}
@@ -24,6 +24,7 @@ def check_xwing_by_cols(self):
 
 		# End of col.
 		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
+
 		for poss_val in xwing_cands_col.keys():
 			if poss_val in xwing_candidates:
 				xwing_candidates[poss_val].extend(xwing_cands_col[poss_val])
@@ -48,16 +49,14 @@ def check_xwing_by_cols(self):
 				xwing_dict = {}
 				xwing_dict[poss_val] = xwing_set
 
-				xwing_clean_list.append(xwing_dict)
-
+				xwings_found.append(xwing_dict)
 
 		# else:
 		# 	print('xwing_set is empty')
 
 
-
 	# Clean xwing.
-	for xwing_set in xwing_clean_list:
+	for xwing_set in xwings_found:
 		poss_val = list(xwing_set.keys())[0]
 		xwing_coords = xwing_set[poss_val]
 		self.clean_xwing_row(poss_val, xwing_coords)
@@ -71,6 +70,7 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 	# Check list_of_coords in groups of two.
 	# Need to account for four coords at a time.
 	for each_pair_1 in range(0, len(list_of_coords), 2):
+		# Reference coordinates:
 		col_1_coord_1 = list_of_coords[each_pair_1]
 		col_1_coord_2 = list_of_coords[each_pair_1 + 1]
 		col_1_coords = (col_1_coord_1, col_1_coord_2)
@@ -102,8 +102,6 @@ def check_xwing_is_same_rows(self, poss_val, list_of_coords):
 	return xwing_sets
 
 
-
-
 def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 	# coords_col_1 and coords_col_2 are lists.
 	coord_1, coord_2 = (coords_col_1)
@@ -118,7 +116,6 @@ def is_xwing_same_rows(self, coords_col_1, coords_col_2):
 		return True
 	else:
 		return False
-
 
 
 def clean_xwing_row(self, poss_val, coords_list):
