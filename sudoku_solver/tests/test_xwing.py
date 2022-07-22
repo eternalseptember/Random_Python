@@ -32,9 +32,9 @@ from sudoku_solver import *
 
 # Test puzzles of various difficulty levels.
 sudoku = Sudoku_Solver()
-# sudoku.import_board("test_boards/xwing_test_1.txt")
+sudoku.import_board("test_boards/xwing_test_1.txt")
 # sudoku.import_board("test_boards/xwing_test_2.txt")
-sudoku.import_board("test_boards/xwing_test_3.txt")
+# sudoku.import_board("test_boards/xwing_test_3.txt")
 sudoku.print_board()
 print('===============================')
 

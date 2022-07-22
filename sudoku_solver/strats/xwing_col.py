@@ -23,13 +23,14 @@ def check_xwing_by_cols(self):
 				self.set_lookup_table(this_coord, val_lookup_col)
 
 		# End of col.
-		xwing_cands_col = self.check_xwing_cands(val_lookup_col)
+		self.check_xwing_cands(val_lookup_col)
 
-		for poss_val in xwing_cands_col.keys():
+		# Compile dict of potential xwing components.
+		for poss_val in val_lookup_col.keys():
 			if poss_val in xwing_candidates:
-				xwing_candidates[poss_val].extend(xwing_cands_col[poss_val])
+				xwing_candidates[poss_val].extend(val_lookup_col[poss_val])
 			else:
-				xwing_candidates[poss_val] = xwing_cands_col[poss_val]
+				xwing_candidates[poss_val] = val_lookup_col[poss_val]
 
 
 	# Eliminate entries without enough possible candidates be part of an xwing.
