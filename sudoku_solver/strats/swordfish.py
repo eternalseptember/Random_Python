@@ -20,13 +20,13 @@ def check_swordfish(self):
 				self.set_lookup_table(this_coord, val_lookup_row)
 
 		# End of row.
-		swordfish_cands_row = self.check_swordfish_cands(val_lookup_row)
+		self.check_swordfish_cands(val_lookup_row)
 
-		for poss_val in swordfish_cands_row.keys():
+		for poss_val in val_lookup_row.keys():
 			if poss_val in swordfish_cands:
-				swordfish_cands[poss_val].extend(swordfish_cands_row[poss_val])
+				swordfish_cands[poss_val].extend(val_lookup_row[poss_val])
 			else:
-				swordfish_cands[poss_val] = swordfish_cands_row[poss_val]
+				swordfish_cands[poss_val] = val_lookup_row[poss_val]
 
 
 	# eliminate entries that can't be part of a swordfish
@@ -44,17 +44,21 @@ def check_swordfish_cands(self, lookup_dict):
 	print('check swordfish cands')
 
 	# Eliminate vals with fewer than 3 possible locations per row or col.
-	swordfish_cands = {}
+	remove_list = []
 
 	for poss_val in lookup_dict.keys():
 		poss_locs = lookup_dict[poss_val]
 
 		# exactly three or at least three???
 		# Add to dict if there are at least 3 possible locations.
-		if len(poss_locs) >= 3:
-			swordfish_cands[poss_val] = poss_locs
+		# if len(poss_locs) >= 3:
+		if len(poss_locs) < 2:
+			remove_list.append(poss_val)
 
-	return swordfish_cands
+	# Remove entries.
+	for poss_val in remove_list:
+		lookup_dict.pop(poss_val)
+
 
 
 
