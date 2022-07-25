@@ -68,7 +68,8 @@ def clean_swordfish_list(self, swordfish_cands):
 		poss_coords = swordfish_cands[poss_val]
 
 	# Remove entries.
-
+		for poss_val in remove_list:
+		swordfish_cands.pop(poss_val)
 
 
 
