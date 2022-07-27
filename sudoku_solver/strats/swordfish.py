@@ -66,11 +66,17 @@ def clean_swordfish_list(self, swordfish_cands):
 	for poss_val in swordfish_cands.keys():
 		poss_coords = swordfish_cands[poss_val]
 
-		if len(poss_coords) <= 9:
+		col_count = {}  # key: col; val: count
+
+		if len(poss_coords) < 9:
 			remove_list.append(poss_val)
+	
+		else:
+			print()
+
 
 	# Remove entries.
-		for poss_val in remove_list:
+	for poss_val in remove_list:
 		swordfish_cands.pop(poss_val)
 
 
