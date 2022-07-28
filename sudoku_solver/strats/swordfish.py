@@ -72,7 +72,10 @@ def clean_swordfish_list(self, swordfish_cands):
 			remove_list.append(poss_val)
 	
 		else:
-			print()
+			for coord in poss_coords:
+				this_row, this_col = (coord)
+
+				# check or add to dict
 
 
 	# Remove entries.
