@@ -76,6 +76,10 @@ def clean_swordfish_list(self, swordfish_cands):
 				this_row, this_col = (coord)
 
 				# check or add to dict
+				if this_col not in col_count:
+					col_count[this_col] = 1
+				else:
+					col_count[this_col] += 1
 
 
 	# Remove entries.
