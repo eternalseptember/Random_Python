@@ -48,7 +48,7 @@ def check_swordfish_cands(self, lookup_dict):
 		poss_locs = lookup_dict[poss_val]
 
 		# Check conditions.
-		if len(poss_locs) <= 2:
+		if len(poss_locs) < 3:
 			remove_list.append(poss_val)
 
 	# Remove entries.
@@ -59,27 +59,36 @@ def check_swordfish_cands(self, lookup_dict):
 
 
 def clean_swordfish_list(self, swordfish_cands):
-	# Conditions: at least 9 coordinates total; 3 coords in each col.
+	# Conditions: at least 9 coordinates total; at least 3 coords in each col.
 	remove_list = []  # store poss_vals
 
-	# Check conditions.
 	for poss_val in swordfish_cands.keys():
 		poss_coords = swordfish_cands[poss_val]
 
-		col_count = {}  # key: col; val: count
-
+		# Check conditions.
 		if len(poss_coords) < 9:
 			remove_list.append(poss_val)
 	
 		else:
-			for coord in poss_coords:
-				this_row, this_col = (coord)
+			col_count = {}  # key: col; val: count
 
-				# check or add to dict
+			for this_coord in poss_coords:
+				this_row, this_col = (this_coord)
+
+				# Add to dict if not already tracked.
 				if this_col not in col_count:
 					col_count[this_col] = 1
 				else:
 					col_count[this_col] += 1
+
+			# Check that there are at least three cols.
+			if len(col_count.keys()) < 3:
+				remove_list.append(poss_val)
+
+
+			# Then check count in all cols.
+
+
 
 
 	# Remove entries.
