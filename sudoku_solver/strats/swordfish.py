@@ -85,8 +85,16 @@ def clean_swordfish_list(self, swordfish_cands):
 			if len(col_count.keys()) < 3:
 				remove_list.append(poss_val)
 
-
 			# Then check count in all cols.
+			else:
+				swordfish_cols = 0  # has to be at least 3
+
+				for this_col in col_count.keys():
+					if col_count[this_col] >= 3:
+						swordfish_cols += 1
+
+				# check swordfish_cols
+
 
 
 
