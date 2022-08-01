@@ -70,30 +70,32 @@ def clean_swordfish_list(self, swordfish_cands):
 			remove_list.append(poss_val)
 	
 		else:
-			col_count = {}  # key: col; val: count
+			unique_col_count = {}  # key: col; val: count
 
 			for this_coord in poss_coords:
 				this_row, this_col = (this_coord)
 
 				# Add to dict if not already tracked.
-				if this_col not in col_count:
-					col_count[this_col] = 1
+				if this_col not in unique_col_count:
+					unique_col_count[this_col] = 1
 				else:
-					col_count[this_col] += 1
+					unique_col_count[this_col] += 1
 
 			# Check that there are at least three cols.
-			if len(col_count.keys()) < 3:
+			if len(unique_col_count.keys()) < 3:
 				remove_list.append(poss_val)
 
 			# Then check count in all cols.
 			else:
-				swordfish_cols = 0  # has to be at least 3
+				swordfish_cols_count = 0  # at least 3 cols need at least 3 locations
 
-				for this_col in col_count.keys():
-					if col_count[this_col] >= 3:
-						swordfish_cols += 1
+				for this_col in unique_col_count.keys():
+					if unique_col_count[this_col] >= 3:
+						swordfish_cols_count += 1
 
-				# check swordfish_cols
+
+				if swordfish_cols_count <= 2:
+					remove_list.append(poss_val)
 
 
 
