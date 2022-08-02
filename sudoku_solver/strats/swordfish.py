@@ -32,6 +32,11 @@ def check_swordfish(self):
 	# Eliminate poss_vals that can't be part of a swordfish.
 	self.clean_swordfish_list(swordfish_cands)
 
+	# testing
+	print('swordfish candidatess:')
+	for item in swordfish_cands:
+		print(swordfish_cands[item])
+
 
 
 
