@@ -103,12 +103,15 @@ def clean_swordfish_list(self, swordfish_cands):
 					remove_list.append(poss_val)
 
 
-
-
-
 	# Remove entries.
 	for poss_val in remove_list:
 		swordfish_cands.pop(poss_val)
+
+
+
+def find_swordfish(self, swordfish_cands):
+	return None
+
 
 
 
