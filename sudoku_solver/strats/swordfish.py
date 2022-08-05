@@ -22,6 +22,13 @@ def check_swordfish(self):
 		# End of row.
 		self.check_swordfish_cands(val_lookup_row)
 
+
+		# testing
+		print('checking swordfish cands')
+		for item in val_lookup_row.keys():
+			print('item: {0}, value: {1}'.format(item, val_lookup_row[item]))
+
+	"""
 		for poss_val in val_lookup_row.keys():
 			if poss_val in swordfish_cands:
 				swordfish_cands[poss_val].extend(val_lookup_row[poss_val])
@@ -32,7 +39,7 @@ def check_swordfish(self):
 	# Eliminate poss_vals that can't be part of a swordfish.
 	self.clean_swordfish_list(swordfish_cands)
 	self.find_swordfish(swordfish_cands)
-
+	"""
 
 
 
@@ -109,6 +116,8 @@ def find_swordfish(self, swordfish_cands):
 	print('swordfish candidatess:')
 	for item in swordfish_cands:
 		print(swordfish_cands[item])
+
+
 
 
 
