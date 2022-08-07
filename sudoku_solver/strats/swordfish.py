@@ -32,7 +32,7 @@ def check_swordfish(self):
 
 	# Eliminate poss_vals that can't be part of a swordfish.
 	self.clean_swordfish_list(swordfish_cands)
-	self.find_swordfish(swordfish_cands)
+
 
 
 
@@ -61,6 +61,7 @@ def check_swordfish_cands(self, lookup_dict):
 
 
 def clean_swordfish_list(self, swordfish_cands):
+	# Initial cleanup of swordfish_cands list.
 	# Conditions: at least 9 coordinates total; at least 3 coords in each col.
 	remove_list = []  # store poss_vals
 
@@ -104,6 +105,12 @@ def clean_swordfish_list(self, swordfish_cands):
 	for poss_val in remove_list:
 		swordfish_cands.pop(poss_val)
 
+	# next, find swordfish from each entry from the cleaned list
+	self.find_swordfish(swordfish_cands)
+
+
+
+
 
 
 def find_swordfish(self, swordfish_cands):
@@ -113,6 +120,12 @@ def find_swordfish(self, swordfish_cands):
 		print('item: {0}, value: {1}'.format(item, swordfish_cands[item]))
 
 
+
+
+
+
+def clean_swordfish(self, poss_val, coords_list):
+	return None
 
 
 

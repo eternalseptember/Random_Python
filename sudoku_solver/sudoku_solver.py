@@ -41,7 +41,7 @@ class Sudoku_Solver():
 	    check_xwing_is_same_rows, is_xwing_same_rows, clean_xwing_row
 
 	from strats.swordfish import check_swordfish, check_swordfish_cands, \
-		clean_swordfish_list, find_swordfish
+		clean_swordfish_list, find_swordfish, clean_swordfish
 
 
 
