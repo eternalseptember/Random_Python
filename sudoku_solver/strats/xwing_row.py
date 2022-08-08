@@ -21,7 +21,7 @@ def check_xwing(self):
 
 def check_xwing_by_rows(self):
 	xwing_candidates = {}  # For all rows.
-	xwings_found = []  # stores dicts of xwing coords
+	xwings_found = []  # stores dicts[poss_val] of xwing coords
 
 	# First, fill a dict of all possible coord pairs.
 	# Then, initial cleanup of xwings cands list at the end of each row.

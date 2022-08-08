@@ -34,6 +34,10 @@ def check_swordfish(self):
 	self.clean_swordfish_list(swordfish_cands)
 
 
+	# Then check each dict entry to see if there's a swordfish
+	# within its list of coords.
+	swordfish_found = self.find_swordfish(swordfish_cands)
+
 
 
 
@@ -105,8 +109,7 @@ def clean_swordfish_list(self, swordfish_cands):
 	for poss_val in remove_list:
 		swordfish_cands.pop(poss_val)
 
-	# next, find swordfish from each entry from the cleaned list
-	self.find_swordfish(swordfish_cands)
+
 
 
 
@@ -115,9 +118,14 @@ def clean_swordfish_list(self, swordfish_cands):
 
 def find_swordfish(self, swordfish_cands):
 	# Check if there is a swordfish in the cleaned swordfish_cands list.
-	print('checking swordfish cands')
+	swordfish_found = []  # stores dicts[poss_val] of swordfish coords
+	
+	# print('checking swordfish cands')
 	for item in swordfish_cands.keys():
 		print('item: {0}, value: {1}'.format(item, swordfish_cands[item]))
+
+
+	return swordfish_found
 
 
 
