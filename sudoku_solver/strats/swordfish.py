@@ -121,12 +121,17 @@ def find_swordfish(self, swordfish_cands):
 	swordfish_found = []  # stores dicts[poss_val] of swordfish coords
 	
 	# print('checking swordfish cands')
-	for item in swordfish_cands.keys():
-		print('item: {0}, value: {1}'.format(item, swordfish_cands[item]))
+	for poss_val in swordfish_cands.keys():
+		print('poss_val: {0}, coords: {1}'.format(poss_val, swordfish_cands[poss_val]))
 
 
 	return swordfish_found
 
+
+
+
+def intersection(self, list1, list2):
+	return list(set(list1) & set(list2))
 
 
 
