@@ -9,8 +9,8 @@ is 9 part of the triple?
 HIDDEN SUBSET ROW 1:
 [4,7] can only be in (0,0) and (0,1).
 
-HIDDEN SUBSET ROW 2: (hidden triple) (NEW)
-[1,2,6] can only be in (4,0), (4,5), and (4,7)????
+HIDDEN SUBSET ROW 2: (hidden triple) (NEW) (CURRENTLY TESTING)
+[1,2,6] can only be in (4,0), (4,5), and (4,7).
 
 HIDDEN SUBSET BOX 1:
 [1,8] can only be in (4,3) and (4,5).
@@ -49,10 +49,11 @@ sudoku.print_possible_values()
 print('===============================')
 
 
+# preliminary cleaning of board candidates for hidden_sub_row_2.txt
 print('Getting to the point where the test follows the example:')
-sudoku.check_matching_sets()
-sudoku.check_matching_sets()
-sudoku.check_within_boxes()
+sudoku.check_matching_sets()  # naked_subset
+sudoku.check_matching_sets()  # naked_subset
+sudoku.check_within_boxes()  # intersection elim
 
 sudoku.print_board()
 sudoku.print_possible_values()
@@ -60,13 +61,12 @@ print('===============================')
 
 
 
-"""
 print('Find hidden subset:')
 sudoku.check_hidden_subsets()
 sudoku.print_board()
 sudoku.print_possible_values()
 print('===============================')
-"""
+
 
 
 

@@ -30,7 +30,7 @@ class Sudoku_Solver():
 		check_naked_triples_cols, check_naked_triples_col, clean_triple_col, \
 		check_naked_triples_box, clean_triple_boxes, clean_triple_box
 
-	from strats.naked_triples_check import find_naked_triples, \
+	from strats.naked_triples_util import find_naked_triples, \
 		verify_triples_list
 
 	from strats.xwing_row import check_xwing, check_xwing_by_rows, \

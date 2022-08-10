@@ -123,6 +123,7 @@ def find_swordfish(self, swordfish_cands):
 	# print('checking swordfish cands')
 	for poss_val in swordfish_cands.keys():
 		print('poss_val: {0}, coords: {1}'.format(poss_val, swordfish_cands[poss_val]))
+		col_count = {}  # key is col? and stores a list of row numbers?
 
 
 	return swordfish_found
