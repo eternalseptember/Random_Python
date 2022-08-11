@@ -1,4 +1,4 @@
-# Similar to naked subset.
+# Similar to naked subset, except there are other candidates in the same cells.
 
 
 def check_hidden_subsets(self):
@@ -18,6 +18,14 @@ def check_hidden_sub_col(self):
 
 		# Check for subsets and then clean col.
 		possible_subsets = self.format_hidden_subset_info(col_missing_vals)
+
+		# testing
+		"""
+		print('check hidden subset col')
+		for key in possible_subsets.keys():
+			print(possible_subsets[key])
+		"""
+
 		self.clean_hidden_subsets(possible_subsets, 'col')
 
 
@@ -32,16 +40,21 @@ def check_hidden_sub_row(self):
 
 		# Check for subsets and then clean row.
 		possible_subsets = self.format_hidden_subset_info(row_missing_vals)
-		self.clean_hidden_subsets(possible_subsets, 'row')
 
+		# testing
 		"""
+		print('check hidden subset row')
 		for key in possible_subsets.keys():
 			print(possible_subsets[key])
 		"""
 
+		self.clean_hidden_subsets(possible_subsets, 'row')
+
+
+
 
 def clean_hidden_subsets(self, possible_subsets, label=''):
-	# mode is 'col' or 'row'
+	# label mode is 'col' or 'row'
 	for poss_key in possible_subsets.keys():
 		item = possible_subsets[poss_key]
 		subset_locs = item['subset_locs']
@@ -110,6 +123,12 @@ def format_hidden_subset_info(self, missing_vals_info):
 
 
 def clean_hidden_subset(self, coord, subset_locs, subset_nums):
+	print('clean hidden subset')
+	print('coord: {0}'.format(coord))
+	print('subset locs: {0}'.format(subset_locs))
+	print('subset nums'.format(subset_nums))
+
+
 	# Unsolved cell. Could be part of the subset or not.
 	if coord in self.possible_values:
 		poss_values = self.possible_values[coord]
